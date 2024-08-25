@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  /* background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb)); */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+/* styles/custom.css */
+.container-custom {
+  @apply px-custom-sm py-1; /* Default padding for small screens */
+}
+.fontsize-custom {
+  @apply text-custom-sm;
+}
+
+@media (min-width: 640px) {
+  /* sm */
+  .container-custom {
+    @apply px-custom-md;
+  }
+  .fontsize-custom {
+    @apply text-custom-md;
+  }
+}
+
+@media (min-width: 768px) {
+  /* md */
+  .container-custom {
+    @apply px-custom-lg;
+  }
+  .fontsize-custom {
+    @apply text-custom-lg;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* lg */
+  .container-custom {
+    @apply px-custom-xl;
+  }
+  .fontsize-custom {
+    @apply text-custom-xl;
+  }
+}
+
+@media (min-width: 1280px) {
+  /* xl */
+  .container-custom {
+    @apply px-custom-2xl;
+  }
+  .fontsize-custom {
+    @apply text-custom-2xl;
+  }
+}
+@media (min-width: 1536px) {
+  /* xl */
+  .container-custom {
+    @apply px-custom-3xl;
+  }
+  .fontsize-custom {
+    @apply text-custom-3xl;
+  }
+}
