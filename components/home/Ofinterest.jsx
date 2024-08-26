@@ -1,98 +1,77 @@
-import {
-  FiGithub,
-  FiTwitter,
-  FiLinkedin,
-  FiGlobe,
-  FiYoutube
-} from 'react-icons/fi'
+import React, { useEffect, useState } from 'react'
+import Slider from 'react-slick'
 import Image from 'next/image'
-import interest1 from '../../public/images/interest1.png'
-import interest2 from '../../public/images/interest1.png'
-import interest3 from '../../public/images/interest1.png'
-import interest4 from '../../public/images/interest1.png'
-import interest5 from '../../public/images/interest1.png'
 
-const interests = [
-  {
-    id: 1,
-    country: 'China',
-    url: interest1
-  },
-  {
-    id: 2,
-    country: 'Thailand',
-    url: interest2
-  },
-  {
-    id: 3,
-    country: 'Russia',
-    url: interest3
-  },
-  {
-    id: 4,
-    country: 'Egypt',
-    url: interest4
-  },
-  {
-    id: 4,
-    country: 'Colombia',
-    url: interest5
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+
+async function fetchInterests () {
+  try {
+    const res = await fetch('/api/interests')
+    if (!res.ok) {
+      throw new Error('Failed to fetch')
+    }
+    const data = await res.json()
+    return data
+  } catch (error) {
+    console.error('Error fetching interests:', error)
+    return []
   }
-]
+}
+
 function Ofinterest ({}) {
+  const [interests, setInterests] = useState([])
+  const [slidesToShow, setSlidesToShow] = useState(5)
+  const [slidesToScroll, setSlidesToScroll] = useState(2)
+
+  useEffect(() => {
+    fetchInterests().then(setInterests)
+
+    const handleResize = () => {
+      setSlidesToShow(window.innerWidth < 648 ? 3 : 5)
+      setSlidesToScroll(window.innerWidth < 648 ? 1 : 3)
+    }
+
+    handleResize() // Set the initial value
+    window.addEventListener('resize', handleResize)
+
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const settings = {
+    className: 'center',
+    dots: false,
+    infinite: true,
+    centerMode: false,
+    speed: 1000,
+    slidesToShow,
+    slidesToScroll: slidesToScroll,
+    cssEase: 'linear'
+  }
+
   return (
     <div className='flex flex-col'>
       <div className='font-medium text-3xl sm:text-5xl lg:text-7xl mt-12 sm:my-24 text-center'>
         Of Interest
       </div>
-      <div className='bg-white flex sm:pb-24 overflow-hidden pt-16'>
-        {interests.map((item, index) => {
-          return (
-            <Image
-              src={item.url}
-              className={`cursor-pointer mb-12 ${
-                index % 2 ? 'rotate-19 z-0' : '-rotate-19 z-10'
-              } ${
-                index === 1 || index === 2
-                  ? '-translate-x-1/2'
-                  : index === 3 || index === 4
-                  ? '-translate-x-2/3'
-                  : '-translate-x-1/4'
-              } w-1/4`}
-              alt='Light Logo'
-            />
-          )
-        })}
-        {/* <Image
-          src={interest1}
-          className='cursor-pointer mb-12 -rotate-19 -translate-x-1/4 w-1/4 z-10'
-          alt='Light Logo'
-          // width={470}
-        />
-        <Image
-          src={interest2}
-          className='cursor-pointer mb-12 rotate-19 -translate-x-1/2 w-1/4 z-0'
-          alt='Light Logo'
-          // width={470}
-        />
-        <Image
-          src={interest3}
-          className='cursor-pointer mb-12 -rotate-19 -translate-x-1/2 w-1/4 z-10'
-          alt='Light Logo'
-          // width={470}
-        />
-        <Image
-          src={interest4}
-          className='cursor-pointer mb-12 rotate-19 -translate-x-2/3 w-1/4 z-0'
-          alt='Light Logo'
-          // width={470}
-        />
-        <Image
-          src={interest5}
-          className='cursor-pointer mb-12 -rotate-19 -translate-x-2/3 w-1/4 z-10'
-          alt='Light Logo'
-          // width={470}
-        /> */}
+      <div className='bg-white sm:pb-24 overflow-hidden pt-16'>
+        <Slider {...settings}>
+          {interests.map((item, index) => (
+            <div key={item.id} className='px-0'>
+              <div
+                className={`flex-shrink-0 cursor-pointer mb-4 sm:mb-12 ${
+                  index % 2 ? 'rotate-[19deg] z-0' : '-rotate-[19deg] z-10'
+                }`}
+              >
+                <Image
+                  src={item.url}
+                  alt={item.country}
+                  className='object-cover py-8 sm:py-16'
+                />
+              </div>
+            </div>
+          ))}
+        </Slider>
       </div>
     </div>
   )

@@ -1,12 +1,3 @@
-import {
-  FiGithub,
-  FiTwitter,
-  FiLinkedin,
-  FiGlobe,
-  FiYoutube
-} from 'react-icons/fi'
-import Image from 'next/image'
-
 function Subscribe ({ bgColor, textColor, buttonColor, opacity = 1 }) {
   return (
     <div
