@@ -1,31 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import Slider from 'react-slick'
 import Image from 'next/image'
-
+import { useDispatch, useSelector } from 'react-redux'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-
-async function fetchInterests () {
-  try {
-    const res = await fetch('/api/interests')
-    if (!res.ok) {
-      throw new Error('Failed to fetch')
-    }
-    const data = await res.json()
-    return data
-  } catch (error) {
-    console.error('Error fetching interests:', error)
-    return []
-  }
-}
+import { fetchInterestsRequest } from '@/actions/home'
 
 function Ofinterest ({}) {
-  const [interests, setInterests] = useState([])
   const [slidesToShow, setSlidesToShow] = useState(5)
   const [slidesToScroll, setSlidesToScroll] = useState(2)
 
+  const data = useSelector(state => state.home.interests)
+  const dispatch = useDispatch()
+
   useEffect(() => {
-    fetchInterests().then(setInterests)
+    dispatch(fetchInterestsRequest())
 
     const handleResize = () => {
       setSlidesToShow(window.innerWidth < 648 ? 3 : 5)
@@ -36,7 +25,7 @@ function Ofinterest ({}) {
     window.addEventListener('resize', handleResize)
 
     return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  }, [dispatch])
 
   const settings = {
     className: 'center',
@@ -56,7 +45,7 @@ function Ofinterest ({}) {
       </div>
       <div className='bg-white sm:pb-24 overflow-hidden pt-16'>
         <Slider {...settings}>
-          {interests.map((item, index) => (
+          {data.map((item, index) => (
             <div key={item.id} className='px-0'>
               <div
                 className={`flex-shrink-0 cursor-pointer mb-4 sm:mb-12 ${

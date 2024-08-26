@@ -1,10 +1,3 @@
-import {
-  FiGithub,
-  FiTwitter,
-  FiLinkedin,
-  FiGlobe,
-  FiYoutube
-} from 'react-icons/fi'
 import Image from 'next/image'
 import image from '../../public/images/Home-whoweare.png'
 import JoinButton from '../reusable/JoinUs'

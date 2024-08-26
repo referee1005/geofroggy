@@ -1,19 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import CustomButton from '../reusable/CustomButton'
-
-async function fetchPopularCountries () {
-  const res = await fetch('/api/populars')
-  const data = await res.json()
-  return data
-}
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchPopularCountriesRequest } from '@/actions/home'
 
 function Popular ({}) {
-  const [populars, setPopulars] = React.useState([])
-  React.useEffect(() => {
-    fetchPopularCountries().then(setPopulars)
-  }, [])
+  const data = useSelector(state => state.home.popular_countries)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchPopularCountriesRequest())
+  }, [dispatch])
+
   return (
     <div className='container-custom flex flex-col'>
       <div className='2xl:px-48 text-center'>
@@ -21,7 +20,7 @@ function Popular ({}) {
           Popular Countries
         </div>
         <div className=' grid grid-cols-1 sm:grid-cols-3 gap-8 relative flex min-h-80 sm:min-h-96'>
-          {populars.map(item => (
+          {data.map(item => (
             <div className='bg-white shadow-md rounded-lg overflow-hidden'>
               {/* Main Image */}
               <div className='relative'>
