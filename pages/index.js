@@ -1,12 +1,14 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
-
+import Subscribe from "@/components/shared/subscribe";
+import PagesMetaHead from "@/components/PagesMetaHead";
+import Ofinterest from "@/components/home/Ofinterest";
+import Whoweare from "@/components/home/Whoweare";
 export default function Home() {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    ></main>
+    <div className="mx-auto">
+      <PagesMetaHead title="Home" />
+      <Ofinterest />
+      <Whoweare />
+      <Subscribe bgColor={"#245073"} opacity={0.5} />
+    </div>
   );
 }

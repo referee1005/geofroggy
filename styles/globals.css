@@ -87,3 +87,24 @@ body {
     @apply text-custom-3xl;
   }
 }
+/* Add this to your global CSS file or a module CSS file */
+.bg-opacity-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-opacity-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.bg-opacity-content {
+  position: relative;
+  z-index: 1;
+}

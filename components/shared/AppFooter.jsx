@@ -1,10 +1,3 @@
-import {
-  FiGithub,
-  FiTwitter,
-  FiLinkedin,
-  FiGlobe,
-  FiYoutube
-} from 'react-icons/fi'
 import facebook from '../../public/images/facebook.svg'
 import twitter from '../../public/images/twitter.svg'
 import instagram from '../../public/images/instagram.svg'
@@ -37,7 +30,7 @@ const socialLinks = [
 
 function AppFooter () {
   return (
-    <div className='container-custom fontsize-custom bg-white text-gray-800 py-8 my-32 '>
+    <div className='container-custom fontsize-custom bg-white text-gray-800 py-8 my-8 sm:my-32 '>
       <div className='mx-auto gap-6 lg:flex'>
         {/* Logo and Description */}
         <div className='mb-8 lg:w-1/4 '>

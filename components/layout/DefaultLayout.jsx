@@ -5,7 +5,7 @@ import PagesMetaHead from '../PagesMetaHead'
 const DefaultLayout = ({ children }) => {
   return (
     <>
-      <PagesMetaHead />
+      <PagesMetaHead title={'geography'} />
       <AppHeader />
       <div>{children}</div>
       <AppFooter />

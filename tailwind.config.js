@@ -7,6 +7,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      rotate: {
+        19: "19deg",
+        "-19": "-19deg"
+      },
+      screens: {
+        xs: "360px" // Adding a custom breakpoint for very small screens
+      },
       colors: {
         // Light colors
         "custom-primary": "#195883",
