@@ -19,3 +19,8 @@ export const fetchPopularData = async () => {
   const data = await res.json();
   return data;
 };
+export const fetchRecentData = async () => {
+  const res = await fetch("/api/recent-additions");
+  const data = await res.json();
+  return data;
+};

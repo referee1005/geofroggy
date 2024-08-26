@@ -18,7 +18,8 @@ module.exports = {
         // Light colors
         "custom-primary": "#195883",
         "secondary-light": "#FFFFFF",
-        "ternary-light": "#f6f7f8"
+        "ternary-light": "#f6f7f8",
+        dark: "#1E1E1E"
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

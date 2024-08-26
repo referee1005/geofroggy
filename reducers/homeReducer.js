@@ -4,13 +4,17 @@ import {
   FETCH_INTERESTS_FAILURE,
   FETCH_POPULAR_COUNTRIES_REQUEST,
   FETCH_POPULAR_COUNTRIES_SUCCESS,
-  FETCH_POPULAR_COUNTRIES_FAILURE
+  FETCH_POPULAR_COUNTRIES_FAILURE,
+  FETCH_RECENT_ADDITIONS_REQUEST,
+  FETCH_RECENT_ADDITIONS_SUCCESS,
+  FETCH_RECENT_ADDITIONS_FAILURE
 } from "../actions/types";
 
 const initialState = {
   loading: false,
   interests: [],
-  popular_countries: []
+  popular_countries: [],
+  recent_additions: []
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -44,6 +48,23 @@ const dataReducer = (state = initialState, action) => {
         popular_countries: action.payload
       };
     case FETCH_POPULAR_COUNTRIES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+    case FETCH_RECENT_ADDITIONS_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case FETCH_RECENT_ADDITIONS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        recent_additions: action.payload
+      };
+    case FETCH_RECENT_ADDITIONS_FAILURE:
       return {
         ...state,
         loading: false,

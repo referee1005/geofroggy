@@ -3,13 +3,20 @@ import {
   fetchInterestsSuccess,
   fetchInterestsFailure,
   fetchPopularCountriesSuccess,
-  fetchPopularCountriesFailure
+  fetchPopularCountriesFailure,
+  fetchRecentAdditionsSuccess,
+  fetchRecentAdditionsFailure
 } from "../../actions/home";
 import {
   FETCH_INTERESTS_REQUEST,
-  FETCH_POPULAR_COUNTRIES_REQUEST
+  FETCH_POPULAR_COUNTRIES_REQUEST,
+  FETCH_RECENT_ADDITIONS_REQUEST
 } from "../../actions/types";
-import { fetchInterestData, fetchPopularData } from "../../api"; // Assuming you have an API module to handle your requests
+import {
+  fetchInterestData,
+  fetchPopularData,
+  fetchRecentData
+} from "../../api"; // Assuming you have an API module to handle your requests
 
 function* fetchInterests() {
   try {
@@ -29,7 +36,17 @@ function* fetchPopularCountries() {
   }
 }
 
+function* fetchRecentAdditions() {
+  try {
+    const response = yield call(fetchRecentData);
+    yield put(fetchRecentAdditionsSuccess(response));
+  } catch (error) {
+    yield put(fetchRecentAdditionsFailure(error.message));
+  }
+}
+
 export function* homeSaga() {
   yield takeLatest(FETCH_INTERESTS_REQUEST, fetchInterests);
   yield takeLatest(FETCH_POPULAR_COUNTRIES_REQUEST, fetchPopularCountries);
+  yield takeLatest(FETCH_RECENT_ADDITIONS_REQUEST, fetchRecentAdditions);
 }

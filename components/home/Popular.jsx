@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import CustomButton from '../reusable/CustomButton'
@@ -48,7 +48,7 @@ function Popular ({}) {
                 <div className='text-lg font-semibold text-gray-800'>
                   {'Category'}
                 </div>
-                <h3 className='text-2xl sm:text-4xl font-medium text-gray-900 mt-1'>
+                <h3 className='text-2xl sm:text-3xl lg:text-4xl font-medium text-gray-900 mt-1'>
                   {item.country}
                 </h3>
                 <p className='text-gray-600 mt-4 mb-8 sm:mt-8 sm:mb-12'>
