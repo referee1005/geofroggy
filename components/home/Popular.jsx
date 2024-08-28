@@ -19,7 +19,7 @@ function Popular ({}) {
         <div className='font-medium text-3xl sm:text-5xl lg:text-7xl my-12 sm:my-24 text-center'>
           Popular Countries
         </div>
-        <div className=' grid grid-cols-1 sm:grid-cols-3 gap-8 relative flex min-h-80 sm:min-h-96'>
+        <div className=' grid grid-cols-1 sm:grid-cols-3 gap-8 relative flex min-h-80 sm:min-h-96 mx-4 ms:mx-16'>
           {data.map(item => (
             <div className='bg-white shadow-md rounded-lg overflow-hidden'>
               {/* Main Image */}

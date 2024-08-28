@@ -5,7 +5,11 @@ function Ofinterest ({}) {
   return (
     <div className='relative flex flex-col min-h-80 sm:min-h-96'>
       <div className='bg-white flex'>
-        <Image src={image} alt='Light Logo' className='min-h-80 sm:min-h-96' />
+        <Image
+          src={image}
+          alt='Light Logo'
+          className='min-h-80 sm:min-h-96 w-full'
+        />
       </div>
       <div className='absolute inset-0 flex flex-col justify-center items-center text-center text-white'>
         <div className='text-4xl sm:text-5xl 2xl:text-6xl font-semibold mb-2 sm:mb-4 lg:mb-12'>

@@ -17,7 +17,7 @@ function RecentAdditions ({}) {
       <div className='font-medium text-3xl sm:text-5xl lg:text-7xl my-12 sm:my-24 text-center'>
         Recent Additions
       </div>
-      <div className=' grid grid-cols-1 lg:grid-cols-4 gap-8 relative flex min-h-48 sm:min-h-48 pb-4'>
+      <div className=' grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative flex min-h-48 sm:min-h-48 pb-4'>
         {data.map(item => (
           <div>
             <div className='relative bg-white shadow-md rounded-lg overflow-hidden'>

@@ -7,7 +7,10 @@ import {
   FETCH_POPULAR_COUNTRIES_FAILURE,
   FETCH_RECENT_ADDITIONS_REQUEST,
   FETCH_RECENT_ADDITIONS_SUCCESS,
-  FETCH_RECENT_ADDITIONS_FAILURE
+  FETCH_RECENT_ADDITIONS_FAILURE,
+  FETCH_PLACES_REQUEST,
+  FETCH_PLACES_SUCCESS,
+  FETCH_PLACES_FAILURE
 } from "../types";
 
 export const fetchInterestsRequest = () => ({
@@ -47,5 +50,18 @@ export const fetchRecentAdditionsSuccess = (data) => ({
 
 export const fetchRecentAdditionsFailure = (error) => ({
   type: FETCH_RECENT_ADDITIONS_FAILURE,
+  payload: error
+});
+export const fetchPlacesRequest = () => ({
+  type: FETCH_PLACES_REQUEST
+});
+
+export const fetchPlacesSuccess = (data) => ({
+  type: FETCH_PLACES_SUCCESS,
+  payload: data
+});
+
+export const fetchPlacesFailure = (error) => ({
+  type: FETCH_PLACES_FAILURE,
   payload: error
 });

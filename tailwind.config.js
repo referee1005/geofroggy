@@ -7,12 +7,21 @@ module.exports = {
   ],
   theme: {
     extend: {
+      borderImage: {
+        gradient: "linear-gradient(to right, grey, #acacac) 1"
+      },
       rotate: {
         19: "19deg",
         "-19": "-19deg"
       },
+      minHeight: {
+        custom: "400px",
+        custom1: "800px"
+      },
       screens: {
-        xs: "360px" // Adding a custom breakpoint for very small screens
+        xs: "360px", // Adding a custom breakpoint for very small screens
+        ms: "500px",
+        "3xl": "1800px"
       },
       colors: {
         // Light colors

@@ -24,3 +24,8 @@ export const fetchRecentData = async () => {
   const data = await res.json();
   return data;
 };
+export const fetchPlaceData = async () => {
+  const res = await fetch("/api/places");
+  const data = await res.json();
+  return data;
+};
