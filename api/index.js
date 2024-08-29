@@ -34,3 +34,8 @@ export const fetchSiteInfoData = async () => {
   const data = await res.json();
   return data;
 };
+export const fetchFaqData = async () => {
+  const res = await fetch("/api/faq");
+  const data = await res.json();
+  return data;
+};

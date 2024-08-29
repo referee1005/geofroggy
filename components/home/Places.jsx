@@ -20,10 +20,7 @@ function Places () {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (data.length > 0) {
-      // setCurrentIndex(data.length - 3)
-      setPlaces(data)
-    }
+    setPlaces(data)
   }, [data])
 
   useEffect(() => {
@@ -33,19 +30,21 @@ function Places () {
   const handleResize = () => {
     setIsVertical(window.innerWidth >= 1024) // 1024px corresponds to 'lg' in Tailwind CSS
   }
+
   useEffect(() => {
     handleResize() // Initial check
     window.addEventListener('resize', handleResize) // Add event listener
 
     return () => window.removeEventListener('resize', handleResize) // Cleanup event listener
   }, [])
+
   const settings = {
     className: 'center',
     arrows: false,
     dots: false,
     infinite: true,
     centerMode: true,
-    speed: 1000,
+    speed: 100,
     slidesToShow: isVertical ? 5 : 3,
     slidesToScroll: 1,
     cssEase: 'linear',
@@ -87,12 +86,14 @@ function Places () {
     <div className='relative w-full lg:h-screen flex items-center justify-center overflow-hidden'>
       {/* Main Image */}
       <div className='w-full h-screen'>
-        {places.length > 0 && (
-          <img
-            src={places[currentIndex].image.src}
-            className='object-cover w-full h-screen'
-          />
-        )}
+        <img
+          src={
+            places[currentIndex] &&
+            places[currentIndex].image &&
+            places[currentIndex].image.src
+          }
+          className='object-cover w-full h-screen'
+        />
       </div>
 
       {/* Custom Info */}
@@ -154,29 +155,42 @@ function Places () {
                   className='w-4 h-auto inline cursor-pointer'
                   onClick={() => setClickIcon(null)}
                 >
-                  <Image src={arrow} className='w-8 lg:w-12 inline' />{' '}
+                  <Image
+                    src={arrow}
+                    className='w-8 lg:w-12 inline'
+                    alt={'arrow'}
+                  />{' '}
                 </div>
 
                 {clickIcon === 'author'
                   ? `@ ${places[currentIndex] && places[currentIndex].author}`
                   : `${
                       places[currentIndex] &&
+                      places[currentIndex].country_info &&
                       places[currentIndex].country_info.name +
                         ',' +
                         places[currentIndex].country_info.continent
                     }`}
               </div>
               <div className='flex flex-col items-center w-full justify-center'>
-                {places[currentIndex] && clickIcon === 'author' ? (
-                  <Image src={places[currentIndex].author_image} />
-                ) : (
-                  <Image src={places[currentIndex].google_map_url} />
-                )}
+                {places[currentIndex] &&
+                  (clickIcon === 'author' ? (
+                    <Image
+                      src={places[currentIndex].author_image}
+                      alt='author'
+                    />
+                  ) : (
+                    <Image
+                      src={places[currentIndex].google_map_url}
+                      alt='map'
+                    />
+                  ))}
 
                 <div className='text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl text-center mb-4'>
-                  {places[currentIndex] && clickIcon === 'author'
-                    ? places[currentIndex].author
-                    : places[currentIndex].place_name}
+                  {places[currentIndex] &&
+                    (clickIcon === 'author'
+                      ? places[currentIndex].author
+                      : places[currentIndex].place_name)}
                 </div>
                 <div className='text-lg text-center'>
                   {places[currentIndex] && places[currentIndex].description}
@@ -194,9 +208,11 @@ function Places () {
       </div>
 
       {/* Custom Pagination */}
-      {!clickIcon && (
+      {
         <div
-          className='absolute bottom-0 lg:right-0 lg:top-1/2 transform lg:-translate-y-3/4 flex flex-col items-center lg:h-full w-full lg:w-48 '
+          className={`absolute bottom-0 lg:right-0 lg:top-1/2 transform lg:-translate-y-3/4  lg:h-full w-full lg:w-48 ${
+            clickIcon ? 'hidden' : 'flex flex-col items-center'
+          }`}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
@@ -231,13 +247,13 @@ function Places () {
                     '  translate-x-1/2 translate-y-1/2 lg:translate-x-1/2 lg:translate-y-1/2 z-10'
                 } else if (indexDiff === 3 || indexDiff === -3) {
                   className +=
-                    ' -translate-x-3/4 translate-y-3/4 lg:translate-x-3/4 lg:translate-y-3/4 z-1'
+                    ' -translate-x-3/4 translate-y-3/4 lg:translate-x-3/4 lg:-translate-y-3/4 z-1'
                 } else if (
                   indexDiff === places.length - 3 ||
                   indexDiff === -places.length + 3
                 ) {
                   className +=
-                    ' translate-x-3/4 translate-y-3/4 lg:translate-x-3/4 lg:-translate-y-3/4 z-1'
+                    ' translate-x-3/4 translate-y-3/4 lg:translate-x-3/4 lg:translate-y-3/4 z-1'
                 } else {
                   className +=
                     ' -translate-x-full translate-y-3/4 lg:translate-x-3/4 lg:-translate-y-3/4 z-1'
@@ -247,7 +263,7 @@ function Places () {
                   <div className={className} key={index}>
                     <img
                       src={item.image && item.image.src}
-                      className='h-32 lg:h-64 lg:w-48 border-gradient border-8 rounded-lg'
+                      className='h-32 w-24 lg:h-64 lg:w-48 border-gradient border-8 rounded-lg'
                     />
                   </div>
                 )
@@ -255,7 +271,7 @@ function Places () {
             </Slider>
           </div>
         </div>
-      )}
+      }
     </div>
   )
 }

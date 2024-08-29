@@ -19,3 +19,7 @@ export const FETCH_PLACES_FAILURE = "FETCH_PLACES_FAILURE";
 export const FETCH_SITE_INFO_REQUEST = "FETCH_SITE_INFO_REQUEST";
 export const FETCH_SITE_INFO_SUCCESS = "FETCH_SITE_INFO_SUCCESS";
 export const FETCH_SITE_INFO_FAILURE = "FETCH_SITE_INFO_FAILURE";
+//***************************faq_actions***************************** */
+export const FETCH_FAQ_REQUEST = "FETCH_FAQ_REQUEST";
+export const FETCH_FAQ_SUCCESS = "FETCH_FAQ_SUCCESS";
+export const FETCH_FAQ_FAILURE = "FETCH_FAQ_FAILURE";

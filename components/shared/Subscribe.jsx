@@ -1,9 +1,9 @@
-function Subscribe ({ bgColor, textColor, buttonColor, blur = 0 }) {
+function Subscribe ({ bgColor, textColor, buttonColor }) {
   return (
-    <div className='relative'>
+    <div className='relative backdrop-blur-md'>
       {/* Background with blur effect */}
       <div
-        className={`absolute inset-0 ${blur ? 'blur-sm' : 'blur-none'}`}
+        className={`absolute inset-0`}
         style={{ backgroundColor: bgColor, zIndex: 1 }}
       ></div>
 
@@ -27,23 +27,28 @@ function Subscribe ({ bgColor, textColor, buttonColor, blur = 0 }) {
           </div>
           <div className='flex-1'>
             <div className='mb-8'>
-              <div className='inline-block sm:block font-semibold mb-8 w-2/3 sm:w-3/4'>
+              <div className='inline-block sm:block font-semibold mb-8 w-2/3 sm:w-3/4 '>
                 <input
                   type='text'
                   placeholder='Enter your Email'
                   className='
+                    backdrop-blur-md
                     w-full
                     pl-4
                     pr-4
                     py-2
+                    bg-gray-600
+                    text-white
+                    placeholder-white
                     border
-                    border-gray-300
+                    border-black
                     rounded-md
                     focus:outline-none
                     focus:ring-2
                     focus:ring-blue-500
                     focus:border-transparent
                     shadow-sm
+                    
                   '
                 />
               </div>

@@ -33,7 +33,7 @@ body {
 }
 /* styles/custom.css */
 .container-custom {
-  @apply px-custom-sm py-1; /* Default padding for small screens */
+  @apply px-custom-sm; /* Default padding for small screens */
 }
 .fontsize-custom {
   @apply text-custom-sm;
@@ -100,7 +100,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: #245073;
   z-index: 0;
 }
 
