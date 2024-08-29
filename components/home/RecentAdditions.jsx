@@ -40,6 +40,7 @@ function RecentAdditions ({}) {
                   viewBox='0 0 48 48'
                   fill='none'
                   xmlns='http://www.w3.org/2000/svg'
+                  className='backdrop-blur-md rounded-full cursor-pointer'
                 >
                   <g filter='url(#filter0_b_1833_1200)'>
                     <rect

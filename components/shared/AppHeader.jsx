@@ -108,7 +108,7 @@ function AppHeader () {
             </Link>
           </div>
           <div className='block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
-            <Link href='/about' aria-label='About Me'>
+            <Link href='/aboutus' aria-label='About Us'>
               About
             </Link>
           </div>
@@ -160,7 +160,7 @@ function AppHeader () {
             className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
             aria-label='About'
           >
-            <Link href='/about' className=' fontsize-custom'>
+            <Link href='/aboutus' className=' fontsize-custom'>
               About
             </Link>
           </div>

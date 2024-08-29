@@ -1,4 +1,4 @@
-//***************************photo_actions***************************** */
+//***************************home_actions***************************** */
 export const FETCH_INTERESTS_REQUEST = "FETCH_INTERESTS_REQUEST";
 export const FETCH_INTERESTS_SUCCESS = "FETCH_INTERESTS_SUCCESS";
 export const FETCH_INTERESTS_FAILURE = "FETCH_INTERESTS_FAILURE";
@@ -14,3 +14,8 @@ export const FETCH_RECENT_ADDITIONS_FAILURE = "FETCH_RECENT_ADDITIONS_FAILURE";
 export const FETCH_PLACES_REQUEST = "FETCH_PLACES_REQUEST";
 export const FETCH_PLACES_SUCCESS = "FETCH_PLACES_SUCCESS";
 export const FETCH_PLACES_FAILURE = "FETCH_PLACES_FAILURE";
+
+//***************************aboutus_actions***************************** */
+export const FETCH_SITE_INFO_REQUEST = "FETCH_SITE_INFO_REQUEST";
+export const FETCH_SITE_INFO_SUCCESS = "FETCH_SITE_INFO_SUCCESS";
+export const FETCH_SITE_INFO_FAILURE = "FETCH_SITE_INFO_FAILURE";

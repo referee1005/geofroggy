@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      width: {
+        53: "13.25rem"
+      },
       borderImage: {
         gradient: "linear-gradient(to right, grey, #acacac) 1"
       },

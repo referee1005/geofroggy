@@ -4,7 +4,7 @@ function Subscribe ({ bgColor, textColor, buttonColor, blur = 0 }) {
       {/* Background with blur effect */}
       <div
         className={`absolute inset-0 ${blur ? 'blur-sm' : 'blur-none'}`}
-        style={{ backgroundColor: bgColor, zIndex: -1 }}
+        style={{ backgroundColor: bgColor, zIndex: 1 }}
       ></div>
 
       {/* Foreground content */}
@@ -16,9 +16,9 @@ function Subscribe ({ bgColor, textColor, buttonColor, blur = 0 }) {
             </div>
             <div
               className='text-xl sm:text-2xl 2xl:text-3xl'
-              style={{ color: textColor }}
+              style={{ color: textColor ? textColor : 'white' }}
             >
-              Get the latest news and updates
+              get latest news and updates
             </div>
             <div className='sm:text-sm 2xl:text-base mt-4 text-white'>
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -50,7 +50,7 @@ function Subscribe ({ bgColor, textColor, buttonColor, blur = 0 }) {
               <button
                 className='ml-4 sm:ml-0 text-sm sm:text-md font-general-medium bg-custom-primary w-20 sm:w-32 h-10 2xl:w-36 2xl:h-11 hover:bg-indigo-600 text-white shadow-sm rounded-md px-1 sm:px-5 duration-300'
                 aria-label='Join Us Button'
-                style={{ backgroundColor: buttonColor }}
+                style={{ backgroundColor: buttonColor ? buttonColor : 'black' }}
               >
                 Subscribe
               </button>
