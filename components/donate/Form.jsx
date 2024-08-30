@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import Input from '../reusable/Input'
 import TextArea from '../reusable/TextArea'
+import Image from 'next/image'
 import CustomButton from '../reusable/CustomButton'
 import creditSVG from '../../public/images/donate/credit-card.svg'
 import calenderSVG from '../../public/images/donate/calendar.svg'
+import Cardtype from '../../public/images/donate/card_type.png'
 
 function DonateForm ({ amount, payment }) {
   return (
     <div className='w-full grid grid-cols-1 sm:grid-cols-2 py-16'>
       <div className='px-4 lg:px-16 2xl:px-32'>
-        <div className='mb-16 sm:text-sm lg:text-base'>
+        <div className='mb-16 sm:text-sm lg:text-lg font-semibold'>
           You are donating as a guest or{' '}
           <span style={{ color: '#269938' }}>Log in</span>
         </div>
@@ -26,8 +28,10 @@ function DonateForm ({ amount, payment }) {
           </div>
         </div>
       </div>
-      <div className='px-4 lg:px-16  2xl:px-32'>
-        <div className='mb-16 sm:text-sm lg:text-base'>Pay With {payment}</div>
+      <div className='px-4 py-8 sm:py-0 lg:px-16  2xl:px-32 '>
+        <div className='mb-16 sm:text-sm lg:text-lg  text-center font-semibold'>
+          Pay With {payment}
+        </div>
         <div>
           <div className=''>
             <Input label={'Card Number'} type='text' startIconSrc={creditSVG} />
@@ -53,6 +57,9 @@ function DonateForm ({ amount, payment }) {
             px={8}
             width={'full'}
           />
+          <div className='flex justify-center mt-16'>
+            <Image src={Cardtype} />
+          </div>
         </div>
       </div>
     </div>
