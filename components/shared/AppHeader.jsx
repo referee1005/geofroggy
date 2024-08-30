@@ -1,17 +1,18 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { FiSun, FiMoon, FiX, FiMenu } from 'react-icons/fi'
-import HireMeModal from '../HireMeModal'
 import logoLight from '../../public/images/logo-light.svg'
 import logoDark from '../../public/images/logo-dark.svg'
 import useThemeSwitcher from '../../hooks/useThemeSwitcher'
-import JoinButton from '../reusable/JoinUs'
+import CustomButton from '../reusable/CustomButton'
 function AppHeader () {
   const [showMenu, setShowMenu] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [activeTheme, setTheme] = useThemeSwitcher()
+  const router = useRouter()
 
   function toggleMenu () {
     if (!showMenu) {
@@ -113,10 +114,15 @@ function AppHeader () {
             </Link>
           </div>
           <div className='block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
+            <Link href='/faq' aria-label='FAQs'>
+              FAQs
+            </Link>
+          </div>
+          {/* <div className='block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
             <Link href='/projects' aria-label='Projects'>
               Donate
             </Link>
-          </div>
+          </div> */}
           <div className='block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
             <Link href='/contact' aria-label='Contact'>
               Blog&News
@@ -127,13 +133,20 @@ function AppHeader () {
               Contact
             </Link>
           </div>
-          <div className='border-t-2 pt-3 sm:pt-0 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
+          <div className='flex border-t-2 pt-3 sm:pt-0 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
             <button
-              onClick={showHireMeModal}
-              className='font-general-medium sm:hidden block text-left text-md bg-indigo-500 hover:bg-indigo-600 text-white shadow-sm rounded-sm px-4 py-2 mt-2 duration-300 w-24 text-center'
+              // onClick={showHireMeModal}
+              className='font-general-medium sm:hidden block text-left text-md bg-indigo-500 hover:bg-indigo-600 text-white shadow-sm rounded-sm px-4 py-2 mt-2 duration-300 w-24 text-center mr-8'
               aria-label='Join Us Button'
             >
               Join Us
+            </button>
+            <button
+              onClick={() => router.push('/donate')}
+              className='font-general-medium sm:hidden block text-left text-md bg-indigo-500 hover:bg-indigo-600 text-white shadow-sm rounded-sm px-4 py-2 mt-2 duration-300 w-24 text-center'
+              aria-label='Join Us Button'
+            >
+              Donate
             </button>
           </div>
         </div>
@@ -150,14 +163,6 @@ function AppHeader () {
           </div>
           <div
             className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
-            aria-label='Countries'
-          >
-            <Link href='/countries' className=' fontsize-custom'>
-              Countries
-            </Link>
-          </div>
-          <div
-            className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
             aria-label='About'
           >
             <Link href='/aboutus' className=' fontsize-custom'>
@@ -166,20 +171,38 @@ function AppHeader () {
           </div>
           <div
             className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
-            aria-label='Donate'
+            aria-label='News'
           >
-            <Link href='/Donate' className=' fontsize-custom'>
-              Donate
+            <Link href='/news' className=' fontsize-custom'>
+              News
             </Link>
           </div>
           <div
             className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
-            aria-label='Blog&News'
+            aria-label='Faqs'
           >
-            <Link href='/blog' className=' fontsize-custom'>
-              Blog&News
+            <Link href='/faq' className=' fontsize-custom'>
+              FAQs
             </Link>
           </div>
+          <div
+            className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
+            aria-label='Countries'
+          >
+            <Link href='/research' className=' fontsize-custom'>
+              Research
+            </Link>
+          </div>
+
+          {/* <div
+            className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
+            aria-label='Donate'
+          >
+            <Link href='/donate' className=' fontsize-custom'>
+              Donate
+            </Link>
+          </div> */}
+
           <div
             className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
             aria-label='Contact'
@@ -192,16 +215,14 @@ function AppHeader () {
 
         {/* Header right section buttons */}
         <div className='hidden lg:flex justify-between items-center flex-col md:flex-row flex-shrink-0'>
-          <div className='hidden md:flex'>
-            {/* <button
-              // onClick={showHireMeModal}
-              className='text-md font-general-medium bg-custom-primary w-30 h-10 2xl:w-35 2xl:h-11 hover:bg-indigo-600 text-white shadow-sm rounded-full px-5 duration-300'
-              aria-label='Join Us Button'
-            >
-              Join Us
-            </button> */}
-            <JoinButton bgColor={'#195883'} />
-          </div>
+          {/* <div className='hidden md:flex'> */}
+          <CustomButton title={'Login'} bgColor={'#195883'} />
+          <CustomButton
+            title={'Donate'}
+            bgColor={'#269938'}
+            click={() => router.push('/donate')}
+          />
+          {/* </div> */}
         </div>
       </div>
     </motion.nav>

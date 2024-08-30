@@ -15,7 +15,7 @@ const images = [Faq1, Faq2, Faq3, Faq4, Faq5, Faq6, Faq7, Faq8]
 function Advice ({ data }) {
   return (
     <div className='container-custom mb-16'>
-      <div className='text-5xl font-semibold my-4 lg:my-8 2xl:my-16'>
+      <div className='text-center lg:text-left text-5xl font-semibold my-4 lg:my-8 2xl:my-16'>
         Advice and answers
       </div>
       <div className=' grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 2xl:gap-8 relative'>

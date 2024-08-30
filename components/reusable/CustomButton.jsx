@@ -1,16 +1,26 @@
-function CustomButton ({ bgColor, title }) {
+function CustomButton ({
+  bgColor,
+  color,
+  title,
+  click,
+  blur,
+  size = 'text-md',
+  px = 'px-5',
+  py = 'py-2',
+  rounded = 'full',
+  width
+}) {
   return (
-    // <div className='hidden lg:flex justify-between items-center flex-col md:flex-row flex-shrink-0'>
-    //   <div className='hidden md:flex'>
     <button
-      className='text-md font-general-medium w-30 h-10 2xl:w-35 2xl:h-11 hover:bg-indigo-600 text-white shadow-sm rounded-full px-5 duration-300'
-      style={{ backgroundColor: bgColor }}
+      className={`${size} font-general-medium ${py} hover:bg-indigo-600 text-white shadow-sm rounded-${rounded} ${px} duration-300 ${
+        blur ? 'backdrop-blur-md' : ''
+      } w-${width}`}
+      style={{ backgroundColor: bgColor, color: color }}
       aria-label='Join Us Button'
+      onClick={click}
     >
       {title}
     </button>
-    //   </div>
-    // </div>
   )
 }
 

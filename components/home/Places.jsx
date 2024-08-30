@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import Slider from 'react-slick'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchPlacesRequest } from '@/actions/home'
@@ -7,6 +7,16 @@ import 'slick-carousel/slick/slick-theme.css'
 import { FiArrowUpRight } from 'react-icons/fi'
 import arrow from '../../public/images/Arrow.png'
 import Image from 'next/image'
+
+const CarouselItem = React.memo(({ item, className }) => (
+  <div className={className}>
+    <img
+      src={item.image && item.image.src}
+      className='h-32 ms:h-40 sm:w-48 sm:h-64 lg:h-64 lg:w-48 border-gradient border-8 rounded-lg'
+    />
+  </div>
+))
+
 function Places () {
   const sliderRef = useRef(null)
   const [dragging, setDragging] = useState(false)
@@ -20,21 +30,19 @@ function Places () {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    setPlaces(data)
+    if (data.length) setPlaces(data)
   }, [data])
 
   useEffect(() => {
     dispatch(fetchPlacesRequest())
   }, [dispatch])
 
-  const handleResize = () => {
-    setIsVertical(window.innerWidth >= 1024) // 1024px corresponds to 'lg' in Tailwind CSS
-  }
-
   useEffect(() => {
+    const handleResize = () => {
+      setIsVertical(window.innerWidth >= 1024) // 1024px corresponds to 'lg' in Tailwind CSS
+    }
     handleResize() // Initial check
     window.addEventListener('resize', handleResize) // Add event listener
-
     return () => window.removeEventListener('resize', handleResize) // Cleanup event listener
   }, [])
 
@@ -44,42 +52,50 @@ function Places () {
     dots: false,
     infinite: true,
     centerMode: true,
-    speed: 100,
+    speed: 500,
+    autoplay: true,
+    autoplaySpeed: 3000,
     slidesToShow: isVertical ? 5 : 3,
     slidesToScroll: 1,
     cssEase: 'linear',
     vertical: isVertical,
     verticalSwiping: isVertical,
     swipeToSlide: true,
-    afterChange: index => {
-      setCurrentIndex(index % places.length)
+    beforeChange: (current, next) => {
+      setCurrentIndex(next % places.length)
     }
     // variableWidth: true
   }
-
-  const handleMouseDown = e => {
+  const handleMouseDown = useCallback(e => {
     setStartY(e.clientY)
     setDragging(true)
-  }
+  }, [])
 
-  const handleMouseMove = e => {
-    if (!dragging) return
+  const handleMouseMove = useCallback(
+    e => {
+      if (!dragging) return
 
-    setOffsetY(e.clientY - startY)
+      setOffsetY(e.clientY - startY)
 
-    if (sliderRef.current && Math.abs(offsetY) > 30) {
-      if (offsetY > 0) {
-        sliderRef.current.slickPrev()
-      } else {
-        sliderRef.current.slickNext()
+      if (sliderRef.current && Math.abs(offsetY) > 30) {
+        if (offsetY > 0) {
+          sliderRef.current.slickPrev()
+        } else {
+          sliderRef.current.slickNext()
+        }
+        setStartY(e.clientY)
       }
-      setStartY(e.clientY)
-    }
-  }
+    },
+    [dragging, offsetY, startY]
+  )
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     setDragging(false)
     setOffsetY(0)
+  }, [])
+
+  if (!places.length) {
+    return <div>Loading...</div> // Or return a fallback image/div
   }
 
   return (
@@ -87,11 +103,7 @@ function Places () {
       {/* Main Image */}
       <div className='w-full h-screen'>
         <img
-          src={
-            places[currentIndex] &&
-            places[currentIndex].image &&
-            places[currentIndex].image.src
-          }
+          src={places[currentIndex]?.image?.src}
           className='object-cover w-full h-screen'
         />
       </div>
@@ -141,7 +153,7 @@ function Places () {
       </div>
       {/* Custom Pan */}
       <div
-        className={`absolute  lg:right-0 lg:h-full ${
+        className={`absolute lg:right-0 lg:h-full ${
           clickIcon
             ? 'w-full top-0 h-full lg:w-1/4 '
             : 'w-full bottom-0 h-24 lg:w-40'
@@ -210,7 +222,7 @@ function Places () {
       {/* Custom Pagination */}
       {
         <div
-          className={`absolute bottom-0 lg:right-0 lg:top-1/2 transform lg:-translate-y-3/4  lg:h-full w-full lg:w-48 ${
+          className={`absolute bottom-0 lg:right-0 lg:top-1/2 w-full lg:-translate-y-3/4  lg:h-full  lg:w-48 ${
             clickIcon ? 'hidden' : 'flex flex-col items-center'
           }`}
           onMouseDown={handleMouseDown}
@@ -223,10 +235,10 @@ function Places () {
                 const indexDiff =
                   (index - currentIndex + places.length) % places.length
                 let className =
-                  'relative transition-transform duration-500 ease-in-out'
+                  'relative transform transition-transform duration-1000 ease-in-out'
 
                 if (indexDiff === 0) {
-                  className += ' translate-y-0 z-30'
+                  className += ' translate-x-0 translate-y-0 z-30'
                 } else if (indexDiff === 1 || indexDiff === -1) {
                   className +=
                     ' -translate-x-1/4 translate-y-1/4 lg:translate-x-1/4 lg:-translate-y-1/4 z-20'
@@ -258,14 +270,8 @@ function Places () {
                   className +=
                     ' -translate-x-full translate-y-3/4 lg:translate-x-3/4 lg:-translate-y-3/4 z-1'
                 }
-
                 return (
-                  <div className={className} key={index}>
-                    <img
-                      src={item.image && item.image.src}
-                      className='h-32 w-24 lg:h-64 lg:w-48 border-gradient border-8 rounded-lg'
-                    />
-                  </div>
+                  <CarouselItem key={index} item={item} className={className} />
                 )
               })}
             </Slider>

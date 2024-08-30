@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react'
 function Faqs ({ title, data }) {
   const [currentIndex, setCurrentIndex] = useState(null)
   return (
-    <div className='container-custom lg:my-8 2xl:my-16 flex'>
-      <div className='text-5xl font-semibold w-1/4'>{title}</div>
+    <div className='container-custom my-8 lg:my-8 2xl:my-16 flex sm:flex-row flex-col'>
+      <div className='text-center sm:text-left text-3xl lg:text-4xl 2xl:text-5xl font-semibold sm:w-1/4 mb-8'>
+        {title}
+      </div>
 
-      <div className='flex-1 ml-16'>
+      <div className='sm:flex-1 sm:ml-16'>
         {data &&
           data.map((item, index) => {
             return (
