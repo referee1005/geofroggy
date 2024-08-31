@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import place1 from "../../public/images/place1.png";
+import place1 from "../../public/images/Place1.png";
 import place2 from "../../public/images/favourite1.png";
 import place3 from "../../public/images/favourite2.png";
 import place4 from "../../public/images/favourite3.png";

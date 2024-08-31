@@ -29,7 +29,7 @@ function CustomSlider ({ clickIcon, places, currentIndex, setCurrentIndex }) {
     dots: false,
     infinite: true,
     centerMode: true,
-    speed: 100,
+    speed: 500,
     slidesToShow: isVertical ? 5 : 3,
     slidesToScroll: 1,
     cssEase: 'linear',
