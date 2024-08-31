@@ -19,9 +19,9 @@ function Popular ({}) {
         <div className='font-medium text-3xl sm:text-5xl lg:text-7xl my-12 sm:my-24 text-center'>
           Popular Countries
         </div>
-        <div className=' grid grid-cols-1 sm:grid-cols-3 gap-8 relative flex min-h-80 sm:min-h-96 mx-4 ms:mx-16'>
+        <div className=' grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4 lg:gap-8 relative flex min-h-80 sm:min-h-96 mx-4 ms:mx-16'>
           {data.map(item => (
-            <div className='bg-white shadow-md rounded-lg overflow-hidden'>
+            <div className='bg-white shadow-md rounded-lg overflow-hidden mb-8'>
               {/* Main Image */}
               <div className='relative'>
                 <Image
@@ -48,13 +48,17 @@ function Popular ({}) {
                 <div className='text-lg font-semibold text-gray-800'>
                   {'Category'}
                 </div>
-                <h3 className='text-2xl sm:text-3xl lg:text-4xl font-medium text-gray-900 mt-1'>
+                <h3 className='text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-gray-900 mt-1'>
                   {item.country}
                 </h3>
-                <p className='text-gray-600 mt-4 mb-8 sm:mt-8 sm:mb-12'>
+                <p className='text-gray-600 mt-4 mb-8 sm:mt-4 sm:mb-8 md:mt-8 md:mb-12'>
                   {item.description}
                 </p>
-                <Link href={`/country/${item.slug}`} aria-label='Projects'>
+                <Link
+                  href={`/country/${item.slug}`}
+                  aria-label='Projects'
+                  className='font-semibold'
+                >
                   SEE MORE
                 </Link>
               </div>

@@ -1,6 +1,6 @@
-function Subscribe ({ bgColor, textColor, buttonColor }) {
+function Subscribe ({ bgColor, textColor, buttonColor, blur }) {
   return (
-    <div className='relative backdrop-blur-md'>
+    <div className={`relative ${blur ? 'backdrop-blur-md' : ''}`}>
       {/* Background with blur effect */}
       <div
         className={`absolute inset-0`}
@@ -40,8 +40,6 @@ function Subscribe ({ bgColor, textColor, buttonColor }) {
                     bg-gray-600
                     text-white
                     placeholder-white
-                    border
-                    border-black
                     rounded-md
                     focus:outline-none
                     focus:ring-2

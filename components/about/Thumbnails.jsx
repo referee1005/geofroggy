@@ -31,7 +31,7 @@ function Thumbnails ({}) {
       className='container-custom my-4 lg:my-8 2xl:my-16'
       // style={{ backgroundColor: '#EEEEEE' }}
     >
-      <div className=' grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 2xl:gap-8 relative flex min-h-64 sm:min-h-64'>
+      <div className=' grid grid-cols-1 sm:grid-cols-2 ms:px-16 sm:px-0 lg:grid-cols-4 gap-2 2xl:gap-8 relative flex min-h-64 sm:min-h-64'>
         {images.map(item => (
           <div className='relative bg-white shadow-md rounded-lg overflow-hidden'>
             {/* Main Image */}

@@ -4,7 +4,7 @@ function CustomButton ({
   title,
   click,
   blur,
-  size = 'text-md',
+  size = 'text-base',
   px = 'px-5',
   py = 'py-2',
   rounded = 'full',
@@ -14,12 +14,12 @@ function CustomButton ({
     <button
       className={`${size} font-general-medium ${py} hover:bg-indigo-600 text-white shadow-sm rounded-${rounded} ${px} duration-300 ${
         blur ? 'backdrop-blur-md' : ''
-      } w-${width}`}
+      } w-${width} text-center`}
       style={{ backgroundColor: bgColor, color: color }}
       aria-label='Join Us Button'
       onClick={click}
     >
-      {title}
+      <div>{title}</div>
     </button>
   )
 }

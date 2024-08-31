@@ -24,6 +24,7 @@ module.exports = {
       screens: {
         xs: "360px", // Adding a custom breakpoint for very small screens
         ms: "500px",
+        ml: "800px",
         "3xl": "1800px"
       },
       colors: {

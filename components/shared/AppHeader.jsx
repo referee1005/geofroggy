@@ -10,6 +10,7 @@ import useThemeSwitcher from '../../hooks/useThemeSwitcher'
 import CustomButton from '../reusable/CustomButton'
 function AppHeader () {
   const [showMenu, setShowMenu] = useState(false)
+  const [activeMenu, setActiveMenu] = useState('home')
   const [showModal, setShowModal] = useState(false)
   const [activeTheme, setTheme] = useThemeSwitcher()
   const router = useRouter()
@@ -21,21 +22,12 @@ function AppHeader () {
       setShowMenu(false)
     }
   }
-
-  function showHireMeModal () {
-    if (!showModal) {
-      document
-        .getElementsByTagName('html')[0]
-        .classList.add('overflow-y-hidden')
-      setShowModal(true)
-    } else {
-      document
-        .getElementsByTagName('html')[0]
-        .classList.remove('overflow-y-hidden')
-      setShowModal(false)
-    }
+  const handleMouseEnter = item => {
+    setActiveMenu(item)
   }
-
+  const handleMouseLeave = () => {
+    setActiveMenu(null)
+  }
   return (
     <motion.nav
       initial={{ opacity: 0 }}
@@ -94,46 +86,46 @@ function AppHeader () {
         <div
           className={
             showMenu
-              ? 'block m-0 sm:ml-4 sm:mt-3 xl:flex px-5 py-3 sm:p-0 justify-between items-center shadow-lg lg:shadow-none'
+              ? 'block m-0 sm:ml-4 sm:mt-3 xl:flex px-5 py-3 sm:p-0 justify-between items-center lg:shadow-none'
               : 'hidden'
           }
         >
           <div className='block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2'>
-            <Link href='/projects' aria-label='Projects'>
+            <Link href='/' aria-label='Projects'>
               Home
             </Link>
           </div>
-          <div className='block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
-            <Link href='/projects' aria-label='Projects'>
-              Countries
+          <div className='block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
+            <Link href='/research' aria-label='Projects'>
+              Research
             </Link>
           </div>
-          <div className='block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
+          <div className='block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
             <Link href='/aboutus' aria-label='About Us'>
               About
             </Link>
           </div>
-          <div className='block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
+          <div className='block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
             <Link href='/faq' aria-label='FAQs'>
               FAQs
             </Link>
           </div>
-          {/* <div className='block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
+          {/* <div className='block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
             <Link href='/projects' aria-label='Projects'>
               Donate
             </Link>
           </div> */}
-          <div className='block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
-            <Link href='/contact' aria-label='Contact'>
-              Blog&News
+          <div className='block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
+            <Link href='/news' aria-label='News'>
+              News
             </Link>
           </div>
-          <div className='block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
+          <div className='block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
             <Link href='/contact' aria-label='Contact'>
               Contact
             </Link>
           </div>
-          <div className='flex border-t-2 pt-3 sm:pt-0 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
+          <div className='flex pt-3 sm:pt-0 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
             <button
               // onClick={showHireMeModal}
               className='font-general-medium sm:hidden block text-left text-md bg-indigo-500 hover:bg-indigo-600 text-white shadow-sm rounded-sm px-4 py-2 mt-2 duration-300 w-24 text-center mr-8'
@@ -154,40 +146,50 @@ function AppHeader () {
         {/* Header links large screen */}
         <div className='font-general-medium hidden mx-0 2xl:mx-48 xl:mx-24  lg:flex flex-1 sm:p-0 justify-between items-center shadow-lg sm:shadow-none'>
           <div
-            className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light sm:mx-4 sm:py-2'
+            className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-cyan-600 dark:hover:text-secondary-light sm:mx-4 sm:py-2'
             aria-label='home'
+            onMouseEnter={() => handleMouseEnter('home')}
+            onMouseLeave={() => handleMouseLeave()}
           >
             <Link href='/' className=' fontsize-custom'>
               Home
             </Link>
           </div>
           <div
-            className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
+            className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-cyan-600 dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
             aria-label='About'
+            onMouseEnter={() => handleMouseEnter('about')}
+            onMouseLeave={() => handleMouseLeave()}
           >
             <Link href='/aboutus' className=' fontsize-custom'>
               About
             </Link>
           </div>
           <div
-            className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
+            className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-cyan-600 dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
             aria-label='News'
+            onMouseEnter={() => handleMouseEnter('news')}
+            onMouseLeave={() => handleMouseLeave()}
           >
             <Link href='/news' className=' fontsize-custom'>
               News
             </Link>
           </div>
           <div
-            className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
+            className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-cyan-600 dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
             aria-label='Faqs'
+            onMouseEnter={() => handleMouseEnter('faq')}
+            onMouseLeave={() => handleMouseLeave()}
           >
             <Link href='/faq' className=' fontsize-custom'>
               FAQs
             </Link>
           </div>
           <div
-            className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
-            aria-label='Countries'
+            className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-cyan-600 dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
+            aria-label='research'
+            onMouseEnter={() => handleMouseEnter('research')}
+            onMouseLeave={() => handleMouseLeave()}
           >
             <Link href='/research' className=' fontsize-custom'>
               Research
@@ -195,7 +197,7 @@ function AppHeader () {
           </div>
 
           {/* <div
-            className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
+            className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-cyan-600 dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
             aria-label='Donate'
           >
             <Link href='/donate' className=' fontsize-custom'>
@@ -204,8 +206,10 @@ function AppHeader () {
           </div> */}
 
           <div
-            className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
+            className='block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-cyan-600 dark:hover:text-secondary-light  sm:mx-4 sm:py-2'
             aria-label='Contact'
+            onMouseEnter={() => handleMouseEnter('contact')}
+            onMouseLeave={() => handleMouseLeave()}
           >
             <Link href='/contact' className=' fontsize-custom'>
               Contact
@@ -216,12 +220,19 @@ function AppHeader () {
         {/* Header right section buttons */}
         <div className='hidden lg:flex justify-between items-center flex-col md:flex-row flex-shrink-0'>
           {/* <div className='hidden md:flex'> */}
-          <CustomButton title={'Login'} bgColor={'#195883'} />
-          <CustomButton
-            title={'Donate'}
-            bgColor={'#269938'}
-            click={() => router.push('/donate')}
-          />
+          <div className='mr-4'>
+            {' '}
+            <CustomButton title={'Login'} bgColor={'#195883'} />
+          </div>
+          <div>
+            {' '}
+            <CustomButton
+              title={'Donate'}
+              bgColor={'#269938'}
+              click={() => router.push('/donate')}
+            />
+          </div>
+
           {/* </div> */}
         </div>
       </div>

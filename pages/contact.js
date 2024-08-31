@@ -1,13 +1,11 @@
-import Whoweare from "@/components/about/Whoweare";
-import Thumbnails from "@/components/about/Thumbnails";
-import OurVideo from "@/components/about/Ourvideo";
+import Note from "@/components/contact/Note";
+import Info from "@/components/contact/Info";
 import Subscribe from "@/components/shared/Subscribe";
 export default function Home() {
   return (
     <div className="mx-auto">
-      <Whoweare />
-      <Thumbnails />
-      <OurVideo />
+      <Note />
+      <Info />
       <Subscribe bgColor={"#245073"} />
     </div>
   );

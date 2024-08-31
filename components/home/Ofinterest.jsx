@@ -18,7 +18,7 @@ function Ofinterest ({}) {
 
     const handleResize = () => {
       setSlidesToShow(window.innerWidth < 648 ? 3 : 5)
-      setSlidesToScroll(window.innerWidth < 648 ? 1 : 3)
+      setSlidesToScroll(window.innerWidth < 648 ? 1 : 1)
     }
 
     handleResize() // Set the initial value
@@ -32,7 +32,9 @@ function Ofinterest ({}) {
     dots: false,
     infinite: true,
     centerMode: false,
-    speed: 1000,
+    speed: 300,
+    autoplay: true,
+    autoplaySpeed: 1000,
     slidesToShow,
     slidesToScroll: slidesToScroll,
     cssEase: 'linear'

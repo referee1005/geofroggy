@@ -1,31 +1,35 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
-import Slider from 'react-slick'
+// import Slider from 'react-slick'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchPlacesRequest } from '@/actions/home'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+// import 'slick-carousel/slick/slick.css'
+// import 'slick-carousel/slick/slick-theme.css'
 import { FiArrowUpRight } from 'react-icons/fi'
 import arrow from '../../public/images/Arrow.png'
 import Image from 'next/image'
-
-const CarouselItem = React.memo(({ item, className }) => (
-  <div className={className}>
-    <img
-      src={item.image && item.image.src}
-      className='h-32 ms:h-40 sm:w-48 sm:h-64 lg:h-64 lg:w-48 border-gradient border-8 rounded-lg'
-    />
-  </div>
-))
+import Slider from '../reusable/Slider'
+// const CarouselItem = React.memo(({ item, className }) => (
+//   <div className={className}>
+//     <img
+//       src={item.image && item.image.src}
+//       className='h-40 w-28 ms:h-48 ms:w-36 sm:w-48 sm:h-64 md:w-60 md:h-72 lg:h-64 lg:w-48 border-gradient border-8 rounded-lg'
+//     />
+//   </div>
+// ))
 
 function Places () {
-  const sliderRef = useRef(null)
-  const [dragging, setDragging] = useState(false)
-  const [startY, setStartY] = useState(0)
-  const [offsetY, setOffsetY] = useState(0)
+  // const sliderRef = useRef(null)
+  // const [dragging, setDragging] = useState(false)
+  // const [startX, setStartX] = useState(0)
+  // const [startY, setStartY] = useState(0)
+  // const [offsetX, setOffsetX] = useState(0)
+  // const [offsetY, setOffsetY] = useState(0)
   const [places, setPlaces] = useState([])
   const [clickIcon, setClickIcon] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isVertical, setIsVertical] = useState(true)
+  const [screenWidth, setScreenWidth] = useState()
+
   const data = useSelector(state => state.home.places)
   const dispatch = useDispatch()
 
@@ -37,62 +41,100 @@ function Places () {
     dispatch(fetchPlacesRequest())
   }, [dispatch])
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsVertical(window.innerWidth >= 1024) // 1024px corresponds to 'lg' in Tailwind CSS
-    }
-    handleResize() // Initial check
-    window.addEventListener('resize', handleResize) // Add event listener
-    return () => window.removeEventListener('resize', handleResize) // Cleanup event listener
-  }, [])
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setScreenWidth(window.innerWidth)
+  //     setIsVertical(window.innerWidth >= 1024) // 1024px corresponds to 'lg' in Tailwind CSS
+  //   }
+  //   handleResize() // Initial check
+  //   window.addEventListener('resize', handleResize) // Add event listener
+  //   return () => window.removeEventListener('resize', handleResize) // Cleanup event listener
+  // }, [])
 
-  const settings = {
-    className: 'center',
-    arrows: false,
-    dots: false,
-    infinite: true,
-    centerMode: true,
-    speed: 500,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    slidesToShow: isVertical ? 5 : 3,
-    slidesToScroll: 1,
-    cssEase: 'linear',
-    vertical: isVertical,
-    verticalSwiping: isVertical,
-    swipeToSlide: true,
-    beforeChange: (current, next) => {
-      setCurrentIndex(next % places.length)
-    }
-    // variableWidth: true
-  }
-  const handleMouseDown = useCallback(e => {
-    setStartY(e.clientY)
-    setDragging(true)
-  }, [])
+  // const settings = {
+  //   className: 'center',
+  //   arrows: false,
+  //   dots: false,
+  //   infinite: true,
+  //   centerMode: true,
+  //   speed: 500,
+  //   // autoplay: true,
+  //   // autoplaySpeed: 3000,
+  //   slidesToShow: isVertical ? 5 : 3,
+  //   slidesToScroll: 1,
+  //   cssEase: 'linear',
+  //   vertical: isVertical,
+  //   verticalSwiping: isVertical,
+  //   swipeToSlide: true,
+  //   // variableWidth: true,
+  //   beforeChange: (current, next) => {
+  //     setCurrentIndex(next % places.length)
+  //   }
+  //   // variableWidth: true
+  // }
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     sliderRef.current.slickPrev()
+  //   }, 3000) // 3 minutes
 
-  const handleMouseMove = useCallback(
-    e => {
-      if (!dragging) return
+  //   // Cleanup on unmount
+  //   return () => clearInterval(interval)
+  // }, [])
 
-      setOffsetY(e.clientY - startY)
+  // const handleDragStart = useCallback((e, isTouch = false) => {
+  //   setStartX(isTouch ? e.touches[0].clientX : e.clientX)
+  //   setStartY(isTouch ? e.touches[0].clientY : e.clientY)
+  //   setDragging(true)
+  // }, [])
 
-      if (sliderRef.current && Math.abs(offsetY) > 30) {
-        if (offsetY > 0) {
-          sliderRef.current.slickPrev()
-        } else {
-          sliderRef.current.slickNext()
-        }
-        setStartY(e.clientY)
-      }
-    },
-    [dragging, offsetY, startY]
-  )
+  // const handleDragMove = useCallback(
+  //   (e, isTouch = false) => {
+  //     if (!dragging) return
 
-  const handleMouseUp = useCallback(() => {
-    setDragging(false)
-    setOffsetY(0)
-  }, [])
+  //     const clientX = isTouch ? e.touches[0].clientX : e.clientX
+  //     const clientY = isTouch ? e.touches[0].clientY : e.clientY
+
+  //     if (screenWidth >= 1024) {
+  //       setOffsetY(clientY - startY)
+
+  //       if (Math.abs(offsetY) > 30) {
+  //         if (offsetY > 0) {
+  //           sliderRef.current.slickPrev()
+  //         } else {
+  //           sliderRef.current.slickNext()
+  //         }
+  //         setStartY(clientY)
+  //       }
+  //     } else {
+  //       // Horizontal drag for screens < 1024px
+  //       setOffsetX(clientX - startX)
+
+  //       if (Math.abs(offsetX) > 30) {
+  //         if (offsetX > 0) {
+  //           sliderRef.current.slickPrev()
+  //         } else {
+  //           sliderRef.current.slickNext()
+  //         }
+  //         setStartX(clientX)
+  //       }
+  //     }
+  //   },
+  //   [dragging, offsetX, offsetY, startX, startY, screenWidth]
+  // )
+
+  // const handleDragEnd = useCallback(() => {
+  //   setDragging(false)
+  //   setOffsetX(0)
+  //   setOffsetY(0)
+  // }, [])
+
+  // const handleMouseDown = e => handleDragStart(e, false)
+  // const handleMouseMove = e => handleDragMove(e, false)
+  // const handleMouseUp = () => handleDragEnd()
+
+  // const handleTouchStart = e => handleDragStart(e, true)
+  // const handleTouchMove = e => handleDragMove(e, true)
+  // const handleTouchEnd = () => handleDragEnd()
 
   if (!places.length) {
     return <div>Loading...</div> // Or return a fallback image/div
@@ -110,7 +152,7 @@ function Places () {
 
       {/* Custom Info */}
       <div className='w-full h-full absolute text-white'>
-        <div className='absolute container-custom h-full top-0 lg:top-2/3'>
+        <div className='absolute container-custom h-full top-8 lg:top-2/3'>
           <div className=' font-semibold text-4xl lg:text-6xl mb-4'>
             {places[currentIndex] && places[currentIndex].title}
           </div>
@@ -221,62 +263,76 @@ function Places () {
 
       {/* Custom Pagination */}
       {
-        <div
-          className={`absolute bottom-0 lg:right-0 lg:top-1/2 w-full lg:-translate-y-3/4  lg:h-full  lg:w-48 ${
-            clickIcon ? 'hidden' : 'flex flex-col items-center'
-          }`}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-        >
-          <div className='slider-container relative w-full'>
-            <Slider ref={sliderRef} {...settings}>
-              {places.map((item, index) => {
-                const indexDiff =
-                  (index - currentIndex + places.length) % places.length
-                let className =
-                  'relative transform transition-transform duration-1000 ease-in-out'
+        <Slider
+          clickIcon={clickIcon}
+          places={places}
+          currentIndex={currentIndex}
+          // isVertical={isVertical}
+          // screenWidth={screenWidth}
+          setCurrentIndex={index => setCurrentIndex(index)}
+        />
+        // <div
+        //   className={`absolute bottom-0 lg:right-0 w-full lg:h-full lg:top-1/2 lg:-translate-y-3/4 lg:w-48 ${
+        //     clickIcon ? 'hidden' : 'flex flex-col items-center'
+        //   }`}
+        // >
+        //   <div
+        //     className='slider-container relative w-full'
+        //     onMouseDown={handleMouseDown}
+        //     onMouseMove={handleMouseMove}
+        //     onMouseUp={handleMouseUp}
+        //     onTouchStart={handleTouchStart}
+        //     onTouchMove={handleTouchMove}
+        //     onTouchEnd={handleTouchEnd}
+        //   >
+        //     <Slider ref={sliderRef} {...settings}>
+        //       {places.map((item, index) => {
+        //         const indexDiff =
+        //           (index - currentIndex + places.length) % places.length
+        //         let className =
+        //           'relative transform transition-transform duration-1000 ease-in-out'
 
-                if (indexDiff === 0) {
-                  className += ' translate-x-0 translate-y-0 z-30'
-                } else if (indexDiff === 1 || indexDiff === -1) {
-                  className +=
-                    ' -translate-x-1/4 translate-y-1/4 lg:translate-x-1/4 lg:-translate-y-1/4 z-20'
-                } else if (
-                  indexDiff === places.length - 1 ||
-                  indexDiff === -places.length + 1
-                ) {
-                  className +=
-                    ' translate-x-1/4 translate-y-1/4 lg:translate-x-1/4 lg:translate-y-1/4 z-20'
-                } else if (indexDiff === 2 || indexDiff === -2) {
-                  className +=
-                    ' -translate-x-1/2 translate-y-1/2 lg:translate-x-1/2 lg:-translate-y-1/2 z-10'
-                } else if (
-                  indexDiff === places.length - 2 ||
-                  indexDiff === -places.length + 2
-                ) {
-                  className +=
-                    '  translate-x-1/2 translate-y-1/2 lg:translate-x-1/2 lg:translate-y-1/2 z-10'
-                } else if (indexDiff === 3 || indexDiff === -3) {
-                  className +=
-                    ' -translate-x-3/4 translate-y-3/4 lg:translate-x-3/4 lg:-translate-y-3/4 z-1'
-                } else if (
-                  indexDiff === places.length - 3 ||
-                  indexDiff === -places.length + 3
-                ) {
-                  className +=
-                    ' translate-x-3/4 translate-y-3/4 lg:translate-x-3/4 lg:translate-y-3/4 z-1'
-                } else {
-                  className +=
-                    ' -translate-x-full translate-y-3/4 lg:translate-x-3/4 lg:-translate-y-3/4 z-1'
-                }
-                return (
-                  <CarouselItem key={index} item={item} className={className} />
-                )
-              })}
-            </Slider>
-          </div>
-        </div>
+        //         if (indexDiff === 0) {
+        //           className += ' translate-x-0 translate-y-0 z-30'
+        //         } else if (indexDiff === 1 || indexDiff === -1) {
+        //           className +=
+        //             ' -translate-x-1/4 translate-y-1/4 lg:translate-x-1/4 lg:-translate-y-1/4 z-20'
+        //         } else if (
+        //           indexDiff === places.length - 1 ||
+        //           indexDiff === -places.length + 1
+        //         ) {
+        //           className +=
+        //             ' translate-x-1/4 translate-y-1/4 lg:translate-x-1/4 lg:translate-y-1/4 z-20'
+        //         } else if (indexDiff === 2 || indexDiff === -2) {
+        //           className +=
+        //             ' -translate-x-1/2 translate-y-1/2 lg:translate-x-1/2 lg:-translate-y-1/2 z-10'
+        //         } else if (
+        //           indexDiff === places.length - 2 ||
+        //           indexDiff === -places.length + 2
+        //         ) {
+        //           className +=
+        //             '  translate-x-1/2 translate-y-1/2 lg:translate-x-1/2 lg:translate-y-1/2 z-10'
+        //         } else if (indexDiff === 3 || indexDiff === -3) {
+        //           className +=
+        //             ' -translate-x-3/4 translate-y-3/4 lg:translate-x-3/4 lg:-translate-y-3/4 z-1'
+        //         } else if (
+        //           indexDiff === places.length - 3 ||
+        //           indexDiff === -places.length + 3
+        //         ) {
+        //           className +=
+        //             ' translate-x-3/4 translate-y-3/4 lg:translate-x-3/4 lg:translate-y-3/4 z-1'
+        //         } else {
+        //           className +=
+        //             ' -translate-x-full translate-y-3/4 lg:translate-x-3/4 lg:-translate-y-3/4 z-1'
+        //         }
+
+        //         return (
+        //           <CarouselItem key={index} item={item} className={className} />
+        //         )
+        //       })}
+        //     </Slider>
+        //   </div>
+        // </div>
       }
     </div>
   )
