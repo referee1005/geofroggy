@@ -48,7 +48,7 @@ function Ofinterest ({}) {
       <div className='bg-white sm:pb-24 overflow-hidden pt-16'>
         <Slider {...settings}>
           {data.map((item, index) => (
-            <div key={item.id} className='px-0'>
+            <div key={index} className='px-0'>
               <div
                 className={`flex-shrink-0 cursor-pointer mb-4 sm:mb-12 ${
                   index % 2 ? 'rotate-[19deg] z-0' : '-rotate-[19deg] z-10'

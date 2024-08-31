@@ -3,8 +3,8 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-const CarouselItem = React.memo(({ item, className }) => (
-  <div className={className}>
+const CarouselItem = React.memo(({ key, item, className }) => (
+  <div className={className} key={key}>
     <img
       src={item.image && item.image.src}
       className='h-40 w-28 ms:h-48 ms:w-36 sm:w-48 sm:h-64 md:w-60 md:h-72 lg:h-64 lg:w-48 border-gradient border-8 rounded-lg'

@@ -28,8 +28,11 @@ function Favourite ({}) {
           Favourite Places
         </div>
         <div className=' grid grid-cols-3 lg:grid-cols-6 gap-8 relative flex min-h-64 sm:min-h-64 pb-24'>
-          {images.map(item => (
-            <div className='bg-white shadow-md rounded-lg overflow-hidden'>
+          {images.map((item, index) => (
+            <div
+              className='bg-white shadow-md rounded-lg overflow-hidden'
+              key={index}
+            >
               {/* Main Image */}
               <Image
                 src={item}

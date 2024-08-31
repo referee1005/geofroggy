@@ -20,8 +20,11 @@ function Popular ({}) {
           Popular Countries
         </div>
         <div className=' grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4 lg:gap-8 relative flex min-h-80 sm:min-h-96 mx-4 ms:mx-16'>
-          {data.map(item => (
-            <div className='bg-white shadow-md rounded-lg overflow-hidden mb-8'>
+          {data.map((item, index) => (
+            <div
+              className='bg-white shadow-md rounded-lg overflow-hidden mb-8'
+              key={index}
+            >
               {/* Main Image */}
               <div className='relative'>
                 <Image

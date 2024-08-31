@@ -18,9 +18,12 @@ function RecentAdditions ({}) {
         Recent Additions
       </div>
       <div className=' grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative flex min-h-48 sm:min-h-48 pb-4'>
-        {data.map(item => (
+        {data.map((item, index) => (
           <div>
-            <div className='relative bg-white shadow-md rounded-lg overflow-hidden'>
+            <div
+              className='relative bg-white shadow-md rounded-lg overflow-hidden'
+              key={index}
+            >
               {/* Main Image */}
               <Image
                 src={item.thumbnail}

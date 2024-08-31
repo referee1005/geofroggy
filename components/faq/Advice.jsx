@@ -21,7 +21,10 @@ function Advice ({ data }) {
       <div className=' grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 2xl:gap-8 relative'>
         {data &&
           data.map((item, index) => (
-            <div className='relative bg-white border-2 rounded-lg overflow-hidden p-4 flex flex-col items-center'>
+            <div
+              className='relative bg-white border-2 rounded-lg overflow-hidden p-4 flex flex-col items-center'
+              key={index}
+            >
               <div className='relative bg-white border-2 rounded-lg overflow-hidden w-16 p-4 mb-4'>
                 {/* Main Image */}
                 <Image

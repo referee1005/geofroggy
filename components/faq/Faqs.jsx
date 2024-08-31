@@ -15,6 +15,7 @@ function Faqs ({ title, data }) {
                 className={`border-t-2 ${
                   index === data.length - 1 ? 'border-b-2' : ''
                 } py-4 flex justify-between`}
+                key={index}
               >
                 <div className='flex flex-col'>
                   <div className='lg:text-lg 2xl:text-xl font-semibold'>

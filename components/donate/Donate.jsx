@@ -14,7 +14,7 @@ function Donate ({}) {
       <div className='flex mb-4'>
         {[25, 50, 75, 100, 150].map(item => {
           return (
-            <div className='mr-2 sm:mr-4'>
+            <div className='mr-2 sm:mr-4' key={item}>
               <CustomButton
                 click={() => setAmount(item)}
                 title={'$' + item}
@@ -32,7 +32,7 @@ function Donate ({}) {
       <div className='flex'>
         {['Debit/Credit Card', 'Paypal', 'Stripe'].map(item => {
           return (
-            <div className='mr-2 sm:mr-4'>
+            <div className='mr-2 sm:mr-4' key={item}>
               <CustomButton
                 click={() => setPayment(item)}
                 title={item}

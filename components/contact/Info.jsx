@@ -30,9 +30,12 @@ function Info ({}) {
       className='relative grid grid-rows-3 lg:grid-cols-3 lg:grid-rows-1 py-32 px-16 lg:px-32 2xl:px-48 3xl:px-64 '
       style={{ backgroundColor: '#F5F9FF' }}
     >
-      {info.map(item => {
+      {info.map((item, index) => {
         return (
-          <div className='py-8 lg:py-0 px-4 lg:px-8 2xl:px-16 grid grid-cols-2 lg:grid-cols-1'>
+          <div
+            className='py-8 lg:py-0 px-4 lg:px-8 2xl:px-16 grid grid-cols-2 lg:grid-cols-1'
+            key={index}
+          >
             {/* <div></div> */}
             <Image src={item.icon} className='rounded-2xl lg:mb-8' />
             <div>
