@@ -1,4 +1,3 @@
-import Subscribe from "@/components/shared/subscribe";
 import PagesMetaHead from "@/components/PagesMetaHead";
 import Ofinterest from "@/components/home/Ofinterest";
 import Whoweare from "@/components/home/Whoweare";
