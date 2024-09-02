@@ -6,7 +6,7 @@ function OurVideo ({}) {
   return (
     <div className='container-custom lg:my-8 2xl:my-16'>
       <div className='relative flex min-h-48 sm:min-h-48 pb-4'>
-        <div>
+        <div className='w-full'>
           <div className='relative bg-white shadow-md rounded-lg overflow-hidden'>
             {/* Main Image */}
             <Image
