@@ -63,13 +63,13 @@ function Ofinterest () {
           <div className='grid grid-rows-1 grid-cols-4 lg:grid-rows-2 lg:grid-cols-2 gap-4 h-full'>
             {/* First Row */}
             <div className='flex flex-col justify-center items-center  p-4 rounded-lg'>
-              <div className='text-3xl lg:text-5xl 2xl:text-8xl'>
+              <div className='text-3xl sm:text-5xl lg:text-7xl 2xl:text-8xl'>
                 {formatNumber(data.total_users)}
               </div>
               <div className='text-xs lg:text-lg text-center'>Total Users</div>
             </div>
             <div className='flex flex-col justify-center items-center p-4 rounded-lg'>
-              <div className='text-3xl lg:text-5xl 2xl:text-8xl'>
+              <div className='text-3xl sm:text-5xl lg:text-7xl 2xl:text-8xl'>
                 {formatNumber(data.new_places)}
               </div>
               <div className='text-xs lg:text-lg text-center'>New Places</div>
@@ -77,7 +77,7 @@ function Ofinterest () {
 
             {/* Second Row */}
             <div className='flex flex-col justify-center items-center p-4 rounded-lg'>
-              <div className='text-3xl lg:text-5xl 2xl:text-8xl'>
+              <div className='text-3xl sm:text-5xl lg:text-7xl 2xl:text-8xl'>
                 {formatNumber(data.customer_reviews)}
               </div>{' '}
               <div className='text-xs lg:text-lg text-center'>
@@ -85,7 +85,7 @@ function Ofinterest () {
               </div>
             </div>
             <div className='flex flex-col justify-center items-center p-4 rounded-lg'>
-              <div className='text-3xl lg:text-5xl 2xl:text-8xl'>
+              <div className='text-3xl sm:text-5xl lg:text-7xl 2xl:text-8xl'>
                 {formatNumber(data.awards_won)}
               </div>{' '}
               <div className='text-xs lg:text-lg text-center'>Awards Won</div>

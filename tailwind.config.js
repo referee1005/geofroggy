@@ -7,6 +7,18 @@ module.exports = {
   ],
   theme: {
     extend: {
+      inset: {
+        "1/5": "20%", // Equivalent to top: 20%;
+        "2/5": "40%", // Equivalent to top: 30%;
+        "3/5": "60%", // Equivalent to top: 40%;
+        "4/5": "80%",
+        "5/5": "100%"
+      },
+      translate: {
+        "5/4": "125%", // This adds a custom translation value of 125% to the `translate-y` utilities
+        "3/2": "150%",
+        "7/4": "175%"
+      },
       width: {
         53: "13.25rem"
       },

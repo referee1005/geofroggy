@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 // import Slider from 'react-slick'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchPlacesRequest } from '@/actions/home'
@@ -8,133 +8,160 @@ import { FiArrowUpRight } from 'react-icons/fi'
 import arrow from '../../public/images/Arrow.png'
 import Image from 'next/image'
 import Slider from '../reusable/Slider'
-// const CarouselItem = React.memo(({ item, className }) => (
-//   <div className={className}>
-//     <img
-//       src={item.image && item.image.src}
-//       className='h-40 w-28 ms:h-48 ms:w-36 sm:w-48 sm:h-64 md:w-60 md:h-72 lg:h-64 lg:w-48 border-gradient border-8 rounded-lg'
-//     />
-//   </div>
-// ))
 
 function Places () {
-  // const sliderRef = useRef(null)
-  // const [dragging, setDragging] = useState(false)
-  // const [startX, setStartX] = useState(0)
-  // const [startY, setStartY] = useState(0)
-  // const [offsetX, setOffsetX] = useState(0)
-  // const [offsetY, setOffsetY] = useState(0)
   const [places, setPlaces] = useState([])
   const [clickIcon, setClickIcon] = useState(null)
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isVertical, setIsVertical] = useState(true)
+  const [currentIndex, setCurrentIndex] = useState(3)
+  const [dragging, setDragging] = useState(false)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+  const [startX, setStartX] = useState(0)
+  const [startY, setStartY] = useState(0)
+  const [offsetX, setOffsetX] = useState(0)
+  const [offsetY, setOffsetY] = useState(0)
   const [screenWidth, setScreenWidth] = useState()
+  const [classNames, setClassNames] = useState([])
 
   const data = useSelector(state => state.home.places)
   const dispatch = useDispatch()
 
   useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth)
+      // setIsVertical(window.innerWidth >= 1024) // 1024px corresponds to 'lg' in Tailwind CSS
+    }
+    handleResize() // Initial check
+    window.addEventListener('resize', handleResize) // Add event listener
+    return () => window.removeEventListener('resize', handleResize) // Cleanup event listener
+  }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setClassNames(prevClasses => {
+        const newClasses = [...prevClasses]
+        newClasses.push(newClasses.shift())
+        return newClasses
+      })
+      setCurrentIndex(
+        prevIndex => (prevIndex - 1 + places.length) % places.length
+      )
+    }, 3000) // 3 seconds
+
+    return () => clearInterval(interval)
+  }, [places.length])
+
+  useEffect(() => {
     if (data.length) setPlaces(data)
   }, [data])
+  useEffect(() => {
+    const calculateStyles = () => {
+      const classNames = places.map((item, index) => {
+        if (index <= 6) return 'carousel_' + index
+        else return 'carousel'
+      })
+
+      setClassNames(classNames)
+    }
+    calculateStyles()
+    // setData(places)
+  }, [places])
 
   useEffect(() => {
     dispatch(fetchPlacesRequest())
   }, [dispatch])
 
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setScreenWidth(window.innerWidth)
-  //     setIsVertical(window.innerWidth >= 1024) // 1024px corresponds to 'lg' in Tailwind CSS
-  //   }
-  //   handleResize() // Initial check
-  //   window.addEventListener('resize', handleResize) // Add event listener
-  //   return () => window.removeEventListener('resize', handleResize) // Cleanup event listener
-  // }, [])
+  const moveNext = () => {
+    if (isTransitioning) return // Prevent new transition during ongoing transition
+    setIsTransitioning(true)
 
-  // const settings = {
-  //   className: 'center',
-  //   arrows: false,
-  //   dots: false,
-  //   infinite: true,
-  //   centerMode: true,
-  //   speed: 500,
-  //   // autoplay: true,
-  //   // autoplaySpeed: 3000,
-  //   slidesToShow: isVertical ? 5 : 3,
-  //   slidesToScroll: 1,
-  //   cssEase: 'linear',
-  //   vertical: isVertical,
-  //   verticalSwiping: isVertical,
-  //   swipeToSlide: true,
-  //   // variableWidth: true,
-  //   beforeChange: (current, next) => {
-  //     setCurrentIndex(next % places.length)
-  //   }
-  //   // variableWidth: true
-  // }
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     sliderRef.current.slickPrev()
-  //   }, 3000) // 3 minutes
+    setClassNames(prevClasses => {
+      // Rotate the classes array to the left
+      const newClasses = [...prevClasses]
+      newClasses.push(newClasses.shift())
+      return newClasses
+    })
+    // setMoveCount(-1)
+    setCurrentIndex(
+      prevIndex => (prevIndex - 1 + places.length) % places.length
+    )
+    setTimeout(() => setIsTransitioning(false), 700)
+  }
 
-  //   // Cleanup on unmount
-  //   return () => clearInterval(interval)
-  // }, [])
+  const movePrev = () => {
+    if (isTransitioning) return // Prevent new transition during ongoing transition
+    setIsTransitioning(true)
 
-  // const handleDragStart = useCallback((e, isTouch = false) => {
-  //   setStartX(isTouch ? e.touches[0].clientX : e.clientX)
-  //   setStartY(isTouch ? e.touches[0].clientY : e.clientY)
-  //   setDragging(true)
-  // }, [])
+    setClassNames(prevClasses => {
+      const newClasses = [...prevClasses]
+      newClasses.unshift(newClasses.pop())
+      return newClasses
+    })
+    // setMoveCount(1)
+    setCurrentIndex(
+      prevIndex => (prevIndex + 1 + places.length) % places.length
+    )
 
-  // const handleDragMove = useCallback(
-  //   (e, isTouch = false) => {
-  //     if (!dragging) return
+    setTimeout(() => setIsTransitioning(false), 700)
+  }
 
-  //     const clientX = isTouch ? e.touches[0].clientX : e.clientX
-  //     const clientY = isTouch ? e.touches[0].clientY : e.clientY
+  const handleMouseDown = e => handleDragStart(e, false)
+  const handleMouseMove = e => handleDragMove(e, false)
+  const handleMouseUp = () => handleDragEnd()
 
-  //     if (screenWidth >= 1024) {
-  //       setOffsetY(clientY - startY)
+  const handleTouchStart = e => handleDragStart(e, true)
+  const handleTouchMove = e => handleDragMove(e, true)
+  const handleTouchEnd = () => handleDragEnd()
 
-  //       if (Math.abs(offsetY) > 30) {
-  //         if (offsetY > 0) {
-  //           sliderRef.current.slickPrev()
-  //         } else {
-  //           sliderRef.current.slickNext()
-  //         }
-  //         setStartY(clientY)
-  //       }
-  //     } else {
-  //       // Horizontal drag for screens < 1024px
-  //       setOffsetX(clientX - startX)
+  const handleDragStart = useCallback((e, isTouch = false) => {
+    setStartX(isTouch ? e.touches[0].clientX : e.clientX)
+    setStartY(isTouch ? e.touches[0].clientY : e.clientY)
+    setDragging(true)
+  }, [])
 
-  //       if (Math.abs(offsetX) > 30) {
-  //         if (offsetX > 0) {
-  //           sliderRef.current.slickPrev()
-  //         } else {
-  //           sliderRef.current.slickNext()
-  //         }
-  //         setStartX(clientX)
-  //       }
-  //     }
-  //   },
-  //   [dragging, offsetX, offsetY, startX, startY, screenWidth]
-  // )
+  const handleDragMove = useCallback(
+    (e, isTouch = false) => {
+      if (!dragging || isTransitioning) return
 
-  // const handleDragEnd = useCallback(() => {
-  //   setDragging(false)
-  //   setOffsetX(0)
-  //   setOffsetY(0)
-  // }, [])
+      const clientX = isTouch ? e.touches[0].clientX : e.clientX
+      const clientY = isTouch ? e.touches[0].clientY : e.clientY
 
-  // const handleMouseDown = e => handleDragStart(e, false)
-  // const handleMouseMove = e => handleDragMove(e, false)
-  // const handleMouseUp = () => handleDragEnd()
+      if (screenWidth >= 1024) {
+        setOffsetY(clientY - startY)
 
-  // const handleTouchStart = e => handleDragStart(e, true)
-  // const handleTouchMove = e => handleDragMove(e, true)
-  // const handleTouchEnd = () => handleDragEnd()
+        if (Math.abs(offsetY) > 30) {
+          if (offsetY > 0) {
+            moveNext()
+            setDragging(false)
+          } else {
+            movePrev()
+            setDragging(false)
+          }
+          setStartY(clientY)
+        }
+      } else {
+        // Horizontal drag for screens < 1024px
+        setOffsetX(clientX - startX)
+
+        if (Math.abs(offsetX) > 30) {
+          if (offsetX > 0) {
+            moveNext()
+            setDragging(false)
+          } else {
+            movePrev()
+            setDragging(false)
+          }
+          setStartX(clientX)
+        }
+      }
+    },
+    [dragging, offsetX, offsetY, startX, startY, screenWidth, isTransitioning]
+  )
+
+  const handleDragEnd = useCallback(() => {
+    setDragging(false)
+    setOffsetX(0)
+    setOffsetY(0)
+  }, [])
 
   if (!places.length) {
     return <div>Loading...</div> // Or return a fallback image/div
@@ -160,7 +187,9 @@ function Places () {
             className={`backdrop-blur-md ${
               clickIcon === 'place' ? 'bg-white text-blue-500' : 'bg-white/30'
             } px-4 py-2 rounded-full inline-block mr-8 cursor-pointer `}
-            onClick={() => setClickIcon('place')}
+            onClick={() => {
+              setClickIcon('place')
+            }}
           >
             <svg
               width='20'
@@ -262,78 +291,38 @@ function Places () {
       </div>
 
       {/* Custom Pagination */}
-      {
-        <Slider
-          clickIcon={clickIcon}
-          places={places}
-          currentIndex={currentIndex}
-          // isVertical={isVertical}
-          // screenWidth={screenWidth}
-          setCurrentIndex={index => setCurrentIndex(index)}
-        />
-        // <div
-        //   className={`absolute bottom-0 lg:right-0 w-full lg:h-full lg:top-1/2 lg:-translate-y-3/4 lg:w-48 ${
-        //     clickIcon ? 'hidden' : 'flex flex-col items-center'
-        //   }`}
-        // >
-        //   <div
-        //     className='slider-container relative w-full'
-        //     onMouseDown={handleMouseDown}
-        //     onMouseMove={handleMouseMove}
-        //     onMouseUp={handleMouseUp}
-        //     onTouchStart={handleTouchStart}
-        //     onTouchMove={handleTouchMove}
-        //     onTouchEnd={handleTouchEnd}
-        //   >
-        //     <Slider ref={sliderRef} {...settings}>
-        //       {places.map((item, index) => {
-        //         const indexDiff =
-        //           (index - currentIndex + places.length) % places.length
-        //         let className =
-        //           'relative transform transition-transform duration-1000 ease-in-out'
 
-        //         if (indexDiff === 0) {
-        //           className += ' translate-x-0 translate-y-0 z-30'
-        //         } else if (indexDiff === 1 || indexDiff === -1) {
-        //           className +=
-        //             ' -translate-x-1/4 translate-y-1/4 lg:translate-x-1/4 lg:-translate-y-1/4 z-20'
-        //         } else if (
-        //           indexDiff === places.length - 1 ||
-        //           indexDiff === -places.length + 1
-        //         ) {
-        //           className +=
-        //             ' translate-x-1/4 translate-y-1/4 lg:translate-x-1/4 lg:translate-y-1/4 z-20'
-        //         } else if (indexDiff === 2 || indexDiff === -2) {
-        //           className +=
-        //             ' -translate-x-1/2 translate-y-1/2 lg:translate-x-1/2 lg:-translate-y-1/2 z-10'
-        //         } else if (
-        //           indexDiff === places.length - 2 ||
-        //           indexDiff === -places.length + 2
-        //         ) {
-        //           className +=
-        //             '  translate-x-1/2 translate-y-1/2 lg:translate-x-1/2 lg:translate-y-1/2 z-10'
-        //         } else if (indexDiff === 3 || indexDiff === -3) {
-        //           className +=
-        //             ' -translate-x-3/4 translate-y-3/4 lg:translate-x-3/4 lg:-translate-y-3/4 z-1'
-        //         } else if (
-        //           indexDiff === places.length - 3 ||
-        //           indexDiff === -places.length + 3
-        //         ) {
-        //           className +=
-        //             ' translate-x-3/4 translate-y-3/4 lg:translate-x-3/4 lg:translate-y-3/4 z-1'
-        //         } else {
-        //           className +=
-        //             ' -translate-x-full translate-y-3/4 lg:translate-x-3/4 lg:-translate-y-3/4 z-1'
-        //         }
-
-        //         return (
-        //           <CarouselItem key={index} item={item} className={className} />
-        //         )
-        //       })}
-        //     </Slider>
-        //   </div>
-        // </div>
-      }
+      {/* <Slider
+        clickIcon={clickIcon}
+        places={places}
+        setMoveCount={diff => {
+          let newIndex = (currentIndex + diff + places.length) % places.length
+          setCurrentIndex(newIndex)
+        }}
+      /> */}
+      <div
+        className={`absolute bottom-0 lg:right-0 w-full lg:h-full lg:w-48
+         ${clickIcon ? 'hidden' : 'flex flex-col items-center'}`}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <div className='relative slider-container relative w-full lg:h-screen'>
+          {data.map((item, index) => {
+            return (
+              <div key={index} className={classNames[index]}>
+                <img
+                  src={item.image && item.image.src}
+                  className='w-full h-48 sm:h-64 lg:w-64 lg:h-full cursor-pointer'
+                />
+              </div>
+            )
+          })}
+        </div>
+      </div>
     </div>
   )
 }

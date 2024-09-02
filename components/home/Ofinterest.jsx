@@ -17,7 +17,7 @@ function Ofinterest ({}) {
     dispatch(fetchInterestsRequest())
 
     const handleResize = () => {
-      setSlidesToShow(window.innerWidth < 648 ? 3 : 5)
+      setSlidesToShow(window.innerWidth < 1024 ? 3 : 5)
       setSlidesToScroll(window.innerWidth < 648 ? 1 : 1)
     }
 
@@ -31,13 +31,14 @@ function Ofinterest ({}) {
     className: 'center',
     dots: false,
     infinite: true,
-    centerMode: false,
-    speed: 300,
+    // centerMode: true,
+    speed: 800,
     autoplay: true,
-    autoplaySpeed: 1000,
+    autoplaySpeed: 3000,
     slidesToShow,
-    slidesToScroll: slidesToScroll,
-    cssEase: 'linear'
+    slidesToScroll: 1,
+    swipeToSlide: true,
+    cssEase: 'ease-in-out'
   }
 
   return (

@@ -1,50 +1,23 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
-import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-const CarouselItem = React.memo(({ key, item, className }) => (
-  <div className={className} key={key}>
-    <img
-      src={item.image && item.image.src}
-      className='h-40 w-28 ms:h-48 ms:w-36 sm:w-48 sm:h-64 md:w-60 md:h-72 lg:h-64 lg:w-48 border-gradient border-8 rounded-lg'
-    />
-  </div>
-))
-
-function CustomSlider ({ clickIcon, places, currentIndex, setCurrentIndex }) {
-  const sliderRef = useRef(null)
-  //   const [currentIndex, setCurrentIndex] = useState(0)
+function CustomSlider ({ clickIcon, places, setMoveCount }) {
   const [dragging, setDragging] = useState(false)
+  const [isTransitioning, setIsTransitioning] = useState(false)
   const [startX, setStartX] = useState(0)
   const [startY, setStartY] = useState(0)
   const [offsetX, setOffsetX] = useState(0)
   const [offsetY, setOffsetY] = useState(0)
-  const [isVertical, setIsVertical] = useState(true)
+  // const [isVertical, setIsVertical] = useState(true)
   const [screenWidth, setScreenWidth] = useState()
-
-  const settings = {
-    className: 'center',
-    arrows: false,
-    dots: false,
-    infinite: true,
-    centerMode: true,
-    speed: 500,
-    slidesToShow: isVertical ? 5 : 3,
-    slidesToScroll: 1,
-    cssEase: 'linear',
-    vertical: isVertical,
-    verticalSwiping: isVertical,
-    swipeToSlide: true,
-    beforeChange: (current, next) => {
-      setCurrentIndex(next % places.length)
-    }
-  }
+  const [classNames, setClassNames] = useState([])
+  const [data, setData] = useState([])
 
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth)
-      setIsVertical(window.innerWidth >= 1024) // 1024px corresponds to 'lg' in Tailwind CSS
+      // setIsVertical(window.innerWidth >= 1024) // 1024px corresponds to 'lg' in Tailwind CSS
     }
     handleResize() // Initial check
     window.addEventListener('resize', handleResize) // Add event listener
@@ -53,12 +26,56 @@ function CustomSlider ({ clickIcon, places, currentIndex, setCurrentIndex }) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      sliderRef.current.slickPrev()
-    }, 3000) // 3 minutes
+      setClassNames(prevClasses => {
+        const newClasses = [...prevClasses]
+        newClasses.push(newClasses.shift())
+        return newClasses
+      })
+    }, 3000)
 
     // Cleanup on unmount
     return () => clearInterval(interval)
   }, [])
+
+  useEffect(() => {
+    const calculateStyles = () => {
+      const classNames = places.map((item, index) => {
+        if (index <= 6) return 'carousel_' + index
+        else return 'carousel'
+      })
+
+      setClassNames(classNames)
+    }
+    calculateStyles()
+    setData(places)
+  }, [places])
+
+  const moveNext = () => {
+    if (isTransitioning) return // Prevent new transition during ongoing transition
+    setIsTransitioning(true)
+
+    setClassNames(prevClasses => {
+      // Rotate the classes array to the left
+      const newClasses = [...prevClasses]
+      newClasses.push(newClasses.shift())
+      return newClasses
+    })
+    setMoveCount(-1)
+    setTimeout(() => setIsTransitioning(false), 1000)
+  }
+
+  const movePrev = () => {
+    if (isTransitioning) return // Prevent new transition during ongoing transition
+    setIsTransitioning(true)
+
+    setClassNames(prevClasses => {
+      const newClasses = [...prevClasses]
+      newClasses.unshift(newClasses.pop())
+      return newClasses
+    })
+    setMoveCount(1)
+    setTimeout(() => setIsTransitioning(false), 1000)
+  }
 
   const handleMouseDown = e => handleDragStart(e, false)
   const handleMouseMove = e => handleDragMove(e, false)
@@ -76,7 +93,7 @@ function CustomSlider ({ clickIcon, places, currentIndex, setCurrentIndex }) {
 
   const handleDragMove = useCallback(
     (e, isTouch = false) => {
-      if (!dragging) return
+      if (!dragging || isTransitioning) return
 
       const clientX = isTouch ? e.touches[0].clientX : e.clientX
       const clientY = isTouch ? e.touches[0].clientY : e.clientY
@@ -86,9 +103,11 @@ function CustomSlider ({ clickIcon, places, currentIndex, setCurrentIndex }) {
 
         if (Math.abs(offsetY) > 30) {
           if (offsetY > 0) {
-            sliderRef.current.slickPrev()
+            moveNext()
+            setDragging(false)
           } else {
-            sliderRef.current.slickNext()
+            movePrev()
+            setDragging(false)
           }
           setStartY(clientY)
         }
@@ -98,15 +117,17 @@ function CustomSlider ({ clickIcon, places, currentIndex, setCurrentIndex }) {
 
         if (Math.abs(offsetX) > 30) {
           if (offsetX > 0) {
-            sliderRef.current.slickPrev()
+            moveNext()
+            setDragging(false)
           } else {
-            sliderRef.current.slickNext()
+            movePrev()
+            setDragging(false)
           }
           setStartX(clientX)
         }
       }
     },
-    [dragging, offsetX, offsetY, startX, startY, screenWidth]
+    [dragging, offsetX, offsetY, startX, startY, screenWidth, isTransitioning]
   )
 
   const handleDragEnd = useCallback(() => {
@@ -117,65 +138,26 @@ function CustomSlider ({ clickIcon, places, currentIndex, setCurrentIndex }) {
 
   return (
     <div
-      className={`absolute bottom-0 lg:right-0 w-full lg:h-full lg:top-1/2 lg:-translate-y-3/4 lg:w-48 ${
-        clickIcon ? 'hidden' : 'flex flex-col items-center'
-      }`}
+      className={`absolute bottom-0 lg:right-0 w-full lg:h-full lg:w-48
+         ${clickIcon ? 'hidden' : 'flex flex-col items-center'}`}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
-      <div
-        className='slider-container relative w-full'
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        <Slider ref={sliderRef} {...settings}>
-          {places.map((item, index) => {
-            const indexDiff =
-              (index - currentIndex + places.length) % places.length
-            let className =
-              'relative transform transition-transform duration-1000 ease-in-out'
-
-            if (indexDiff === 0) {
-              className += ' translate-x-0 translate-y-0 z-30'
-            } else if (indexDiff === 1 || indexDiff === -1) {
-              className +=
-                ' -translate-x-1/4 translate-y-1/4 lg:translate-x-1/4 lg:-translate-y-1/4 z-20'
-            } else if (
-              indexDiff === places.length - 1 ||
-              indexDiff === -places.length + 1
-            ) {
-              className +=
-                ' translate-x-1/4 translate-y-1/4 lg:translate-x-1/4 lg:translate-y-1/4 z-20'
-            } else if (indexDiff === 2 || indexDiff === -2) {
-              className +=
-                ' -translate-x-1/2 translate-y-1/2 lg:translate-x-1/2 lg:-translate-y-1/2 z-10'
-            } else if (
-              indexDiff === places.length - 2 ||
-              indexDiff === -places.length + 2
-            ) {
-              className +=
-                '  translate-x-1/2 translate-y-1/2 lg:translate-x-1/2 lg:translate-y-1/2 z-10'
-            } else if (indexDiff === 3 || indexDiff === -3) {
-              className +=
-                ' -translate-x-3/4 translate-y-3/4 lg:translate-x-3/4 lg:-translate-y-3/4 z-1'
-            } else if (
-              indexDiff === places.length - 3 ||
-              indexDiff === -places.length + 3
-            ) {
-              className +=
-                ' translate-x-3/4 translate-y-3/4 lg:translate-x-3/4 lg:translate-y-3/4 z-1'
-            } else {
-              className +=
-                ' -translate-x-full translate-y-3/4 lg:translate-x-3/4 lg:-translate-y-3/4 z-1'
-            }
-
-            return (
-              <CarouselItem key={index} item={item} className={className} />
-            )
-          })}
-        </Slider>
+      <div className='relative slider-container relative w-full lg:h-screen'>
+        {data.map((item, index) => {
+          return (
+            <div key={index} className={classNames[index]}>
+              <img
+                src={item.image && item.image.src}
+                className='w-full h-48 sm:h-64 lg:w-64 lg:h-full'
+              />
+            </div>
+          )
+        })}
       </div>
     </div>
   )

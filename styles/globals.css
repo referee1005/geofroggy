@@ -98,7 +98,6 @@ body {
 }
 @media (max-width: 1024px) {
   /* xl */
-
   .bg-opacity-container::before {
     content: "";
     position: absolute;
@@ -107,6 +106,191 @@ body {
     right: 0;
     bottom: 0;
     background-color: #245073;
+    z-index: 1;
+  }
+  .carousel_0 {
+    position: absolute;
+    z-index: 1;
+    bottom: -15%;
+    left: -40%;
+    width: 30%;
+    border-radius: 8px;
+    border-width: 8px;
+    /* transition: left 1s ease-in-out, transform 1s ease-in-out; */
+  }
+  .carousel_1 {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: -15%;
+    transform: translate(0%, 50%);
+    /* right: -25%; */
+    width: 30%;
+    /* height: 25%; */
+    border-radius: 8px;
+    border-width: 8px;
+    transition: left 1s ease-in-out, transform 1s ease-in-out;
+  }
+  .carousel_2 {
+    position: absolute;
+    /* transition: top 2s, left 2s; */
+    bottom: 0;
+    left: 10%;
+    transform: translate(0, 25%);
+    z-index: 2;
+    width: 30%;
+    /* height: 25%; */
+    border-radius: 8px;
+    border-width: 8px;
+    transition: left 1s ease-in-out, transform 1s ease-in-out;
+  }
+  .carousel_3 {
+    position: absolute;
+    /* transition: top 2s, left 2s; */
+    bottom: 0;
+    z-index: 3;
+    left: 35%;
+    /* right: -25%; */
+    /* transform: translate(25%, 0); */
+    width: 30%;
+    /* height: 25%; */
+    border-radius: 8px;
+    border-width: 8px;
+    transition: left 1s ease-in-out, transform 1s ease-in-out;
+  }
+  .carousel_4 {
+    position: absolute;
+    /* transition: top 2s, left 2s; */
+    bottom: 0;
+    z-index: 2;
+    left: 60%;
+    /* top: 60%; */
+    /* right: -50%; */
+    transform: translate(0, 25%);
+    width: 30%;
+    /* height: 25%; */
+    border-radius: 8px;
+    border-width: 8px;
+    transition: left 1s ease-in-out, transform 1s ease-in-out;
+  }
+  .carousel_5 {
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    left: 85%;
+    transform: translate(0, 50%);
+    width: 30%;
+    /* height: 25%; */
+    border-radius: 8px;
+    border-width: 8px;
+    transition: left 1s ease-in-out, transform 1s ease-in-out;
+  }
+  .carousel_6 {
+    position: absolute;
+    bottom: 0;
     z-index: 0;
+    left: 110%;
+    transform: translate(0, 75%);
+    width: 30%;
+    /* height: 30%; */
+    border-radius: 8px;
+    border-width: 8px;
+    transition: left 1s ease-in-out, transform 1s ease-in-out;
+  }
+  .carousel {
+    position: absolute;
+    bottom: -100%;
+    left: 200%;
+  }
+}
+@media (min-width: 1024px) {
+  /* xl */
+  .carousel_0 {
+    position: absolute;
+    /* transition: top 2s, left 2s; */
+    z-index: 1;
+    top: -40%;
+    /* right: -50%; */
+    transform: translate(50%, 0);
+    height: 30%;
+    border-radius: 8px;
+    border-width: 8px;
+    transition: top 1s ease-in-out, transform 1s ease-in-out;
+  }
+  .carousel_1 {
+    position: absolute;
+    /* transition: top 2s, left 2s; */
+    z-index: 1;
+    top: -15%;
+    transform: translate(50%, 0);
+    /* right: -25%; */
+    height: 30%;
+    border-radius: 8px;
+    border-width: 8px;
+    transition: top 1s ease-in-out, transform 1s ease-in-out;
+  }
+  .carousel_2 {
+    position: absolute;
+    /* transition: top 2s, left 2s; */
+    top: 10%;
+    transform: translate(25%, 0);
+    z-index: 2;
+    height: 30%;
+    border-radius: 8px;
+    border-width: 8px;
+    transition: top 1s ease-in-out, transform 1s ease-in-out;
+  }
+  .carousel_3 {
+    position: absolute;
+    /* transition: top 2s, left 2s; */
+    z-index: 3;
+    top: 35%;
+    /* right: -25%; */
+    /* transform: translate(25%, 0); */
+    height: 30%;
+    border-radius: 8px;
+    border-width: 8px;
+    transition: top 1s ease-in-out, transform 1s ease-in-out;
+  }
+  .carousel_4 {
+    position: absolute;
+    /* transition: top 2s, left 2s; */
+    z-index: 2;
+    top: 60%;
+    /* right: -50%; */
+    transform: translate(25%, 0);
+    height: 30%;
+    border-radius: 8px;
+    border-width: 8px;
+    transition: top 1s ease-in-out, transform 1s ease-in-out;
+  }
+  .carousel_5 {
+    position: absolute;
+    /* transition: top 2s, left 2s; */
+    z-index: 1;
+    top: 85%;
+    /* right: -50%; */
+    transform: translate(50%, 0);
+    height: 30%;
+    border-radius: 8px;
+    border-width: 8px;
+    transition: top 1s ease-in-out, transform 1s ease-in-out;
+  }
+  .carousel_6 {
+    position: absolute;
+    /* transition: top 2s, left 2s; */
+    z-index: 0;
+    top: 110%;
+    /* right: -50%; */
+    transform: translate(50%, 0);
+    height: 30%;
+    border-radius: 8px;
+    border-width: 8px;
+    transition: top 1s ease-in-out, transform 1s ease-in-out;
+  }
+  .carousel {
+    position: absolute;
+    bottom: 100%;
+    /* transition: top 1s ease-in-out, transform 1s ease-in-out; */
   }
 }

@@ -1,9 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import interest1 from "../../public/images/interest1.png";
-import interest2 from "../../public/images/interest1.png";
-import interest3 from "../../public/images/interest1.png";
-import interest4 from "../../public/images/interest1.png";
-import interest5 from "../../public/images/interest1.png";
+import interest2 from "../../public/images/interest2.png";
+import interest3 from "../../public/images/interest3.png";
+import interest4 from "../../public/images/interest4.png";
+import interest5 from "../../public/images/interest5.png";
 export default function handler(req, res) {
   res.status(200).json([
     {
