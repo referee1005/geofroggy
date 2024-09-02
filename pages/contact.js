@@ -4,9 +4,9 @@ import Subscribe from "@/components/shared/Subscribe";
 export default function Home() {
   return (
     <div className="mx-auto">
-      {/* <Note />
+      <Note />
       <Info />
-      <Subscribe bgColor={"#245073"} /> */}
+      <Subscribe bgColor={"#245073"} />
     </div>
   );
 }

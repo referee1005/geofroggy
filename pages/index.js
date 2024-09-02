@@ -8,7 +8,7 @@ import Culture from "@/components/home/Culture";
 import Places from "@/components/home/Places";
 export default function Home() {
   return (
-    <div className="mx-auto">
+    <div className="mx-auto ">
       <PagesMetaHead title="Home" />
       <Places />
       <Ofinterest />

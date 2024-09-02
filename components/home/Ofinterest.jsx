@@ -43,7 +43,7 @@ function Ofinterest ({}) {
 
   return (
     <div className='flex flex-col'>
-      <div className='font-medium text-3xl sm:text-5xl lg:text-7xl mt-12 sm:my-24 text-center'>
+      <div className='font-semibold text-3xl sm:text-5xl lg:text-7xl mt-12 sm:my-24 text-center'>
         Of Interest
       </div>
       <div className='bg-white sm:pb-24 overflow-hidden pt-16'>

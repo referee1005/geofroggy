@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        inter: ["Inter", "sans-serif"]
+      },
       inset: {
         "1/5": "20%", // Equivalent to top: 20%;
         "2/5": "40%", // Equivalent to top: 30%;

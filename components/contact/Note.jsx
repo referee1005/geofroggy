@@ -11,7 +11,7 @@ function NoteForm ({ amount, payment }) {
   return (
     <div className='w-full grid grid-cols-1 sm:grid-cols-2 py-16'>
       <div className='px-4 lg:px-16 2xl:px-32'>
-        <div className='mb-8 sm:text-3xl lg:text-5xl font-semibold'>
+        <div className='mb-8 text-3xl sm:text-4xl lg:text-5xl font-semibold'>
           Leave us a note
         </div>
         <div className='mb-12 sm:text-sm lg:text-lg'>

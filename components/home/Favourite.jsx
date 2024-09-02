@@ -24,7 +24,7 @@ function Favourite ({}) {
       style={{ backgroundColor: '#EEEEEE' }}
     >
       <div className='text-center'>
-        <div className='font-medium text-3xl sm:text-5xl lg:text-7xl my-12 sm:my-24 text-center'>
+        <div className='font-semibold text-3xl sm:text-5xl lg:text-7xl my-12 sm:my-24 text-center'>
           Favourite Places
         </div>
         <div className=' grid grid-cols-3 lg:grid-cols-6 gap-8 relative flex min-h-64 sm:min-h-64 pb-24'>

@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <AnimatePresence>
-        <div className=" bg-secondary-light dark:bg-primary-dark transition duration-300">
+        <div className=" bg-secondary-light dark:bg-primary-dark transition duration-300 font-inter">
           <DefaultLayout>
             <Component {...pageProps} />
           </DefaultLayout>
