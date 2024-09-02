@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 // import Slider from 'react-slick'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchPlacesRequest } from '@/actions/home'
@@ -21,14 +21,13 @@ function Places () {
   const [offsetY, setOffsetY] = useState(0)
   const [screenWidth, setScreenWidth] = useState()
   const [classNames, setClassNames] = useState([])
-
+  const intervalRef = useRef(null)
   const data = useSelector(state => state.home.places)
   const dispatch = useDispatch()
 
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth)
-      // setIsVertical(window.innerWidth >= 1024) // 1024px corresponds to 'lg' in Tailwind CSS
     }
     handleResize() // Initial check
     window.addEventListener('resize', handleResize) // Add event listener
@@ -36,23 +35,34 @@ function Places () {
   }, [])
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setClassNames(prevClasses => {
-        const newClasses = [...prevClasses]
-        newClasses.push(newClasses.shift())
-        return newClasses
-      })
-      setCurrentIndex(
-        prevIndex => (prevIndex - 1 + places.length) % places.length
-      )
-    }, 3000) // 3 seconds
+    if (isTransitioning) {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    } else {
+      intervalRef.current = setInterval(() => {
+        setClassNames(prevClasses => {
+          const newClasses = [...prevClasses]
+          newClasses.push(newClasses.shift())
+          return newClasses
+        })
+        setCurrentIndex(
+          prevIndex => (prevIndex - 1 + places.length) % places.length
+        )
+      }, 3000) // 3 seconds
+    }
 
-    return () => clearInterval(interval)
-  }, [places.length])
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
+  }, [isTransitioning, places.length])
 
   useEffect(() => {
     if (data.length) setPlaces(data)
   }, [data])
+
   useEffect(() => {
     const calculateStyles = () => {
       const classNames = places.map((item, index) => {
@@ -63,7 +73,6 @@ function Places () {
       setClassNames(classNames)
     }
     calculateStyles()
-    // setData(places)
   }, [places])
 
   useEffect(() => {
