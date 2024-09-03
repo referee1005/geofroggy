@@ -231,7 +231,11 @@ function AppHeader () {
             {/* <div className='hidden md:flex'> */}
             <div className='mr-4'>
               {' '}
-              <CustomButton title={'Login'} bgColor={'#195883'} />
+              <CustomButton
+                title={'Login'}
+                bgColor={'#195883'}
+                click={() => router.push('/join')}
+              />
             </div>
             <div>
               {' '}

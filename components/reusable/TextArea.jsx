@@ -1,7 +1,15 @@
-function TextArea ({ label, placeholder, id, name, rows = 4, mb = 4 }) {
+function TextArea ({
+  label,
+  placeholder,
+  id,
+  name,
+  rows = 4,
+  mb = 4,
+  textColor = 'text-gray-700'
+}) {
   return (
     <div class={`mb-${mb}`}>
-      <label for={label} class='block text-sm font-medium text-gray-700'>
+      <label for={label} class={`block text-sm font-medium ${textColor}`}>
         {label}
       </label>
       <textarea

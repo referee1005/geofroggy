@@ -46,7 +46,6 @@ function Subscribe ({ bgColor, textColor, buttonColor, blur }) {
                     focus:ring-blue-500
                     focus:border-transparent
                     shadow-sm
-                    
                   '
                 />
               </div>

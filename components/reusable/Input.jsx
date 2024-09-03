@@ -8,11 +8,17 @@ function Input ({
   type,
   mb = 4,
   startIconSrc,
-  endIconSrc
+  endIconSrc,
+  textColor = 'text-gray-700',
+  opacity = false,
+  inputHeight = 12
 }) {
   return (
     <div className={`mb-${mb}`}>
-      <label htmlFor={id} className='block text-sm font-medium text-gray-700'>
+      <label
+        htmlFor={id}
+        className={`block text-sm md:text-md 2xl:text-lg font-medium ${textColor}`}
+      >
         {label}
       </label>
       <div className='relative mt-1'>
@@ -27,7 +33,9 @@ function Input ({
           name={name}
           className={`block w-full pl-${startIconSrc ? '12' : '3'} pr-${
             endIconSrc ? '12' : '3'
-          } py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
+          } py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg ${
+            opacity ? 'bg-gray-300 bg-opacity-50' : ''
+          } h-${inputHeight}`}
           placeholder={placeholder}
         />
         {endIconSrc && (
