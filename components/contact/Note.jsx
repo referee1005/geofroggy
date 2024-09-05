@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import Input from '../reusable/Input'
 import TextArea from '../reusable/TextArea'
-import Image from 'next/image'
 import CustomButton from '../reusable/CustomButton'
-import creditSVG from '../../public/images/donate/credit-card.svg'
-import calenderSVG from '../../public/images/donate/calendar.svg'
-import Cardtype from '../../public/images/donate/card_type.png'
 
 function NoteForm ({ amount, payment }) {
+  const mapSrc = `https://maps.googleapis.com/maps/api/staticmap?center=40.7128,-74.0060&zoom=13&size=600x300&maptype=roadmap&key=AIzaSyA-_T5OLFv-B1Pl-9IFmi1V0vDW7dirTNA`
+  const handleViewLargeMap = () => {
+    const mapUrl = `https://www.google.com/maps?q=40.7128,-74.0060`
+    window.open(mapUrl, '_blank')
+  }
   return (
     <div className='w-full grid grid-cols-1 sm:grid-cols-2 py-16'>
       <div className='px-4 lg:px-16 2xl:px-32'>
@@ -40,7 +41,15 @@ function NoteForm ({ amount, payment }) {
           />
         </div>
       </div>
-      <div className='px-4 py-8 sm:py-0 lg:px-16  2xl:px-32 '></div>
+      <div className='px-4 py-8 sm:py-0 lg:px-16  2xl:px-32 '>
+        <img src={mapSrc} alt='Google Map' width={600} height={300} />
+        <button
+          onClick={handleViewLargeMap}
+          className='mt-4 px-4 py-2 bg-blue-500 text-white rounded'
+        >
+          View Large Map
+        </button>
+      </div>
     </div>
   )
 }

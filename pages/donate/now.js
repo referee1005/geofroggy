@@ -1,5 +1,5 @@
-import Advert from "@/components/donate/Advert";
-import Donate from "@/components/donate/Donate";
+import Advert from "@/components/donate/now/Advert";
+import Donate from "@/components/donate/now/Donate";
 export default function Home() {
   return (
     <div className="mx-auto">

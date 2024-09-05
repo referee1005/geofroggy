@@ -23,3 +23,7 @@ export const FETCH_SITE_INFO_FAILURE = "FETCH_SITE_INFO_FAILURE";
 export const FETCH_FAQ_REQUEST = "FETCH_FAQ_REQUEST";
 export const FETCH_FAQ_SUCCESS = "FETCH_FAQ_SUCCESS";
 export const FETCH_FAQ_FAILURE = "FETCH_FAQ_FAILURE";
+// //***************************donate_actions***************************** */
+// export const FETCH_FAQ_REQUEST = "FETCH_FAQ_REQUEST";
+// export const FETCH_FAQ_SUCCESS = "FETCH_FAQ_SUCCESS";
+// export const FETCH_FAQ_FAILURE = "FETCH_FAQ_FAILURE";

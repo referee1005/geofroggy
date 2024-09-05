@@ -34,8 +34,9 @@ export const fetchSiteInfoData = async () => {
   const data = await res.json();
   return data;
 };
-export const fetchFaqData = async () => {
-  const res = await fetch("/api/faq");
+export const fetchFaqData = async (query) => {
+  const realQuery = query === undefined ? "" : "?" + query;
+  const res = await fetch("/api/faq" + realQuery);
   const data = await res.json();
   return data;
 };

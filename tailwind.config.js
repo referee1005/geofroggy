@@ -25,6 +25,11 @@ module.exports = {
       width: {
         53: "13.25rem"
       },
+      height: {
+        132: "33rem",
+        120: "30rem",
+        108: "27rem"
+      },
       borderImage: {
         gradient: "linear-gradient(to right, grey, #acacac) 1"
       },
@@ -34,6 +39,7 @@ module.exports = {
       },
       minHeight: {
         custom: "400px",
+        custom2: "600px",
         custom1: "800px"
       },
       screens: {
@@ -42,6 +48,9 @@ module.exports = {
         ml: "800px",
         "3xl": "1800px"
       },
+      // margin: {
+      //   "": "15%"
+      // },
       colors: {
         // Light colors
         "custom-primary": "#195883",
@@ -68,7 +77,13 @@ module.exports = {
         "custom-lg": "15px",
         "custom-xl": "16px",
         "custom-2xl": "18px",
-        "custom-3xl": "20px"
+        "custom-3xl": "20px",
+        "custom-10xl": "150px",
+        "custom-11xl": "200px",
+        "custom-12xl": "256px"
+      },
+      borderRadius: {
+        "4xl": "40px" // Example custom border-radius
       }
     }
   },

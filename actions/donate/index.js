@@ -4,9 +4,8 @@ import {
   FETCH_FAQ_FAILURE
 } from "../types";
 
-export const fetchFaqRequest = (query) => ({
-  type: FETCH_FAQ_REQUEST,
-  payload: query
+export const fetchFaqRequest = () => ({
+  type: FETCH_FAQ_REQUEST
 });
 
 export const fetchFaqSuccess = (data) => ({

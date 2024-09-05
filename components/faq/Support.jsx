@@ -24,12 +24,12 @@ function Support () {
     }
   }
   return (
-    <div className='relative flex flex-col min-h-96 lg:min-h-96'>
+    <div className='relative flex flex-col min-h-80 lg:min-h-80'>
       <div className='bg-white flex'>
         <Image
           src={image}
           alt='Light Logo'
-          className='min-h-96 lg:min-h-96 w-full'
+          className='h-80 min-h-80 lg:min-h-96 w-full lg:h-96'
         />
       </div>
       <div className='absolute container-custom h-full w-full flex justify-center '>
@@ -38,7 +38,7 @@ function Support () {
             Support and Documentation
           </div>
           <div className='text-xs lg:text-base mx-auto mb-2 lg:mb-4 lg:mb-6 w-full flex justify-center'>
-            <div class='relative mt-2 rounded-md shadow-sm w-3/4 sm:w-1/2 '>
+            <div class='relative mt-2 rounded-md shadow-sm w-3/4 lg:w-1/2 '>
               <div class='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
                 <span class='text-white sm:text-sm'>
                   <svg
