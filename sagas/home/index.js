@@ -7,19 +7,23 @@ import {
   fetchRecentAdditionsSuccess,
   fetchRecentAdditionsFailure,
   fetchPlacesSuccess,
-  fetchPlacesFailure
+  fetchPlacesFailure,
+  fetchFavouritePlacesSuccess,
+  fetchFavouritePlacesFailure
 } from "../../actions/home";
 import {
   FETCH_INTERESTS_REQUEST,
   FETCH_POPULAR_COUNTRIES_REQUEST,
   FETCH_RECENT_ADDITIONS_REQUEST,
-  FETCH_PLACES_REQUEST
+  FETCH_PLACES_REQUEST,
+  FETCH_FAVOURITE_PLACES_REQUEST
 } from "../../actions/types";
 import {
   fetchInterestData,
   fetchPopularData,
   fetchRecentData,
-  fetchPlaceData
+  fetchPlaceData,
+  fetchFavouritePlaceData
 } from "../../api"; // Assuming you have an API module to handle your requests
 
 function* fetchInterests() {
@@ -58,9 +62,19 @@ function* fetchPlaces() {
   }
 }
 
+function* fetchFavouritePlaces() {
+  try {
+    const response = yield call(fetchFavouritePlaceData);
+    yield put(fetchFavouritePlacesSuccess(response));
+  } catch (error) {
+    yield put(fetchFavouritePlacesFailure(error.message));
+  }
+}
+
 export function* homeSaga() {
   yield takeLatest(FETCH_INTERESTS_REQUEST, fetchInterests);
   yield takeLatest(FETCH_POPULAR_COUNTRIES_REQUEST, fetchPopularCountries);
   yield takeLatest(FETCH_RECENT_ADDITIONS_REQUEST, fetchRecentAdditions);
   yield takeLatest(FETCH_PLACES_REQUEST, fetchPlaces);
+  yield takeLatest(FETCH_FAVOURITE_PLACES_REQUEST, fetchFavouritePlaces);
 }

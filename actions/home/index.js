@@ -8,6 +8,9 @@ import {
   FETCH_RECENT_ADDITIONS_REQUEST,
   FETCH_RECENT_ADDITIONS_SUCCESS,
   FETCH_RECENT_ADDITIONS_FAILURE,
+  FETCH_FAVOURITE_PLACES_REQUEST,
+  FETCH_FAVOURITE_PLACES_SUCCESS,
+  FETCH_FAVOURITE_PLACES_FAILURE,
   FETCH_PLACES_REQUEST,
   FETCH_PLACES_SUCCESS,
   FETCH_PLACES_FAILURE
@@ -63,5 +66,18 @@ export const fetchPlacesSuccess = (data) => ({
 
 export const fetchPlacesFailure = (error) => ({
   type: FETCH_PLACES_FAILURE,
+  payload: error
+});
+export const fetchFavouritePlacesRequest = () => ({
+  type: FETCH_FAVOURITE_PLACES_REQUEST
+});
+
+export const fetchFavouritePlacesSuccess = (data) => ({
+  type: FETCH_FAVOURITE_PLACES_SUCCESS,
+  payload: data
+});
+
+export const fetchFavouritePlacesFailure = (error) => ({
+  type: FETCH_FAVOURITE_PLACES_FAILURE,
   payload: error
 });

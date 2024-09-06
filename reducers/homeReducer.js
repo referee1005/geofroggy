@@ -10,7 +10,10 @@ import {
   FETCH_RECENT_ADDITIONS_FAILURE,
   FETCH_PLACES_REQUEST,
   FETCH_PLACES_SUCCESS,
-  FETCH_PLACES_FAILURE
+  FETCH_PLACES_FAILURE,
+  FETCH_FAVOURITE_PLACES_REQUEST,
+  FETCH_FAVOURITE_PLACES_SUCCESS,
+  FETCH_FAVOURITE_PLACES_FAILURE
 } from "../actions/types";
 
 const initialState = {
@@ -18,7 +21,8 @@ const initialState = {
   interests: [],
   popular_countries: [],
   recent_additions: [],
-  places: []
+  places: [],
+  favourite_places: []
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -86,6 +90,23 @@ const dataReducer = (state = initialState, action) => {
         places: action.payload
       };
     case FETCH_PLACES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+    case FETCH_FAVOURITE_PLACES_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case FETCH_FAVOURITE_PLACES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        favourite_places: action.payload
+      };
+    case FETCH_FAVOURITE_PLACES_FAILURE:
       return {
         ...state,
         loading: false,

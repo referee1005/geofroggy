@@ -1,13 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
-// import Slider from 'react-slick'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchPlacesRequest } from '@/actions/home'
-// import 'slick-carousel/slick/slick.css'
-// import 'slick-carousel/slick/slick-theme.css'
 import { FiArrowUpRight } from 'react-icons/fi'
 import arrow from '../../public/images/Arrow.png'
 import Image from 'next/image'
-import Slider from '../reusable/Slider'
 
 function Places () {
   const [places, setPlaces] = useState([])
@@ -21,6 +17,7 @@ function Places () {
   const [offsetY, setOffsetY] = useState(0)
   const [screenWidth, setScreenWidth] = useState()
   const [classNames, setClassNames] = useState([])
+  const [mouseOver, setMouseOver] = useState(false)
   const intervalRef = useRef(null)
   const data = useSelector(state => state.home.places)
   const dispatch = useDispatch()
@@ -40,16 +37,18 @@ function Places () {
         clearInterval(intervalRef.current)
       }
     } else {
-      intervalRef.current = setInterval(() => {
-        setClassNames(prevClasses => {
-          const newClasses = [...prevClasses]
-          newClasses.push(newClasses.shift())
-          return newClasses
-        })
-        setCurrentIndex(
-          prevIndex => (prevIndex - 1 + places.length) % places.length
-        )
-      }, 3000) // 3 seconds
+      if (!clickIcon && !mouseOver) {
+        intervalRef.current = setInterval(() => {
+          setClassNames(prevClasses => {
+            const newClasses = [...prevClasses]
+            newClasses.push(newClasses.shift())
+            return newClasses
+          })
+          setCurrentIndex(
+            prevIndex => (prevIndex - 1 + places.length) % places.length
+          )
+        }, 3000) // 3 seconds
+      }
     }
 
     return () => {
@@ -57,7 +56,7 @@ function Places () {
         clearInterval(intervalRef.current)
       }
     }
-  }, [isTransitioning, places.length])
+  }, [isTransitioning, places.length, clickIcon, mouseOver])
 
   useEffect(() => {
     if (data.length) setPlaces(data)
@@ -300,15 +299,6 @@ function Places () {
       </div>
 
       {/* Custom Pagination */}
-
-      {/* <Slider
-        clickIcon={clickIcon}
-        places={places}
-        setMoveCount={diff => {
-          let newIndex = (currentIndex + diff + places.length) % places.length
-          setCurrentIndex(newIndex)
-        }}
-      /> */}
       <div
         className={`absolute bottom-0 lg:right-0 w-full lg:h-full lg:w-48
          ${clickIcon ? 'hidden' : 'flex flex-col items-center'}`}
@@ -322,7 +312,12 @@ function Places () {
         <div className='relative slider-container relative w-full lg:h-screen'>
           {data.map((item, index) => {
             return (
-              <div key={index} className={classNames[index]}>
+              <div
+                key={index}
+                className={classNames[index]}
+                onMouseOver={() => setMouseOver(true)}
+                onMouseOut={() => setMouseOver(false)}
+              >
                 <img
                   src={item.image && item.image.src}
                   className='w-full h-48 sm:h-64 lg:w-64 lg:h-full cursor-pointer'
