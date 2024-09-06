@@ -23,7 +23,11 @@ export const FETCH_SITE_INFO_FAILURE = "FETCH_SITE_INFO_FAILURE";
 export const FETCH_FAQ_REQUEST = "FETCH_FAQ_REQUEST";
 export const FETCH_FAQ_SUCCESS = "FETCH_FAQ_SUCCESS";
 export const FETCH_FAQ_FAILURE = "FETCH_FAQ_FAILURE";
-// //***************************donate_actions***************************** */
-// export const FETCH_FAQ_REQUEST = "FETCH_FAQ_REQUEST";
-// export const FETCH_FAQ_SUCCESS = "FETCH_FAQ_SUCCESS";
-// export const FETCH_FAQ_FAILURE = "FETCH_FAQ_FAILURE";
+//***************************donate_actions***************************** */
+export const FETCH_DONATE_REQUEST = "FETCH_DONATE_REQUEST";
+export const FETCH_DONATE_SUCCESS = "FETCH_DONATE_SUCCESS";
+export const FETCH_DONATE_FAILURE = "FETCH_DONATE_FAILURE";
+//***************************contact_actions***************************** */
+export const FETCH_CONTACT_REQUEST = "FETCH_CONTACT_REQUEST";
+export const FETCH_CONTACT_SUCCESS = "FETCH_CONTACT_SUCCESS";
+export const FETCH_CONTACT_FAILURE = "FETCH_CONTACT_FAILURE";

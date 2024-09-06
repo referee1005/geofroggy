@@ -168,7 +168,7 @@ function Part1 ({}) {
         </div>
       </div>
       {/*************************************  small screen  ****************************************/}
-      <div className='md:hidden grid grid-cols-2 gap-2 ms:gap-6 sm:gap-10 mt-8'>
+      <div className='md:hidden grid grid-cols-2 gap-2 mt-8'>
         <div>
           <div
             className='relative rounded-3xl h-96 ms:h-120 sm:h-132 flex flex-col justify-between py-2'
@@ -277,7 +277,7 @@ function Part1 ({}) {
             className='flex justify-center items-center flex-1'
             style={{ color: '#195883' }}
           >
-            <div className='text-xl ms:text-2xl sm:text-3xl font-medium'>
+            <div className='text-lg ms:text-2xl sm:text-3xl font-medium'>
               Join 5M+ People Donate
             </div>
           </div>

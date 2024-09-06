@@ -40,3 +40,13 @@ export const fetchFaqData = async (query) => {
   const data = await res.json();
   return data;
 };
+export const fetchDonateData = async () => {
+  const res = await fetch("/api/donate-amount");
+  const data = await res.json();
+  return data;
+};
+export const fetchContactData = async () => {
+  const res = await fetch("/api/contact");
+  const data = await res.json();
+  return data;
+};

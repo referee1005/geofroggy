@@ -1,24 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import image from '../../public/images/Home-whoweare.png'
 import JoinButton from '../reusable/JoinUs'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchSiteInfoRequest } from '@/actions/about'
 
-function Ofinterest () {
-  const [siteData, setData] = useState(null)
-  const data = useSelector(state => state.about.data)
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(fetchSiteInfoRequest())
-  }, [dispatch])
-
-  // useEffect(() => {
-  //   setData({
-  //     total_users: data.tota
-  //   })
-  // }, [data])
+function Ofinterest ({ data }) {
   const formatNumber = number => {
     if (number < 1000) {
       return number + '+'
@@ -41,17 +26,10 @@ function Ofinterest () {
         {/* First Column - Text Content */}
         <div className='inset-0 flex flex-col justify-center text-center lg:text-left text-white w-full lg:w-full 2xl:w-4/5 mx-auto'>
           <div className='text-4xl lg:text-5xl 2xl:text-6xl font-semibold mb-2 lg:mb-4 2xl:mb-12'>
-            Who we are
+            {data.title}
           </div>
           <div className='text-xs lg:text-base mx-auto mb-2 lg:mb-4 lg:mb-6'>
-            We will offer various city related tours (and surrounding areas)
-            along with information on Transportation, Accommodations, Medellin
-            Travel Blog, Food, Safety. We will offer various city related tours
-            (and surrounding areas) along with information on Transportation,
-            Accommodations, Medellin Travel Blog, Food, Safety. We will offer
-            various city related tours (and surrounding areas) along with
-            information on Transportation, Accommodations, Medellin Travel Blog,
-            Food, Safety.
+            {data.description}
           </div>
           <div>
             <JoinButton bgColor={'#269938'} />

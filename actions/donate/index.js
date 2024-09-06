@@ -1,19 +1,19 @@
 import {
-  FETCH_FAQ_REQUEST,
-  FETCH_FAQ_SUCCESS,
-  FETCH_FAQ_FAILURE
+  FETCH_DONATE_REQUEST,
+  FETCH_DONATE_SUCCESS,
+  FETCH_DONATE_FAILURE
 } from "../types";
 
-export const fetchFaqRequest = () => ({
-  type: FETCH_FAQ_REQUEST
+export const fetchDonateRequest = () => ({
+  type: FETCH_DONATE_REQUEST
 });
 
-export const fetchFaqSuccess = (data) => ({
-  type: FETCH_FAQ_SUCCESS,
+export const fetchDonateSuccess = (data) => ({
+  type: FETCH_DONATE_SUCCESS,
   payload: data
 });
 
-export const fetchFaqFailure = (error) => ({
-  type: FETCH_FAQ_FAILURE,
+export const fetchDonateFailure = (error) => ({
+  type: FETCH_DONATE_FAILURE,
   payload: error
 });
