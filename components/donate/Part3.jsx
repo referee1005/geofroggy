@@ -29,17 +29,14 @@ const members = [
 ]
 function Part2 ({}) {
   return (
-    <div className='container-custom py-24 sm:min-h-custom2 lg:h-screen lg:min-h-custom1'>
+    <div className='container-custom py-24 sm:min-h-custom2  lg:min-h-custom1'>
       <div className='flex flex-col items-center mb-16'>
         <div className='text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl text-center mb-4 font-medium'>
           Meet our team
         </div>
-        <div className='w-full text-center text-xl 2xl:text-2xl'>
-          We’d love to ave you! Join our network of Travellers
-        </div>
-        <div className='w-full text-center text-xl 2xl:text-2xl'>
-          {' '}
-          and geography geeks
+        <div className='w-full text-center text-base lg:text-xl 2xl:text-2xl xl:w-1/3'>
+          We’d love to ave you! Join our network of Travellers and geography
+          geeks
         </div>
       </div>
       <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>
