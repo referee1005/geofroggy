@@ -6,7 +6,7 @@ import 'leaflet-control-mini-map' // Import MiniMap from leaflet
 import { useEffect } from 'react'
 
 const MapComponent = ({ lat, lang, mini, zoom, scale }) => {
-  const mapTilerUrl = `https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=PdrbDFtQAKjwo0m178NO`
+  const mapTilerUrl = `https://api.maptiler.com/maps/bright/{z}/{x}/{y}.png?key=PdrbDFtQAKjwo0m178NO`
 
   const customIcon = new L.Icon({
     iconUrl: '/images/marker.png', // Path to your marker image
