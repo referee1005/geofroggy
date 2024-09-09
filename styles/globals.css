@@ -294,3 +294,8 @@ body {
     /* transition: top 1s ease-in-out, transform 1s ease-in-out; */
   }
 }
+.leaflet-control-minimap {
+  border: 4px solid white; /* Your desired border color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional: add shadow */
+  border-radius: 8px; /* Optional: round the corners */
+}

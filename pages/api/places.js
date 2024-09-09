@@ -1,49 +1,59 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import place1 from "../../public/images/Place1.png";
-import place2 from "../../public/images/favourite1.png";
-import place3 from "../../public/images/favourite2.png";
-import place4 from "../../public/images/favourite3.png";
-import place5 from "../../public/images/favourite4.png";
-import place6 from "../../public/images/favourite5.png";
+import place1 from "../../public/images/place1.jpg";
+import place2 from "../../public/images/place2.jpg";
+import place3 from "../../public/images/place3.jpg";
+import place4 from "../../public/images/place4.jpg";
+import place5 from "../../public/images/place5.jpg";
+import place6 from "../../public/images/place6.jpg";
+import place7 from "../../public/images/place7.jpg";
+import place8 from "../../public/images/place8.jpg";
 import avatar from "../../public/images/avatar.png";
 import map from "../../public/images/map.png";
 export default function handler(req, res) {
   res.status(200).json([
     {
       id: 1,
-      title: "Beautiful Beach",
-      description: "A serene beach with clear blue waters and white sand.",
-      place_name: "Maya Bay",
-      country_info: { name: "Thailand", continent: "Asia" },
+      title: "Grand Canyon",
+      description:
+        "The Grand Canyon is a stunning natural wonder located in northern Arizona, USA",
+      place_name: "Grand Canyon",
+      country_info: { name: "United States", continent: "North America" },
       author: "John Doe",
       google_map_url: map,
       author_image: avatar,
       image: place1,
+      lat: 36.1069,
+      lang: 112.1129,
       thumbnail: place1
     },
     {
       id: 2,
-      title: "Mountain Retreat",
-      description: "A peaceful mountain retreat with stunning views.",
-      place_name: "Himalayas",
+      title: "Great Barrier Reef",
+      description:
+        "The Great Barrier Reef is the world's largest coral reef system.",
+      place_name: "Great Barrier Reef",
       country_info: { name: "Nepal", continent: "Asia" },
       author: "Jane Smith",
       google_map_url: map,
       author_image: avatar,
       image: place2,
+      lat: 18.2871,
+      lang: 147.6992,
       thumbnail: place1
     },
     {
       id: 3,
-      title: "The Great Wall of China",
+      title: "Serengeti National Park",
       description:
-        "The Great Wall of China is a series of fortifications built to protect China from invasions.",
-      place_name: "Great Wall of China",
-      country_info: { name: "China", continent: "Asia" },
+        "Serengeti National Park is a vast wildlife reserve located in northern Tanzania.",
+      place_name: "Serengeti National Park",
+      country_info: { name: "Tanzania", continent: "Africa" },
       author: "John Doe",
       google_map_url: map,
       author_image: avatar,
       image: place3,
+      lat: 2.3333,
+      lang: 34.8333,
       thumbnail: place1
     },
     {
@@ -57,19 +67,23 @@ export default function handler(req, res) {
       google_map_url: map,
       author_image: avatar,
       image: place4,
+      lat: 48.8584,
+      lang: 2.2945,
       thumbnail: place1
     },
     {
       id: 5,
-      title: "Machu Picchu",
+      title: "Mount Fuji",
       description:
-        "Machu Picchu is an ancient Incan city set high in the Andes Mountains of Peru.",
-      place_name: "Machu Picchu",
-      country_info: { name: "Peru", continent: "South America" },
+        "Mount Fuji is Japan's highest peak and an iconic symbol of the country.",
+      place_name: "Mount Fuji",
+      country_info: { name: "Japan", continent: "Asia" },
       author: "Carlos Rivera",
       google_map_url: map,
       author_image: avatar,
       image: place5,
+      lat: 35.3606,
+      lang: 138.7274,
       thumbnail: place1
     },
     {
@@ -78,37 +92,43 @@ export default function handler(req, res) {
       description:
         "Machu Picchu is an ancient Incan city set high in the Andes Mountains of Peru.",
       place_name: "Machu Picchu",
-      country_info: { name: "Peru", continent: "South America" },
+      country_info: { name: "Zimbabwe/Zambia", continent: "Africa" },
       author: "Carlos Rivera",
       google_map_url: map,
       author_image: avatar,
       image: place6,
+      lat: 17.9243,
+      lang: 25.8567,
       thumbnail: place6
     },
     {
       id: 7,
-      title: "Machu Picchu",
+      title: "Santorini",
       description:
-        "Machu Picchu is an ancient Incan city set high in the Andes Mountains of Peru.",
-      place_name: "Machu Picchu",
-      country_info: { name: "Peru", continent: "South America" },
+        "Santorini is a stunning island located in the Aegean Sea, part of Greece's Cyclades group.",
+      place_name: "Santorini",
+      country_info: { name: "Greece", continent: "Europe" },
       author: "Carlos Rivera",
       google_map_url: map,
       author_image: avatar,
-      image: place5,
+      image: place7,
+      lat: 36.3932,
+      lang: 25.4615,
       thumbnail: place6
     },
     {
       id: 8,
-      title: "Eiffel Tower",
+      title: "Banff National Park",
       description:
-        "The Eiffel Tower is an iconic iron lattice tower located in Paris, France",
-      place_name: "Eiffel Tower",
-      country_info: { name: "France", continent: "Europe" },
+        "Banff National Park is located in the Canadian Rockies of Alberta, Canada",
+      place_name: "Banff National Park",
+      country_info: { name: "Canada", continent: "North America" },
       author: "John Doe",
       google_map_url: map,
       author_image: avatar,
-      image: place4,
+      image: place8,
+      lat: 51.4968,
+      lang: 115.9281,
       thumbnail: place1
     }
   ]);

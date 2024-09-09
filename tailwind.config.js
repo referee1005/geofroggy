@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      scale: {
+        200: "2" // 60% scale
+      },
       fontFamily: {
         inter: ["Inter", "sans-serif"]
       },

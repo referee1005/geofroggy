@@ -2,9 +2,13 @@ import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchPlacesRequest } from '@/actions/home'
 import { FiArrowUpRight } from 'react-icons/fi'
+import dynamic from 'next/dynamic'
 import arrow from '../../public/images/Arrow.png'
 import Image from 'next/image'
 
+const MapComponent = dynamic(() => import('../reusable/map'), {
+  ssr: false
+})
 function Places () {
   const [places, setPlaces] = useState([])
   const [clickIcon, setClickIcon] = useState(null)
@@ -271,10 +275,14 @@ function Places () {
                       alt='author'
                     />
                   ) : (
-                    <Image
-                      src={places[currentIndex].google_map_url}
-                      alt='map'
-                    />
+                    <div className='relative aspect-[4/3] w-full'>
+                      <MapComponent
+                        lat={places[currentIndex].lat}
+                        lang={places[currentIndex].lang}
+                        mini={false}
+                        // scale={true}
+                      />
+                    </div>
                   ))}
 
                 <div className='text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl text-center mb-4'>
@@ -321,6 +329,7 @@ function Places () {
                 <img
                   src={item.image && item.image.src}
                   className='w-full h-48 sm:h-64 lg:w-64 lg:h-full cursor-pointer'
+                  // style={{ transform: 'none' }}
                 />
               </div>
             )

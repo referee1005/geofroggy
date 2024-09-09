@@ -18,7 +18,14 @@ function Faqs ({ title, data }) {
                 key={index}
               >
                 <div className='flex flex-col'>
-                  <div className='lg:text-lg 2xl:text-xl font-semibold'>
+                  <div
+                    className='lg:text-lg 2xl:text-xl font-semibold cursor-pointer'
+                    onClick={() => {
+                      index === currentIndex
+                        ? setCurrentIndex(null)
+                        : setCurrentIndex(index)
+                    }}
+                  >
                     {item.question}
                   </div>
                   {index === currentIndex && (

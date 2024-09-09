@@ -12,7 +12,9 @@ function DonateForm ({ amount, payment }) {
       <div className='px-4 lg:px-16 2xl:px-32'>
         <div className='mb-16 sm:text-sm lg:text-lg font-semibold'>
           You are donating as a guest or{' '}
-          <span style={{ color: '#269938' }}>Log in</span>
+          <span style={{ color: '#269938' }} className='cursor-pointer'>
+            Log in
+          </span>
         </div>
         <div>
           <div className='grid grid-cols-2 gap-2 lg:gap-8 2xl:gap-16'>
