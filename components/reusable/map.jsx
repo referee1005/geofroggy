@@ -10,7 +10,7 @@ const MapComponent = ({ lat, lang, mini, zoom, scale }) => {
 
   const customIcon = new L.Icon({
     iconUrl: '/images/marker.png', // Path to your marker image
-    iconSize: [35, 55], // Size of the icon
+    iconSize: [25, 40], // Size of the icon
     iconAnchor: [17, 45], // Anchor point of the icon [left/right, top/bottom]
     popupAnchor: [0, -45] // Popup position relative to the marker
   })
