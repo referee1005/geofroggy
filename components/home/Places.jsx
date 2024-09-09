@@ -5,6 +5,7 @@ import { FiArrowUpRight } from 'react-icons/fi'
 import dynamic from 'next/dynamic'
 import arrow from '../../public/images/Arrow.png'
 import Image from 'next/image'
+import Modal from '../reusable/Modal'
 
 const MapComponent = dynamic(() => import('../reusable/map'), {
   ssr: false
@@ -22,6 +23,8 @@ function Places () {
   const [screenWidth, setScreenWidth] = useState()
   const [classNames, setClassNames] = useState([])
   const [mouseOver, setMouseOver] = useState(false)
+  const [largeMap, setLargeMap] = useState(false)
+
   const intervalRef = useRef(null)
   const data = useSelector(state => state.home.places)
   const dispatch = useDispatch()
@@ -175,6 +178,9 @@ function Places () {
     setOffsetY(0)
   }, [])
 
+  const openModal = () => setLargeMap(true)
+  const closeModal = () => setLargeMap(false)
+
   if (!places.length) {
     return <div>Loading...</div> // Or return a fallback image/div
   }
@@ -296,8 +302,17 @@ function Places () {
                 </div>
               </div>
               <div className='flex items-center'>
-                <div className='text-lg inline'>
-                  {clickIcon === 'author' ? 'Follow for more' : 'View on Maps'}
+                <div
+                  className='text-lg inline cursor-pointer'
+                  onClick={() => {
+                    if (clickIcon === 'place') {
+                      setLargeMap(true)
+                    }
+                  }}
+                >
+                  {clickIcon === 'author'
+                    ? 'Follow for more'
+                    : 'View Large Map'}
                 </div>{' '}
                 <FiArrowUpRight />
               </div>
@@ -336,6 +351,19 @@ function Places () {
           })}
         </div>
       </div>
+      {largeMap && (
+        <Modal isOpen={largeMap} onClose={closeModal}>
+          <div className='w-full h-full'>
+            {' '}
+            <MapComponent
+              lat={places[currentIndex].lat}
+              lang={places[currentIndex].lang}
+              mini={true}
+              scale={true}
+            />
+          </div>
+        </Modal>
+      )}
     </div>
   )
 }
