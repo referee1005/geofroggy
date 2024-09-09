@@ -5,7 +5,7 @@ import AdvertImage from '../../../public/images/donate/image.png'
 function Advert ({}) {
   return (
     <div className='relative flex min-h-96 lg:min-h-96 pb-4'>
-      <div className='relative bg-white shadow-md overflow-hidden'>
+      <div className='relative bg-white shadow-md overflow-hidden w-full'>
         {/* Main Image */}
         <Image
           src={AdvertImage}
