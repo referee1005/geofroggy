@@ -23,7 +23,7 @@ export default function handler(req, res) {
       author_image: avatar,
       image: place1,
       lat: 36.1069,
-      lang: 112.1129,
+      lang: -112.1129,
       thumbnail: place1
     },
     {
@@ -37,7 +37,7 @@ export default function handler(req, res) {
       google_map_url: map,
       author_image: avatar,
       image: place2,
-      lat: 18.2871,
+      lat: -18.2871,
       lang: 147.6992,
       thumbnail: place1
     },
@@ -128,7 +128,7 @@ export default function handler(req, res) {
       author_image: avatar,
       image: place8,
       lat: 51.4968,
-      lang: 115.9281,
+      lang: -115.9281,
       thumbnail: place1
     }
   ]);

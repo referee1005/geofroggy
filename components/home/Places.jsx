@@ -280,7 +280,7 @@ function Places () {
                         lat={places[currentIndex].lat}
                         lang={places[currentIndex].lang}
                         mini={false}
-                        // scale={true}
+                        scale={true}
                       />
                     </div>
                   ))}
