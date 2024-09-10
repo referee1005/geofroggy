@@ -55,3 +55,8 @@ export const fetchContactData = async () => {
   const data = await res.json();
   return data;
 };
+export const fetchJobOptionsData = async () => {
+  const res = await fetch("/api/job_search_list");
+  const data = await res.json();
+  return data;
+};

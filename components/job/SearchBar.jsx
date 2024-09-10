@@ -1,17 +1,125 @@
 import React from 'react'
-import { Chip } from '@mui/material'
-import { Checkbox, FormControlLabel, FormGroup } from '@mui/material'
-function SearchBar ({ data }) {
+import {
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  Accordion,
+  AccordionActions,
+  AccordionSummary,
+  AccordionDetails,
+  Slider,
+  Chip,
+  Stack,
+  Box
+} from '@mui/material'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+
+function valuetext (value) {
+  return `$${value}`
+}
+
+function SearchBar ({ options }) {
+  const [salary, setSalary] = React.useState([0, 1000])
+
+  const handleChangeSalary = (event, newValue) => {
+    console.log(newValue)
+    setSalary(newValue)
+  }
+
   return (
-    <div className='container-custom mb-16'>
+    <div className='mb-16 bg-white rounded-xl h-screen px-4 '>
       <div>
-        {/* <CheckBox label='Senior Ambassador' /> */}
-        <FormGroup>
-          <FormControlLabel
-            control={<Checkbox color='black' />}
-            label='Required'
-          />
-        </FormGroup>
+        <Accordion sx={{ boxShadow: 'none', border: 'none' }} defaultExpanded>
+          <AccordionSummary
+            aria-controls='panel1-content'
+            id='panel1-header'
+            expandIcon={<ExpandMoreIcon />}
+          >
+            Job Positions
+          </AccordionSummary>
+          <AccordionDetails sx={{ paddingLeft: 4 }}>
+            <FormGroup>
+              {options.positions &&
+                options.positions.map(item => (
+                  <FormControlLabel
+                    key={item}
+                    control={<Checkbox color='black' />}
+                    label={item}
+                  />
+                ))}
+            </FormGroup>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion sx={{ boxShadow: 'none', border: 'none' }} defaultExpanded>
+          <AccordionSummary
+            aria-controls='panel1-content'
+            id='panel1-header'
+            expandIcon={<ExpandMoreIcon />}
+            // sx={{ padding: 0 }}
+          >
+            Salary
+          </AccordionSummary>
+          <AccordionDetails>
+            {options.salary && (
+              <Slider
+                getAriaValueText={valuetext}
+                defaultValue={salary}
+                valueLabelDisplay='auto'
+                sx={{
+                  color: '#00ad1c', // Change the slider's primary color
+                  '& .MuiSlider-thumb': {
+                    backgroundColor: 'thumbColor' // Custom thumb color
+                  },
+                  '& .MuiSlider-rail': {
+                    backgroundColor: 'railColor' // Custom rail color
+                  },
+                  '& .MuiSlider-track': {
+                    backgroundColor: '#00ad1c' // Custom track color
+                  }
+                }}
+                min={options.salary.min}
+                max={options.salary.max}
+                onChange={handleChangeSalary}
+                marks={salary.map(item => ({
+                  value: item,
+                  label: '$' + item
+                }))}
+              />
+            )}
+          </AccordionDetails>
+        </Accordion>
+        <Accordion sx={{ boxShadow: 'none', border: 'none' }} defaultExpanded>
+          <AccordionSummary
+            aria-controls='panel1-content'
+            id='panel1-header'
+            expandIcon={<ExpandMoreIcon />}
+          >
+            Tags
+          </AccordionSummary>
+          <AccordionDetails>
+            <Box
+              sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: 1, // Adds vertical spacing between rows
+                '& > :not(:nth-of-type(3n+1))': {
+                  ml: 1 // Adds horizontal spacing except for the first item in each row
+                }
+              }}
+            >
+              {options.tags &&
+                options.tags.map(item => (
+                  <Chip
+                    key={item} // Ensure a unique key for each tag
+                    label={item}
+                    component='a'
+                    href='#basic-chip'
+                    clickable
+                  />
+                ))}
+            </Box>
+          </AccordionDetails>
+        </Accordion>
       </div>
     </div>
   )
