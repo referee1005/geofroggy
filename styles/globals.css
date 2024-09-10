@@ -111,14 +111,26 @@ body {
   .carousel_0 {
     position: absolute;
     z-index: 1;
-    bottom: -15%;
-    left: -40%;
+    bottom: 0;
+    transform: translate(0, 100%);
+    left: -60%;
     width: 30%;
     border-radius: 8px;
     border-width: 8px;
     /* transition: left 1s ease-in-out, transform 1s ease-in-out; */
   }
   .carousel_1 {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    transform: translate(0, 100%);
+    left: -40%;
+    width: 30%;
+    border-radius: 8px;
+    border-width: 8px;
+    transition: left 1s ease-in-out, transform 1s ease-in-out;
+  }
+  .carousel_2 {
     position: absolute;
     z-index: 1;
     bottom: 0;
@@ -131,7 +143,7 @@ body {
     border-width: 8px;
     transition: left 1s ease-in-out, transform 1s ease-in-out;
   }
-  .carousel_2 {
+  .carousel_3 {
     position: absolute;
     /* transition: top 2s, left 2s; */
     bottom: 0;
@@ -144,7 +156,7 @@ body {
     border-width: 8px;
     transition: left 1s ease-in-out, transform 1s ease-in-out;
   }
-  .carousel_3 {
+  .carousel_4 {
     position: absolute;
     /* transition: top 2s, left 2s; */
     bottom: 0;
@@ -158,7 +170,7 @@ body {
     border-width: 8px;
     transition: left 1s ease-in-out, transform 1s ease-in-out;
   }
-  .carousel_4 {
+  .carousel_5 {
     position: absolute;
     /* transition: top 2s, left 2s; */
     bottom: 0;
@@ -173,7 +185,7 @@ body {
     border-width: 8px;
     transition: left 1s ease-in-out, transform 1s ease-in-out;
   }
-  .carousel_5 {
+  .carousel_6 {
     position: absolute;
     bottom: 0;
     z-index: 1;
@@ -185,12 +197,12 @@ body {
     border-width: 8px;
     transition: left 1s ease-in-out, transform 1s ease-in-out;
   }
-  .carousel_6 {
+  .carousel_7 {
     position: absolute;
     bottom: 0;
     z-index: 0;
     left: 110%;
-    transform: translate(0, 75%);
+    transform: translate(0, 100%);
     width: 30%;
     /* height: 30%; */
     border-radius: 8px;
@@ -199,8 +211,10 @@ body {
   }
   .carousel {
     position: absolute;
-    bottom: -100%;
+    bottom: 0;
+    transform: translate(0, 100%);
     left: 200%;
+    /* transition: left 1s ease-in-out, transform 1s ease-in-out; */
   }
 }
 @media (min-width: 1024px) {
@@ -209,11 +223,11 @@ body {
     position: absolute;
     /* transition: top 2s, left 2s; */
     z-index: 1;
-    top: -40%;
+    top: -60%;
     /* right: -50%; */
-    transform: translate(50%, 0);
+    transform: translate(100%, 0);
     height: 30%;
-    border-radius: 8px;
+    border-radius: 16px;
     border-width: 8px;
     transition: top 1s ease-in-out, transform 1s ease-in-out;
   }
@@ -221,26 +235,38 @@ body {
     position: absolute;
     /* transition: top 2s, left 2s; */
     z-index: 1;
-    top: -15%;
-    transform: translate(50%, 0);
-    /* right: -25%; */
+    top: -30%;
+    /* right: -50%; */
+    transform: translate(100%, 0);
     height: 30%;
-    border-radius: 8px;
+    border-radius: 16px;
     border-width: 8px;
     transition: top 1s ease-in-out, transform 1s ease-in-out;
   }
   .carousel_2 {
     position: absolute;
     /* transition: top 2s, left 2s; */
-    top: 10%;
-    transform: translate(25%, 0);
-    z-index: 2;
+    z-index: 1;
+    top: 0%;
+    transform: translate(50%, 0);
+    /* right: -25%; */
     height: 30%;
-    border-radius: 8px;
+    border-radius: 16px;
     border-width: 8px;
     transition: top 1s ease-in-out, transform 1s ease-in-out;
   }
   .carousel_3 {
+    position: absolute;
+    /* transition: top 2s, left 2s; */
+    top: 15%;
+    transform: translate(25%, 0);
+    z-index: 2;
+    height: 30%;
+    border-radius: 16px;
+    border-width: 8px;
+    transition: top 1s ease-in-out, transform 1s ease-in-out;
+  }
+  .carousel_4 {
     position: absolute;
     /* transition: top 2s, left 2s; */
     z-index: 3;
@@ -248,50 +274,50 @@ body {
     /* right: -25%; */
     /* transform: translate(25%, 0); */
     height: 30%;
-    border-radius: 8px;
-    border-width: 8px;
-    transition: top 1s ease-in-out, transform 1s ease-in-out;
-  }
-  .carousel_4 {
-    position: absolute;
-    /* transition: top 2s, left 2s; */
-    z-index: 2;
-    top: 60%;
-    /* right: -50%; */
-    transform: translate(25%, 0);
-    height: 30%;
-    border-radius: 8px;
+    border-radius: 16px;
     border-width: 8px;
     transition: top 1s ease-in-out, transform 1s ease-in-out;
   }
   .carousel_5 {
     position: absolute;
     /* transition: top 2s, left 2s; */
-    z-index: 1;
-    top: 85%;
+    z-index: 2;
+    top: 55%;
     /* right: -50%; */
-    transform: translate(50%, 0);
+    transform: translate(25%, 0);
     height: 30%;
-    border-radius: 8px;
+    border-radius: 16px;
     border-width: 8px;
     transition: top 1s ease-in-out, transform 1s ease-in-out;
   }
   .carousel_6 {
     position: absolute;
     /* transition: top 2s, left 2s; */
-    z-index: 0;
-    top: 110%;
+    z-index: 1;
+    top: 70%;
     /* right: -50%; */
     transform: translate(50%, 0);
     height: 30%;
-    border-radius: 8px;
+    border-radius: 16px;
+    border-width: 8px;
+    transition: top 1s ease-in-out, transform 1s ease-in-out;
+  }
+  .carousel_7 {
+    position: absolute;
+    /* transition: top 2s, left 2s; */
+    z-index: 0;
+    top: 100%;
+    /* right: -50%; */
+    transform: translate(100%, 0);
+    height: 30%;
+    border-radius: 16px;
     border-width: 8px;
     transition: top 1s ease-in-out, transform 1s ease-in-out;
   }
   .carousel {
     position: absolute;
-    bottom: 100%;
-    /* transition: top 1s ease-in-out, transform 1s ease-in-out; */
+    /* top: 10%; */
+    transform: translate(100%, 0);
   }
 }
 .leaflet-control-minimap {

@@ -13,7 +13,7 @@ const MapComponent = dynamic(() => import('../reusable/map'), {
 function Places () {
   const [places, setPlaces] = useState([])
   const [clickIcon, setClickIcon] = useState(null)
-  const [currentIndex, setCurrentIndex] = useState(3)
+  const [currentIndex, setCurrentIndex] = useState(4)
   const [dragging, setDragging] = useState(false)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [startX, setStartX] = useState(0)
@@ -72,7 +72,7 @@ function Places () {
   useEffect(() => {
     const calculateStyles = () => {
       const classNames = places.map((item, index) => {
-        if (index <= 6) return 'carousel_' + index
+        if (index <= 7) return 'carousel_' + index
         else return 'carousel'
       })
 
@@ -323,7 +323,7 @@ function Places () {
 
       {/* Custom Pagination */}
       <div
-        className={`absolute bottom-0 lg:right-0 w-full lg:h-full lg:w-48
+        className={`absolute bottom-0 lg:right-0 w-full lg:h-full lg:w-56
          ${clickIcon ? 'hidden' : 'flex flex-col items-center'}`}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
@@ -333,18 +333,33 @@ function Places () {
         onTouchEnd={handleTouchEnd}
       >
         <div className='relative slider-container relative w-full lg:h-screen'>
-          {data.map((item, index) => {
+          {places.map((item, index) => {
             return (
               <div
                 key={index}
                 className={classNames[index]}
                 onMouseOver={() => setMouseOver(true)}
                 onMouseOut={() => setMouseOver(false)}
+                onClick={() => {
+                  const diff = currentIndex - index
+
+                  setClassNames(prevClasses => {
+                    const newClasses = [...prevClasses]
+                    if (diff > 0) {
+                      for (let i = 0; i < diff; i++)
+                        newClasses.push(newClasses.shift())
+                    } else {
+                      for (let i = 0; i < Math.abs(diff); i++)
+                        newClasses.unshift(newClasses.pop())
+                    }
+                    return newClasses
+                  })
+                  setCurrentIndex(index)
+                }}
               >
                 <img
-                  src={item.image && item.image.src}
-                  className='w-full h-48 sm:h-64 lg:w-64 lg:h-full cursor-pointer'
-                  // style={{ transform: 'none' }}
+                  src={item.thumbnail && item.thumbnail.src}
+                  className='w-full h-48 sm:h-64 lg:w-56 lg:h-full cursor-pointer lg:rounded-lg'
                 />
               </div>
             )

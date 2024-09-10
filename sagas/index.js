@@ -4,7 +4,14 @@ import { aboutSaga } from "./about";
 import { faqSaga } from "./faq";
 import { donateSaga } from "./donate";
 import { contactSaga } from "./contact";
-
+import { jobSaga } from "./job";
 export default function* rootSaga() {
-  yield all([homeSaga(), aboutSaga(), faqSaga(), donateSaga(), contactSaga()]);
+  yield all([
+    homeSaga(),
+    aboutSaga(),
+    faqSaga(),
+    donateSaga(),
+    contactSaga(),
+    jobSaga()
+  ]);
 }
