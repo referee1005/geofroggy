@@ -7,10 +7,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchFaqRequest } from "@/actions/faq";
 // import Donate from "@/components/donate/now/Donate";
 export default function Home() {
+  const data = useSelector((state) => state.faq.data);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchFaqRequest("category=donate"));
+  }, [dispatch]);
+
   return (
-    <div className="mx-auto">
-      <Advert />
-      <Donate />
+    <div className="mx-auto ">
+      <Part1 />
+      <Part2 />
+      <Part3 />
+      <Part4 data={data["general_faqs"]} />
     </div>
   );
 }
