@@ -15,12 +15,15 @@ function Input ({
 }) {
   return (
     <div className={`mb-${mb}`}>
-      <label
-        htmlFor={id}
-        className={`block text-sm md:text-md 2xl:text-lg font-medium ${textColor}`}
-      >
-        {label}
-      </label>
+      {label && (
+        <label
+          htmlFor={id}
+          className={`block text-sm md:text-md 2xl:text-lg font-medium ${textColor}`}
+        >
+          {label}
+        </label>
+      )}
+
       <div className='relative mt-1'>
         {startIconSrc && (
           <span className='absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500'>

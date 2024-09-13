@@ -4,11 +4,14 @@ import dynamic from 'next/dynamic'
 import TextArea from '../reusable/TextArea'
 import CustomButton from '../reusable/CustomButton'
 import Modal from '../reusable/Modal'
+import { useDispatch } from 'react-redux'
+import { postNoteRequest } from '@/actions/contact'
 const MapComponent = dynamic(() => import('../reusable/map'), {
   ssr: false
 })
 function NoteForm () {
   const [largeMap, setLargeMap] = useState(false)
+  const dispatch = useDispatch()
 
   const openModal = () => setLargeMap(true)
   const closeModal = () => setLargeMap(false)
@@ -42,6 +45,7 @@ function NoteForm () {
             size={'xl'}
             px={8}
             width={'full'}
+            click={() => dispatch(postNoteRequest())}
           />
         </div>
       </div>

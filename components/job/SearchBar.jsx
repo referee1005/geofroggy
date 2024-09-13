@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   Checkbox,
   FormControlLabel,
@@ -10,9 +10,12 @@ import {
   Slider,
   Chip,
   Stack,
-  Box
+  Box,
+  Divider
 } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import Input from '../reusable/Input'
+import searchSVG from '../../public/images/job/Search.svg'
 
 function valuetext (value) {
   return `$${value}`
@@ -20,15 +23,24 @@ function valuetext (value) {
 
 function SearchBar ({ options }) {
   const [salary, setSalary] = React.useState([0, 1000])
+  useEffect(() => {
+    if (options.salary) setSalary([options.salary.min, options.salary.max])
+  }, [options])
 
   const handleChangeSalary = (event, newValue) => {
-    console.log(newValue)
     setSalary(newValue)
   }
 
   return (
-    <div className='mb-16 bg-white rounded-xl h-screen px-4 '>
+    <div className='mb-16 bg-white rounded-xl h-screen px-4 py-8 '>
       <div>
+        <div className='px-4'>
+          <Input
+            type='text'
+            startIconSrc={searchSVG}
+            placeholder={'Search Jobs'}
+          />
+        </div>
         <Accordion sx={{ boxShadow: 'none', border: 'none' }} defaultExpanded>
           <AccordionSummary
             aria-controls='panel1-content'
@@ -50,6 +62,7 @@ function SearchBar ({ options }) {
             </FormGroup>
           </AccordionDetails>
         </Accordion>
+        <Divider />
         <Accordion sx={{ boxShadow: 'none', border: 'none' }} defaultExpanded>
           <AccordionSummary
             aria-controls='panel1-content'
@@ -63,7 +76,7 @@ function SearchBar ({ options }) {
             {options.salary && (
               <Slider
                 getAriaValueText={valuetext}
-                defaultValue={salary}
+                value={salary}
                 valueLabelDisplay='auto'
                 sx={{
                   color: '#00ad1c', // Change the slider's primary color
@@ -88,6 +101,7 @@ function SearchBar ({ options }) {
             )}
           </AccordionDetails>
         </Accordion>
+        <Divider />
         <Accordion sx={{ boxShadow: 'none', border: 'none' }} defaultExpanded>
           <AccordionSummary
             aria-controls='panel1-content'
@@ -101,10 +115,10 @@ function SearchBar ({ options }) {
               sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
-                gap: 1, // Adds vertical spacing between rows
-                '& > :not(:nth-of-type(3n+1))': {
-                  ml: 1 // Adds horizontal spacing except for the first item in each row
-                }
+                gap: 1 // Adds vertical spacing between rows
+                // '& > :not(:nth-of-type(3n+1))': {
+                //   ml: 1 // Adds horizontal spacing except for the first item in each row
+                // }
               }}
             >
               {options.tags &&

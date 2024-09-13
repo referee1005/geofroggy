@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import Input from '../../reusable/Input'
-import TextArea from '../../reusable/TextArea'
+import Input from '../reusable/Input'
+import TextArea from '../reusable/TextArea'
 import Image from 'next/image'
-import CustomButton from '../../reusable/CustomButton'
-import creditSVG from '../../../public/images/donate/credit-card.svg'
-import Cardtype from '../../../public/images/donate/card_type.png'
+import CustomButton from '../reusable/CustomButton'
+import creditSVG from '../../public/images/donate/credit-card.svg'
+import Cardtype from '../../public/images/donate/card_type.png'
 
 function DonateForm ({ amount, payment }) {
   return (

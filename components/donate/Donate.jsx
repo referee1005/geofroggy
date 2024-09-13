@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import CustomButton from '../../reusable/CustomButton'
+import CustomButton from '../reusable/CustomButton'
 import DonateForm from './Form'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchDonateRequest } from '@/actions/donate'

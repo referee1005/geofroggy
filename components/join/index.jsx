@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Background from '../../public/images/join/background.png'
+import Background_Mobile from '../../public/images/join/background_mobile.png'
 import froggy from '../../public/images/join/geofroggy.png'
 import compass from '../../public/images/join/compass.png'
 import moon from '../../public/images/join/moon.png'
@@ -15,10 +16,14 @@ function Info ({}) {
       >
         <Image
           src={Background}
-          className='h-screen'
+          className='h-screen sm:block hidden'
           style={{ minHeight: 800 }}
         />
-
+        <Image
+          src={Background_Mobile}
+          className='h-screen sm:hidden block'
+          style={{ minHeight: 800 }}
+        />
         <div className='absolute top-0 h-full w-full flex flex-col lg:flex-row'>
           <div className='absolute w-full h-1/2 lg:relative bottom-0 lg:w-[45%] lg:h-full lg:top-0'>
             <JoinForm />

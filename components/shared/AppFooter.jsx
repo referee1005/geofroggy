@@ -4,6 +4,7 @@ import instagram from '../../public/images/instagram.svg'
 import youtube from '../../public/images/youtube.svg'
 import logoLight from '../../public/images/logo-light.svg'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 const socialLinks = [
   {
@@ -29,6 +30,7 @@ const socialLinks = [
 ]
 
 function AppFooter () {
+  const router = useRouter()
   return (
     <div style={{ backgroundColor: '#FAFAFA' }}>
       <div className='container-custom fontsize-custom text-gray-800 py-16 sm:py-32'>
@@ -49,48 +51,76 @@ function AppFooter () {
           <div className=' grid grid-cols-1  grid-cols-2  col-span-2 lg:col-span-1 lg:grid-cols-4 flex-1'>
             <div className='mb-8'>
               <div className='text-base lg:text-lg 2xl:text-2xl font-semibold mb-8'>
-                Product
+                Company
               </div>
               <ul className='space-y-2'>
-                <li className='hover:text-gray-600 cursor-pointer'>Tours</li>
+                <li className='hover:text-gray-600 cursor-pointer'>News</li>
                 <li className='hover:text-gray-600 cursor-pointer'>
-                  Destinations
+                  Media Page
                 </li>
-                <li className='hover:text-gray-600 cursor-pointer'>Food</li>
                 <li className='hover:text-gray-600 cursor-pointer'>
-                  Accommodation
+                  Advertise with Geofroggy
+                </li>
+                <li
+                  className='hover:text-gray-600 cursor-pointer'
+                  onClick={() => router.push('contact')}
+                >
+                  Contact Us
                 </li>
               </ul>
             </div>
 
-            {/* Company Section */}
+            {/* Legal Section */}
             <div className='mb-8'>
               <div className='text-base lg:text-lg 2xl:text-2xl font-semibold mb-8'>
-                Company
+                Legal
               </div>
               <ul className='space-y-2'>
-                <li className='hover:text-gray-600 cursor-pointer'>Safety</li>
                 <li className='hover:text-gray-600 cursor-pointer'>
-                  Tour Guides
+                  Community Guidelines
                 </li>
-                <li className='hover:text-gray-600 cursor-pointer'>About Us</li>
-                <li className='hover:text-gray-600 cursor-pointer'>Blog</li>
+                <li className='hover:text-gray-600 cursor-pointer'>
+                  Terms of Use
+                </li>
+                <li
+                  className='hover:text-gray-600 cursor-pointer'
+                  onClick={() => router.push('privacy_policy')}
+                >
+                  Privacy Policy
+                </li>
+                <li
+                  className='hover:text-gray-600 cursor-pointer'
+                  onClick={() => router.push('faq')}
+                >
+                  FAQs
+                </li>
               </ul>
             </div>
 
             {/* Resources Section */}
             <div className='mb-8'>
               <div className='text-base lg:text-lg 2xl:text-2xl font-semibold mb-8'>
-                Resources
+                Get Involved
               </div>
               <ul className='space-y-2'>
+                <li className='hover:text-gray-600 cursor-pointer'>Careers</li>
                 <li className='hover:text-gray-600 cursor-pointer'>
-                  Community
+                  Ambassadors
                 </li>
-                <li className='hover:text-gray-600 cursor-pointer'>Offers</li>
-                <li className='hover:text-gray-600 cursor-pointer'>Contact</li>
+                <li
+                  className='hover:text-gray-600 cursor-pointer'
+                  onClick={() => router.push('sponsor')}
+                >
+                  Sponsor Geofroggy
+                </li>
+                <li
+                  className='hover:text-gray-600 cursor-pointer'
+                  onClick={() => router.push('donate')}
+                >
+                  Donate
+                </li>
                 <li className='hover:text-gray-600 cursor-pointer'>
-                  Terms of Service
+                  Subscribe
                 </li>
               </ul>
             </div>
@@ -98,12 +128,12 @@ function AppFooter () {
             {/* Contact Section */}
             <div>
               <div className='text-base lg:text-lg 2xl:text-2xl font-semibold mb-8'>
-                Contact
+                Follow Us
               </div>
               <ul className='space-y-2'>
-                <li className='hover:text-gray-600 cursor-pointer'>
+                {/* <li className='hover:text-gray-600 cursor-pointer'>
                   mail@geofroggy.com
-                </li>
+                </li> */}
                 <li className=' cursor-pointer flex'>
                   {socialLinks.map(link => (
                     <a

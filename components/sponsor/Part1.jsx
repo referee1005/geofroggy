@@ -31,7 +31,7 @@ function Part1 ({}) {
           size={'text-sm ms:text-base lg:text-lg 2xl:text-xl'}
           px={'px-4 ms:px-6 2xl:px-8'}
           py={'py-2 2xl:py-4'}
-          click={() => router.push('/donate/now')}
+          click={() => router.push('/donate')}
         />
       </div>
 
@@ -57,7 +57,7 @@ function Part1 ({}) {
             <div className='absolute w-full bottom-2'>
               <DonateButton
                 title='Donate Now'
-                onClick={() => router.push('/donate/now')}
+                onClick={() => router.push('/donate')}
               />
             </div>
           </div>
@@ -189,7 +189,7 @@ function Part1 ({}) {
             <div className='absolute w-full bottom-2'>
               <DonateButton
                 title='Donate Now'
-                onClick={() => router.push('/donate/now')}
+                onClick={() => router.push('/donate')}
               />
             </div>
           </div>
