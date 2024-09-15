@@ -59,6 +59,7 @@ module.exports = {
         "custom-primary": "#195883",
         "secondary-light": "#FFFFFF",
         "ternary-light": "#f6f7f8",
+        "custom-bg-primary": "#f3f5f7",
         dark: "#1E1E1E"
       },
       backgroundImage: {

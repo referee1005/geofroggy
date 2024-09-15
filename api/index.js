@@ -60,6 +60,11 @@ export const fetchJobOptionsData = async () => {
   const data = await res.json();
   return data;
 };
+export const fetchJobResultsData = async () => {
+  const res = await fetch("/api/job_search_results");
+  const data = await res.json();
+  return data;
+};
 export const postNoteData = async (postData) => {
   const res = await fetch("/api/note");
   const data = await res.json();

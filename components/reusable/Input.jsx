@@ -11,7 +11,8 @@ function Input ({
   endIconSrc,
   textColor = 'text-gray-700',
   opacity = false,
-  inputHeight = 12
+  inputHeight = 12,
+  onChange
 }) {
   return (
     <div className={`mb-${mb}`}>
@@ -40,6 +41,7 @@ function Input ({
             opacity ? 'bg-gray-300 bg-opacity-50' : ''
           } h-${inputHeight}`}
           placeholder={placeholder}
+          onChange={onChange}
         />
         {endIconSrc && (
           <span className='absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500'>

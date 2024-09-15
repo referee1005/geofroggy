@@ -1,7 +1,10 @@
 import {
   FETCH_JOB_OPTIONS_REQUEST,
   FETCH_JOB_OPTIONS_SUCCESS,
-  FETCH_JOB_OPTIONS_FAILURE
+  FETCH_JOB_OPTIONS_FAILURE,
+  FETCH_JOB_RESULTS_REQUEST,
+  FETCH_JOB_RESULTS_SUCCESS,
+  FETCH_JOB_RESULTS_FAILURE
 } from "../types";
 
 export const fetchJobOptionsRequest = () => ({
@@ -15,5 +18,19 @@ export const fetchJobOptionsSuccess = (data) => ({
 
 export const fetchJobOptionsFailure = (error) => ({
   type: FETCH_JOB_OPTIONS_FAILURE,
+  payload: error
+});
+export const fetchJobResultsRequest = (query) => ({
+  type: FETCH_JOB_RESULTS_REQUEST,
+  payload: query
+});
+
+export const fetchJobResultsSuccess = (data) => ({
+  type: FETCH_JOB_RESULTS_SUCCESS,
+  payload: data
+});
+
+export const fetchJobResultsFailure = (error) => ({
+  type: FETCH_JOB_RESULTS_FAILURE,
   payload: error
 });

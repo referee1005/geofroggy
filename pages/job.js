@@ -19,7 +19,7 @@ export default function Home() {
       <div className="w-1/4">
         <SearchBar options={options} />
       </div>
-      <div className="flex-1">
+      <div className="flex-1 ml-4">
         <SearchResults />
       </div>
     </div>

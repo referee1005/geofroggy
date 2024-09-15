@@ -103,7 +103,12 @@ function AppFooter () {
                 Get Involved
               </div>
               <ul className='space-y-2'>
-                <li className='hover:text-gray-600 cursor-pointer'>Careers</li>
+                <li
+                  className='hover:text-gray-600 cursor-pointer'
+                  onClick={() => router.push('job')}
+                >
+                  Careers
+                </li>
                 <li className='hover:text-gray-600 cursor-pointer'>
                   Ambassadors
                 </li>
