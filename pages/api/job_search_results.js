@@ -7,7 +7,8 @@ export default function handler(req, res) {
       title: "Senior Ambassador",
       tags: ["Part Time", "Senior Level", "Moderator", "Senior Level"],
       salary: 9000,
-      city: "New York,USA"
+      city: "New York,USA",
+      slug: "senior_ambassador1"
     },
     {
       _id: 1231231232,
@@ -15,7 +16,8 @@ export default function handler(req, res) {
       title: "Junior Ambassador",
       tags: ["Part Time", "Senior Level"],
       salary: 9000,
-      city: "San Francisco,USA"
+      city: "San Francisco,USA",
+      slug: "junior_ambassador1"
     },
     {
       _id: 1231231232,
@@ -23,7 +25,8 @@ export default function handler(req, res) {
       title: "Active Moderator",
       tags: ["Part Time", "Senior Level"],
       salary: 9000,
-      city: "San Francisco,USA"
+      city: "San Francisco,USA",
+      slug: "active_moderator1"
     },
     {
       _id: 1231231232,
@@ -31,23 +34,8 @@ export default function handler(req, res) {
       title: "Senior Ambassador",
       tags: ["Part Time", "Senior Level"],
       salary: 9000,
-      city: "New York,USA"
-    },
-    {
-      _id: 1231231232,
-      date: "2024-08-22",
-      title: "Senior Ambassador",
-      tags: ["Part Time", "Senior Level"],
-      salary: 9000,
-      city: "San Francisco,USA"
-    },
-    {
-      _id: 1231231232,
-      date: "2024-08-22",
-      title: "Senior Ambassador",
-      tags: ["Part Time", "Senior Level"],
-      salary: 9000,
-      city: "New York,USA"
+      city: "New York,USA",
+      slug: "senior_ambassador2"
     }
   ]);
 }

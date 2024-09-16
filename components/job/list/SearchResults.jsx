@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react'
 import { Button } from '@mui/material'
+import { useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
+import { formatDate } from '@/helpers'
+
 function SearchResults () {
+  const router = useRouter()
   const data = useSelector(state => state.job.jobs)
   return (
     <div className='relative'>
-      <div className='mb-8 text-base flex justify-between'>
+      <div className='mb-8 text-sm sm:text-sm lg:text-base flex justify-between'>
         <div className=''>
           Showing {data.length} out of {data.length} Jobs
         </div>
-        <div className='flex'>
+        <div className='flex md:flex-row flex-col'>
           <div className='flex mr-4'>
             <div className='mr-2'>View</div>
             <div>
@@ -32,12 +36,12 @@ function SearchResults () {
           </div>
         </div>
       </div>
-      <div className='grid grid-cols-3 gap-4'>
+      <div className='grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4'>
         {data.map(item => (
           <div className='bg-white p-2 rounded-lg flex flex-col'>
             <div className='bg-[#D4F6ED] rounded-lg p-4 flex flex-col gap-6'>
               <div className='rounded-full bg-white w-fit px-4 py-2'>
-                {item.date}
+                {formatDate(item.date)}
               </div>
               <div>
                 <div className='text-xs'>{'Geofroggy'}</div>
@@ -60,7 +64,16 @@ function SearchResults () {
                 <div className='text-xs'>{item.city}</div>
               </div>
               <div>
-                <Button variant='contained' className='bg-black'>
+                <Button
+                  variant='contained'
+                  className='bg-black'
+                  onClick={() => {
+                    router.push({
+                      pathname: '/job/' + item.slug,
+                      query: { id: item._id }
+                    })
+                  }}
+                >
                   Details
                 </Button>
               </div>

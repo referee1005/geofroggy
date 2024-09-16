@@ -60,6 +60,9 @@ module.exports = {
         "secondary-light": "#FFFFFF",
         "ternary-light": "#f6f7f8",
         "custom-bg-primary": "#f3f5f7",
+        "custom-font-primary-content": "#404545",
+        "custom-font-secondary-content": "#494949",
+        "custom-font-third-content": "#8D8F96",
         dark: "#1E1E1E"
       },
       backgroundImage: {

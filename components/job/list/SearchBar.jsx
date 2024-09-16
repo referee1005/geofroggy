@@ -14,8 +14,8 @@ import {
   Divider
 } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import Input from '../reusable/Input'
-import searchSVG from '../../public/images/job/Search.svg'
+import Input from '../../reusable/Input'
+import searchSVG from '../../../public/images/job/Search.svg'
 import { Clear } from '@mui/icons-material'
 import { fetchJobResultsRequest } from '@/actions/job'
 import { useDispatch } from 'react-redux'
@@ -59,9 +59,9 @@ function SearchBar ({ options }) {
     dispatch(fetchJobResultsRequest(query))
   }
   return (
-    <div className='mb-16 bg-white rounded-xl h-screen px-4 py-8 '>
+    <div className='mb-16 bg-white rounded-xl px-2 2xl:px-4 py-8 '>
       <div>
-        <div className='px-4'>
+        <div className='px-0 2xl:px-4'>
           <Input
             type='text'
             startIconSrc={searchSVG}
@@ -77,8 +77,8 @@ function SearchBar ({ options }) {
           >
             Job Positions
           </AccordionSummary>
-          <AccordionDetails sx={{ paddingLeft: 4 }}>
-            <FormGroup>
+          <AccordionDetails>
+            <FormGroup className='pl-0 2xl:pl-4 '>
               {options.positions &&
                 options.positions.map(item => (
                   <FormControlLabel
@@ -95,7 +95,9 @@ function SearchBar ({ options }) {
                           else
                             setQuery({
                               ...query,
-                              positions: query.filter(ele => ele !== item)
+                              positions: query.positions.filter(
+                                ele => ele !== item
+                              )
                             })
                         }}
                       />

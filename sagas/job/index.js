@@ -3,13 +3,20 @@ import {
   fetchJobOptionsSuccess,
   fetchJobOptionsFailure,
   fetchJobResultsSuccess,
-  fetchJobResultsFailure
+  fetchJobResultsFailure,
+  fetchJobDetailSuccess,
+  fetchJobDetailFailure
 } from "../../actions/job";
 import {
   FETCH_JOB_OPTIONS_REQUEST,
-  FETCH_JOB_RESULTS_REQUEST
+  FETCH_JOB_RESULTS_REQUEST,
+  FETCH_JOB_DETAIL_REQUEST
 } from "../../actions/types";
-import { fetchJobOptionsData, fetchJobResultsData } from "../../api"; // Assuming you have an API module to handle your requests
+import {
+  fetchJobOptionsData,
+  fetchJobResultsData,
+  fetchJobDetailData
+} from "../../api"; // Assuming you have an API module to handle your requests
 
 function* fetchJobOptions() {
   try {
@@ -28,7 +35,17 @@ function* fetchJobResults() {
   }
 }
 
+function* fetchJobDetail() {
+  try {
+    const response = yield call(fetchJobDetailData);
+    yield put(fetchJobDetailSuccess(response));
+  } catch (error) {
+    yield put(fetchJobDetailFailure(error.message));
+  }
+}
+
 export function* jobSaga() {
   yield takeLatest(FETCH_JOB_OPTIONS_REQUEST, fetchJobOptions);
   yield takeLatest(FETCH_JOB_RESULTS_REQUEST, fetchJobResults);
+  yield takeLatest(FETCH_JOB_DETAIL_REQUEST, fetchJobDetail);
 }
