@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <div className="mx-auto flex " style={{ backgroundColor: "#f3f5f7" }}>
-      <JobDetail data={job} />
+      {/* <JobDetail data={job} /> */}
     </div>
   );
 }
