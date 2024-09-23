@@ -38,13 +38,13 @@ function JobDetail ({ data }) {
         <div className='flex flex-col sm:flex-row items-center justify-center sm:justify-end'>
           <Button
             variant='outlined'
-            className='text-xs sm:text-base border-black text-custom-primary mb-2 sm:mr-4'
+            className='text-xs sm:text-base border-black text-custom-primary mb-2 sm:mb-0 sm:mr-4 py-2 px-2'
           >
             Contact
           </Button>
           <Button
             variant='contained'
-            className='text-xs sm:text-base bg-custom-primary'
+            className='text-xs sm:text-base bg-custom-primary py-2 px-2'
           >
             Apply Now!
           </Button>

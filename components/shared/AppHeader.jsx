@@ -102,7 +102,7 @@ function AppHeader () {
             }`}
           >
             <Link href='/research' aria-label='Projects'>
-              Research
+              Explore
             </Link>
           </div>
           <div
@@ -114,7 +114,7 @@ function AppHeader () {
               About
             </Link>
           </div>
-          <div
+          {/* <div
             className={`block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark ${
               router.pathname.includes('/faq') ? 'text-cyan-600' : ''
             }`}
@@ -122,7 +122,7 @@ function AppHeader () {
             <Link href='/faq' aria-label='FAQs'>
               FAQs
             </Link>
-          </div>
+          </div> */}
           <div
             className={`block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark ${
               router.pathname.includes('/news') ? 'text-cyan-600' : ''
@@ -191,7 +191,7 @@ function AppHeader () {
               News
             </Link>
           </div>
-          <div
+          {/* <div
             className={`block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-cyan-600 dark:hover:text-secondary-light  sm:mx-4 sm:py-2 ${
               router.pathname.includes('/faq') ? 'text-cyan-600' : ''
             }`}
@@ -200,7 +200,7 @@ function AppHeader () {
             <Link href='/faq' className=' fontsize-custom'>
               FAQs
             </Link>
-          </div>
+          </div> */}
           <div
             className={`block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-cyan-600 dark:hover:text-secondary-light  sm:mx-4 sm:py-2 ${
               router.pathname.includes('/research') ? 'text-cyan-600' : ''
@@ -208,7 +208,7 @@ function AppHeader () {
             aria-label='research'
           >
             <Link href='/research' className=' fontsize-custom'>
-              Research
+              Explore
             </Link>
           </div>
 
@@ -226,9 +226,7 @@ function AppHeader () {
 
         {/* Header right section buttons */}
         <div className='hidden lg:flex justify-between items-center flex-col md:flex-row flex-shrink-0'>
-          {/* <div className='hidden md:flex'> */}
           <div className='mr-4'>
-            {' '}
             <CustomButton
               title={'Login'}
               bgColor={'#195883'}
@@ -236,7 +234,6 @@ function AppHeader () {
             />
           </div>
           <div>
-            {' '}
             <CustomButton
               title={'Donate'}
               bgColor={'#269938'}

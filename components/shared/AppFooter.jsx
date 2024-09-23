@@ -84,7 +84,7 @@ function AppFooter () {
                 </li>
                 <li
                   className='hover:text-gray-600 cursor-pointer'
-                  onClick={() => router.push('privacy_policy')}
+                  onClick={() => router.push('privacy-policy')}
                 >
                   Privacy Policy
                 </li>
@@ -105,7 +105,7 @@ function AppFooter () {
               <ul className='space-y-2'>
                 <li
                   className='hover:text-gray-600 cursor-pointer'
-                  onClick={() => router.push('job')}
+                  onClick={() => router.push('/job')}
                 >
                   Careers
                 </li>
@@ -114,13 +114,13 @@ function AppFooter () {
                 </li>
                 <li
                   className='hover:text-gray-600 cursor-pointer'
-                  onClick={() => router.push('sponsor')}
+                  onClick={() => router.push('/sponsor')}
                 >
                   Sponsor Geofroggy
                 </li>
                 <li
                   className='hover:text-gray-600 cursor-pointer'
-                  onClick={() => router.push('donate')}
+                  onClick={() => router.push('/donate')}
                 >
                   Donate
                 </li>

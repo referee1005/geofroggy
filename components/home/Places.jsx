@@ -99,7 +99,7 @@ function Places () {
     setCurrentIndex(
       prevIndex => (prevIndex - 1 + places.length) % places.length
     )
-    setTimeout(() => setIsTransitioning(false), 700)
+    setTimeout(() => setIsTransitioning(false), 1000)
   }
 
   const movePrev = () => {
@@ -116,7 +116,7 @@ function Places () {
       prevIndex => (prevIndex + 1 + places.length) % places.length
     )
 
-    setTimeout(() => setIsTransitioning(false), 700)
+    setTimeout(() => setIsTransitioning(false), 1000)
   }
 
   const handleMouseDown = e => handleDragStart(e, false)
@@ -360,6 +360,7 @@ function Places () {
                 <img
                   src={item.thumbnail && item.thumbnail.src}
                   className='w-full h-48 sm:h-64 lg:w-56 lg:h-full cursor-pointer lg:rounded-lg'
+                  draggable='false'
                 />
               </div>
             )
