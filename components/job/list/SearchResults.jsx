@@ -29,8 +29,6 @@ function SearchResults () {
             <div>
               <select className='bg-custom-bg-primary'>
                 <option>{'Name (A-Z)'}</option>
-                <option>20</option>
-                <option>30</option>
               </select>
             </div>
           </div>
