@@ -5,7 +5,7 @@ import image from '../../public/images/Home-whoweare.png'
 function Support () {
   return (
     <div className='relative flex flex-col min-h-80 lg:min-h-80'>
-      <div className='bg-white flex'>
+      <div className='bg-white flex w-full'>
         <Image
           src={image}
           alt='Light Logo'

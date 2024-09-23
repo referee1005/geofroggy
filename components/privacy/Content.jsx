@@ -4,8 +4,97 @@ import Link from 'next/link'
 
 function Content ({ data }) {
   return (
-    <div className='container-custom mt-16 flex gap-16'>
-      <div className='w-2/3'>
+    <div className='container-custom mt-16 flex sm:flex-row flex-col gap-16'>
+      <div className='block sm:hidden'>
+        <div className='text-3xl font-semibold mb-12'>Table of Contents</div>
+        <div className='flex flex-col gap-4 text-lg text-black '>
+          <div className='flex'>
+            <div>1. </div>
+            <a className='underline cursor-pointer' href='#defenation'>
+              Defenations
+            </a>
+          </div>
+          <div className='flex'>
+            <div>2. </div>
+            <a
+              className='underline cursor-pointer'
+              href='#what-personal-information-we-collect'
+            >
+              What personal information we collect
+            </a>{' '}
+          </div>{' '}
+          <div className='flex'>
+            <div>3. </div>
+            <a
+              className='underline cursor-pointer'
+              href='#when-we-disclose-personal-information'
+            >
+              When we disclose personal information
+            </a>
+          </div>{' '}
+          <div className='flex'>
+            <div>4. </div>
+            <a
+              className='underline cursor-pointer'
+              href='#tracking-technologies-and-cookies'
+            >
+              Tracking Technologies and Cookies
+            </a>
+          </div>
+          <div className='flex'>
+            <div>5. </div>
+            <a
+              className='underline cursor-pointer'
+              href='#retention-of-your-personal-data'
+            >
+              Retention of Your Personal Data
+            </a>
+          </div>{' '}
+          <div className='flex'>
+            <div>6. </div>
+            <a
+              className='underline cursor-pointer'
+              href='#transfer-of-your-personal-data'
+            >
+              Transfer of Your Personal Data
+            </a>{' '}
+          </div>{' '}
+          <div className='flex'>
+            <div>7. </div>
+            <a
+              className='underline cursor-pointer'
+              href='#security-of-your-personal-data'
+            >
+              Security of Your Personal Data
+            </a>
+          </div>{' '}
+          <div className='flex'>
+            <div>8. </div>
+            <a className='underline cursor-pointer' href='#children-policy'>
+              Children's Privacy
+            </a>{' '}
+          </div>
+          <div className='flex'>
+            <div>9. </div>
+            <a
+              className='underline cursor-pointer'
+              href='#links-to-other-websites'
+            >
+              Links to Other Websites
+            </a>
+          </div>{' '}
+          <div className='flex'>
+            <div>10. </div>
+            <a
+              className='underline cursor-pointer'
+              href='#changes-to-this-privacy-policy'
+            >
+              Changes to this Privacy Policy
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className='sm:w-2/3'>
         <div className='text-4xl font-semibold mb-12'>
           Privacy Policy will help you better understand how we collect, use, an
           share your personal information.
@@ -280,7 +369,7 @@ function Content ({ data }) {
           </div>
         </div>
       </div>
-      <div className='flex-1'>
+      <div className='flex-1 hidden sm:block'>
         <div className='text-3xl font-semibold mb-12'>Table of Contents</div>
         <div className='flex flex-col gap-4 text-lg text-black '>
           <div className='flex'>
