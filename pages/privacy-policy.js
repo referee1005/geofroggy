@@ -6,9 +6,6 @@ export default function Home() {
     <div className="mx-auto">
       <Support />
       <Content />
-      {/* <Advice data={data.advice_answers} />
-      <Faqs title="General FAQs" data={data.general_faqs} />
-      <Faqs title="Geography FAQs" data={data.geography_faqs} /> */}
     </div>
   );
 }

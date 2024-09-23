@@ -63,7 +63,7 @@ function AppFooter () {
                 </li>
                 <li
                   className='hover:text-gray-600 cursor-pointer'
-                  onClick={() => router.push('contact')}
+                  onClick={() => router.push('/contact')}
                 >
                   Contact Us
                 </li>
@@ -84,13 +84,13 @@ function AppFooter () {
                 </li>
                 <li
                   className='hover:text-gray-600 cursor-pointer'
-                  onClick={() => router.push('privacy-policy')}
+                  onClick={() => router.push('/privacy-policy')}
                 >
                   Privacy Policy
                 </li>
                 <li
                   className='hover:text-gray-600 cursor-pointer'
-                  onClick={() => router.push('faq')}
+                  onClick={() => router.push('/faq')}
                 >
                   FAQs
                 </li>
