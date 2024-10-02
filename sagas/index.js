@@ -5,6 +5,7 @@ import { faqSaga } from "./faq";
 import { donateSaga } from "./donate";
 import { contactSaga } from "./contact";
 import { jobSaga } from "./job";
+import { newsSaga } from "./news";
 export default function* rootSaga() {
   yield all([
     homeSaga(),
@@ -12,6 +13,7 @@ export default function* rootSaga() {
     faqSaga(),
     donateSaga(),
     contactSaga(),
-    jobSaga()
+    jobSaga(),
+    newsSaga()
   ]);
 }

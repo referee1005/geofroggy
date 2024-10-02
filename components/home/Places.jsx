@@ -321,7 +321,6 @@ function Places () {
         </div>
       </div>
 
-      {/* Custom Pagination */}
       <div
         className={`absolute bottom-0 lg:right-0 w-full lg:h-full lg:w-56
          ${clickIcon ? 'hidden' : 'flex flex-col items-center'}`}

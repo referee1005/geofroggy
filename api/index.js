@@ -75,3 +75,18 @@ export const postNoteData = async (postData) => {
   const data = await res.json();
   return data;
 };
+export const fetchNewsData = async () => {
+  const res = await fetch("/api/news");
+  const data = await res.json();
+  return data;
+};
+export const fetchNewData = async (id) => {
+  const res = await fetch("/api/news-detail");
+  const data = await res.json();
+  return data;
+};
+export const fetchTrendsData = async () => {
+  const res = await fetch("/api/trends");
+  const data = await res.json();
+  return data;
+};
