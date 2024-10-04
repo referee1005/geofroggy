@@ -17,7 +17,7 @@ function NoteForm () {
   const closeModal = () => setLargeMap(false)
 
   return (
-    <div className='w-full grid grid-cols-1 sm:grid-cols-2 '>
+    <div className='w-full grid grid-cols-1 sm:grid-cols-2'>
       <div className='px-4 lg:px-16 2xl:px-32 py-16'>
         <div className='mb-8 text-3xl sm:text-4xl lg:text-5xl font-semibold'>
           Leave us a note

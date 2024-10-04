@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Support from "@/components/privacy/Support";
 import Content from "@/components/privacy/Content";
 export default function Home() {

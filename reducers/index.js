@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import userReducer from "./userReducer";
 import homeReducer from "./homeReducer";
 import aboutReducer from "./aboutReducer";
 import faqReducer from "./faqReducer";
@@ -13,5 +14,6 @@ export default combineReducers({
   donate: donateReducer,
   contact: contactReducer,
   job: jobReducer,
-  news: newsReducer
+  news: newsReducer,
+  user: userReducer
 });

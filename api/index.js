@@ -90,3 +90,28 @@ export const fetchTrendsData = async () => {
   const data = await res.json();
   return data;
 };
+export const fetchEventsData = async () => {
+  const res = await fetch("/api/events");
+  const data = await res.json();
+  return data;
+};
+export const fetchGroupsData = async () => {
+  const res = await fetch("/api/groups");
+  const data = await res.json();
+  return data;
+};
+export const fetchCommunitiesData = async () => {
+  const res = await fetch("/api/communities");
+  const data = await res.json();
+  return data;
+};
+export const fetchRecommendsData = async () => {
+  const res = await fetch("/api/recommends");
+  const data = await res.json();
+  return data;
+};
+export const fetchUserData = async () => {
+  const res = await fetch("/api/user");
+  const data = await res.json();
+  return data;
+};

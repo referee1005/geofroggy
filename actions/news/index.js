@@ -7,7 +7,19 @@ import {
   FETCH_NEW_FAILURE,
   FETCH_TRENDS_REQUEST,
   FETCH_TRENDS_SUCCESS,
-  FETCH_TRENDS_FAILURE
+  FETCH_TRENDS_FAILURE,
+  FETCH_EVENTS_REQUEST,
+  FETCH_EVENTS_SUCCESS,
+  FETCH_EVENTS_FAILURE,
+  FETCH_GROUPS_REQUEST,
+  FETCH_GROUPS_SUCCESS,
+  FETCH_GROUPS_FAILURE,
+  FETCH_COMMUNITIES_REQUEST,
+  FETCH_COMMUNITIES_SUCCESS,
+  FETCH_COMMUNITIES_FAILURE,
+  FETCH_RECOMMENDED_REQUEST,
+  FETCH_RECOMMENDED_SUCCESS,
+  FETCH_RECOMMENDED_FAILURE
 } from "../types";
 
 export const fetchNewsRequest = () => ({
@@ -49,5 +61,57 @@ export const fetchTrendsSuccess = (data) => ({
 
 export const fetchTrendsFailure = (error) => ({
   type: FETCH_TRENDS_FAILURE,
+  payload: error
+});
+export const fetchEventsRequest = () => ({
+  type: FETCH_EVENTS_REQUEST
+});
+
+export const fetchEventsSuccess = (data) => ({
+  type: FETCH_EVENTS_SUCCESS,
+  payload: data
+});
+
+export const fetchEventsFailure = (error) => ({
+  type: FETCH_EVENTS_FAILURE,
+  payload: error
+});
+export const fetchGroupsRequest = () => ({
+  type: FETCH_GROUPS_REQUEST
+});
+
+export const fetchGroupsSuccess = (data) => ({
+  type: FETCH_GROUPS_SUCCESS,
+  payload: data
+});
+
+export const fetchGroupsFailure = (error) => ({
+  type: FETCH_GROUPS_FAILURE,
+  payload: error
+});
+export const fetchCommunitiesRequest = () => ({
+  type: FETCH_COMMUNITIES_REQUEST
+});
+
+export const fetchCommunitiesSuccess = (data) => ({
+  type: FETCH_COMMUNITIES_SUCCESS,
+  payload: data
+});
+
+export const fetchCommunitiesFailure = (error) => ({
+  type: FETCH_COMMUNITIES_FAILURE,
+  payload: error
+});
+export const fetchRecommendedRequest = () => ({
+  type: FETCH_RECOMMENDED_REQUEST
+});
+
+export const fetchRecommendedSuccess = (data) => ({
+  type: FETCH_RECOMMENDED_SUCCESS,
+  payload: data
+});
+
+export const fetchRecommendedFailure = (error) => ({
+  type: FETCH_RECOMMENDED_FAILURE,
   payload: error
 });
