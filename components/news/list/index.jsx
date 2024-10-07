@@ -4,12 +4,19 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import VerticalNews from './verticalNews'
 import HorizontalNews from './horizontalNews'
+import { useRouter } from 'next/router'
 function NewsList ({ data }) {
+  const router = useRouter()
   return (
     <div className='mb-16 bg-white '>
       <div className='bg-custom-bg-primary'>
-        <div className='text-center py-8 border-b-2 border-[#C1C1C1] font-semibold'>
-          Sign up for our Geofroggy Newsletter
+        <div className='flex justify-center py-8 border-b-2 border-[#C1C1C1] font-semibold'>
+          <div
+            className='cursor-pointer w-fit'
+            onClick={() => router.push(`/news/subscribe`)}
+          >
+            Sign up for our Geofroggy Newsletter
+          </div>
         </div>
         <div className='grid grid-cols-1 lg:grid-cols-2 px-8 lg:px-12 2xl:px-16 py-16 lg:gap-8 2xl:gap-16'>
           <div>

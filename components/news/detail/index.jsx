@@ -62,25 +62,25 @@ function NewsDetail ({ data }) {
             <div className='flex gap-4'>
               <Image
                 src={facebook}
-                className='w-8 h-8 2xl:w-[50px] 2xl:h-[50px] rounded-lg'
+                className='w-8 h-8 2xl:w-[50px] 2xl:h-[50px] rounded-lg cursor-pointer'
                 width={50}
                 height={50}
               />
               <Image
                 src={twitter}
-                className='w-8 h-8 2xl:w-[50px] 2xl:h-[50px] rounded-lg'
+                className='w-8 h-8 2xl:w-[50px] 2xl:h-[50px] rounded-lg cursor-pointer'
                 width={50}
                 height={50}
               />{' '}
               <Image
                 src={whatsapp}
-                className='w-8 h-8 2xl:w-[50px] 2xl:h-[50px] rounded-lg'
+                className='w-8 h-8 2xl:w-[50px] 2xl:h-[50px] rounded-lg cursor-pointer'
                 width={50}
                 height={50}
               />{' '}
               <Image
                 src={telegram}
-                className='w-8 h-8 2xl:w-[50px] 2xl:h-[50px] rounded-lg'
+                className='w-8 h-8 2xl:w-[50px] 2xl:h-[50px] rounded-lg cursor-pointer'
                 width={50}
                 height={50}
               />

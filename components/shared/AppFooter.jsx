@@ -54,7 +54,12 @@ function AppFooter () {
                 Company
               </div>
               <ul className='space-y-2'>
-                <li className='hover:text-gray-600 cursor-pointer'>News</li>
+                <li
+                  className='hover:text-gray-600 cursor-pointer'
+                  onClick={() => router.push('/news')}
+                >
+                  News
+                </li>
                 <li className='hover:text-gray-600 cursor-pointer'>
                   Media Page
                 </li>
