@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { useRouter } from 'next/router'
 
-function VerticalNews ({ data }) {
+function VerticalNews ({ data, changeIndex }) {
   const sliderRef = useRef(null)
   const [startY, setStartY] = useState(null)
   const router = useRouter()
@@ -13,6 +13,7 @@ function VerticalNews ({ data }) {
   const settings = {
     dots: false,
     infinite: true,
+    initialSlide: 0,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
@@ -21,12 +22,23 @@ function VerticalNews ({ data }) {
     verticalSwiping: true,
     arrows: false,
     swipe: false,
+    // centerMode: true,
     beforeChange: function (currentSlide, nextSlide) {
-      console.log('before change', currentSlide, nextSlide)
+      // changeIndex(nextSlide)
+      // console.log('before change', currentSlide, nextSlide)
     },
-    afterChange: function (currentSlide) {
-      console.log('after change', currentSlide)
-    }
+    afterChange: function (currentSlide, index) {
+      changeIndex(currentSlide)
+      console.log('after change', currentSlide, index)
+    },
+    responsive: [
+      {
+        breakpoint: 1280, // For screens less than 1024px wide
+        settings: {
+          slidesToShow: 3
+        }
+      }
+    ]
   }
 
   const handleMouseMove = e => {
@@ -75,9 +87,9 @@ function VerticalNews ({ data }) {
       <div className='slider-container'>
         <Slider {...settings} ref={sliderRef}>
           {data.map(item => (
-            <div>
-              <div className='flex gap-2 2xl:gap-4'>
-                <div className='flex flex-col lg:py-2 xl:py-4 2xl:py-8 w-[50%] justify-between 3xl:text-lg'>
+            <div className='min-h-[200px] h-[200px] xl:min-h-[240px] xl:h-[240px] 2xl:min-h-[280px] 2xl:h-[280px]'>
+              <div className='flex gap-2 2xl:gap-4 h-full'>
+                <div className='flex flex-col py-8 w-[50%] justify-between 3xl:text-lg'>
                   <div
                     className='font-semibold cursor-pointer hover:underline'
                     onClick={() => router.push(`/news/${item.id}`)}
@@ -98,7 +110,7 @@ function VerticalNews ({ data }) {
                 >
                   <Image
                     src={item.image.src}
-                    className='w-full object-cover rounded-lg'
+                    className='w-full min-h-[180px] h-[180px] xl:min-h-[210px] xl:h-[210px] 2xl:min-h-[250px] 2xl:h-[250px] object-cover rounded-lg'
                     layout='responsive'
                     width={6}
                     height={4}

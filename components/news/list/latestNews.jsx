@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { useRouter } from 'next/router'
 
-function HorizontalNews ({ data }) {
+function LatestNews ({ data }) {
   const sliderRef = useRef(null)
   const router = useRouter()
 
@@ -29,6 +29,12 @@ function HorizontalNews ({ data }) {
     // Responsive settings
     responsive: [
       {
+        breakpoint: 1280, // For screens less than 1024px wide
+        settings: {
+          slidesToShow: 3
+        }
+      },
+      {
         breakpoint: 1024, // For screens less than 1024px wide
         settings: {
           slidesToShow: 3
@@ -37,13 +43,13 @@ function HorizontalNews ({ data }) {
       {
         breakpoint: 768, // For screens less than 768px wide
         settings: {
-          slidesToShow: 2
+          slidesToShow: 3
         }
       },
       {
         breakpoint: 480, // For screens less than 480px wide
         settings: {
-          slidesToShow: 1
+          slidesToShow: 2
         }
       }
     ]
@@ -54,14 +60,14 @@ function HorizontalNews ({ data }) {
       <Slider {...settings} ref={sliderRef}>
         {data.map((item, index) => (
           <div key={index}>
-            <div className='flex flex-col gap-4 px-2'>
+            <div className='flex flex-col gap-4 px-1 lg:px-2'>
               <div
-                className='flex-1 cursor-pointer'
+                className='flex-1 cursor-pointer min-h-[120px] h-[120px] sm:min-h-[150px] sm:h-[150px] lg:min-h-[200px] lg:h-[200px]'
                 onClick={() => router.push(`/news/${item.id}`)}
               >
                 <Image
                   src={item.image.src}
-                  className='w-full object-cover rounded-lg'
+                  className='w-full object-cover rounded-lg min-h-[120px] max-h-[120px] h-[120px] sm:min-h-[150px] sm:max-h-[150px] sm:h-[150px] lg:min-h-[200px] lg:max-h-[200px] lg:h-[200px]'
                   layout='responsive'
                   width={6}
                   height={4}
@@ -75,17 +81,19 @@ function HorizontalNews ({ data }) {
                     width={30}
                     height={30}
                   />
-                  <div className='text-sm'>{item.author}</div>
-                  <div>|</div>
-                  <div className='text-sm'>7 hours ago</div>
+                  <div className='flex md:flex-row flex-col items-center md:gap-2 '>
+                    <div className='text-sm'>{item.author}</div>
+                    <div className='md:block hidden'>|</div>
+                    <div className='text-sm'>7 hours ago</div>
+                  </div>
                 </div>
                 <div
-                  className='font-semibold hover:underline cursor-pointer'
+                  className='font-semibold hover:underline cursor-pointer line-clamp-2'
                   onClick={() => router.push(`/news/${item.id}`)}
                 >
                   {item.title}
                 </div>
-                <div className=''>
+                <div className='text-xs sm:text-base'>
                   <span className='text-[#8CC63E]'>Geography</span> | Geography
                 </div>
               </div>
@@ -97,4 +105,4 @@ function HorizontalNews ({ data }) {
   )
 }
 
-export default HorizontalNews
+export default LatestNews

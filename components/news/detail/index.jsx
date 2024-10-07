@@ -1,8 +1,8 @@
 import React from 'react'
-import facebook from '../../../public/images/news/facebook.png'
-import twitter from '../../../public/images/news/twitter.png'
-import whatsapp from '../../../public/images/news/whatsapp.png'
-import telegram from '../../../public/images/news/telegram.png'
+import facebook from '../../../public/images/news/Facebook.png'
+import twitter from '../../../public/images/news/Twitter.png'
+import whatsapp from '../../../public/images/news/Whatsapp.png'
+import telegram from '../../../public/images/news/Telegram.png'
 import attachments from '../../../public/images/news/attachments.png'
 
 import Image from 'next/image'
