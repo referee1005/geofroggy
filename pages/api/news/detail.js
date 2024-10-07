@@ -1,16 +1,16 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import item from "../../../../public/images/news/item.png";
-import item1 from "../../../../public/images/news/item1.png";
-import item2 from "../../../../public/images/news/item2.png";
-import item3 from "../../../../public/images/news/item3.png";
-import item4 from "../../../../public/images/news/item4.png";
-import item5 from "../../../../public/images/news/item5.png";
-import character from "../../../../public/images/character.png";
-import user1 from "../../../../public/images/team-01.png";
-import user2 from "../../../../public/images/team-02.png";
-import user3 from "../../../../public/images/team-03.png";
-import user4 from "../../../../public/images/team-04.png";
-import user5 from "../../../../public/images/team-06.png";
+import item from "../../../public/images/news/item.png";
+import item1 from "../../../public/images/news/item1.png";
+import item2 from "../../../public/images/news/item2.png";
+import item3 from "../../../public/images/news/item3.png";
+import item4 from "../../../public/images/news/item4.png";
+import item5 from "../../../public/images/news/item5.png";
+import character from "../../../public/images/character.png";
+import user1 from "../../../public/images/team-01.png";
+import user2 from "../../../public/images/team-02.png";
+import user3 from "../../../public/images/team-03.png";
+import user4 from "../../../public/images/team-04.png";
+import user5 from "../../../public/images/team-06.png";
 
 const data = [
   {
@@ -79,7 +79,7 @@ export default function handler(req, res) {
   // Convert req.query.id to a number for comparison
   const id = Number(req.query.id);
   // Find the item by id
-  const result = data.find((item) => item.id === id);
+  const result = data.find((item) => item.id === 1);
 
   if (result) {
     res.status(200).json(result);

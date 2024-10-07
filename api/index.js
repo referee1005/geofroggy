@@ -81,7 +81,7 @@ export const fetchNewsData = async () => {
   return data;
 };
 export const fetchNewData = async (id) => {
-  const res = await fetch(`/api/news/${id}`);
+  const res = await fetch(`/api/news/detail`);
   const data = await res.json();
   return data;
 };
