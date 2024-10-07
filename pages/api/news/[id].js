@@ -13,8 +13,6 @@ import user4 from "../../../public/images/team-04.png";
 import user5 from "../../../public/images/team-06.png";
 
 export default function handler(req, res) {
-  console.log(req.query.id, req);
-
   const data = [
     {
       id: 1,
