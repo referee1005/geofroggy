@@ -20,9 +20,7 @@ function LatestNews ({ data }) {
     verticalSwiping: false,
     arrows: false,
     swipe: true,
-    beforeChange: function (currentSlide, nextSlide) {
-      console.log('before change', currentSlide, nextSlide)
-    },
+    beforeChange: function (currentSlide, nextSlide) {},
     afterChange: function (currentSlide) {
       console.log('after change', currentSlide)
     },

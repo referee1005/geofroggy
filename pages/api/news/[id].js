@@ -79,7 +79,7 @@ export default function handler(req, res) {
   // Convert req.query.id to a number for comparison
   const id = Number(req.query.id);
   // Find the item by id
-  const result = data.find((item) => item.id === 3);
+  const result = data.find((item) => item.id === id);
 
   if (result) {
     res.status(200).json(result);

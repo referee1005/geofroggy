@@ -25,12 +25,8 @@ function VerticalNews ({ data, changeIndex }) {
     // centerMode: true,
     beforeChange: function (currentSlide, nextSlide) {
       changeIndex(nextSlide)
-      // console.log('before change', currentSlide, nextSlide)
     },
-    afterChange: function (currentSlide, index) {
-      // changeIndex(currentSlide)
-      console.log('after change', currentSlide, index)
-    },
+    afterChange: function (currentSlide, index) {},
     responsive: [
       {
         breakpoint: 1280, // For screens less than 1024px wide
