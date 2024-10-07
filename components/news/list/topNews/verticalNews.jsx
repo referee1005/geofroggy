@@ -24,11 +24,11 @@ function VerticalNews ({ data, changeIndex }) {
     swipe: false,
     // centerMode: true,
     beforeChange: function (currentSlide, nextSlide) {
-      // changeIndex(nextSlide)
+      changeIndex(nextSlide)
       // console.log('before change', currentSlide, nextSlide)
     },
     afterChange: function (currentSlide, index) {
-      changeIndex(currentSlide)
+      // changeIndex(currentSlide)
       console.log('after change', currentSlide, index)
     },
     responsive: [

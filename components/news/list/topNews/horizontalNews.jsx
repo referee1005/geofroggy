@@ -22,10 +22,11 @@ function HorizontalNews ({ data, changeIndex }) {
     arrows: false,
     swipe: true,
     beforeChange: function (currentSlide, nextSlide) {
+      changeIndex(nextSlide)
       console.log('before change', currentSlide, nextSlide)
     },
     afterChange: function (currentSlide) {
-      changeIndex(currentSlide)
+      // changeIndex(currentSlide)
       console.log('after change', currentSlide)
     }
   }
