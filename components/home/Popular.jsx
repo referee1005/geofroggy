@@ -68,7 +68,7 @@ function Popular ({}) {
             </div>
           ))}
         </div>
-        <div className='mt-16 mb-32'>
+        <div className='mt-16 mb-32 flex justify-center'>
           {' '}
           <CustomButton title={'Explore All'} bgColor={'#269938'} />
         </div>

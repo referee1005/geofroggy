@@ -11,6 +11,9 @@ import {
   FETCH_EVENTS_REQUEST,
   FETCH_EVENTS_SUCCESS,
   FETCH_EVENTS_FAILURE,
+  FETCH_EVENT_REQUEST,
+  FETCH_EVENT_SUCCESS,
+  FETCH_EVENT_FAILURE,
   FETCH_GROUPS_REQUEST,
   FETCH_GROUPS_SUCCESS,
   FETCH_GROUPS_FAILURE,
@@ -70,6 +73,20 @@ export const fetchEventsRequest = () => ({
 export const fetchEventsSuccess = (data) => ({
   type: FETCH_EVENTS_SUCCESS,
   payload: data
+});
+export const fetchEventRequest = (id) => ({
+  type: FETCH_EVENT_REQUEST,
+  payload: id
+});
+
+export const fetchEventSuccess = (data) => ({
+  type: FETCH_EVENT_SUCCESS,
+  payload: data
+});
+
+export const fetchEventFailure = (error) => ({
+  type: FETCH_EVENT_FAILURE,
+  payload: error
 });
 
 export const fetchEventsFailure = (error) => ({

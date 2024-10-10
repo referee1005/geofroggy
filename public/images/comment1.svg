@@ -3,7 +3,7 @@
 <g clip-path="url(#clip0_0_1)">
 <rect width="1440" height="1024" transform="translate(-535 -533)" fill="#F3F5F7"/>
 <g filter="url(#filter0_d_0_1)">
-<rect x="-139" y="-413" width="648" height="510" rx="10" fill="white"/>
+<rect x="-139" y="-413" width="648" height="510" rx="10" fill=""/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M2.25 5C2.25 2.23857 4.48858 0 7.25 0H15C17.7614 0 20 2.23858 20 5V13C20 15.7614 17.7614 18 15 18H1C0.632506 18 0.29462 17.7984 0.120042 17.475C-0.0545365 17.1517 -0.0376755 16.7586 0.163953 16.4513L1.75815 14.0221C2.07904 13.5331 2.25 12.961 2.25 12.3761V5ZM7.25 2C5.59315 2 4.25 3.34314 4.25 5V12.3761C4.25 13.3509 3.96506 14.3044 3.43024 15.1194L2.85235 16H15C16.6569 16 18 14.6569 18 13V5C18 3.34315 16.6569 2 15 2H7.25Z" fill="#83AD8F"/>
 <path d="M12 9C12 9.55228 11.5523 10 11 10C10.4477 10 10 9.55228 10 9C10 8.44772 10.4477 8 11 8C11.5523 8 12 8.44772 12 9Z" fill="#83AD8F"/>
 <path d="M16 9C16 9.55228 15.5523 10 15 10C14.4477 10 14 9.55228 14 9C14 8.44772 14.4477 8 15 8C15.5523 8 16 8.44772 16 9Z" fill="#83AD8F"/>
@@ -22,7 +22,7 @@
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
 </filter>
 <clipPath id="clip0_0_1">
-<rect width="1440" height="1024" fill="white" transform="translate(-535 -533)"/>
+<rect width="1440" height="1024" fill="" transform="translate(-535 -533)"/>
 </clipPath>
 </defs>
 </svg>

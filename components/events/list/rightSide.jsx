@@ -73,11 +73,11 @@ function RightSideBar () {
           />
         </div>
       </div>
-      <div>
-        <div className='flex flex-col p-4 2xl:p-8 gap-4 bg-white rounded-lg'>
+      <div className='rounded-lg bg-white'>
+        <div className='flex flex-col p-4 2xl:p-8 gap-4 '>
           <Recommends />
         </div>
-        <div className='flex flex-col p-4 2xl:p-8 gap-4 bg-white rounded-lg'>
+        <div className='flex flex-col p-4 2xl:p-8 gap-4'>
           <Trending />
         </div>
       </div>

@@ -8,6 +8,8 @@ import {
   fetchTrendsFailure,
   fetchEventsSuccess,
   fetchEventsFailure,
+  fetchEventSuccess,
+  fetchEventFailure,
   fetchGroupsSuccess,
   fetchGroupsFailure,
   fetchCommunitiesSuccess,
@@ -21,6 +23,7 @@ import {
   FETCH_NEW_REQUEST,
   FETCH_TRENDS_REQUEST,
   FETCH_EVENTS_REQUEST,
+  FETCH_EVENT_REQUEST,
   FETCH_GROUPS_REQUEST,
   FETCH_COMMUNITIES_REQUEST,
   FETCH_RECOMMENDED_REQUEST
@@ -31,6 +34,7 @@ import {
   fetchNewData,
   fetchTrendsData,
   fetchEventsData,
+  fetchEventData,
   fetchGroupsData,
   fetchCommunitiesData,
   fetchRecommendsData
@@ -68,6 +72,14 @@ function* fetchEvents() {
     yield put(fetchEventsFailure(error.message));
   }
 }
+function* fetchEvent(action) {
+  try {
+    const response = yield call(() => fetchEventData(action.payload));
+    yield put(fetchEventSuccess(response));
+  } catch (error) {
+    yield put(fetchEventFailure(error.message));
+  }
+}
 function* fetchGroups() {
   try {
     const response = yield call(fetchGroupsData);
@@ -97,6 +109,7 @@ export function* newsSaga() {
   yield takeLatest(FETCH_NEW_REQUEST, fetchNew);
   yield takeLatest(FETCH_TRENDS_REQUEST, fetchTrends);
   yield takeLatest(FETCH_EVENTS_REQUEST, fetchEvents);
+  yield takeLatest(FETCH_EVENT_REQUEST, fetchEvent);
   yield takeLatest(FETCH_GROUPS_REQUEST, fetchGroups);
   yield takeLatest(FETCH_COMMUNITIES_REQUEST, fetchCommunities);
   yield takeLatest(FETCH_RECOMMENDED_REQUEST, fetchRecommends);

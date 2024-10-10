@@ -11,6 +11,9 @@ import {
   FETCH_EVENTS_REQUEST,
   FETCH_EVENTS_SUCCESS,
   FETCH_EVENTS_FAILURE,
+  FETCH_EVENT_REQUEST,
+  FETCH_EVENT_SUCCESS,
+  FETCH_EVENT_FAILURE,
   FETCH_GROUPS_REQUEST,
   FETCH_GROUPS_SUCCESS,
   FETCH_GROUPS_FAILURE,
@@ -28,6 +31,7 @@ const initialState = {
   new: {},
   trends: [],
   events: [],
+  event: {},
   groups: [],
   communities: [],
   recommends: []
@@ -98,6 +102,23 @@ const newsReducer = (state = initialState, action) => {
         events: action.payload
       };
     case FETCH_EVENTS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+    case FETCH_EVENT_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case FETCH_EVENT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        event: action.payload
+      };
+    case FETCH_EVENT_FAILURE:
       return {
         ...state,
         loading: false,

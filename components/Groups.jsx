@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchGroupsRequest } from '@/actions/news'
-import like from '../public/images/likes.svg'
+import like from '../public/images/like_active.svg'
 import Image from 'next/image'
 
 function Groups ({}) {
@@ -23,8 +23,10 @@ function Groups ({}) {
   return (
     <div className='flex flex-col gap-4 p-2'>
       <div className='flex justify-between'>
-        <div className='text-[#C4CCD5]'>GROUPS</div>
-        <div className={`text-[#8CC63E] cursor-pointer`}>See all</div>
+        <div className='text-sm 2xl:text-base text-[#C4CCD5]'>GROUPS</div>
+        <div className={`text-sm 2xl:text-base text-[#8CC63E] cursor-pointer`}>
+          See all
+        </div>
       </div>
 
       {groups.map(item => (

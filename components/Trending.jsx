@@ -22,7 +22,7 @@ function Trending ({}) {
 
   return (
     <>
-      <div className='text-[#C4CCD5]'>TRENDING NOW</div>
+      <div className='text-sm 2xl:text-base text-[#C4CCD5]'>TRENDING NOW</div>
       {trends.map(item => (
         <div className='flex  justify-between items-center'>
           <div className='flex gap-4'>

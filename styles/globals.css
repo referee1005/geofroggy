@@ -62,7 +62,7 @@ body {
 @media (min-width: 1024px) {
   /* lg */
   .container-custom {
-    @apply px-custom-xl;
+    @apply px-custom-lg;
   }
   .fontsize-custom {
     @apply text-custom-xl;

@@ -4,7 +4,7 @@ function Menu () {
   const [selectedItem, setItem] = useState('events')
 
   return (
-    <div className='rounded-lg flex flex-col text-custom-font-third-content'>
+    <div className='rounded-lg flex flex-col text-custom-font-third-content text-sm 2xl:text-base'>
       <div
         className={`flex items-center gap-2 p-2  cursor-pointer rounded-lg ${
           selectedItem === 'news'

@@ -95,6 +95,11 @@ export const fetchEventsData = async () => {
   const data = await res.json();
   return data;
 };
+export const fetchEventData = async (id) => {
+  const res = await fetch(`/api/events/detail`);
+  const data = await res.json();
+  return data;
+};
 export const fetchGroupsData = async () => {
   const res = await fetch("/api/groups");
   const data = await res.json();

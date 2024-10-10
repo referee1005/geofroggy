@@ -1,15 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchEventsRequest } from '@/actions/news'
-import like from '../../../public/images/likes.svg'
+import like from '../../../public/images/like_active.svg'
 import send from '../../../public/images/send.svg'
 import comment from '../../../public/images/comment.svg'
 import Image from 'next/image'
 import Input from '@/components/reusable/Input'
+import { useRouter } from 'next/router'
 
 function Content () {
   const events = useSelector(state => state.news.events)
   const dispatch = useDispatch()
+  const router = useRouter()
 
   useEffect(() => {
     dispatch(fetchEventsRequest())
@@ -96,7 +98,12 @@ function Content () {
 
                     <div>{item.day + ';' + item.time}</div>
                   </div>
-                  <div className='w-fit h-fit bg-white rounded-lg text-black py-1 px-2 cursor-pointer '>
+                  <div
+                    className='w-fit h-fit bg-white rounded-lg text-black py-1 px-2 cursor-pointer '
+                    onClick={() => {
+                      router.push(`/events/${item.id}`)
+                    }}
+                  >
                     {'Learn More'}
                   </div>
                 </div>
@@ -121,7 +128,7 @@ function Content () {
                 height={20}
               />
               <div className='text-[#83AD8F]'>
-                {item.comments + ' Comments'}
+                {item.comment_count + ' Comments'}
               </div>
             </div>
             <div className='flex gap-2'>
