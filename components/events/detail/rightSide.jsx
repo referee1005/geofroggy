@@ -35,7 +35,7 @@ function RightSideBar ({ data }) {
           </div>
           <div className='line-clamp-2 text-sm'>{item.content}</div>
           {/* <div> */}
-          <div className='flex justify-between 2xl:w-[80%] lg:text-xs 2xl:text-sm '>
+          <div className='flex gap-8 lg:gap-0 lg:justify-between 2xl:w-[80%] lg:text-xs 2xl:text-sm '>
             <div className='flex items-center gap-1 2xl:gap-2 cursor-pointer'>
               <Image
                 src={like}
@@ -118,8 +118,8 @@ function RightSideBar ({ data }) {
             {visibleDescription ? 'See Less' : 'See More'}
           </span>
         </div>
-        <div className='flex justify-between lg:text-xs 2xl:text-sm'>
-          <div className='flex gap-1 2xl:gap-2'>
+        <div className='flex gap-8 lg:gap-0 lg:justify-between lg:text-xs 2xl:text-sm'>
+          <div className='flex gap-1 2xl:gap-2 items-center'>
             <Image
               src={like_active}
               className='w-[16px] h-[16px] 2xl:w-[20px] 2xl:h-[20px]'
@@ -128,7 +128,7 @@ function RightSideBar ({ data }) {
             />
             <div>{data.likes + ' Likes'}</div>
           </div>
-          <div className='flex gap-1 2xl:gap-2'>
+          <div className='flex gap-1 2xl:gap-2 items-center'>
             <Image
               src={comment}
               className='w-[16px] h-[16px] 2xl:w-[20px] 2xl:h-[20px]'
@@ -139,7 +139,7 @@ function RightSideBar ({ data }) {
               {data.comment_count + ' Comments'}
             </div>
           </div>
-          <div className='flex gap-1 2xl:gap-2'>
+          <div className='flex gap-1 2xl:gap-2 items-center'>
             <Image
               src={send}
               className='w-[16px] h-[16px] 2xl:w-[20px] 2xl:h-[20px]'

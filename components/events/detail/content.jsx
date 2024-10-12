@@ -57,7 +57,7 @@ function Content ({ data }) {
       </div>
       <div className='flex gap-4 text-sm 2xl:text-base'>
         <div className='flex flex-col items-center justify-center bg-white rounded-lg w-[30%]'>
-          <div className='text-lg xl:text-2xl text-[#8CC63E]'>
+          <div className='lg:text-lg text-2xl text-[#8CC63E]'>
             {'$' + data.price}
           </div>
           <div>Ticket Price</div>
