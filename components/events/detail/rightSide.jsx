@@ -17,7 +17,7 @@ function RightSideBar ({ data }) {
     return content
   }
 
-  const renderItem = item => {
+  const renderItem = (item, isChild = false) => {
     return (
       <div className='flex gap-2 2xl:gap-4'>
         <div className='flex min-w-[40px] min-h-[40px]'>
@@ -27,6 +27,12 @@ function RightSideBar ({ data }) {
             width={40}
             height={40}
           />
+          {!isChild && (
+            <div
+              className='w-[2px] absolute top-[50px] left-[20px] bg-black bg-[#D9D9D9]'
+              style={{ height: 'calc(100% - 10px)' }}
+            ></div>
+          )}
         </div>
         <div className='flex flex-col gap-2 w-full'>
           <div className='flex gap-4'>
@@ -35,7 +41,7 @@ function RightSideBar ({ data }) {
           </div>
           <div className='line-clamp-2 text-sm'>{item.content}</div>
           {/* <div> */}
-          <div className='flex gap-8 lg:gap-0 lg:justify-between 2xl:w-[80%] lg:text-xs 2xl:text-sm '>
+          <div className='flex gap-8 lg:gap-0 lg:justify-between 2xl:w-[80%] lg:text-xs 2xl:text-sm'>
             <div className='flex items-center gap-1 2xl:gap-2 cursor-pointer'>
               <Image
                 src={like}
@@ -171,10 +177,23 @@ function RightSideBar ({ data }) {
             data.comments.map(item => {
               return (
                 <div>
-                  {renderItem(item)}{' '}
-                  <div className='flex flex-col gap-4 ml-8 2xl:ml-12 mt-8'>
-                    {item.comments.map(ele => renderItem(ele))}
+                  <div className='relative'>
+                    {renderItem(item)}
+                    <div className='flex flex-col gap-4 ml-8 2xl:ml-12 mt-8'>
+                      {item.comments.map((ele, index) => {
+                        if (index !== item.comments.length - 1)
+                          return renderItem(ele, true)
+                      })}
+                    </div>
                   </div>
+                  {item.comments && item.comments.length && (
+                    <div className='ml-8 2xl:ml-12 mt-4'>
+                      {renderItem(
+                        item.comments[item.comments.length - 1],
+                        true
+                      )}
+                    </div>
+                  )}
                 </div>
               )
             })}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
@@ -12,6 +12,19 @@ import world from '../../../public/images/events/world.png'
 import copy from '../../../public/images/events/copy.png'
 
 function Content ({ data }) {
+  const [copySuccess, setCopySuccess] = useState('')
+
+  const handleCopy = async value => {
+    try {
+      await navigator.clipboard.writeText(value)
+      setCopySuccess('Copied!')
+      setTimeout(() => setCopySuccess(''), 2000) // Clear the success message after 2 seconds
+    } catch (err) {
+      console.log(err)
+      setCopySuccess('Failed to copy!')
+    }
+  }
+
   const settings = {
     dots: false,
     infinite: true,
@@ -107,7 +120,7 @@ function Content ({ data }) {
         </div>
       </div>
       <div className='flex flex-col  gap-2 flex-1 text-sm 2xl:text-base'>
-        <div className='grid grid-cols-2 gap-2'>
+        <div className='grid sm:grid-cols-2 gap-2'>
           <div className='flex px-4 py-4 items-center justify-between bg-white rounded-lg'>
             <div className='rounded-lg flex-1 flex items-center gap-2 w-[70%]'>
               <div className='flex items-center min-w-[20px] w-[20px] h-[20px]'>
@@ -134,8 +147,12 @@ function Content ({ data }) {
                 layout='responsive'
                 width={6}
                 height={4}
+                onClick={() => handleCopy(data.email)}
                 // alt={item} // Adding alt text for accessibility
               />
+              {copySuccess && (
+                <p style={{ color: 'green', zIndex: 100 }}>{copySuccess}</p>
+              )}
             </div>
           </div>
           <div className='flex px-4 py-4 items-center justify-between bg-white rounded-lg'>
@@ -165,7 +182,7 @@ function Content ({ data }) {
           </div>
         </div>
         <div className='flex px-4 py-4 items-center justify-between bg-white rounded-lg'>
-          <div className='rounded-lg flex items-center  gap-2 '>
+          <div className='rounded-lg flex items-center gap-2 '>
             <div className='flex items-center w-[20px] h-[20px]'>
               <Image
                 src={world}

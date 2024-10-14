@@ -18,7 +18,9 @@ module.exports = {
         "2/5": "40%", // Equivalent to top: 30%;
         "3/5": "60%", // Equivalent to top: 40%;
         "4/5": "80%",
-        "5/5": "100%"
+        "5/5": "100%",
+        "50px": "50px",
+        "20px": "20px"
       },
       translate: {
         "5/4": "125%", // This adds a custom translation value of 125% to the `translate-y` utilities
