@@ -2,6 +2,8 @@ import { all, call, put, takeLatest } from "redux-saga/effects";
 import {
   fetchNewsSuccess,
   fetchNewsFailure,
+  fetchLatestArticlesSuccess,
+  fetchLatestArticlesFailure,
   fetchNewSuccess,
   fetchNewFailure,
   fetchTrendsSuccess,
@@ -20,6 +22,7 @@ import {
 
 import {
   FETCH_NEWS_REQUEST,
+  FETCH_LATEST_ARTICLES_REQUEST,
   FETCH_NEW_REQUEST,
   FETCH_TRENDS_REQUEST,
   FETCH_EVENTS_REQUEST,
@@ -31,6 +34,7 @@ import {
 
 import {
   fetchNewsData,
+  fetchLatestArticlesData,
   fetchNewData,
   fetchTrendsData,
   fetchEventsData,
@@ -48,6 +52,16 @@ function* fetchNews() {
     yield put(fetchNewsFailure(error.message));
   }
 }
+
+function* fetchLatestArticles() {
+  try {
+    const response = yield call(fetchLatestArticlesData);
+    yield put(fetchLatestArticlesSuccess(response));
+  } catch (error) {
+    yield put(fetchLatestArticlesFailure(error.message));
+  }
+}
+
 function* fetchNew(action) {
   try {
     const response = yield call(() => fetchNewData(action.payload));
@@ -106,6 +120,7 @@ function* fetchRecommends() {
 }
 export function* newsSaga() {
   yield takeLatest(FETCH_NEWS_REQUEST, fetchNews);
+  yield takeLatest(FETCH_LATEST_ARTICLES_REQUEST, fetchLatestArticles);
   yield takeLatest(FETCH_NEW_REQUEST, fetchNew);
   yield takeLatest(FETCH_TRENDS_REQUEST, fetchTrends);
   yield takeLatest(FETCH_EVENTS_REQUEST, fetchEvents);

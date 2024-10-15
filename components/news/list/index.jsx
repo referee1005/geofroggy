@@ -7,7 +7,7 @@ import HorizontalNews from './topNews/horizontalNews'
 import LatestNews from './latestNews'
 import { useRouter } from 'next/router'
 
-function NewsList ({ data }) {
+function NewsList ({ news, latestArticles }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isMobileView, setIsMobileView] = useState(false) // To detect screen width
   const router = useRouter()
@@ -47,33 +47,47 @@ function NewsList ({ data }) {
               <div className='flex gap-4'>
                 <Image
                   src={
-                    data[currentIndex] && data[currentIndex].author_image.src
+                    news[currentIndex] &&
+                    news[currentIndex].yoast_head_json.schema['@graph'][6][
+                      'image'
+                    ]['url']
                   }
                   className='w-[50px] h-[50px] rounded-lg'
                   width={50}
                   height={50}
-                  alt={data[currentIndex] && data[currentIndex].author}
+                  alt={
+                    news[currentIndex] &&
+                    news[currentIndex].yoast_head_json.author
+                  }
                 />
                 <div className='flex flex-col justify-between'>
                   <div className='font-semibold text-lg'>
-                    {data[currentIndex] && data[currentIndex].author}
+                    {news[currentIndex] &&
+                      news[currentIndex].yoast_head_json.author}
                   </div>
                   <div className='text-lg'>Author</div>
                 </div>
               </div>
               <div className='font-semibold text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl'>
-                {data[currentIndex] && data[currentIndex].title}
+                {news[currentIndex] &&
+                  news[currentIndex].yoast_head_json.og_title}
               </div>
               <div className=''>
                 <span className='text-[#8CC63E]'>Geography</span> | Geography
               </div>
               <div className='relative w-full' style={{ paddingBottom: '50%' }}>
                 <Image
-                  src={data[currentIndex] && data[currentIndex].image.src}
+                  src={
+                    news[currentIndex] &&
+                    news[currentIndex].yoast_head_json.og_image[0]['url']
+                  }
                   className='rounded-xl'
                   layout='fill'
                   objectFit='cover'
-                  alt={data[currentIndex] && data[currentIndex].title}
+                  alt={
+                    news[currentIndex] &&
+                    news[currentIndex].yoast_head_json.og_title
+                  }
                 />
               </div>
             </div>
@@ -83,14 +97,14 @@ function NewsList ({ data }) {
           {isMobileView ? (
             <div className='lg:hidden mt-8'>
               <HorizontalNews
-                data={data}
+                data={news}
                 changeIndex={value => setCurrentIndex(value)}
               />
             </div>
           ) : (
             <div className='lg:block hidden'>
               <VerticalNews
-                data={data}
+                data={news}
                 changeIndex={value => setCurrentIndex(value)}
               />
             </div>
@@ -101,7 +115,7 @@ function NewsList ({ data }) {
         <div className='text-3xl sm:text-4xl lg:text-5xl font-semibold mb-8'>
           Latest Articles
         </div>
-        <LatestNews data={data} />
+        <LatestNews data={latestArticles} />
       </div>
     </div>
   )

@@ -63,10 +63,10 @@ function LatestNews ({ data }) {
             <div className='flex flex-col gap-4 px-1 lg:px-2'>
               <div
                 className='flex-1 cursor-pointer min-h-[120px] h-[120px] sm:min-h-[150px] sm:h-[150px] lg:min-h-[200px] lg:h-[200px]'
-                onClick={() => router.push(`/news/${item.id}`)}
+                onClick={() => router.push(`/news/${item.slug}`)}
               >
                 <Image
-                  src={item.image.src}
+                  src={item.yoast_head_json.og_image[0]['url']}
                   className='w-full object-cover rounded-lg min-h-[120px] max-h-[120px] h-[120px] sm:min-h-[150px] sm:max-h-[150px] sm:h-[150px] lg:min-h-[200px] lg:max-h-[200px] lg:h-[200px]'
                   layout='responsive'
                   width={6}
@@ -76,13 +76,15 @@ function LatestNews ({ data }) {
               <div className='flex flex-col gap-2 justify-between'>
                 <div className='flex items-center gap-2 '>
                   <Image
-                    src={item.author_image.src}
+                    src={
+                      item.yoast_head_json.schema['@graph'][6]['image']['url']
+                    }
                     className='w-[30px] h-[30px] rounded-lg'
                     width={30}
                     height={30}
                   />
                   <div className='flex md:flex-row flex-col items-center md:gap-2 '>
-                    <div className='text-sm'>{item.author}</div>
+                    <div className='text-sm'>{item.yoast_head_json.author}</div>
                     <div className='md:block hidden'>|</div>
                     <div className='text-sm'>7 hours ago</div>
                   </div>
@@ -91,7 +93,7 @@ function LatestNews ({ data }) {
                   className='font-semibold hover:underline cursor-pointer line-clamp-2'
                   onClick={() => router.push(`/news/${item.id}`)}
                 >
-                  {item.title}
+                  {item.yoast_head_json.og_title}
                 </div>
                 <div className='text-xs sm:text-base'>
                   <span className='text-[#8CC63E]'>Geography</span> | Geography

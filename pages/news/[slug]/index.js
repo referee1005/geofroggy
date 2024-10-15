@@ -13,16 +13,16 @@ export default function Home() {
 
   useEffect(() => {
     if (router.isReady) {
-      const { id } = router.query;
-      if (id) {
-        dispatch(fetchNewRequest(id));
+      const { slug } = router.query;
+      if (slug) {
+        dispatch(fetchNewRequest(slug));
       }
     }
   }, [router.isReady, router.query, dispatch]);
 
   return (
     <div className="mx-auto flex container-custom bg-custom-bg-primary">
-      <NewsDetail data={data} />
+      {data[0] !== undefined && <NewsDetail data={data[0]} />}
     </div>
   );
 }

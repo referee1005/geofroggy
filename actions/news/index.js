@@ -2,6 +2,9 @@ import {
   FETCH_NEWS_REQUEST,
   FETCH_NEWS_SUCCESS,
   FETCH_NEWS_FAILURE,
+  FETCH_LATEST_ARTICLES_REQUEST,
+  FETCH_LATEST_ARTICLES_SUCCESS,
+  FETCH_LATEST_ARTICLES_FAILURE,
   FETCH_NEW_REQUEST,
   FETCH_NEW_SUCCESS,
   FETCH_NEW_FAILURE,
@@ -38,9 +41,22 @@ export const fetchNewsFailure = (error) => ({
   type: FETCH_NEWS_FAILURE,
   payload: error
 });
-export const fetchNewRequest = (id) => ({
+export const fetchLatestArticlesRequest = () => ({
+  type: FETCH_LATEST_ARTICLES_REQUEST
+});
+
+export const fetchLatestArticlesSuccess = (data) => ({
+  type: FETCH_LATEST_ARTICLES_SUCCESS,
+  payload: data
+});
+
+export const fetchLatestArticlesFailure = (error) => ({
+  type: FETCH_LATEST_ARTICLES_FAILURE,
+  payload: error
+});
+export const fetchNewRequest = (slug) => ({
   type: FETCH_NEW_REQUEST,
-  payload: id
+  payload: slug
 });
 
 export const fetchNewSuccess = (data) => ({

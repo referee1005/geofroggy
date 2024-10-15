@@ -2,6 +2,9 @@ import {
   FETCH_NEWS_REQUEST,
   FETCH_NEWS_SUCCESS,
   FETCH_NEWS_FAILURE,
+  FETCH_LATEST_ARTICLES_REQUEST,
+  FETCH_LATEST_ARTICLES_SUCCESS,
+  FETCH_LATEST_ARTICLES_FAILURE,
   FETCH_NEW_REQUEST,
   FETCH_NEW_SUCCESS,
   FETCH_NEW_FAILURE,
@@ -28,6 +31,7 @@ import {
 const initialState = {
   loading: false,
   news: [],
+  latestArticles: [],
   new: {},
   trends: [],
   events: [],
@@ -51,6 +55,23 @@ const newsReducer = (state = initialState, action) => {
         news: action.payload
       };
     case FETCH_NEWS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+    case FETCH_LATEST_ARTICLES_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case FETCH_LATEST_ARTICLES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        latestArticles: action.payload
+      };
+    case FETCH_LATEST_ARTICLES_FAILURE:
       return {
         ...state,
         loading: false,

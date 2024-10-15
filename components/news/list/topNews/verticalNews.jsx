@@ -88,12 +88,12 @@ function VerticalNews ({ data, changeIndex }) {
                 <div className='flex flex-col py-8 w-[50%] justify-between 3xl:text-lg'>
                   <div
                     className='font-semibold cursor-pointer hover:underline'
-                    onClick={() => router.push(`/news/${item.id}`)}
+                    onClick={() => router.push(`/news/${item.slug}`)}
                   >
-                    {item.title}
+                    {item.yoast_head_json.og_title}
                   </div>
                   <div className='lg:line-clamp-1 xl:line-clamp-2'>
-                    {item.description}
+                    {item.yoast_head_json.og_description}
                   </div>
                   <div className=''>
                     <span className='text-[#8CC63E]'>Geography</span> |
@@ -102,11 +102,11 @@ function VerticalNews ({ data, changeIndex }) {
                 </div>
                 <div
                   className='flex-1 lg:my-1 2xl:my-2 flex items-center cursor-pointer'
-                  onClick={() => router.push(`/news/${item.id}`)}
+                  onClick={() => router.push(`/news/${item.slug}`)}
                 >
                   <Image
-                    src={item.image.src}
-                    className='w-full min-h-[180px] h-[180px] xl:min-h-[210px] xl:h-[210px] 2xl:min-h-[250px] 2xl:h-[250px] object-cover rounded-lg'
+                    src={item.yoast_head_json.og_image[0]['url']}
+                    className='w-full max-h-[180px] min-h-[180px] h-[180px] xl:max-h-[210px] xl:min-h-[210px] xl:h-[210px]  2xl:min-h-[250px] 2xl:max-h-[250px] 2xl:h-[250px] object-cover rounded-lg'
                     layout='responsive'
                     width={6}
                     height={4}

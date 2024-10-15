@@ -58,23 +58,23 @@ function HorizontalNews ({ data, changeIndex }) {
             <div className='flex flex-col gap-4 px-1 lg:px-2'>
               <div
                 className='flex-1 cursor-pointer min-h-[120px] h-[120px] sm:min-h-[150px] sm:h-[150px] lg:min-h-[200px] lg:h-[200px]'
-                onClick={() => router.push(`/news/${item.id}`)}
+                onClick={() => router.push(`/news/${item.slug}`)}
               >
                 <Image
-                  src={item.image.src}
+                  src={item.yoast_head_json.og_image[0]['url']}
                   className='w-full object-cover rounded-lg min-h-[120px] max-h-[120px] h-[120px] sm:min-h-[150px] sm:max-h-[150px] sm:h-[150px] lg:min-h-[200px] lg:max-h-[200px] lg:h-[200px]'
                   layout='responsive'
                   width={6}
                   height={4}
-                  alt={item.title} // Adding alt text for accessibility
+                  alt={item.yoast_head_json.og_title} // Adding alt text for accessibility
                 />
               </div>
               <div className='flex flex-col gap-2 justify-between'>
                 <div
                   className='font-semibold hover:underline cursor-pointer line-clamp-2'
-                  onClick={() => router.push(`/news/${item.id}`)}
+                  onClick={() => router.push(`/news/${item.slug}`)}
                 >
-                  {item.title}
+                  {item.yoast_head_json.og_title}
                 </div>
                 <div className='text-xs sm:text-base'>
                   <span className='text-[#8CC63E]'>Geography</span> | Geography

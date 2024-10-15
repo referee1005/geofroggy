@@ -14,11 +14,10 @@ function NewsDetail ({ data }) {
       <div className='flex mb-4'>
         <div className='lg:w-[70%]'>
           <div className='text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl mb-4 2xl:mb-8'>
-            {data.title}
+            {data.yoast_head_json.og_title}
           </div>
           <div className=''>
-            <span className='text-[#8CC63E]'>Geography</span> |{' '}
-            {data.created_at}
+            <span className='text-[#8CC63E]'>Geography</span> | {data.date}
           </div>
         </div>
       </div>
@@ -29,14 +28,14 @@ function NewsDetail ({ data }) {
             style={{ paddingBottom: '50%' }}
           >
             <Image
-              src={data.image && data.image.src}
+              src={data.yoast_head_json.og_image[0]['url']}
               className='rounded-xl'
               // className='w-full object-cover rounded-xl'
               layout='fill'
               objectFit='cover'
             />
           </div>
-          <div>{data.description}</div>
+          <div>{data.yoast_head_json.og_description}</div>
         </div>
         <div className='flex-1 flex flex-col gap-4 2xl:gap-8'>
           <div className='flex flex-col p-4 2xl:p-8 gap-4 2xl:gap-8 bg-white rounded-lg'>
@@ -44,7 +43,7 @@ function NewsDetail ({ data }) {
             <div className='flex gap-4'>
               <div className='flex items-center'>
                 <Image
-                  src={data.author_image && data.author_image.src}
+                  src={data.yoast_head_json.schema['@graph'][6]['image']['url']}
                   className='w-[50px] h-[50px] rounded-lg'
                   width={50}
                   height={50}
@@ -52,7 +51,9 @@ function NewsDetail ({ data }) {
               </div>
 
               <div className='flex flex-col justify-between'>
-                <div className='font-semibold 2xl:text-lg'>{data.author}</div>
+                <div className='font-semibold 2xl:text-lg'>
+                  {data.yoast_head_json.author}
+                </div>
                 <div className='2xl:text-lg'>Reporter, Geofroggy</div>
               </div>
             </div>

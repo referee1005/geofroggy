@@ -76,14 +76,22 @@ export const postNoteData = async (postData) => {
   return data;
 };
 export const fetchNewsData = async () => {
-  const res = await fetch("/api/news");
-  const data = await res.json();
-  return data;
+  const res = await axios.get(
+    "https://geofroggy.com/wp-json/wp/v2/posts?_fields=id,date,slug,link,title,content,excerpt,categories,tags,author,yoast_head,yoast_head_json,jetpack_featured_media_url&orderby=id&order=desc&per_page=8"
+  );
+  return res.data;
 };
-export const fetchNewData = async (id) => {
-  const res = await fetch(`/api/news/detail`);
-  const data = await res.json();
-  return data;
+export const fetchLatestArticlesData = async () => {
+  const res = await axios.get(
+    "https://geofroggy.com/wp-json/wp/v2/posts?_fields=id,date,slug,link,title,content,excerpt,categories,tags,author,yoast_head,yoast_head_json,jetpack_featured_media_url&orderby=date&order=desc&per_page=15"
+  );
+  return res.data;
+};
+export const fetchNewData = async (slug) => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/wp/v2/posts?slug=${slug}&_fields=id,date,slug,link,title,content,excerpt,categories,tags,author,yoast_head,yoast_head_json,jetpack_featured_media_url`
+  );
+  return res.data;
 };
 export const fetchTrendsData = async () => {
   const res = await fetch("/api/trends");
