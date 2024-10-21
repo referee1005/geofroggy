@@ -43,7 +43,7 @@ function Curate () {
       </div>
 
       <div className='relative w-full flex flex-col gap-2 lg:gap-4'>
-        <div className='grid grid-rows-2 sm:grid-cols-2 gap-2 lg:gap-4'>
+        <div className='grid grid-rows-2 sm:grid-rows-1 sm:grid-cols-2 gap-2 lg:gap-4'>
           {/* Left Area */}
           <div className='flex gap-2 lg:gap-4 w-full'>
             <div className='bg-white relative rounded-2xl w-full aspect-square'>
