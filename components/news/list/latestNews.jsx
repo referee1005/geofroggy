@@ -91,7 +91,7 @@ function LatestNews ({ data }) {
                 </div>
                 <div
                   className='font-semibold hover:underline cursor-pointer line-clamp-2'
-                  onClick={() => router.push(`/news/${item.id}`)}
+                  onClick={() => router.push(`/news/${item.slug}`)}
                 >
                   {item.yoast_head_json.og_title}
                 </div>
