@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
-import Video from '../../public/images/our_video.png'
-
-function OurVideo ({}) {
+import { useRouter } from 'next/router'
+function OurVideo ({ data }) {
+  const router = useRouter()
   return (
     <div className='container-custom lg:my-8 2xl:my-16'>
       <div className='relative flex min-h-48 sm:min-h-48 pb-4'>
@@ -10,14 +10,19 @@ function OurVideo ({}) {
           <div className='relative bg-white shadow-md rounded-lg overflow-hidden'>
             {/* Main Image */}
             <Image
-              src={Video}
+              src={data.image}
               className='w-full object-cover min-h-48'
               layout='responsive'
+              width={2000}
+              height={2000}
             />
             <div className='absolute inset-0 flex justify-center items-center text-white bottom-1/2 text-2xl sm:text-4xl lg:text-5xl 2xl:text-7xl font-semibold'>
               Watch Our Video
             </div>
-            <div className='absolute inset-0 flex flex-col justify-center items-center text-white'>
+            <div
+              className='absolute inset-0 flex flex-col justify-center items-center text-white'
+              onClick={() => router.push(data.video_url)}
+            >
               <svg
                 width='48'
                 height='48'

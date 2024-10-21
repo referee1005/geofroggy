@@ -60,7 +60,10 @@ function AppFooter () {
                 >
                   News
                 </li>
-                <li className='hover:text-gray-600 cursor-pointer'>
+                <li
+                  className='hover:text-gray-600 cursor-pointer'
+                  onClick={() => router.push('/media')}
+                >
                   Media Page
                 </li>
                 <li className='hover:text-gray-600 cursor-pointer'>

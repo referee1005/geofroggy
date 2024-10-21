@@ -3,41 +3,50 @@ import axios from "axios";
 
 export const fetchInterestData = async () => {
   try {
-    const res = await fetch("/api/interests");
-    if (!res.ok) {
-      throw new Error("Failed to fetch");
-    }
-    const data = await res.json();
-    return data;
+    const res = await axios.get(
+      `https://geofroggy.com/wp-json/gfrog/v1/home/ofinterest`
+    );
+    return res.data;
   } catch (error) {
     console.error("Error fetching interests:", error);
     return [];
   }
 };
 export const fetchPopularData = async () => {
-  const res = await fetch("/api/populars");
-  const data = await res.json();
-  return data;
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/home/popular-countries`
+  );
+  return res.data;
 };
 export const fetchRecentData = async () => {
-  const res = await fetch("/api/recent-additions");
-  const data = await res.json();
-  return data;
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/home/recent-additions`
+  );
+  return res.data;
 };
 export const fetchPlaceData = async () => {
-  const res = await fetch("/api/places");
-  const data = await res.json();
-  return data;
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/home/banner`
+  );
+  return res.data;
 };
 export const fetchFavouritePlaceData = async () => {
-  const res = await fetch("/api/favourite-places");
-  const data = await res.json();
-  return data;
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/home/favourite-places`
+  );
+  return res.data;
 };
 export const fetchSiteInfoData = async () => {
-  const res = await fetch("/api/site-info");
-  const data = await res.json();
-  return data;
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/about/content`
+  );
+  return res.data;
+};
+export const fetchAboutAdvertData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/about/advert`
+  );
+  return res.data;
 };
 export const fetchFaqData = async (query) => {
   const realQuery = query === undefined ? "" : "?" + query;

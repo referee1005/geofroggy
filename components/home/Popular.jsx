@@ -32,6 +32,8 @@ function Popular ({}) {
                   alt={item.name}
                   className='w-full h-32 object-cover min-h-32'
                   layout='responsive'
+                  width={500}
+                  height={500}
                 />
 
                 {/* Flag Image */}
@@ -52,10 +54,10 @@ function Popular ({}) {
                   {'Category'}
                 </div>
                 <h3 className='text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-gray-900 mt-1'>
-                  {item.country}
+                  {item.title}
                 </h3>
                 <p className='text-gray-600 mt-4 mb-8 sm:mt-4 sm:mb-8 md:mt-8 md:mb-12'>
-                  {item.description}
+                  {item.excerpt}
                 </p>
                 <Link
                   href={`/country/${item.slug}`}

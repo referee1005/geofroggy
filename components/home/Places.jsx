@@ -66,7 +66,9 @@ function Places () {
   }, [isTransitioning, places.length, clickIcon, mouseOver])
 
   useEffect(() => {
-    if (data.length) setPlaces(data)
+    if (data.length) {
+      if (data.length < 8) setPlaces([...data, ...data])
+    }
   }, [data])
 
   useEffect(() => {
@@ -190,7 +192,7 @@ function Places () {
       {/* Main Image */}
       <div className='w-full h-screen'>
         <img
-          src={places[currentIndex]?.image?.src}
+          src={places[currentIndex]?.featured_image?.large}
           className='object-cover w-full h-screen'
         />
       </div>
@@ -228,7 +230,7 @@ function Places () {
                 fill={clickIcon === 'place' ? 'rgb(59 130 246)' : 'white'}
               />
             </svg>{' '}
-            {places[currentIndex] && places[currentIndex].country_info.name}
+            {places[currentIndex] && places[currentIndex].country}
           </div>
           <div
             className={`backdrop-blur-md ${
@@ -267,24 +269,29 @@ function Places () {
                   ? `@ ${places[currentIndex] && places[currentIndex].author}`
                   : `${
                       places[currentIndex] &&
-                      places[currentIndex].country_info &&
-                      places[currentIndex].country_info.name +
+                      places[currentIndex].country +
                         ',' +
-                        places[currentIndex].country_info.continent
+                        places[currentIndex].continent
                     }`}
               </div>
               <div className='flex flex-col items-center w-full justify-center'>
                 {places[currentIndex] &&
                   (clickIcon === 'author' ? (
                     <Image
-                      src={places[currentIndex].author_image}
+                      src={
+                        places[currentIndex].author_image &&
+                        places[currentIndex].author_image.thumbnail
+                      }
                       alt='author'
+                      width={150}
+                      height={150}
+                      className='rounded-full'
                     />
                   ) : (
                     <div className='relative aspect-[4/3] w-full'>
                       <MapComponent
-                        lat={places[currentIndex].lat}
-                        lang={places[currentIndex].lang}
+                        lat={places[currentIndex].latitude}
+                        lang={places[currentIndex].longitude}
                         mini={false}
                         scale={true}
                       />
@@ -298,7 +305,9 @@ function Places () {
                       : places[currentIndex].place_name)}
                 </div>
                 <div className='text-lg text-center'>
-                  {places[currentIndex] && places[currentIndex].description}
+                  {places[currentIndex] && clickIcon === 'author'
+                    ? places[currentIndex].author_description
+                    : places[currentIndex].place_description}
                 </div>
               </div>
               <div className='flex items-center'>
@@ -357,7 +366,7 @@ function Places () {
                 }}
               >
                 <img
-                  src={item.thumbnail && item.thumbnail.src}
+                  src={item.featured_image && item.featured_image.thumbnail}
                   className='w-full h-48 sm:h-64 lg:w-56 lg:h-full cursor-pointer lg:rounded-lg'
                   draggable='false'
                 />
@@ -371,8 +380,8 @@ function Places () {
           <div className='w-full h-full'>
             {' '}
             <MapComponent
-              lat={places[currentIndex].lat}
-              lang={places[currentIndex].lang}
+              lat={places[currentIndex].latitude}
+              lang={places[currentIndex].longitude}
               mini={true}
               scale={true}
             />

@@ -20,15 +20,15 @@ function Thumbnails ({ data }) {
                 alt={item.name}
                 className='w-full h-32 object-cover min-h-32'
                 layout='responsive'
+                width={500}
+                height={500}
               />
               <div className='absolute bottom-2 mx-2 rounded-lg bg-white p-4 pr-8 lg:p-2 2xl:p-4 2xl:pr-8'>
                 <div className='text-4xl lg:text-2xl xl:text-3xl 2xl:text-4xl mb-4 lg:mb-2 2xl:mb-4'>
                   {item.title}
                 </div>
                 <div className='text-base lg:text-xs xl:text-sm 2xl:text-base'>
-                  We will offer various city related tours and surrounding areas
-                  along with information. We will offer various city related
-                  tours.
+                  {item.description}
                 </div>
               </div>
             </div>

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { fetchInterestsRequest } from '@/actions/home'
+import { useRouter } from 'next/router'
 
 function Ofinterest ({}) {
   const [slidesToShow, setSlidesToShow] = useState(5)
@@ -12,6 +13,7 @@ function Ofinterest ({}) {
 
   const data = useSelector(state => state.home.interests)
   const dispatch = useDispatch()
+  const router = useRouter()
 
   useEffect(() => {
     dispatch(fetchInterestsRequest())
@@ -54,11 +56,16 @@ function Ofinterest ({}) {
                 className={`flex-shrink-0 cursor-pointer mb-4 sm:mb-12 ${
                   index % 2 ? 'rotate-[19deg] z-0' : '-rotate-[19deg] z-10'
                 }`}
+                onClick={() => {
+                  router.push(item.country_url)
+                }}
               >
                 <Image
-                  src={item.url}
+                  src={item.image}
                   alt={item.country}
                   className='object-cover py-8 sm:py-16'
+                  width={500}
+                  height={500}
                 />
               </div>
             </div>

@@ -11,6 +11,7 @@ const MapComponent = dynamic(() => import('../reusable/map'), {
 })
 function NoteForm () {
   const [largeMap, setLargeMap] = useState(false)
+  const [data, setData] = useState({})
   const dispatch = useDispatch()
 
   const openModal = () => setLargeMap(true)
@@ -27,14 +28,14 @@ function NoteForm () {
         </div>
         <div>
           <div className='grid grid-cols-2 gap-2 lg:gap-8 2xl:gap-16'>
-            <Input label={'First Name'} />
-            <Input label={'Last Name'} />
+            <Input label={'First Name'} name={'first_name'} />
+            <Input label={'Last Name'} name={'last_name'} />
           </div>
           <div className=''>
-            <Input label={'Email'} />
+            <Input label={'Email'} name={'email'} />
           </div>
           <div className=''>
-            <TextArea label={'Description'} />
+            <TextArea label={'Description'} name={'description'} />
           </div>
           <CustomButton
             title={'Send Message'}

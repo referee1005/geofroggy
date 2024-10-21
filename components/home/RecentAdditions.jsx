@@ -3,11 +3,12 @@ import Image from 'next/image'
 import CustomButton from '../reusable/CustomButton'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchRecentAdditionsRequest } from '@/actions/home'
+import { useRouter } from 'next/router'
 
 function RecentAdditions ({}) {
   const data = useSelector(state => state.home.recent_additions)
   const dispatch = useDispatch()
-
+  const router = useRouter()
   useEffect(() => {
     dispatch(fetchRecentAdditionsRequest())
   }, [dispatch])
@@ -26,17 +27,24 @@ function RecentAdditions ({}) {
             >
               {/* Main Image */}
               <Image
-                src={item.thumbnail}
+                src={item.image}
                 alt={item.name}
                 className='w-full object-cover min-h-36'
                 layout='responsive'
+                width={500}
+                height={500}
               />
               <div className='absolute top-0 left-0 right-0 bottom-0 flex justify-end items-start p-2 2xl:p-4 text-white'>
                 <div className='rounded-2xl bg-dark px-4 py-1 lg:text-xs 2xl:text-sm'>
                   {item.category}
                 </div>
               </div>
-              <div className='absolute inset-0 flex flex-col justify-center items-center'>
+              <div
+                className='absolute inset-0 flex flex-col justify-center items-center'
+                onClick={() => {
+                  router.push(item.video_url)
+                }}
+              >
                 <svg
                   width='48'
                   height='48'
