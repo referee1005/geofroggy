@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 
-function Menu () {
+function Menu ({ changeMenu }) {
   const [selectedItem, setItem] = useState('events')
-
+  const clickMenu = value => {
+    changeMenu(value)
+    setItem(value)
+  }
   return (
     <div className='rounded-lg flex flex-col text-custom-font-third-content text-sm 2xl:text-base'>
       <div
@@ -11,7 +14,7 @@ function Menu () {
             ? 'bg-custom-bg-primary text-custom-primary'
             : ''
         }`}
-        onClick={() => setItem('news')}
+        onClick={() => clickMenu('news')}
       >
         <svg
           width='16'
@@ -36,7 +39,7 @@ function Menu () {
             ? 'bg-custom-bg-primary text-custom-primary'
             : ''
         }`}
-        onClick={() => setItem('events')}
+        onClick={() => clickMenu('events')}
       >
         <svg
           width='16'
@@ -61,7 +64,7 @@ function Menu () {
             ? 'bg-custom-bg-primary text-custom-primary'
             : ''
         }`}
-        onClick={() => setItem('profile')}
+        onClick={() => clickMenu('profile')}
       >
         <svg
           width='16'
@@ -86,7 +89,7 @@ function Menu () {
             ? 'bg-custom-bg-primary text-custom-primary'
             : ''
         }`}
-        onClick={() => setItem('collections')}
+        onClick={() => clickMenu('collections')}
       >
         <svg
           width='16'
@@ -111,7 +114,7 @@ function Menu () {
             ? 'bg-custom-bg-primary text-custom-primary'
             : ''
         }`}
-        onClick={() => setItem('playlists')}
+        onClick={() => clickMenu('playlists')}
       >
         <svg
           width='13'
@@ -136,7 +139,7 @@ function Menu () {
             ? 'bg-custom-bg-primary text-custom-primary'
             : ''
         }`}
-        onClick={() => setItem('saved')}
+        onClick={() => clickMenu('saved')}
       >
         <svg
           width='12'
@@ -161,7 +164,7 @@ function Menu () {
             ? 'bg-custom-bg-primary text-custom-primary'
             : ''
         }`}
-        onClick={() => setItem('settings')}
+        onClick={() => clickMenu('settings')}
       >
         <svg
           width='16'
@@ -186,7 +189,7 @@ function Menu () {
             ? 'bg-custom-bg-primary text-custom-primary'
             : ''
         }`}
-        onClick={() => setItem('invitations')}
+        onClick={() => clickMenu('invitations')}
       >
         <svg
           width='16'

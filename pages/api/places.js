@@ -93,66 +93,6 @@ export default function handler(req, res) {
       lat: 35.3606,
       lang: 138.7274,
       thumbnail: thumbnail5
-    },
-    {
-      id: 6,
-      title: "Machu Picchu",
-      description:
-        "Machu Picchu is an ancient Incan city set high in the Andes Mountains of Peru.",
-      place_name: "Machu Picchu",
-      country_info: { name: "Zimbabwe/Zambia", continent: "Africa" },
-      author: "Carlos Rivera",
-      google_map_url: map,
-      author_image: avatar,
-      image: place6,
-      lat: 17.9243,
-      lang: 25.8567,
-      thumbnail: thumbnail6
-    },
-    {
-      id: 7,
-      title: "Santorini",
-      description:
-        "Santorini is a stunning island located in the Aegean Sea, part of Greece's Cyclades group.",
-      place_name: "Santorini",
-      country_info: { name: "Greece", continent: "Europe" },
-      author: "Carlos Rivera",
-      google_map_url: map,
-      author_image: avatar,
-      image: place7,
-      lat: 36.3932,
-      lang: 25.4615,
-      thumbnail: thumbnail7
-    },
-    {
-      id: 8,
-      title: "Banff National Park",
-      description:
-        "Banff National Park is located in the Canadian Rockies of Alberta, Canada",
-      place_name: "Banff National Park",
-      country_info: { name: "Canada", continent: "North America" },
-      author: "John Doe",
-      google_map_url: map,
-      author_image: avatar,
-      image: place8,
-      lat: 51.4968,
-      lang: -115.9281,
-      thumbnail: thumbnail8
-    },
-    {
-      id: 9,
-      title: "Banff National Park",
-      description:
-        "Banff National Park is located in the Canadian Rockies of Alberta, Canada",
-      place_name: "Banff National Park",
-      country_info: { name: "Canada", continent: "North America" },
-      author: "John Doe",
-      google_map_url: map,
-      author_image: avatar,
-      image: place8,
-      lat: 51.4968,
-      lang: -115.9281,
-      thumbnail: thumbnail8
     }
   ]);
 }

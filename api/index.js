@@ -24,12 +24,18 @@ export const fetchRecentData = async () => {
   );
   return res.data;
 };
+// export const fetchPlaceData = async () => {
+//   const res = await axios.get(
+//     `https://geofroggy.com/wp-json/gfrog/v1/home/banner`
+//   );
+//   return res.data;
+// };
 export const fetchPlaceData = async () => {
-  const res = await axios.get(
-    `https://geofroggy.com/wp-json/gfrog/v1/home/banner`
-  );
-  return res.data;
+  const res = await fetch("/api/places");
+  const data = await res.json();
+  return data;
 };
+
 export const fetchFavouritePlaceData = async () => {
   const res = await axios.get(
     `https://geofroggy.com/wp-json/gfrog/v1/home/favourite-places`
