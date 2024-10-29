@@ -7,6 +7,7 @@ import donateReducer from "./donateReducer";
 import contactReducer from "./contactReducer";
 import jobReducer from "./jobReducer";
 import newsReducer from "./newsReducer";
+import sponsorReducer from "./sponsorReducer";
 export default combineReducers({
   home: homeReducer,
   about: aboutReducer,
@@ -15,5 +16,6 @@ export default combineReducers({
   contact: contactReducer,
   job: jobReducer,
   news: newsReducer,
-  user: userReducer
+  user: userReducer,
+  sponsor: sponsorReducer
 });

@@ -7,6 +7,7 @@ import { contactSaga } from "./contact";
 import { jobSaga } from "./job";
 import { newsSaga } from "./news";
 import { userSaga } from "./user";
+import { sponsorSaga } from "./sponsor";
 export default function* rootSaga() {
   yield all([
     homeSaga(),
@@ -16,6 +17,7 @@ export default function* rootSaga() {
     contactSaga(),
     jobSaga(),
     newsSaga(),
-    userSaga()
+    userSaga(),
+    sponsorSaga()
   ]);
 }

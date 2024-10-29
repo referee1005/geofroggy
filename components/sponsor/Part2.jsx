@@ -7,7 +7,7 @@ import Around3 from '../../public/images/donate/around3.png'
 import Around4 from '../../public/images/donate/around4.png'
 import CustomButton from '../reusable/CustomButton'
 
-function Part2 ({}) {
+function Part2 ({ data }) {
   const router = useRouter()
   return (
     <div
@@ -30,11 +30,10 @@ function Part2 ({}) {
       </div>
       <div className='flex flex-col items-center justify-between w-2/3 h-full'>
         <div className='text-large ms:text-xl sm:text-2xl lg:text-3xl xl:text-4xl 3xl:text-5xl text-center mb-8 w-[90%]'>
-          Join our community for donating and be a part of a positive change in
-          the world. With over :
+          {data !== undefined ? data.donation_excerpt : ''}
         </div>
         <div className='text-6xl ms:text-7xl sm:text-8xl lg:text-custom-10xl xl:text-custom-11xl 3xl:text-custom-12xl w-full text-center mb-8'>
-          472,836+
+          {data !== undefined ? data.donation_numbers : ''}
         </div>
         <div className='flex flex-col items-center'>
           {' '}

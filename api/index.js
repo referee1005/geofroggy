@@ -55,15 +55,26 @@ export const fetchAboutAdvertData = async () => {
   return res.data;
 };
 export const fetchFaqData = async (query) => {
-  const realQuery = query === undefined ? "" : "?" + query;
-  const res = await fetch("/api/faq" + realQuery);
-  const data = await res.json();
-  return data;
+  const res1 = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/faq/advice-and-answer`
+  );
+  const res2 = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/faq/general`
+  );
+  const res3 = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/faq/geography`
+  );
+  return {
+    advice_answers: res1.data,
+    general_faqs: res2.data,
+    geography_faqs: res3.data
+  };
 };
 export const fetchDonateData = async () => {
-  const res = await fetch("/api/donate-amount");
-  const data = await res.json();
-  return data;
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/donation/content`
+  );
+  return res.data;
 };
 export const fetchContactData = async () => {
   const res = await fetch("/api/contact");
@@ -142,4 +153,22 @@ export const fetchUserData = async () => {
   const res = await fetch("/api/user");
   const data = await res.json();
   return data;
+};
+export const fetchSponsorData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/sponsor/content`
+  );
+  return res.data;
+};
+export const fetchSponsorFaqData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/sponsor/faq`
+  );
+  return res.data;
+};
+export const fetchSponsorTeamData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/sponsor/team`
+  );
+  return res.data;
 };
