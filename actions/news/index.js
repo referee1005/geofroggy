@@ -25,7 +25,13 @@ import {
   FETCH_COMMUNITIES_FAILURE,
   FETCH_RECOMMENDED_REQUEST,
   FETCH_RECOMMENDED_SUCCESS,
-  FETCH_RECOMMENDED_FAILURE
+  FETCH_RECOMMENDED_FAILURE,
+  FETCH_NEWSLETTER_OPTIONS_REQUEST,
+  FETCH_NEWSLETTER_OPTIONS_SUCCESS,
+  FETCH_NEWSLETTER_OPTIONS_FAILURE,
+  POST_NEWSLETTER_SUBSCRIBE_REQUEST,
+  POST_NEWSLETTER_SUBSCRIBE_SUCCESS,
+  POST_NEWSLETTER_SUBSCRIBE_FAILURE
 } from "../types";
 
 export const fetchNewsRequest = () => ({
@@ -146,5 +152,32 @@ export const fetchRecommendedSuccess = (data) => ({
 
 export const fetchRecommendedFailure = (error) => ({
   type: FETCH_RECOMMENDED_FAILURE,
+  payload: error
+});
+export const fetchNewsLetterOptionsRequest = () => ({
+  type: FETCH_NEWSLETTER_OPTIONS_REQUEST
+});
+
+export const fetchNewsLetterOptionsSuccess = (data) => ({
+  type: FETCH_NEWSLETTER_OPTIONS_SUCCESS,
+  payload: data
+});
+
+export const fetchNewsLetterOptionsFailure = (error) => ({
+  type: FETCH_NEWSLETTER_OPTIONS_FAILURE,
+  payload: error
+});
+export const postNewsletterSubscribeRequest = (data) => ({
+  type: POST_NEWSLETTER_SUBSCRIBE_REQUEST,
+  payload: data
+});
+
+export const postNewsletterSubscribeSuccess = () => ({
+  type: POST_NEWSLETTER_SUBSCRIBE_SUCCESS
+  // payload: data
+});
+
+export const postNewsletterSubscribeFailure = (error) => ({
+  type: POST_NEWSLETTER_SUBSCRIBE_FAILURE,
   payload: error
 });

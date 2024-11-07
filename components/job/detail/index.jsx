@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Button } from '@mui/material'
 import RadioButtonUncheckedOutlinedIcon from '@mui/icons-material/RadioButtonUncheckedOutlined'
 import { useRouter } from 'next/router'
-import { formatDate } from '@/helpers'
+import { formatDate1 } from '@/helpers'
 
 function JobDetail ({ data }) {
   const router = useRouter()
@@ -25,13 +25,13 @@ function JobDetail ({ data }) {
           </div>
           <div className='flex flex-col gap-2'>
             <div className='text-xs sm:text-sm lg:text-base text-custom-font-content'>
-              Geofroggy
+              {data.job_posted_by}
             </div>
             <div className='text-xl sm:text-2xl lg:text-3xl'>
               {data.job_title}
             </div>
             <div className='text-xs sm:text-sm lg:text-base text-custom-font-content'>
-              {data.location} · {data.job_type}
+              {data.job_location} · {data.job_type}
             </div>
           </div>
         </div>
@@ -54,10 +54,12 @@ function JobDetail ({ data }) {
       <div className='container-custom flex lg:flex-row flex-col gap-4 2xl:gap-8'>
         <div className='p-4 sm:p-8 lg:w-2/3 2xl:w-3/4 bg-white rounded-lg flex flex-col gap-12'>
           <Image
-            src={data.job_image}
+            src={data.banner}
             alt={'back'}
             className='w-[46px] h-[46px] cursor-pointer rounded-lg  min-h-[150px]'
             layout='responsive'
+            width={1000}
+            height={500}
           />
           <div>
             <div className='font-semibold mb-4'>Job Title</div>
@@ -73,8 +75,8 @@ function JobDetail ({ data }) {
           </div>
           <div>
             <div className='font-semibold mb-4'>Responsibilities</div>
-            {data.responsibilities !== undefined &&
-              data.responsibilities.map(item => (
+            {data.job_responsibilities !== undefined &&
+              data.job_responsibilities.map(item => (
                 <div className='mb-6 flex gap-2 text-custom-font-content'>
                   <div className=''>
                     <RadioButtonUncheckedOutlinedIcon sx={{ fontSize: 10 }} />
@@ -92,7 +94,7 @@ function JobDetail ({ data }) {
                 Job Creation Date
               </div>
               <div className='font-semibold text-custom-font-secondary-content'>
-                {formatDate(data.job_creation_date)}
+                {formatDate1(data.job_creation_date)}
               </div>
             </div>
             <div>
@@ -100,8 +102,7 @@ function JobDetail ({ data }) {
                 Recruitment Period
               </div>
               <div className='font-semibold text-custom-font-secondary-content'>
-                {formatDate(data.recruitment_start_period)} to{' '}
-                {formatDate(data.recruitment_end_period)}
+                {data.job_recruitment_period}
               </div>
             </div>
             <div>
@@ -109,7 +110,7 @@ function JobDetail ({ data }) {
                 Recruitment Quota
               </div>
               <div className='font-semibold text-custom-font-secondary-content'>
-                {data.recruitment_quota}
+                {data.job_quota}
               </div>
             </div>
             <div>
@@ -125,7 +126,7 @@ function JobDetail ({ data }) {
                 Experiences
               </div>
               <div className='font-semibold text-custom-font-secondary-content'>
-                {data.experiences}
+                {data.job_experiences}
               </div>
             </div>
             <div>
@@ -133,7 +134,7 @@ function JobDetail ({ data }) {
                 Location
               </div>
               <div className='font-semibold text-custom-font-secondary-content'>
-                {data.location}
+                {data.job_location}
               </div>
             </div>
             <div>
@@ -141,7 +142,7 @@ function JobDetail ({ data }) {
                 Salary
               </div>
               <div className='font-semibold text-custom-font-secondary-content'>
-                {data.salary}
+                {`$${data.job_salary} USD`}
               </div>
             </div>
             <div>
@@ -149,7 +150,7 @@ function JobDetail ({ data }) {
                 Hiring Manager
               </div>
               <div className='font-semibold text-custom-font-secondary-content'>
-                {data.hiring_manager}
+                {data.job_hiring_manager}
               </div>
             </div>
           </div>

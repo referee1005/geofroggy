@@ -24,16 +24,11 @@ export const fetchRecentData = async () => {
   );
   return res.data;
 };
-// export const fetchPlaceData = async () => {
-//   const res = await axios.get(
-//     `https://geofroggy.com/wp-json/gfrog/v1/home/banner`
-//   );
-//   return res.data;
-// };
 export const fetchPlaceData = async () => {
-  const res = await fetch("/api/places");
-  const data = await res.json();
-  return data;
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/home/banner`
+  );
+  return res.data;
 };
 
 export const fetchFavouritePlaceData = async () => {
@@ -81,20 +76,29 @@ export const fetchContactData = async () => {
   const data = await res.json();
   return data;
 };
-export const fetchJobOptionsData = async () => {
-  const res = await fetch("/api/job_search_list");
-  const data = await res.json();
-  return data;
+export const fetchJobPositionsData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/career/positions`
+  );
+  return res.data;
 };
-export const fetchJobResultsData = async () => {
-  const res = await fetch("/api/job_search_results");
-  const data = await res.json();
-  return data;
+export const fetchJobTagsData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/career/tags`
+  );
+  return res.data;
 };
-export const fetchJobDetailData = async () => {
-  const res = await fetch("/api/job");
-  const data = await res.json();
-  return data;
+export const fetchJobResultsData = async (query) => {
+  const res = await axios.get(
+    "https://geofroggy.com/wp-json/gfrog/v1/career/query/?" + query
+  );
+  return res.data;
+};
+export const fetchJobDetailData = async (slug) => {
+  const res = await axios.get(
+    "https://geofroggy.com/wp-json/gfrog/v1/career/" + slug
+  );
+  return res.data;
 };
 export const postNoteData = async (postData) => {
   const res = await fetch("/api/note");
@@ -169,6 +173,19 @@ export const fetchSponsorFaqData = async () => {
 export const fetchSponsorTeamData = async () => {
   const res = await axios.get(
     `https://geofroggy.com/wp-json/gfrog/v1/sponsor/team`
+  );
+  return res.data;
+};
+export const fetchNewsletterOptionsData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/newsletter/captions`
+  );
+  return res.data;
+};
+export const postNewsletterSubscribeData = async (data) => {
+  const res = await axios.post(
+    `https://geofroggy.com/wp-json/gfrog/v1/subscribe/receive-callback?email=noopor@gmail.com&category[]=general&category[]=marketing`,
+    data
   );
   return res.data;
 };

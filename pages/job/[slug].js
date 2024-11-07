@@ -9,9 +9,10 @@ export default function Home() {
   const job = useSelector((state) => state.job.job);
   const dispatch = useDispatch();
 
-  const { id } = router.query;
+  const { slug } = router.query;
+
   useEffect(() => {
-    dispatch(fetchJobDetailRequest(id));
+    dispatch(fetchJobDetailRequest(slug));
   }, [dispatch]);
 
   return (

@@ -17,7 +17,11 @@ import {
   fetchCommunitiesSuccess,
   fetchCommunitiesFailure,
   fetchRecommendedSuccess,
-  fetchRecommendedFailure
+  fetchRecommendedFailure,
+  fetchNewsLetterOptionsSuccess,
+  fetchNewsLetterOptionsFailure,
+  postNewsletterSubscribeSuccess,
+  postNewsletterSubscribeFailure
 } from "../../actions/news";
 
 import {
@@ -29,7 +33,9 @@ import {
   FETCH_EVENT_REQUEST,
   FETCH_GROUPS_REQUEST,
   FETCH_COMMUNITIES_REQUEST,
-  FETCH_RECOMMENDED_REQUEST
+  FETCH_RECOMMENDED_REQUEST,
+  FETCH_NEWSLETTER_OPTIONS_REQUEST,
+  POST_NEWSLETTER_SUBSCRIBE_REQUEST
 } from "../../actions/types";
 
 import {
@@ -41,7 +47,9 @@ import {
   fetchEventData,
   fetchGroupsData,
   fetchCommunitiesData,
-  fetchRecommendsData
+  fetchRecommendsData,
+  fetchNewsletterOptionsData,
+  postNewsletterSubscribeData
 } from "../../api"; // Assuming you have an API module to handle your requests
 
 function* fetchNews() {
@@ -118,6 +126,24 @@ function* fetchRecommends() {
     yield put(fetchRecommendedFailure(error.message));
   }
 }
+function* fetchNewsletterOptions() {
+  try {
+    const response = yield call(fetchNewsletterOptionsData);
+    yield put(fetchNewsLetterOptionsSuccess(response));
+  } catch (error) {
+    yield put(fetchNewsLetterOptionsFailure(error.message));
+  }
+}
+function* postNewsletterSubscribe(action) {
+  try {
+    const response = yield call(() =>
+      postNewsletterSubscribeData(action.payload)
+    );
+    yield put(postNewsletterSubscribeSuccess(response));
+  } catch (error) {
+    yield put(postNewsletterSubscribeFailure(error.message));
+  }
+}
 export function* newsSaga() {
   yield takeLatest(FETCH_NEWS_REQUEST, fetchNews);
   yield takeLatest(FETCH_LATEST_ARTICLES_REQUEST, fetchLatestArticles);
@@ -128,4 +154,6 @@ export function* newsSaga() {
   yield takeLatest(FETCH_GROUPS_REQUEST, fetchGroups);
   yield takeLatest(FETCH_COMMUNITIES_REQUEST, fetchCommunities);
   yield takeLatest(FETCH_RECOMMENDED_REQUEST, fetchRecommends);
+  yield takeLatest(FETCH_NEWSLETTER_OPTIONS_REQUEST, fetchNewsletterOptions);
+  yield takeLatest(POST_NEWSLETTER_SUBSCRIBE_REQUEST, postNewsletterSubscribe);
 }

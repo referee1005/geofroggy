@@ -1,7 +1,10 @@
 import {
-  FETCH_JOB_OPTIONS_REQUEST,
-  FETCH_JOB_OPTIONS_SUCCESS,
-  FETCH_JOB_OPTIONS_FAILURE,
+  FETCH_JOB_POSITIONS_REQUEST,
+  FETCH_JOB_POSITIONS_SUCCESS,
+  FETCH_JOB_POSITIONS_FAILURE,
+  FETCH_JOB_TAGS_REQUEST,
+  FETCH_JOB_TAGS_SUCCESS,
+  FETCH_JOB_TAGS_FAILURE,
   FETCH_JOB_RESULTS_REQUEST,
   FETCH_JOB_RESULTS_SUCCESS,
   FETCH_JOB_RESULTS_FAILURE,
@@ -12,25 +15,43 @@ import {
 
 const initialState = {
   loading: false,
-  options: [],
+  positions: [],
+  tags: [],
   jobs: [],
   job: {}
 };
 
 const aboutReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_JOB_OPTIONS_REQUEST:
+    case FETCH_JOB_POSITIONS_REQUEST:
       return {
         ...state,
         loading: true
       };
-    case FETCH_JOB_OPTIONS_SUCCESS:
+    case FETCH_JOB_POSITIONS_SUCCESS:
       return {
         ...state,
         loading: false,
-        options: action.payload
+        positions: action.payload
       };
-    case FETCH_JOB_OPTIONS_FAILURE:
+    case FETCH_JOB_POSITIONS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+    case FETCH_JOB_TAGS_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case FETCH_JOB_TAGS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        tags: action.payload
+      };
+    case FETCH_JOB_TAGS_FAILURE:
       return {
         ...state,
         loading: false,

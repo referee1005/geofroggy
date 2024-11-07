@@ -69,7 +69,6 @@ function Places () {
     if (data.length) {
       console.log([...data, ...data])
       if (data.length < 8) setPlaces([...data, ...data])
-      else setPlaces(data)
     }
   }, [data])
 
@@ -194,7 +193,9 @@ function Places () {
       {/* Main Image */}
       <div className='w-full h-screen'>
         <img
-          src={places[currentIndex] && places[currentIndex].image.src}
+          src={
+            places[currentIndex] && places[currentIndex].featured_image.large
+          }
           className='object-cover w-full h-screen'
         />
       </div>
@@ -282,7 +283,7 @@ function Places () {
                     <Image
                       src={
                         places[currentIndex].author_image &&
-                        places[currentIndex].author_image.src
+                        places[currentIndex].author_image.thumbnail
                       }
                       alt='author'
                       width={150}
@@ -292,8 +293,8 @@ function Places () {
                   ) : (
                     <div className='relative aspect-[4/3] w-full'>
                       <MapComponent
-                        lat={places[currentIndex].lat}
-                        lang={places[currentIndex].lang}
+                        lat={places[currentIndex].latitude}
+                        lang={places[currentIndex].longitude}
                         mini={false}
                         scale={true}
                       />
@@ -368,7 +369,7 @@ function Places () {
                 }}
               >
                 <img
-                  src={places[index] && places[index].image.src}
+                  src={item.featured_image && item.featured_image.thumbnail}
                   className='w-full h-48 sm:h-64 lg:w-56 lg:h-full cursor-pointer lg:rounded-lg'
                   draggable='false'
                 />
@@ -382,8 +383,8 @@ function Places () {
           <div className='w-full h-full'>
             {' '}
             <MapComponent
-              lat={places[currentIndex].lat}
-              lang={places[currentIndex].lang}
+              lat={places[currentIndex].latitude}
+              lang={places[currentIndex].longitude}
               mini={true}
               scale={true}
             />

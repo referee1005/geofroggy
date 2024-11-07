@@ -17,47 +17,41 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import Input from '../../reusable/Input'
 import searchSVG from '../../../public/images/job/Search.svg'
 import { Clear } from '@mui/icons-material'
-import { fetchJobResultsRequest } from '@/actions/job'
-import { useDispatch } from 'react-redux'
 
 function valuetext (value) {
   return `$${value}`
 }
 
-function SearchBar ({ options }) {
+function SearchBar ({ positions, tags, onChangeQuery }) {
   // const [salary, setSalary] = React.useState([0, 1000])
   const [query, setQuery] = React.useState({
-    tags: [],
-    query: null,
-    salary: [],
-    positions: []
+    'tags[]': [],
+    keyword: null,
+    salary: [0, 5000],
+    'positions[]': [],
+    per_page: 10,
+    page_no: 1
   })
-  const dispatch = useDispatch()
 
   useEffect(() => {
-    if (options.salary)
-      setQuery({ ...query, salary: [options.salary.min, options.salary.max] })
-  }, [options])
-
-  useEffect(() => {
-    submit()
+    // submit()
+    onChangeQuery(query)
   }, [query])
+
   const handleChangeSalary = (event, newValue) => {
     setQuery({ ...query, salary: newValue })
   }
 
-  const changeTags = index => {
-    if (!query.tags.includes(index))
-      setQuery({ ...query, tags: [...query.tags, index] })
+  const changeTags = value => {
+    if (!query['tags[]'].includes(value))
+      setQuery({ ...query, 'tags[]': [...query['tags[]'], value] })
     else
       setQuery({
         ...query,
-        tags: query.tags.filter(item => item !== index)
+        'tags[]': query['tags[]'].filter(item => item !== value)
       })
   }
-  const submit = () => {
-    dispatch(fetchJobResultsRequest(query))
-  }
+
   return (
     <div className='mb-16 bg-white rounded-xl px-2 2xl:px-4 py-8 '>
       <div>
@@ -66,7 +60,7 @@ function SearchBar ({ options }) {
             type='text'
             startIconSrc={searchSVG}
             placeholder={'Search Jobs'}
-            onChange={e => setQuery({ ...query, query: e })}
+            onChange={e => setQuery({ ...query, keyword: e.target.value })}
           />
         </div>
         <Accordion sx={{ boxShadow: 'none', border: 'none' }} defaultExpanded>
@@ -79,10 +73,10 @@ function SearchBar ({ options }) {
           </AccordionSummary>
           <AccordionDetails>
             <FormGroup className='pl-0 2xl:pl-4 '>
-              {options.positions &&
-                options.positions.map(item => (
+              {positions &&
+                positions.map(item => (
                   <FormControlLabel
-                    key={item}
+                    key={item.id}
                     control={
                       <Checkbox
                         color='black'
@@ -90,19 +84,22 @@ function SearchBar ({ options }) {
                           if (e.target.checked)
                             setQuery({
                               ...query,
-                              positions: [...query.positions, item]
+                              'positions[]': [
+                                ...query['positions[]'],
+                                item.name
+                              ]
                             })
                           else
                             setQuery({
                               ...query,
-                              positions: query.positions.filter(
-                                ele => ele !== item
+                              'positions[]': query['positions[]'].filter(
+                                ele => ele !== item.name
                               )
                             })
                         }}
                       />
                     }
-                    label={item}
+                    label={item.name}
                   />
                 ))}
             </FormGroup>
@@ -119,32 +116,30 @@ function SearchBar ({ options }) {
             Salary
           </AccordionSummary>
           <AccordionDetails>
-            {options.salary && (
-              <Slider
-                getAriaValueText={valuetext}
-                value={query.salary}
-                valueLabelDisplay='auto'
-                sx={{
-                  color: '#00ad1c', // Change the slider's primary color
-                  '& .MuiSlider-thumb': {
-                    backgroundColor: 'thumbColor' // Custom thumb color
-                  },
-                  '& .MuiSlider-rail': {
-                    backgroundColor: 'railColor' // Custom rail color
-                  },
-                  '& .MuiSlider-track': {
-                    backgroundColor: '#00ad1c' // Custom track color
-                  }
-                }}
-                min={options.salary.min}
-                max={options.salary.max}
-                onChange={handleChangeSalary}
-                marks={query.salary.map(item => ({
-                  value: item,
-                  label: '$' + item
-                }))}
-              />
-            )}
+            <Slider
+              getAriaValueText={valuetext}
+              value={query.salary}
+              valueLabelDisplay='auto'
+              sx={{
+                color: '#00ad1c', // Change the slider's primary color
+                '& .MuiSlider-thumb': {
+                  backgroundColor: 'thumbColor' // Custom thumb color
+                },
+                '& .MuiSlider-rail': {
+                  backgroundColor: 'railColor' // Custom rail color
+                },
+                '& .MuiSlider-track': {
+                  backgroundColor: '#00ad1c' // Custom track color
+                }
+              }}
+              min={0}
+              max={10000}
+              onChange={handleChangeSalary}
+              marks={query.salary.map(item => ({
+                value: item,
+                label: '$' + item
+              }))}
+            />
           </AccordionDetails>
         </Accordion>
         <Divider />
@@ -164,31 +159,33 @@ function SearchBar ({ options }) {
                 gap: 1 // Adds vertical spacing between rows
               }}
             >
-              {options.tags &&
-                options.tags.map((item, index) => (
+              {tags &&
+                tags.map((item, index) => (
                   <div
                     onClick={() => {
-                      changeTags(index)
+                      changeTags(item.slug)
                     }}
                   >
                     <Chip
                       sx={{
-                        backgroundColor: query.tags.includes(index)
+                        backgroundColor: query['tags[]'].includes(item.slug)
                           ? '#8CC63E'
                           : '',
-                        color: query.tags.includes(index) ? 'white' : ''
+                        color: query['tags[]'].includes(item.slug)
+                          ? 'white'
+                          : ''
                       }}
-                      key={item} // Ensure a unique key for each tag
-                      label={item}
+                      key={item.slug} // Ensure a unique key for each tag
+                      label={item.name}
                       deleteIcon={
-                        query.tags.includes(index) ? (
+                        query['tags[]'].includes(item.slug) ? (
                           <Clear style={{ color: 'white' }} />
                         ) : (
                           <></>
                         )
                       }
                       onDelete={() => {
-                        changeTags(index)
+                        changeTags(item.slug)
                       }}
                       clickable
                     />

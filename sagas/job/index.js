@@ -1,43 +1,55 @@
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import {
-  fetchJobOptionsSuccess,
-  fetchJobOptionsFailure,
+  fetchJobPositionsSuccess,
+  fetchJobPositionsFailure,
+  fetchJobTagsSuccess,
+  fetchJobTagsFailure,
   fetchJobResultsSuccess,
   fetchJobResultsFailure,
   fetchJobDetailSuccess,
   fetchJobDetailFailure
 } from "../../actions/job";
 import {
-  FETCH_JOB_OPTIONS_REQUEST,
+  FETCH_JOB_POSITIONS_REQUEST,
+  FETCH_JOB_TAGS_REQUEST,
   FETCH_JOB_RESULTS_REQUEST,
   FETCH_JOB_DETAIL_REQUEST
 } from "../../actions/types";
 import {
-  fetchJobOptionsData,
+  fetchJobPositionsData,
+  fetchJobTagsData,
   fetchJobResultsData,
   fetchJobDetailData
 } from "../../api"; // Assuming you have an API module to handle your requests
 
-function* fetchJobOptions() {
+function* fetchJobPositions() {
   try {
-    const response = yield call(fetchJobOptionsData);
-    yield put(fetchJobOptionsSuccess(response));
+    const response = yield call(fetchJobPositionsData);
+    yield put(fetchJobPositionsSuccess(response));
   } catch (error) {
-    yield put(fetchJobOptionsFailure(error.message));
+    yield put(fetchJobPositionsFailure(error.message));
   }
 }
-function* fetchJobResults() {
+function* fetchJobTags() {
   try {
-    const response = yield call(fetchJobResultsData);
+    const response = yield call(fetchJobTagsData);
+    yield put(fetchJobTagsSuccess(response));
+  } catch (error) {
+    yield put(fetchJobTagsFailure(error.message));
+  }
+}
+function* fetchJobResults(action) {
+  try {
+    const response = yield call(() => fetchJobResultsData(action.payload));
     yield put(fetchJobResultsSuccess(response));
   } catch (error) {
     yield put(fetchJobResultsFailure(error.message));
   }
 }
 
-function* fetchJobDetail() {
+function* fetchJobDetail(action) {
   try {
-    const response = yield call(fetchJobDetailData);
+    const response = yield call(() => fetchJobDetailData(action.payload));
     yield put(fetchJobDetailSuccess(response));
   } catch (error) {
     yield put(fetchJobDetailFailure(error.message));
@@ -45,7 +57,8 @@ function* fetchJobDetail() {
 }
 
 export function* jobSaga() {
-  yield takeLatest(FETCH_JOB_OPTIONS_REQUEST, fetchJobOptions);
+  yield takeLatest(FETCH_JOB_POSITIONS_REQUEST, fetchJobPositions);
+  yield takeLatest(FETCH_JOB_TAGS_REQUEST, fetchJobTags);
   yield takeLatest(FETCH_JOB_RESULTS_REQUEST, fetchJobResults);
   yield takeLatest(FETCH_JOB_DETAIL_REQUEST, fetchJobDetail);
 }

@@ -25,7 +25,13 @@ import {
   FETCH_COMMUNITIES_FAILURE,
   FETCH_RECOMMENDED_REQUEST,
   FETCH_RECOMMENDED_SUCCESS,
-  FETCH_RECOMMENDED_FAILURE
+  FETCH_RECOMMENDED_FAILURE,
+  FETCH_NEWSLETTER_OPTIONS_REQUEST,
+  FETCH_NEWSLETTER_OPTIONS_SUCCESS,
+  FETCH_NEWSLETTER_OPTIONS_FAILURE,
+  POST_NEWSLETTER_SUBSCRIBE_REQUEST,
+  POST_NEWSLETTER_SUBSCRIBE_SUCCESS,
+  POST_NEWSLETTER_SUBSCRIBE_FAILURE
 } from "../actions/types";
 
 const initialState = {
@@ -38,7 +44,8 @@ const initialState = {
   event: {},
   groups: [],
   communities: [],
-  recommends: []
+  recommends: [],
+  newsletter_options: []
 };
 
 const newsReducer = (state = initialState, action) => {
@@ -191,6 +198,39 @@ const newsReducer = (state = initialState, action) => {
         recommends: action.payload
       };
     case FETCH_RECOMMENDED_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+    case FETCH_NEWSLETTER_OPTIONS_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case FETCH_NEWSLETTER_OPTIONS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        newsletter_options: action.payload
+      };
+    case FETCH_NEWSLETTER_OPTIONS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+    case POST_NEWSLETTER_SUBSCRIBE_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case POST_NEWSLETTER_SUBSCRIBE_SUCCESS:
+      return {
+        ...state,
+        loading: false
+      };
+    case POST_NEWSLETTER_SUBSCRIBE_FAILURE:
       return {
         ...state,
         loading: false,
