@@ -90,14 +90,14 @@ function VerticalNews ({ data, changeIndex }) {
                     className='font-semibold cursor-pointer hover:underline'
                     onClick={() => router.push(`/news/${item.slug}`)}
                   >
-                    {item.yoast_head_json.og_title}
+                    {item.news_title}
                   </div>
                   <div className='lg:line-clamp-1 xl:line-clamp-2'>
-                    {item.yoast_head_json.og_description}
+                    {item.news_content}
                   </div>
                   <div className=''>
                     <span className='text-[#8CC63E]'>Geography</span> |
-                    Geography
+                    {item.news_category ? item.news_category.name : ''}
                   </div>
                 </div>
                 <div

@@ -10,8 +10,8 @@ import "@/styles/globals.css";
 // Create a MUI theme instance
 const theme = createTheme({
   palette: {
-    mode: "light" // You can change this to 'dark' or handle it dynamically
-  }
+    mode: "light", // You can change this to 'dark' or handle it dynamically
+  },
 });
 
 export default function App({ Component, pageProps }) {

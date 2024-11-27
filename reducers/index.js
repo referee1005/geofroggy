@@ -8,6 +8,8 @@ import contactReducer from "./contactReducer";
 import jobReducer from "./jobReducer";
 import newsReducer from "./newsReducer";
 import sponsorReducer from "./sponsorReducer";
+import advertiseReducer from "./advertiseReducer";
+
 export default combineReducers({
   home: homeReducer,
   about: aboutReducer,
@@ -17,5 +19,6 @@ export default combineReducers({
   job: jobReducer,
   news: newsReducer,
   user: userReducer,
-  sponsor: sponsorReducer
+  sponsor: sponsorReducer,
+  advertise: advertiseReducer
 });

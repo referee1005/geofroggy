@@ -48,29 +48,22 @@ function NewsList ({ news, latestArticles }) {
                 <Image
                   src={
                     news[currentIndex] &&
-                    news[currentIndex].yoast_head_json.schema['@graph'][6][
-                      'image'
-                    ]['url']
+                    news[currentIndex].author['photograph']
                   }
                   className='w-[50px] h-[50px] rounded-lg'
                   width={50}
                   height={50}
-                  alt={
-                    news[currentIndex] &&
-                    news[currentIndex].yoast_head_json.author
-                  }
+                  alt={news[currentIndex] && news[currentIndex].author.name}
                 />
                 <div className='flex flex-col justify-between'>
                   <div className='font-semibold text-lg'>
-                    {news[currentIndex] &&
-                      news[currentIndex].yoast_head_json.author}
+                    {news[currentIndex] && news[currentIndex].author.name}
                   </div>
                   <div className='text-lg'>Author</div>
                 </div>
               </div>
               <div className='font-semibold text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl'>
-                {news[currentIndex] &&
-                  news[currentIndex].yoast_head_json.og_title}
+                {news[currentIndex] && news[currentIndex].news_title}
               </div>
               <div className=''>
                 <span className='text-[#8CC63E]'>Geography</span> | Geography
@@ -84,16 +77,12 @@ function NewsList ({ news, latestArticles }) {
                   className='rounded-xl'
                   layout='fill'
                   objectFit='cover'
-                  alt={
-                    news[currentIndex] &&
-                    news[currentIndex].yoast_head_json.og_title
-                  }
+                  alt={news[currentIndex] && news[currentIndex].news_title}
                 />
               </div>
             </div>
           </div>
 
-          {/* Conditionally Render VerticalNews or HorizontalNews Based on Screen Width */}
           {isMobileView ? (
             <div className='lg:hidden mt-8'>
               <HorizontalNews

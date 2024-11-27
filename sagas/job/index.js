@@ -7,19 +7,23 @@ import {
   fetchJobResultsSuccess,
   fetchJobResultsFailure,
   fetchJobDetailSuccess,
-  fetchJobDetailFailure
+  fetchJobDetailFailure,
+  postJobApplyorContactSuccess,
+  postJobApplyorContactFailure
 } from "../../actions/job";
 import {
   FETCH_JOB_POSITIONS_REQUEST,
   FETCH_JOB_TAGS_REQUEST,
   FETCH_JOB_RESULTS_REQUEST,
-  FETCH_JOB_DETAIL_REQUEST
+  FETCH_JOB_DETAIL_REQUEST,
+  POST_JOB_APPLYORCONTACT_REQUEST
 } from "../../actions/types";
 import {
   fetchJobPositionsData,
   fetchJobTagsData,
   fetchJobResultsData,
-  fetchJobDetailData
+  fetchJobDetailData,
+  postJobApplyorContactData
 } from "../../api"; // Assuming you have an API module to handle your requests
 
 function* fetchJobPositions() {
@@ -56,9 +60,21 @@ function* fetchJobDetail(action) {
   }
 }
 
+function* postJobApplyorContact(action) {
+  try {
+    const response = yield call(() =>
+      postJobApplyorContactData(action.payload)
+    );
+    yield put(postJobApplyorContactSuccess(response));
+  } catch (error) {
+    yield put(postJobApplyorContactFailure(error.message));
+  }
+}
+
 export function* jobSaga() {
   yield takeLatest(FETCH_JOB_POSITIONS_REQUEST, fetchJobPositions);
   yield takeLatest(FETCH_JOB_TAGS_REQUEST, fetchJobTags);
   yield takeLatest(FETCH_JOB_RESULTS_REQUEST, fetchJobResults);
   yield takeLatest(FETCH_JOB_DETAIL_REQUEST, fetchJobDetail);
+  yield takeLatest(POST_JOB_APPLYORCONTACT_REQUEST, postJobApplyorContact);
 }

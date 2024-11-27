@@ -10,7 +10,10 @@ import {
   FETCH_JOB_RESULTS_FAILURE,
   FETCH_JOB_DETAIL_REQUEST,
   FETCH_JOB_DETAIL_SUCCESS,
-  FETCH_JOB_DETAIL_FAILURE
+  FETCH_JOB_DETAIL_FAILURE,
+  POST_JOB_APPLYORCONTACT_REQUEST,
+  POST_JOB_APPLYORCONTACT_SUCCESS,
+  POST_JOB_APPLYORCONTACT_FAILURE
 } from "../actions/types";
 
 const initialState = {
@@ -86,6 +89,22 @@ const aboutReducer = (state = initialState, action) => {
         job: action.payload
       };
     case FETCH_JOB_DETAIL_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+    case POST_JOB_APPLYORCONTACT_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case POST_JOB_APPLYORCONTACT_SUCCESS:
+      return {
+        ...state,
+        loading: false
+      };
+    case POST_JOB_APPLYORCONTACT_FAILURE:
       return {
         ...state,
         loading: false,

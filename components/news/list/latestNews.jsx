@@ -76,15 +76,13 @@ function LatestNews ({ data }) {
               <div className='flex flex-col gap-2 justify-between'>
                 <div className='flex items-center gap-2 '>
                   <Image
-                    src={
-                      item.yoast_head_json.schema['@graph'][6]['image']['url']
-                    }
+                    src={item.author.photograph}
                     className='w-[30px] h-[30px] rounded-lg'
                     width={30}
                     height={30}
                   />
                   <div className='flex md:flex-row flex-col items-center md:gap-2 '>
-                    <div className='text-sm'>{item.yoast_head_json.author}</div>
+                    <div className='text-sm'>{item.author.name}</div>
                     <div className='md:block hidden'>|</div>
                     <div className='text-sm'>7 hours ago</div>
                   </div>
@@ -93,7 +91,7 @@ function LatestNews ({ data }) {
                   className='font-semibold hover:underline cursor-pointer line-clamp-2'
                   onClick={() => router.push(`/news/${item.slug}`)}
                 >
-                  {item.yoast_head_json.og_title}
+                  {item.news_title}
                 </div>
                 <div className='text-xs sm:text-base'>
                   <span className='text-[#8CC63E]'>Geography</span> | Geography

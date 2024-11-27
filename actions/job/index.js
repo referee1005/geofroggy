@@ -10,7 +10,10 @@ import {
   FETCH_JOB_RESULTS_FAILURE,
   FETCH_JOB_DETAIL_REQUEST,
   FETCH_JOB_DETAIL_SUCCESS,
-  FETCH_JOB_DETAIL_FAILURE
+  FETCH_JOB_DETAIL_FAILURE,
+  POST_JOB_APPLYORCONTACT_REQUEST,
+  POST_JOB_APPLYORCONTACT_SUCCESS,
+  POST_JOB_APPLYORCONTACT_FAILURE
 } from "../types";
 
 export const fetchJobPositionsRequest = () => ({
@@ -65,5 +68,19 @@ export const fetchJobDetailSuccess = (data) => ({
 
 export const fetchJobDetailFailure = (error) => ({
   type: FETCH_JOB_DETAIL_FAILURE,
+  payload: error
+});
+export const postJobApplyorContactRequest = (data) => ({
+  type: POST_JOB_APPLYORCONTACT_REQUEST,
+  payload: data
+});
+
+export const postJobApplyorContactSuccess = (data) => ({
+  type: POST_JOB_APPLYORCONTACT_SUCCESS,
+  payload: data
+});
+
+export const postJobApplyorContactFailure = (error) => ({
+  type: POST_JOB_APPLYORCONTACT_FAILURE,
   payload: error
 });

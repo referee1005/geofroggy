@@ -107,19 +107,19 @@ export const postNoteData = async (postData) => {
 };
 export const fetchNewsData = async () => {
   const res = await axios.get(
-    "https://geofroggy.com/wp-json/wp/v2/posts?_fields=id,date,slug,link,title,content,excerpt,categories,tags,author,yoast_head,yoast_head_json,jetpack_featured_media_url&orderby=id&order=desc&per_page=8"
+    "https://geofroggy.com/wp-json/gfrog/v1/news/all-posts?per_page=8&page_no=1&total_count=15"
   );
   return res.data;
 };
 export const fetchLatestArticlesData = async () => {
   const res = await axios.get(
-    "https://geofroggy.com/wp-json/wp/v2/posts?_fields=id,date,slug,link,title,content,excerpt,categories,tags,author,yoast_head,yoast_head_json,jetpack_featured_media_url&orderby=date&order=desc&per_page=15"
+    "https://geofroggy.com/wp-json/gfrog/v1/news/all-posts?orderby=date&order=desc&per_page=10"
   );
   return res.data;
 };
 export const fetchNewData = async (slug) => {
   const res = await axios.get(
-    `https://geofroggy.com/wp-json/wp/v2/posts?slug=${slug}&_fields=id,date,slug,link,title,content,excerpt,categories,tags,author,yoast_head,yoast_head_json,jetpack_featured_media_url`
+    `https://geofroggy.com/wp-json/gfrog/v1/news-single/${slug}`
   );
   return res.data;
 };
@@ -186,6 +186,31 @@ export const postNewsletterSubscribeData = async (data) => {
   const res = await axios.post(
     `https://geofroggy.com/wp-json/gfrog/v1/subscribe/receive-callback?email=noopor@gmail.com&category[]=general&category[]=marketing`,
     data
+  );
+  return res.data;
+};
+export const postJobApplyorContactData = async (data) => {
+  const res = await axios.post(
+    `https://geofroggy.com/wp-json/gfrog/v1/job/apply?type=${data.type}&name=John Doe&email=johndoe@gmail.com&slug=${data.slug}`,
+    data
+  );
+  return res.data;
+};
+export const fetchAdvertiseBodyData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/advertise/body`
+  );
+  return res.data;
+};
+export const fetchAdvertiseSocialData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/advertise/social-icons`
+  );
+  return res.data;
+};
+export const fetchAdvertisePlansData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/advertise/plans`
   );
   return res.data;
 };

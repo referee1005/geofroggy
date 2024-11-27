@@ -66,7 +66,7 @@ function HorizontalNews ({ data, changeIndex }) {
                   layout='responsive'
                   width={6}
                   height={4}
-                  alt={item.yoast_head_json.og_title} // Adding alt text for accessibility
+                  alt={item.news_title} // Adding alt text for accessibility
                 />
               </div>
               <div className='flex flex-col gap-2 justify-between'>
@@ -74,10 +74,11 @@ function HorizontalNews ({ data, changeIndex }) {
                   className='font-semibold hover:underline cursor-pointer line-clamp-2'
                   onClick={() => router.push(`/news/${item.slug}`)}
                 >
-                  {item.yoast_head_json.og_title}
+                  {item.news_title}
                 </div>
                 <div className='text-xs sm:text-base'>
-                  <span className='text-[#8CC63E]'>Geography</span> | Geography
+                  <span className='text-[#8CC63E]'>Geography</span> |{' '}
+                  {item.news_category ? item.news_category.name : ''}
                 </div>
               </div>
             </div>

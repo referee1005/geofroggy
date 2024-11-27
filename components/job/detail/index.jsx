@@ -5,9 +5,16 @@ import { Button } from '@mui/material'
 import RadioButtonUncheckedOutlinedIcon from '@mui/icons-material/RadioButtonUncheckedOutlined'
 import { useRouter } from 'next/router'
 import { formatDate1 } from '@/helpers'
+import { useDispatch, useSelector } from 'react-redux'
+import { postJobApplyorContactRequest } from '@/actions/job'
 
 function JobDetail ({ data }) {
+  const dispatch = useDispatch()
   const router = useRouter()
+
+  const postJob = type => {
+    dispatch(postJobApplyorContactRequest({ type: type, slug: data.slug }))
+  }
   return (
     <div className='relative w-full my-8'>
       <div className='flex justify-between w-full container-custom'>
@@ -39,12 +46,14 @@ function JobDetail ({ data }) {
           <Button
             variant='outlined'
             className='text-xs sm:text-base border-black text-custom-primary mb-2 sm:mb-0 sm:mr-4 py-2 px-2'
+            onClick={() => postJob('contact')}
           >
             Contact
           </Button>
           <Button
             variant='contained'
             className='text-xs sm:text-base bg-custom-primary py-2 px-2'
+            onClick={() => postJob('apply')}
           >
             Apply Now!
           </Button>
