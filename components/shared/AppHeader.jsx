@@ -229,7 +229,7 @@ function AppHeader() {
         {/* Header right section buttons */}
         <div className="hidden lg:flex justify-between items-center flex-col md:flex-row flex-shrink-0">
           <div
-            className="mr-8 text-[#8CC63E] text-base font-semibold"
+            className="mr-8 text-[#8CC63E] text-base font-semibold cursor-pointer"
             onClick={() => router.push("/join")}
           >
             Login

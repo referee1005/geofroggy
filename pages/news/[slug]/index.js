@@ -22,7 +22,7 @@ export default function Home() {
 
   return (
     <div className="mx-auto flex container-custom bg-custom-bg-primary">
-      {data[0] !== undefined && <NewsDetail data={data[0]} />}
+      <NewsDetail data={data} />
     </div>
   );
 }

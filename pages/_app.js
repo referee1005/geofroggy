@@ -4,6 +4,8 @@ import { ThemeProvider, CssBaseline, createTheme } from "@mui/material";
 import DefaultLayout from "../components/layout/DefaultLayout";
 import { AnimatePresence } from "framer-motion";
 import { Provider } from "react-redux";
+import { useRouter } from "next/router";
+import Loading from "@/components/Loading";
 import store from "../store";
 import "@/styles/globals.css";
 
@@ -15,6 +17,24 @@ const theme = createTheme({
 });
 
 export default function App({ Component, pageProps }) {
+  const [loading, setLoading] = React.useState(false);
+  const router = useRouter();
+
+  React.useEffect(() => {
+    const handleStart = () => setLoading(true);
+    const handleComplete = () => setLoading(false);
+
+    router.events.on("routeChangeStart", handleStart);
+    router.events.on("routeChangeComplete", handleComplete);
+    router.events.on("routeChangeError", handleComplete);
+
+    return () => {
+      router.events.off("routeChangeStart", handleStart);
+      router.events.off("routeChangeComplete", handleComplete);
+      router.events.off("routeChangeError", handleComplete);
+    };
+  }, [router]);
+
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
@@ -22,6 +42,7 @@ export default function App({ Component, pageProps }) {
         <AnimatePresence>
           <div className="bg-secondary-light dark:bg-primary-dark transition duration-300 font-inter">
             <DefaultLayout>
+              {loading && <Loading />}
               <Component {...pageProps} />
             </DefaultLayout>
           </div>

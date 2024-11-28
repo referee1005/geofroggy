@@ -1,108 +1,109 @@
-import React from 'react'
-import facebook from '../../../public/images/news/Facebook.png'
-import twitter from '../../../public/images/news/Twitter.png'
-import whatsapp from '../../../public/images/news/WhatsApp.png'
-import telegram from '../../../public/images/news/Telegram.png'
-import attachments from '../../../public/images/news/attachments.png'
+import React from "react";
+import facebook from "../../../public/images/news/Facebook.png";
+import twitter from "../../../public/images/news/Twitter.png";
+import whatsapp from "../../../public/images/news/WhatsApp.png";
+import telegram from "../../../public/images/news/Telegram.png";
+import attachments from "../../../public/images/news/attachments.png";
 
-import Image from 'next/image'
-import Trending from '@/components/Trending'
+import Image from "next/image";
+import Trending from "@/components/Trending";
 
-function NewsDetail ({ data }) {
+function NewsDetail({ data }) {
   return (
-    <div className='relative w-full my-8 2xl:my-16'>
-      <div className='flex mb-4'>
-        <div className='lg:w-[70%]'>
-          <div className='text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl mb-4 2xl:mb-8'>
-            {data.yoast_head_json.og_title}
+    <div className="relative w-full my-8 2xl:my-16">
+      <div className="flex mb-4">
+        <div className="lg:w-[70%]">
+          <div className="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl mb-4 2xl:mb-8">
+            {data.news_title}
           </div>
-          <div className=''>
-            <span className='text-[#8CC63E]'>Geography</span> | {data.date}
+          <div className="">
+            <span className="text-[#8CC63E]">Geography</span> |{" "}
+            {data.created_at}
           </div>
         </div>
       </div>
-      <div className='flex lg:flex-row flex-col gap-4'>
-        <div className='lg:w-[70%]'>
+      <div className="flex lg:flex-row flex-col gap-4">
+        <div className="lg:w-[70%]">
           <div
-            className='relative w-full mb-8'
-            style={{ paddingBottom: '50%' }}
+            className="relative w-full mb-8"
+            style={{ paddingBottom: "50%" }}
           >
             <Image
-              src={data.yoast_head_json.og_image[0]['url']}
-              className='rounded-xl'
+              src={data.news_image}
+              className="rounded-xl"
               // className='w-full object-cover rounded-xl'
-              layout='fill'
-              objectFit='cover'
+              layout="fill"
+              objectFit="cover"
             />
           </div>
-          <div>{data.yoast_head_json.og_description}</div>
+          <div>{data.news_content}</div>
         </div>
-        <div className='flex-1 flex flex-col gap-4 2xl:gap-8'>
-          <div className='flex flex-col p-4 2xl:p-8 gap-4 2xl:gap-8 bg-white rounded-lg'>
+        <div className="flex-1 flex flex-col gap-4 2xl:gap-8">
+          <div className="flex flex-col p-4 2xl:p-8 gap-4 2xl:gap-8 bg-white rounded-lg">
             <div>AUTHOR</div>
-            <div className='flex gap-4'>
-              <div className='flex items-center'>
+            <div className="flex gap-4">
+              <div className="flex items-center">
                 <Image
-                  src={data.yoast_head_json.schema['@graph'][6]['image']['url']}
-                  className='w-[50px] h-[50px] rounded-lg'
+                  src={data.author && data.author.photograph}
+                  className="w-[50px] h-[50px] rounded-lg"
                   width={50}
                   height={50}
                 />
               </div>
 
-              <div className='flex flex-col justify-between'>
-                <div className='font-semibold 2xl:text-lg'>
-                  {data.yoast_head_json.author}
+              <div className="flex flex-col justify-between">
+                <div className="font-semibold 2xl:text-lg">
+                  {data.author && data.author.name}
                 </div>
-                <div className='2xl:text-lg'>Reporter, Geofroggy</div>
+                <div className="2xl:text-lg">Reporter, Geofroggy</div>
               </div>
             </div>
           </div>
-          <div className='flex flex-col p-4 2xl:p-8 gap-4 2xl:gap-8 bg-white rounded-lg'>
+          <div className="flex flex-col p-4 2xl:p-8 gap-4 2xl:gap-8 bg-white rounded-lg">
             <div>SHARE</div>
-            <div className='flex gap-4'>
+            <div className="flex gap-4">
               <Image
                 src={facebook}
-                className='w-8 h-8 2xl:w-[50px] 2xl:h-[50px] rounded-lg cursor-pointer'
+                className="w-8 h-8 2xl:w-[50px] 2xl:h-[50px] rounded-lg cursor-pointer"
                 width={50}
                 height={50}
               />
               <Image
                 src={twitter}
-                className='w-8 h-8 2xl:w-[50px] 2xl:h-[50px] rounded-lg cursor-pointer'
+                className="w-8 h-8 2xl:w-[50px] 2xl:h-[50px] rounded-lg cursor-pointer"
                 width={50}
                 height={50}
-              />{' '}
+              />{" "}
               <Image
                 src={whatsapp}
-                className='w-8 h-8 2xl:w-[50px] 2xl:h-[50px] rounded-lg cursor-pointer'
+                className="w-8 h-8 2xl:w-[50px] 2xl:h-[50px] rounded-lg cursor-pointer"
                 width={50}
                 height={50}
-              />{' '}
+              />{" "}
               <Image
                 src={telegram}
-                className='w-8 h-8 2xl:w-[50px] 2xl:h-[50px] rounded-lg cursor-pointer'
+                className="w-8 h-8 2xl:w-[50px] 2xl:h-[50px] rounded-lg cursor-pointer"
                 width={50}
                 height={50}
               />
             </div>
-            <button className='bg-custom-bg-primary py-2 px-4 w-fit rounded-lg cursor-pointer'>
+            <button className="bg-custom-bg-primary py-2 px-4 w-fit rounded-lg cursor-pointer">
               <Image
                 src={attachments}
-                className='w-[16px] h-[16px] rounded-lg inline mr-1'
+                className="w-[16px] h-[16px] rounded-lg inline mr-1"
                 width={16}
                 height={16}
               />
               Copy Link
             </button>
           </div>
-          <div className='flex flex-col p-4 2xl:p-8 gap-4 2xl:gap-8 bg-white rounded-lg'>
+          <div className="flex flex-col p-4 2xl:p-8 gap-4 2xl:gap-8 bg-white rounded-lg">
             <Trending />
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default NewsDetail
+export default NewsDetail;

@@ -9,21 +9,21 @@ import {
   fetchJobDetailSuccess,
   fetchJobDetailFailure,
   postJobApplyorContactSuccess,
-  postJobApplyorContactFailure
+  postJobApplyorContactFailure,
 } from "../../actions/job";
 import {
   FETCH_JOB_POSITIONS_REQUEST,
   FETCH_JOB_TAGS_REQUEST,
   FETCH_JOB_RESULTS_REQUEST,
   FETCH_JOB_DETAIL_REQUEST,
-  POST_JOB_APPLYORCONTACT_REQUEST
+  POST_JOB_APPLYORCONTACT_REQUEST,
 } from "../../actions/types";
 import {
   fetchJobPositionsData,
   fetchJobTagsData,
   fetchJobResultsData,
   fetchJobDetailData,
-  postJobApplyorContactData
+  postJobApplyorContactData,
 } from "../../api"; // Assuming you have an API module to handle your requests
 
 function* fetchJobPositions() {

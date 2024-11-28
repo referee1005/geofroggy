@@ -62,7 +62,7 @@ export const fetchFaqData = async (query) => {
   return {
     advice_answers: res1.data,
     general_faqs: res2.data,
-    geography_faqs: res3.data
+    geography_faqs: res3.data,
   };
 };
 export const fetchDonateData = async () => {
@@ -124,9 +124,10 @@ export const fetchNewData = async (slug) => {
   return res.data;
 };
 export const fetchTrendsData = async () => {
-  const res = await fetch("/api/trends");
-  const data = await res.json();
-  return data;
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/news/all-posts?orderby=id&order=desc&per_page=6`
+  );
+  return res.data;
 };
 export const fetchEventsData = async () => {
   const res = await fetch("/api/events");
