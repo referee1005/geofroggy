@@ -1,7 +1,7 @@
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import {
-  fetchInterestsSuccess,
-  fetchInterestsFailure,
+  fetchLandingAboutusSuccess,
+  fetchLandingAboutusFailure,
   fetchPopularCountriesSuccess,
   fetchPopularCountriesFailure,
   fetchRecentAdditionsSuccess,
@@ -9,29 +9,29 @@ import {
   fetchPlacesSuccess,
   fetchPlacesFailure,
   fetchFavouritePlacesSuccess,
-  fetchFavouritePlacesFailure
+  fetchFavouritePlacesFailure,
 } from "../../actions/home";
 import {
-  FETCH_INTERESTS_REQUEST,
+  FETCH_LANDING_ABOUTUS_REQUEST,
   FETCH_POPULAR_COUNTRIES_REQUEST,
   FETCH_RECENT_ADDITIONS_REQUEST,
   FETCH_PLACES_REQUEST,
-  FETCH_FAVOURITE_PLACES_REQUEST
+  FETCH_FAVOURITE_PLACES_REQUEST,
 } from "../../actions/types";
 import {
-  fetchInterestData,
+  fetchLandingAboutusData,
   fetchPopularData,
   fetchRecentData,
   fetchPlaceData,
-  fetchFavouritePlaceData
+  fetchFavouritePlaceData,
 } from "../../api"; // Assuming you have an API module to handle your requests
 
-function* fetchInterests() {
+function* fetchAboutus() {
   try {
-    const response = yield call(fetchInterestData);
-    yield put(fetchInterestsSuccess(response));
+    const response = yield call(fetchLandingAboutusData);
+    yield put(fetchLandingAboutusSuccess(response));
   } catch (error) {
-    yield put(fetchInterestsFailure(error.message));
+    yield put(fetchLandingAboutusFailure(error.message));
   }
 }
 
@@ -72,7 +72,7 @@ function* fetchFavouritePlaces() {
 }
 
 export function* homeSaga() {
-  yield takeLatest(FETCH_INTERESTS_REQUEST, fetchInterests);
+  yield takeLatest(FETCH_LANDING_ABOUTUS_REQUEST, fetchAboutus);
   yield takeLatest(FETCH_POPULAR_COUNTRIES_REQUEST, fetchPopularCountries);
   yield takeLatest(FETCH_RECENT_ADDITIONS_REQUEST, fetchRecentAdditions);
   yield takeLatest(FETCH_PLACES_REQUEST, fetchPlaces);

@@ -33,7 +33,7 @@ export const fetchPlaceData = async () => {
 
 export const fetchFavouritePlaceData = async () => {
   const res = await axios.get(
-    `https://geofroggy.com/wp-json/gfrog/v1/home/favourite-places`
+    `https://geofroggy.com/wp-json/gfrog/v1/home/froggy-favourite`
   );
   return res.data;
 };
@@ -212,6 +212,13 @@ export const fetchAdvertiseSocialData = async () => {
 export const fetchAdvertisePlansData = async () => {
   const res = await axios.get(
     `https://geofroggy.com/wp-json/gfrog/v1/advertise/plans`
+  );
+  return res.data;
+};
+
+export const fetchLandingAboutusData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/home/about-us`
   );
   return res.data;
 };
