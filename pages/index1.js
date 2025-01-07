@@ -6,6 +6,7 @@ import Favourite from "@/components/home1/Favourite";
 import RecentAdditions from "@/components/home1/RecentAdditions";
 import Culture from "@/components/home1/Culture";
 import Places from "@/components/home1/Places";
+
 export default function Home() {
   return (
     <div className="mx-auto ">

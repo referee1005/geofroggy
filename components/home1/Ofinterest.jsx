@@ -1,36 +1,36 @@
-import React, { useEffect, useState } from 'react'
-import Slider from 'react-slick'
-import Image from 'next/image'
-import { useDispatch, useSelector } from 'react-redux'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
-import { fetchInterestsRequest } from '@/actions/home'
-import { useRouter } from 'next/router'
+import React, { useEffect, useState } from "react";
+import Slider from "react-slick";
+import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { fetchInterestsRequest } from "@/actions/home1";
+import { useRouter } from "next/router";
 
-function Ofinterest ({}) {
-  const [slidesToShow, setSlidesToShow] = useState(5)
-  const [slidesToScroll, setSlidesToScroll] = useState(2)
+function Ofinterest({}) {
+  const [slidesToShow, setSlidesToShow] = useState(5);
+  const [slidesToScroll, setSlidesToScroll] = useState(2);
 
-  const data = useSelector(state => state.home.interests)
-  const dispatch = useDispatch()
-  const router = useRouter()
+  const data = useSelector((state) => state.home.interests);
+  const dispatch = useDispatch();
+  const router = useRouter();
 
   useEffect(() => {
-    dispatch(fetchInterestsRequest())
+    dispatch(fetchInterestsRequest());
 
     const handleResize = () => {
-      setSlidesToShow(window.innerWidth < 1024 ? 3 : 5)
-      setSlidesToScroll(window.innerWidth < 648 ? 1 : 1)
-    }
+      setSlidesToShow(window.innerWidth < 1024 ? 3 : 5);
+      setSlidesToScroll(window.innerWidth < 648 ? 1 : 1);
+    };
 
-    handleResize() // Set the initial value
-    window.addEventListener('resize', handleResize)
+    handleResize(); // Set the initial value
+    window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener('resize', handleResize)
-  }, [dispatch])
+    return () => window.removeEventListener("resize", handleResize);
+  }, [dispatch]);
 
   const settings = {
-    className: 'center',
+    className: "center",
     dots: false,
     infinite: true,
     // centerMode: true,
@@ -40,30 +40,30 @@ function Ofinterest ({}) {
     slidesToShow,
     slidesToScroll: 1,
     swipeToSlide: true,
-    cssEase: 'ease-in-out'
-  }
+    cssEase: "ease-in-out",
+  };
 
   return (
-    <div className='flex flex-col'>
-      <div className='font-semibold text-3xl sm:text-5xl lg:text-7xl mt-12 sm:my-24 text-center'>
+    <div className="flex flex-col">
+      <div className="font-semibold text-3xl sm:text-5xl lg:text-7xl mt-12 sm:my-24 text-center">
         Of Interest
       </div>
-      <div className='bg-white sm:pb-24 overflow-hidden pt-16'>
+      <div className="bg-white sm:pb-24 overflow-hidden pt-16">
         <Slider {...settings}>
           {data.map((item, index) => (
-            <div key={index} className='px-0'>
+            <div key={index} className="px-0">
               <div
                 className={`flex-shrink-0 cursor-pointer mb-4 sm:mb-12 ${
-                  index % 2 ? 'rotate-[19deg] z-0' : '-rotate-[19deg] z-10'
+                  index % 2 ? "rotate-[19deg] z-0" : "-rotate-[19deg] z-10"
                 }`}
                 onClick={() => {
-                  router.push(item.country_url)
+                  router.push(item.country_url);
                 }}
               >
                 <Image
                   src={item.image}
                   alt={item.country}
-                  className='object-cover py-8 sm:py-16'
+                  className="object-cover py-8 sm:py-16"
                   width={500}
                   height={500}
                 />
@@ -73,7 +73,7 @@ function Ofinterest ({}) {
         </Slider>
       </div>
     </div>
-  )
+  );
 }
 
-export default Ofinterest
+export default Ofinterest;
