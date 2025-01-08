@@ -37,6 +37,12 @@ export const fetchFavouritePlaceData = async () => {
   );
   return res.data;
 };
+export const fetchSpotlightStoriesData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/home/spotlight-stories`
+  );
+  return res.data;
+};
 export const fetchSiteInfoData = async () => {
   const res = await axios.get(
     `https://geofroggy.com/wp-json/gfrog/v1/about/content`

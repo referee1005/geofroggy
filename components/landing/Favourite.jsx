@@ -52,9 +52,12 @@ function Favourite({}) {
   }, [selectedIndex]);
 
   useEffect(() => {
+    console.log("favorite places: ", data);
+
     setPlacekeys(Object.keys(data));
     if (data["Popular"]) setPlaces(data["Popular"]);
   }, [data]);
+
   return (
     <div className="container-custom flex flex-col">
       <div className="flex flex-col gap-8">

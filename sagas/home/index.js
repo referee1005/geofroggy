@@ -10,6 +10,8 @@ import {
   fetchPlacesFailure,
   fetchFavouritePlacesSuccess,
   fetchFavouritePlacesFailure,
+  fetchSpotlightStoriesSuccess,
+  fetchSpotlightStoriesFailure,
 } from "../../actions/home";
 import {
   FETCH_LANDING_ABOUTUS_REQUEST,
@@ -17,6 +19,7 @@ import {
   FETCH_RECENT_ADDITIONS_REQUEST,
   FETCH_PLACES_REQUEST,
   FETCH_FAVOURITE_PLACES_REQUEST,
+  FETCH_SPOTLIGHT_STORIES_REQUEST,
 } from "../../actions/types";
 import {
   fetchLandingAboutusData,
@@ -24,6 +27,7 @@ import {
   fetchRecentData,
   fetchPlaceData,
   fetchFavouritePlaceData,
+  fetchSpotlightStoriesData,
 } from "../../api"; // Assuming you have an API module to handle your requests
 
 function* fetchAboutus() {
@@ -71,10 +75,20 @@ function* fetchFavouritePlaces() {
   }
 }
 
+function* fetchSpotlightStories() {
+  try {
+    const response = yield call(fetchSpotlightStoriesData);
+    yield put(fetchSpotlightStoriesSuccess(response));
+  } catch (error) {
+    yield put(fetchSpotlightStoriesFailure(error.message));
+  }
+}
+
 export function* homeSaga() {
   yield takeLatest(FETCH_LANDING_ABOUTUS_REQUEST, fetchAboutus);
   yield takeLatest(FETCH_POPULAR_COUNTRIES_REQUEST, fetchPopularCountries);
   yield takeLatest(FETCH_RECENT_ADDITIONS_REQUEST, fetchRecentAdditions);
   yield takeLatest(FETCH_PLACES_REQUEST, fetchPlaces);
   yield takeLatest(FETCH_FAVOURITE_PLACES_REQUEST, fetchFavouritePlaces);
+  yield takeLatest(FETCH_SPOTLIGHT_STORIES_REQUEST, fetchSpotlightStories);
 }

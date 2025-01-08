@@ -14,6 +14,9 @@ import {
   FETCH_FAVOURITE_PLACES_REQUEST,
   FETCH_FAVOURITE_PLACES_SUCCESS,
   FETCH_FAVOURITE_PLACES_FAILURE,
+  FETCH_SPOTLIGHT_STORIES_REQUEST,
+  FETCH_SPOTLIGHT_STORIES_SUCCESS,
+  FETCH_SPOTLIGHT_STORIES_FAILURE,
 } from "../actions/types";
 
 const initialState = {
@@ -23,6 +26,7 @@ const initialState = {
   recent_additions: [],
   places: [],
   favourite_places: [],
+  sportlight_stories: [],
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -107,6 +111,23 @@ const dataReducer = (state = initialState, action) => {
         favourite_places: action.payload,
       };
     case FETCH_FAVOURITE_PLACES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case FETCH_SPOTLIGHT_STORIES_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case FETCH_SPOTLIGHT_STORIES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        sportlight_stories: action.payload,
+      };
+    case FETCH_SPOTLIGHT_STORIES_FAILURE:
       return {
         ...state,
         loading: false,
