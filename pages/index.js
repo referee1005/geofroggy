@@ -3,7 +3,8 @@ import AboutUs from "@/components/landing/About";
 import Favourite from "@/components/landing/Favourite";
 import Places from "@/components/landing/Places";
 import SpotlightStories from "@/components/landing/SpotlightStories";
-import CuturalHeritage from "@/components/landing/CuturalHeritage";
+import CulturalHeritage from "@/components/landing/CulturalHeritage";
+import JoinAdventure from "@/components/landing/JoinAdventure";
 
 export const Home = () => {
   return (
@@ -13,8 +14,8 @@ export const Home = () => {
       <AboutUs />
       <Favourite />
       <SpotlightStories />
-      <CuturalHeritage />
-
+      <CulturalHeritage />
+      <JoinAdventure />
     </div >
   );
 }

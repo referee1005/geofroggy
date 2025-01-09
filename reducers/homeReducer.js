@@ -20,6 +20,9 @@ import {
   FETCH_CULTURAL_HERITAGE_REQUEST,
   FETCH_CULTURAL_HERITAGE_SUCCESS,
   FETCH_CULTURAL_HERITAGE_FAILURE,
+  FETCH_JOIN_ADVENTURE_REQUEST,
+  FETCH_JOIN_ADVENTURE_SUCCESS,
+  FETCH_JOIN_ADVENTURE_FAILURE,
 } from "../actions/types";
 
 const initialState = {
@@ -31,6 +34,7 @@ const initialState = {
   favourite_places: [],
   sportlight_stories: [],
   cultural_heritage: [],
+  join_adventure: [],
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -149,6 +153,23 @@ const dataReducer = (state = initialState, action) => {
         cultural_heritage: action.payload,
       };
     case FETCH_CULTURAL_HERITAGE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case FETCH_JOIN_ADVENTURE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case FETCH_JOIN_ADVENTURE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        join_adventure: action.payload,
+      };
+    case FETCH_JOIN_ADVENTURE_FAILURE:
       return {
         ...state,
         loading: false,

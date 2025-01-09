@@ -20,6 +20,9 @@ import {
   FETCH_CULTURAL_HERITAGE_REQUEST,
   FETCH_CULTURAL_HERITAGE_SUCCESS,
   FETCH_CULTURAL_HERITAGE_FAILURE,
+  FETCH_JOIN_ADVENTURE_REQUEST,
+  FETCH_JOIN_ADVENTURE_SUCCESS,
+  FETCH_JOIN_ADVENTURE_FAILURE,
 } from "../types";
 
 export const fetchLandingAboutusRequest = () => ({
@@ -108,6 +111,18 @@ export const fetchCulturalHeritageSuccess = (data) => ({
 });
 export const fetchCulturalHeritageFailure = (error) => ({
   type: FETCH_CULTURAL_HERITAGE_FAILURE,
+  payload: error,
+});
+
+export const fetchJoinAdventureRequest = () => ({
+  type: FETCH_JOIN_ADVENTURE_REQUEST,
+});
+export const fetchJoinAdventureSuccess = (data) => ({
+  type: FETCH_JOIN_ADVENTURE_SUCCESS,
+  payload: data,
+});
+export const fetchJoinAdventureFailure = (error) => ({
+  type: FETCH_JOIN_ADVENTURE_FAILURE,
   payload: error,
 });
 

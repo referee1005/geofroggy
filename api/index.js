@@ -49,6 +49,12 @@ export const fetchCulturalHeritageData = async () => {
   );
   return res.data;
 };
+export const fetchJoinAdventureData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/home/join-adventure`
+  );
+  return res.data;
+};
 export const fetchSiteInfoData = async () => {
   const res = await axios.get(
     `https://geofroggy.com/wp-json/gfrog/v1/about/content`

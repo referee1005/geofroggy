@@ -12,8 +12,10 @@ import {
   fetchFavouritePlacesFailure,
   fetchSpotlightStoriesSuccess,
   fetchSpotlightStoriesFailure,
-  FETCH_CULTURAL_HERITAGE_SUCCESS,
-  FETCH_CULTURAL_HERITAGE_FAILURE,
+  fetchCulturalHeritageSuccess,
+  fetchCulturalHeritageFailure,
+  fetchJoinAdventureSuccess,
+  fetchJoinAdventureFailure,
 } from "../../actions/home";
 import {
   FETCH_LANDING_ABOUTUS_REQUEST,
@@ -23,6 +25,7 @@ import {
   FETCH_FAVOURITE_PLACES_REQUEST,
   FETCH_SPOTLIGHT_STORIES_REQUEST,
   FETCH_CULTURAL_HERITAGE_REQUEST,
+  FETCH_JOIN_ADVENTURE_REQUEST,
 } from "../../actions/types";
 import {
   fetchLandingAboutusData,
@@ -32,6 +35,7 @@ import {
   fetchFavouritePlaceData,
   fetchSpotlightStoriesData,
   fetchCulturalHeritageData,
+  fetchJoinAdventureData,
 } from "../../api"; // Assuming you have an API module to handle your requests
 
 function* fetchAboutus() {
@@ -91,9 +95,18 @@ function* fetchSpotlightStories() {
 function* fetchCulturalHeritage() {
   try {
     const response = yield call(fetchCulturalHeritageData);
-    yield put(FETCH_CULTURAL_HERITAGE_SUCCESS(response));
+    yield put(fetchCulturalHeritageSuccess(response));
   } catch (error) {
-    yield put(FETCH_CULTURAL_HERITAGE_FAILURE(error.message));
+    yield put(fetchCulturalHeritageFailure(error.message));
+  }
+}
+
+function* fetchJoinAdventure() {
+  try {
+    const response = yield call(fetchJoinAdventureData);
+    yield put(fetchJoinAdventureSuccess(response));
+  } catch (error) {
+    yield put(fetchJoinAdventureFailure(error.message));
   }
 }
 
@@ -105,4 +118,5 @@ export function* homeSaga() {
   yield takeLatest(FETCH_FAVOURITE_PLACES_REQUEST, fetchFavouritePlaces);
   yield takeLatest(FETCH_SPOTLIGHT_STORIES_REQUEST, fetchSpotlightStories);
   yield takeLatest(FETCH_CULTURAL_HERITAGE_REQUEST, fetchCulturalHeritage);
+  yield takeLatest(FETCH_JOIN_ADVENTURE_REQUEST, fetchJoinAdventure);
 }
