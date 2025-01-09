@@ -17,6 +17,9 @@ import {
   FETCH_SPOTLIGHT_STORIES_REQUEST,
   FETCH_SPOTLIGHT_STORIES_SUCCESS,
   FETCH_SPOTLIGHT_STORIES_FAILURE,
+  FETCH_CULTURAL_HERITAGE_REQUEST,
+  FETCH_CULTURAL_HERITAGE_SUCCESS,
+  FETCH_CULTURAL_HERITAGE_FAILURE,
 } from "../actions/types";
 
 const initialState = {
@@ -27,6 +30,7 @@ const initialState = {
   places: [],
   favourite_places: [],
   sportlight_stories: [],
+  cultural_heritage: [],
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -128,6 +132,23 @@ const dataReducer = (state = initialState, action) => {
         sportlight_stories: action.payload,
       };
     case FETCH_SPOTLIGHT_STORIES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case FETCH_CULTURAL_HERITAGE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case FETCH_CULTURAL_HERITAGE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        cultural_heritage: action.payload,
+      };
+    case FETCH_CULTURAL_HERITAGE_FAILURE:
       return {
         ...state,
         loading: false,

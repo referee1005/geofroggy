@@ -43,6 +43,12 @@ export const fetchSpotlightStoriesData = async () => {
   );
   return res.data;
 };
+export const fetchCulturalHeritageData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/home/celebrate-culture`
+  );
+  return res.data;
+};
 export const fetchSiteInfoData = async () => {
   const res = await axios.get(
     `https://geofroggy.com/wp-json/gfrog/v1/about/content`

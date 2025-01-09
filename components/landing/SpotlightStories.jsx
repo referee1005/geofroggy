@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSpotlightStoriesRequest } from "@/actions/home";
 import { useRouter } from "next/router";
 import scriptLogo from "../../public/images/landing/script.png";
-import LandingReadMoreButton from "../reusable/LandingReadMoreButton";
 
 export const SpotlightStories = ({ }) => {
   const [spotlightStories, setSpotlightStories] = useState([]);
@@ -66,7 +65,7 @@ export const SpotlightStories = ({ }) => {
                     <div className="selected-image-wrapper">
                       <img
                         src={spotlightStories[selectedIndex].featured_image.large}
-                        className="w-full"
+                        className="w-full rounded-[28px]"
                       />
                     </div>
                     <div className="image-caption text=[#195883] text-[13px] mt-[11px]">

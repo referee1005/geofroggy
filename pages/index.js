@@ -3,6 +3,7 @@ import AboutUs from "@/components/landing/About";
 import Favourite from "@/components/landing/Favourite";
 import Places from "@/components/landing/Places";
 import SpotlightStories from "@/components/landing/SpotlightStories";
+import CuturalHeritage from "@/components/landing/CuturalHeritage";
 
 export const Home = () => {
   return (
@@ -12,6 +13,8 @@ export const Home = () => {
       <AboutUs />
       <Favourite />
       <SpotlightStories />
+      <CuturalHeritage />
+
     </div >
   );
 }

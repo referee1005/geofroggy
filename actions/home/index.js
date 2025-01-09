@@ -17,6 +17,9 @@ import {
   FETCH_PLACES_REQUEST,
   FETCH_PLACES_SUCCESS,
   FETCH_PLACES_FAILURE,
+  FETCH_CULTURAL_HERITAGE_REQUEST,
+  FETCH_CULTURAL_HERITAGE_SUCCESS,
+  FETCH_CULTURAL_HERITAGE_FAILURE,
 } from "../types";
 
 export const fetchLandingAboutusRequest = () => ({
@@ -93,6 +96,18 @@ export const fetchSpotlightStoriesSuccess = (data) => ({
 });
 export const fetchSpotlightStoriesFailure = (error) => ({
   type: FETCH_SPOTLIGHT_STORIES_FAILURE,
+  payload: error,
+});
+
+export const fetchCulturalHeritageRequest = () => ({
+  type: FETCH_CULTURAL_HERITAGE_REQUEST,
+});
+export const fetchCulturalHeritageSuccess = (data) => ({
+  type: FETCH_CULTURAL_HERITAGE_SUCCESS,
+  payload: data,
+});
+export const fetchCulturalHeritageFailure = (error) => ({
+  type: FETCH_CULTURAL_HERITAGE_FAILURE,
   payload: error,
 });
 
