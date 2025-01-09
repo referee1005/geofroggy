@@ -26,6 +26,9 @@ import {
   FETCH_COMMUNITY_VIBES_REQUEST,
   FETCH_COMMUNITY_VIBES_SUCCESS,
   FETCH_COMMUNITY_VIBES_FAILURE,
+  FETCH_TESTIMONIAL_REQUEST,
+  FETCH_TESTIMONIAL_SUCCESS,
+  FETCH_TESTIMONIAL_FAILURE,
 } from "../actions/types";
 
 const initialState = {
@@ -39,6 +42,7 @@ const initialState = {
   cultural_heritage: [],
   join_adventure: [],
   community_vibes: [],
+  testimonial: [],
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -191,6 +195,23 @@ const dataReducer = (state = initialState, action) => {
         community_vibes: action.payload,
       };
     case FETCH_COMMUNITY_VIBES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case FETCH_TESTIMONIAL_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case FETCH_TESTIMONIAL_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        testimonial: action.payload,
+      };
+    case FETCH_TESTIMONIAL_FAILURE:
       return {
         ...state,
         loading: false,

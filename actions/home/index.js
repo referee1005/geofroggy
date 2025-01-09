@@ -26,6 +26,9 @@ import {
   FETCH_COMMUNITY_VIBES_REQUEST,
   FETCH_COMMUNITY_VIBES_SUCCESS,
   FETCH_COMMUNITY_VIBES_FAILURE,
+  FETCH_TESTIMONIAL_REQUEST,
+  FETCH_TESTIMONIAL_SUCCESS,
+  FETCH_TESTIMONIAL_FAILURE,
 } from "../types";
 
 export const fetchLandingAboutusRequest = () => ({
@@ -138,5 +141,17 @@ export const fetchCommunityVibesSuccess = (data) => ({
 });
 export const fetchCommunityVibesFailure = (error) => ({
   type: FETCH_COMMUNITY_VIBES_FAILURE,
+  payload: error,
+});
+
+export const fetchTestimonialRequest = () => ({
+  type: FETCH_TESTIMONIAL_REQUEST,
+});
+export const fetchTestimonialSuccess = (data) => ({
+  type: FETCH_TESTIMONIAL_SUCCESS,
+  payload: data,
+});
+export const fetchTestimonialFailure = (error) => ({
+  type: FETCH_TESTIMONIAL_FAILURE,
   payload: error,
 });
