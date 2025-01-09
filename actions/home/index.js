@@ -29,6 +29,9 @@ import {
   FETCH_TESTIMONIAL_REQUEST,
   FETCH_TESTIMONIAL_SUCCESS,
   FETCH_TESTIMONIAL_FAILURE,
+  FETCH_INSPIRE_CONNECTION_REQUEST,
+  FETCH_INSPIRE_CONNECTION_SUCCESS,
+  FETCH_INSPIRE_CONNECTION_FAILURE,
 } from "../types";
 
 export const fetchLandingAboutusRequest = () => ({
@@ -153,5 +156,17 @@ export const fetchTestimonialSuccess = (data) => ({
 });
 export const fetchTestimonialFailure = (error) => ({
   type: FETCH_TESTIMONIAL_FAILURE,
+  payload: error,
+});
+
+export const fetchInspireConnectionRequest = () => ({
+  type: FETCH_INSPIRE_CONNECTION_REQUEST,
+});
+export const fetchInspireConnectionSuccess = (data) => ({
+  type: FETCH_INSPIRE_CONNECTION_SUCCESS,
+  payload: data,
+});
+export const fetchInspireConnectionFailure = (error) => ({
+  type: FETCH_INSPIRE_CONNECTION_FAILURE,
   payload: error,
 });

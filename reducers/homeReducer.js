@@ -29,6 +29,9 @@ import {
   FETCH_TESTIMONIAL_REQUEST,
   FETCH_TESTIMONIAL_SUCCESS,
   FETCH_TESTIMONIAL_FAILURE,
+  FETCH_INSPIRE_CONNECTION_REQUEST,
+  FETCH_INSPIRE_CONNECTION_SUCCESS,
+  FETCH_INSPIRE_CONNECTION_FAILURE,
 } from "../actions/types";
 
 const initialState = {
@@ -212,6 +215,23 @@ const dataReducer = (state = initialState, action) => {
         testimonial: action.payload,
       };
     case FETCH_TESTIMONIAL_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case FETCH_INSPIRE_CONNECTION_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case FETCH_INSPIRE_CONNECTION_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        inspireConnection: action.payload,
+      };
+    case FETCH_INSPIRE_CONNECTION_FAILURE:
       return {
         ...state,
         loading: false,

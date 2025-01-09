@@ -6,7 +6,8 @@ import SpotlightStories from "@/components/landing/SpotlightStories";
 import CulturalHeritage from "@/components/landing/CulturalHeritage";
 import JoinAdventure from "@/components/landing/JoinAdventure";
 import CommunityVibes from "@/components/landing/CommunityVibes";
-import { Testimonial } from "@/components/landing/Testimonial";
+import Testimonial from "@/components/landing/Testimonial";
+import InspireConnection from "@/components/landing/InspireConnection";
 
 export const Home = () => {
   return (
@@ -20,6 +21,7 @@ export const Home = () => {
       <JoinAdventure />
       <CommunityVibes />
       <Testimonial />
+      <InspireConnection />
     </div >
   );
 }

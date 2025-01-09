@@ -32,6 +32,7 @@ import {
   FETCH_JOIN_ADVENTURE_REQUEST,
   FETCH_COMMUNITY_VIBES_REQUEST,
   FETCH_TESTIMONIAL_REQUEST,
+  FETCH_INSPIRE_CONNECTION_REQUEST,
 } from "../../actions/types";
 import {
   fetchLandingAboutusData,
@@ -44,6 +45,7 @@ import {
   fetchJoinAdventureData,
   fetchCommunityVibesData,
   fetchTestimonialData,
+  fetchInspireConnectionData
 } from "../../api"; // Assuming you have an API module to handle your requests
 
 function* fetchAboutus() {
@@ -136,6 +138,15 @@ function* fetchTestimonial() {
   }
 }
 
+function* fetchInspireConnection() {
+  try {
+    const response = yield call(fetchInspireConnectionData);
+    yield put(fetchInspireConnectionSuccess(response));
+  } catch (error) {
+    yield put(fetchInspireConnectionFailure(error.message));
+  }
+}
+
 export function* homeSaga() {
   yield takeLatest(FETCH_LANDING_ABOUTUS_REQUEST, fetchAboutus);
   yield takeLatest(FETCH_POPULAR_COUNTRIES_REQUEST, fetchPopularCountries);
@@ -147,4 +158,5 @@ export function* homeSaga() {
   yield takeLatest(FETCH_JOIN_ADVENTURE_REQUEST, fetchJoinAdventure);
   yield takeLatest(FETCH_COMMUNITY_VIBES_REQUEST, fetchCommunityVibes);
   yield takeLatest(FETCH_TESTIMONIAL_REQUEST, fetchTestimonial);
+  yield takeLatest(FETCH_INSPIRE_CONNECTION_REQUEST, fetchInspireConnection);
 }

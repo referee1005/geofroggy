@@ -67,6 +67,12 @@ export const fetchTestimonialData = async () => {
   );
   return res.data;
 };
+export const fetchInspireConnectionData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/home/inspire-connection`
+  );
+  return res.data;
+};
 export const fetchSiteInfoData = async () => {
   const res = await axios.get(
     `https://geofroggy.com/wp-json/gfrog/v1/about/content`
