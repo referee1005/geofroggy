@@ -55,6 +55,12 @@ export const fetchJoinAdventureData = async () => {
   );
   return res.data;
 };
+export const fetchCommunityVibesData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/home/community-vibes`
+  );
+  return res.data;
+};
 export const fetchSiteInfoData = async () => {
   const res = await axios.get(
     `https://geofroggy.com/wp-json/gfrog/v1/about/content`

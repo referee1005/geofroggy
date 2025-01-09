@@ -23,6 +23,9 @@ import {
   FETCH_JOIN_ADVENTURE_REQUEST,
   FETCH_JOIN_ADVENTURE_SUCCESS,
   FETCH_JOIN_ADVENTURE_FAILURE,
+  FETCH_COMMUNITY_VIBES_REQUEST,
+  FETCH_COMMUNITY_VIBES_SUCCESS,
+  FETCH_COMMUNITY_VIBES_FAILURE,
 } from "../types";
 
 export const fetchLandingAboutusRequest = () => ({
@@ -126,3 +129,14 @@ export const fetchJoinAdventureFailure = (error) => ({
   payload: error,
 });
 
+export const fetchCommunityVibesRequest = () => ({
+  type: FETCH_COMMUNITY_VIBES_REQUEST,
+});
+export const fetchCommunityVibesSuccess = (data) => ({
+  type: FETCH_COMMUNITY_VIBES_SUCCESS,
+  payload: data,
+});
+export const fetchCommunityVibesFailure = (error) => ({
+  type: FETCH_COMMUNITY_VIBES_FAILURE,
+  payload: error,
+});

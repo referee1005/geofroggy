@@ -23,6 +23,9 @@ import {
   FETCH_JOIN_ADVENTURE_REQUEST,
   FETCH_JOIN_ADVENTURE_SUCCESS,
   FETCH_JOIN_ADVENTURE_FAILURE,
+  FETCH_COMMUNITY_VIBES_REQUEST,
+  FETCH_COMMUNITY_VIBES_SUCCESS,
+  FETCH_COMMUNITY_VIBES_FAILURE,
 } from "../actions/types";
 
 const initialState = {
@@ -35,6 +38,7 @@ const initialState = {
   sportlight_stories: [],
   cultural_heritage: [],
   join_adventure: [],
+  community_vibes: [],
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -170,6 +174,23 @@ const dataReducer = (state = initialState, action) => {
         join_adventure: action.payload,
       };
     case FETCH_JOIN_ADVENTURE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case FETCH_COMMUNITY_VIBES_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case FETCH_COMMUNITY_VIBES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        community_vibes: action.payload,
+      };
+    case FETCH_COMMUNITY_VIBES_FAILURE:
       return {
         ...state,
         loading: false,

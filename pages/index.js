@@ -5,6 +5,7 @@ import Places from "@/components/landing/Places";
 import SpotlightStories from "@/components/landing/SpotlightStories";
 import CulturalHeritage from "@/components/landing/CulturalHeritage";
 import JoinAdventure from "@/components/landing/JoinAdventure";
+import CommunityVibes from "@/components/landing/CommunityVibes";
 
 export const Home = () => {
   return (
@@ -16,6 +17,7 @@ export const Home = () => {
       <SpotlightStories />
       <CulturalHeritage />
       <JoinAdventure />
+      <CommunityVibes />
     </div >
   );
 }

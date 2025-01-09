@@ -16,6 +16,8 @@ import {
   fetchCulturalHeritageFailure,
   fetchJoinAdventureSuccess,
   fetchJoinAdventureFailure,
+  fetchCommunityVibesSuccess,
+  fetchCommunityVibesFailure,
 } from "../../actions/home";
 import {
   FETCH_LANDING_ABOUTUS_REQUEST,
@@ -26,6 +28,7 @@ import {
   FETCH_SPOTLIGHT_STORIES_REQUEST,
   FETCH_CULTURAL_HERITAGE_REQUEST,
   FETCH_JOIN_ADVENTURE_REQUEST,
+  FETCH_COMMUNITY_VIBES_REQUEST,
 } from "../../actions/types";
 import {
   fetchLandingAboutusData,
@@ -36,6 +39,7 @@ import {
   fetchSpotlightStoriesData,
   fetchCulturalHeritageData,
   fetchJoinAdventureData,
+  fetchCommunityVibesData,
 } from "../../api"; // Assuming you have an API module to handle your requests
 
 function* fetchAboutus() {
@@ -110,6 +114,15 @@ function* fetchJoinAdventure() {
   }
 }
 
+function* fetchCommunityVibes() {
+  try {
+    const response = yield call(fetchCommunityVibesData);
+    yield put(fetchCommunityVibesSuccess(response));
+  } catch (error) {
+    yield put(fetchCommunityVibesFailure(error.message));
+  }
+}
+
 export function* homeSaga() {
   yield takeLatest(FETCH_LANDING_ABOUTUS_REQUEST, fetchAboutus);
   yield takeLatest(FETCH_POPULAR_COUNTRIES_REQUEST, fetchPopularCountries);
@@ -119,4 +132,5 @@ export function* homeSaga() {
   yield takeLatest(FETCH_SPOTLIGHT_STORIES_REQUEST, fetchSpotlightStories);
   yield takeLatest(FETCH_CULTURAL_HERITAGE_REQUEST, fetchCulturalHeritage);
   yield takeLatest(FETCH_JOIN_ADVENTURE_REQUEST, fetchJoinAdventure);
+  yield takeLatest(FETCH_COMMUNITY_VIBES_REQUEST, fetchCommunityVibes);
 }
