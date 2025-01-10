@@ -213,8 +213,8 @@ function Places() {
         </div>
 
         {/* Custom Info */}
-        <div className="w-full h-full absolute text-white mb-8">
-          <div className="absolute container-custom w-full h-full top-8 lg:top-2/3">
+        <div className="w-full h-full absolute text-white mb-8 lg:mb-24">
+          <div className="absolute container-custom w-full top-8 lg:top-2/3">
             <div className="font-semibold text-4xl lg:text-6xl mb-4">
               {places[currentIndex] && places[currentIndex].title}
             </div>
