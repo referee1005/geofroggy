@@ -213,16 +213,16 @@ function Places() {
         </div>
 
         {/* Custom Info */}
-        <div className="w-full h-full absolute text-white">
+        <div className="w-full h-full absolute text-white mb-8">
           <div className="absolute container-custom w-full h-full top-8 lg:top-2/3">
-            <div className=" font-semibold text-4xl lg:text-6xl mb-4">
+            <div className="font-semibold text-4xl lg:text-6xl mb-4">
               {places[currentIndex] && places[currentIndex].title}
             </div>
-            <div className="flex items-center justify-between ">
-              <div className="flex gap-4">
+            <div className="flex items-center justify-between flex-col lg:flex-row">
+              <div className="flex gap-4 items-center mt-4 scale-75 md:scale-100">
                 {" "}
                 <div
-                  className={`backdrop-blur-md flex items-center gap-4 w-fit h-fit bg-[#195883] px-4 py-2 rounded-full cursor-pointer `}
+                  className={`backdrop-blur-md flex items-center gap-2 bg-[#195883] px-6 py-2 rounded-full cursor-pointer`}
                   onClick={() => {
                     setClickIcon("place");
                   }}
@@ -240,7 +240,7 @@ function Places() {
                   />
                 </div>
                 <div
-                  className={`backdrop-blur-md flex items-center bg-[#8CC63E] w-fit h-fit gap-4 px-4 py-2 rounded-full cursor-pointer font-semibold`}
+                  className={`backdrop-blur-md flex items-center bg-[#8CC63E] gap-2 px-6 py-2 rounded-full cursor-pointer font-semibold`}
                   onClick={() => setClickIcon("author")}
                 >
                   <div>
@@ -289,24 +289,22 @@ function Places() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 mt-4 scale-75 md:scale-100">
                 {places.slice(0, 5).map((item, index) => {
                   return (
                     <div
                       key={index}
-                      className={`rounded-full border-2 border-radius p-1 items-center ${
-                        index === 2
-                          ? "border-[#195883]"
-                          : "drop-shadow-md opacity-50 border-[#8CC63E]"
-                      }`}
+                      className={`rounded-full border-2 border-radius p-1 items-center ${index === 2
+                        ? "border-[#195883]"
+                        : "drop-shadow-md opacity-50 border-[#8CC63E]"
+                        }`}
                     >
                       <Image
                         src={
                           item.featured_image && item.featured_image.thumbnail
                         }
-                        className={`${
-                          index === 2 ? "w-36 h-36" : "drop-shadow-md w-28 h-28"
-                        } cursor-pointer rounded-full`}
+                        className={`${index === 2 ? "w-28 h-28 md:w-36 md:h-36" : "drop-shadow-md w-24 h-24 md:w-28 md:h-28"
+                          } cursor-pointer rounded-full`}
                         draggable="false"
                         width={1000}
                         height={1000}
@@ -315,8 +313,9 @@ function Places() {
                   );
                 })}
               </div>
-              <div className="relative">
-                <div className="flex items-center justify-center bg-white text-black text-6xl w-24 h-24 font-semibold rounded-full">
+
+              <div className="relative mt-0 md:mt-4 scale-50 md:scale-100">
+                <div className="flex items-center justify-center bg-[#DBDBDB] text-black text-6xl w-24 h-24 font-semibold rounded-full">
                   {currentIndex + 1}
                 </div>
                 <div

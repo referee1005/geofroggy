@@ -8,7 +8,7 @@ import Location from "../../public/images/landing/Location.png";
 import Location1 from "../../public/images/landing/Location1.png";
 import LandingReadMoreButton from "../reusable/LandingReadMoreButton";
 
-function Favourite({}) {
+function Favourite({ }) {
   const [placekeys, setPlacekeys] = useState([]);
   const [places, setPlaces] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState("Popular");
@@ -87,9 +87,8 @@ function Favourite({}) {
         <div className="w-full flex justify-between">
           <div className="w-full flex justify-between items-center">
             <div
-              className={`cursor-pointer  ${
-                selectedIndex === "Popular" ? "font-semibold text-lg" : ""
-              }`}
+              className={`cursor-pointer  ${selectedIndex === "Popular" ? "font-semibold text-lg" : ""
+                }`}
               onClick={() => setSelectedIndex("Popular")}
             >
               Popular
@@ -99,9 +98,8 @@ function Favourite({}) {
               .slice(0, visiblePlacesCount)
               .map((item) => (
                 <div
-                  className={`cursor-pointer ${
-                    selectedIndex === item ? "font-semibold text-lg" : ""
-                  }`}
+                  className={`cursor-pointer ${selectedIndex === item ? "font-semibold text-lg" : ""
+                    }`}
                   onClick={() => setSelectedIndex(item)}
                 >
                   {item}
@@ -131,43 +129,43 @@ function Favourite({}) {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-4 gap-4 lg:gap-8 2xl:gap-16 relative flex min-h-64 sm:min-h-64">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 lg:gap-8 2xl:gap-16 relative min-h-64 sm:min-h-64">
           {data[selectedIndex] !== undefined
             ? data[selectedIndex].slice(0, 4).map((item, index) => (
-                <div>
-                  <div
-                    key={index}
-                    className="relative bg-white shadow-md rounded-3xl overflow-hidden"
-                  >
-                    <div className="aspect-[2/3]">
-                      <Image
-                        src={item.image}
-                        alt={item.image}
-                        className="rounded-3xl object-cover"
-                        layout="fill"
-                        objectFit="cover"
-                        // width={1000}
-                        // height={1000}
-                      />
-                    </div>
-                  </div>
-                  <div className="font-semibold">{item.title}</div>
-                  <div className="flex items-center">
-                    <div>{item.location} </div>
-                    <div className="relative">
-                      <Image
-                        src={Location1}
-                        className="object-contain"
-                        layout="responsive"
-                        width={50}
-                        height={50}
-                        priority={true}
-                        alt={"Home Image"}
-                      />
-                    </div>
+              <div>
+                <div
+                  key={index}
+                  className="relative bg-white shadow-md rounded-3xl overflow-hidden"
+                >
+                  <div className="aspect-[2/3]">
+                    <Image
+                      src={item.image}
+                      alt={item.image}
+                      className="rounded-3xl object-cover"
+                      layout="fill"
+                      objectFit="cover"
+                    // width={1000}
+                    // height={1000}
+                    />
                   </div>
                 </div>
-              ))
+                <div className="font-semibold">{item.title}</div>
+                <div className="flex items-center">
+                  <div>{item.location} </div>
+                  <div className="relative">
+                    <Image
+                      src={Location1}
+                      className="object-contain"
+                      layout="responsive"
+                      width={50}
+                      height={50}
+                      priority={true}
+                      alt={"Home Image"}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))
             : []}
         </div>
         <div className="flex justify-end items-center gap-4">
