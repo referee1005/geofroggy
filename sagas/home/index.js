@@ -20,6 +20,8 @@ import {
   fetchCommunityVibesFailure,
   fetchTestimonialSuccess,
   fetchTestimonialFailure,
+  fetchInspireConnectionSuccess,
+  fetchInspireConnectionFailure,
 } from "../../actions/home";
 import {
   FETCH_LANDING_ABOUTUS_REQUEST,
@@ -141,6 +143,7 @@ function* fetchTestimonial() {
 function* fetchInspireConnection() {
   try {
     const response = yield call(fetchInspireConnectionData);
+    console.log('fetchInspireConnectionData => ', response)
     yield put(fetchInspireConnectionSuccess(response));
   } catch (error) {
     yield put(fetchInspireConnectionFailure(error.message));

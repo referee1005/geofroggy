@@ -325,3 +325,10 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional: add shadow */
   border-radius: 8px; /* Optional: round the corners */
 }
+
+#landing-subscription-bg {
+  background-image: url("../public/images/landing/subscription.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

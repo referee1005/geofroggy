@@ -8,6 +8,7 @@ import JoinAdventure from "@/components/landing/JoinAdventure";
 import CommunityVibes from "@/components/landing/CommunityVibes";
 import Testimonial from "@/components/landing/Testimonial";
 import InspireConnection from "@/components/landing/InspireConnection";
+import Subscription from "@/components/landing/Subscription";
 
 export const Home = () => {
   return (
@@ -22,6 +23,7 @@ export const Home = () => {
       <CommunityVibes />
       <Testimonial />
       <InspireConnection />
+      <Subscription />
     </div >
   );
 }
