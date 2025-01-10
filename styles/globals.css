@@ -332,3 +332,10 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 }
+
+#landing-community-bg {
+  background-image: url("../public/images/landing/stas-background-logo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

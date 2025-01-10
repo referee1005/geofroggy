@@ -88,10 +88,10 @@ export const CommunityVibes = ({ }) => {
           </div>
         </div>
 
-        <div className="rounded-[26px] bg-[#195883] grid grid-cols-2 w-full md:w-[50%]" style={{ backgroundImage: "url('/public/images/landing/stas-background-logo.png')" }}>
+        <div id="landing-community-bg" className="rounded-[26px] bg-[#195883] grid grid-cols-2 w-full md:w-[50%]">
           {
             stats.map((item, index) => (
-              <div class="grid-item align-center p-5 flex flex-col justify-center border border-white">
+              <div key={index} className="grid-item align-center p-5 flex flex-col justify-center border border-white">
                 <h2 className="text-[#8CC63E] text-[48px] font-semibold">{item.counter}</h2>
                 <p className="text-[20px] font-medium text-white">{item.title}</p>
               </div>

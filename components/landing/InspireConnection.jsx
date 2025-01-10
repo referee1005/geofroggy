@@ -23,7 +23,7 @@ export const InspireConnection = ({ }) => {
   }, [data]);
 
   return (
-    <div className="container-custom my-10 py-16 px-5 lg:px-20">
+    <div className="container-custom my-10 px-5 lg:px-20">
       {/* Section Header */}
       <div className="text-center mb-3">
         <div className="flex justify-center">

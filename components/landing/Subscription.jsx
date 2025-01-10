@@ -7,7 +7,7 @@ import SubscriptionLogo from "../../public/images/landing/subscription-logo.png"
 
 export const Subscription = ({ }) => {
   return (
-    <div className="container-custom flex flex-col items-center justify-center px-5 lg:px-20">
+    <div className="container-custom flex flex-col items-center justify-center py-16 px-5 lg:px-20">
       <div className="w-full border border-white p-8 rounded-[22px]">
         <div className="rounded-[22px] border-[1px] w-full h-120 flex flex-col items-center justify-center" id="landing-subscription-bg">
           {/* Subscription Card */}
