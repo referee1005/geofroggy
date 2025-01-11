@@ -4,249 +4,205 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { FiX, FiMenu } from "react-icons/fi";
-import logoLight from "../../public/images/logo-light.svg";
+import logoLight from "../../public/images/logo-light.png";
 import logoDark from "../../public/images/logo-dark.svg";
 import useThemeSwitcher from "../../hooks/useThemeSwitcher";
-import CustomButton from "../reusable/CustomButton";
-import { FiArrowRight } from "react-icons/fi";
 
 function AppHeader() {
   const [showMenu, setShowMenu] = useState(false);
-  const [activeMenu, setActiveMenu] = useState("home");
-  const [showModal, setShowModal] = useState(false);
   const [activeTheme, setTheme] = useThemeSwitcher();
   const router = useRouter();
 
   function toggleMenu() {
-    if (!showMenu) {
-      setShowMenu(true);
-    } else {
-      setShowMenu(false);
-    }
+    setShowMenu(!showMenu);
   }
-  // useEffect(() => {
-  //   setActiveMenu(router.pathname.replace('/', ''))
-  // }, [])
+
   return (
     <motion.nav
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       id="nav"
-      className="container-custom fontsize-custom"
+      className="fixed top-0 left-0 w-full z-10 bg-white/30 backdrop-blur-md shadow-sm"
     >
-      {/* Header */}
-      <div className="z-10 w-full sm:w-full md:w-full lg:w-full xl:w-full block lg:flex sm:justify-between sm:items-center">
-        {/* Header menu links and small screen hamburger menu */}
-        <div className="flex justify-between items-center px-4 sm:px-0 flex-shrink-0">
-          <div>
-            <Link href="/">
-              {activeTheme === "dark" ? (
-                <Image
-                  src={logoDark}
-                  className="cursor-pointer"
-                  alt="Dark Logo"
-                  width={180}
-                />
-              ) : (
-                <Image
-                  src={logoLight}
-                  className="cursor-pointer"
-                  alt="Light Logo"
-                  width={180}
-                />
-              )}
-            </Link>
-          </div>
-
-          {/* Small screen hamburger menu */}
-          <div className="lg:hidden">
-            <button
-              onClick={toggleMenu}
-              type="button"
-              className="focus:outline-none"
-              aria-label="Hamburger Menu"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                className="h-7 w-7 fill-current text-secondary-dark dark:text-ternary-light"
-              >
-                {showMenu ? (
-                  <FiX className="text-3xl" />
-                ) : (
-                  <FiMenu className="text-3xl" />
-                )}
-              </svg>
-            </button>
-          </div>
+      <div className="flex justify-between bg-transparent items-center px-4 py-4 lg:px-8">
+        {/* Logo */}
+        <div>
+          <Link href="/">
+            {activeTheme === "dark" ? (
+              <Image
+                src={logoDark}
+                className="cursor-pointer bg-transparent"
+                alt="Dark Logo"
+                width={180}
+                height={50}
+              />
+            ) : (
+              <Image
+                src={logoLight}
+                className="cursor-pointer bg-transparent"
+                alt="Light Logo"
+                width={180}
+                height={50}
+              />
+            )}
+          </Link>
         </div>
 
-        {/* Header links small screen */}
-        <div
-          className={
-            showMenu
-              ? "block m-0 sm:ml-4 sm:mt-3 xl:flex px-5 py-3 sm:p-0 justify-between items-center lg:shadow-none"
-              : "hidden"
-          }
-        >
-          <div
-            className={`block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 ${
-              router.pathname === "/" ? "text-cyan-600" : ""
-            }`}
+        {/* Hamburger Menu for Mobile */}
+        <div className="lg:hidden">
+          <button
+            onClick={toggleMenu}
+            type="button"
+            className="focus:outline-none"
+            aria-label="Hamburger Menu"
           >
-            <Link href="/" aria-label="Projects">
-              Home
-            </Link>
-          </div>
-          <div
-            className={`block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark ${
-              router.pathname.includes("/research") ? "text-cyan-600" : ""
-            }`}
-          >
-            <Link href="/research" aria-label="Projects">
-              Explore
-            </Link>
-          </div>
-          <div
-            className={`block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark ${
-              router.pathname.includes("/aboutus") ? "text-cyan-600" : ""
-            }`}
-          >
-            <Link href="/aboutus" aria-label="About Us">
-              About
-            </Link>
-          </div>
-          {/* <div
-            className={`block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark ${
-              router.pathname.includes('/faq') ? 'text-cyan-600' : ''
-            }`}
-          >
-            <Link href='/faq' aria-label='FAQs'>
-              FAQs
-            </Link>
-          </div> */}
-          <div
-            className={`block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark ${
-              router.pathname.includes("/news") ? "text-cyan-600" : ""
-            }`}
-          >
-            <Link href="/news" aria-label="News">
-              News
-            </Link>
-          </div>
-          <div
-            className={`block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 sm:py-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark ${
-              router.pathname.includes("/contact") ? "text-cyan-600" : ""
-            }`}
-          >
-            <Link href="/contact" aria-label="Contact">
-              Contact
-            </Link>
-          </div>
-          <div className="flex pt-3 sm:pt-0 sm:border-t-0 border-primary-light dark:border-secondary-dark">
-            <button
-              // onClick={showHireMeModal}
-              className="font-general-medium sm:hidden block text-left text-md bg-indigo-500 hover:bg-indigo-600 text-white shadow-sm rounded-sm px-4 py-2 mt-2 duration-300 w-24 text-center mr-8"
-              aria-label="Join Us Button"
-            >
-              Join Us
-            </button>
-            <button
-              onClick={() => router.push("/donate")}
-              className="font-general-medium sm:hidden block text-left text-md bg-indigo-500 hover:bg-indigo-600 text-white shadow-sm rounded-sm px-4 py-2 mt-2 duration-300 w-24 text-center"
-              aria-label="Join Us Button"
-            >
-              Donate
-            </button>
-          </div>
+            {showMenu ? (
+              <FiX className="text-3xl text-primary-dark" />
+            ) : (
+              <FiMenu className="text-3xl text-primary-dark" />
+            )}
+          </button>
         </div>
 
-        {/* Header links large screen */}
-        <div className="font-general-medium hidden mx-0 2xl:mx-48 xl:mx-24  lg:flex flex-1 sm:p-0 justify-between items-center shadow-lg sm:shadow-none">
-          <div
-            className={`block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-cyan-600 dark:hover:text-secondary-light sm:mx-4 sm:py-2 ${
-              router.pathname === "/" ? "text-cyan-600" : ""
-            }`}
-            aria-label="home"
+        {/* Large Screen Links */}
+        <div className="hidden lg:flex lg:space-x-6 xl:space-x-20 items-center justify-between">
+          <Link
+            href="/"
+            className={`text-lg font-medium ${router.pathname === "/"
+              ? "text-[#8CC63E]"
+              : "text-primary-dark hover:text-[#8CC63E]"
+              }`}
           >
-            <Link href="/" className=" fontsize-custom">
-              Home
-            </Link>
-          </div>
-          <div
-            className={`block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-cyan-600 dark:hover:text-secondary-light  sm:mx-4 sm:py-2 ${
-              router.pathname.includes("/aboutus") ? "text-cyan-600" : ""
-            }`}
-            aria-label="About"
+            Home
+          </Link>
+          <Link
+            href="/countries"
+            className={`text-lg font-medium ${router.pathname.includes("/countries")
+              ? "text-[#8CC63E]"
+              : "text-primary-dark hover:text-[#8CC63E]"
+              }`}
           >
-            <Link href="/aboutus" className=" fontsize-custom">
-              About
-            </Link>
-          </div>
-          <div
-            className={`block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-cyan-600 dark:hover:text-secondary-light  sm:mx-4 sm:py-2 ${
-              router.pathname.includes("/news") ? "text-cyan-600" : ""
-            }`}
-            aria-label="News"
+            Countries
+          </Link>
+          <Link
+            href="/aboutus"
+            className={`text-lg font-medium ${router.pathname.includes("/aboutus")
+              ? "text-[#8CC63E]"
+              : "text-primary-dark hover:text-[#8CC63E]"
+              }`}
           >
-            <Link href="/news" className=" fontsize-custom">
-              News
-            </Link>
-          </div>
-          {/* <div
-            className={`block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-cyan-600 dark:hover:text-secondary-light  sm:mx-4 sm:py-2 ${
-              router.pathname.includes('/faq') ? 'text-cyan-600' : ''
-            }`}
-            aria-label='Faqs'
+            About
+          </Link>
+          <Link
+            href="/donate"
+            className={`text-lg font-medium ${router.pathname.includes("/donate")
+              ? "text-[#8CC63E]"
+              : "text-primary-dark hover:text-[#8CC63E]"
+              }`}
           >
-            <Link href='/faq' className=' fontsize-custom'>
-              FAQs
-            </Link>
-          </div> */}
-          <div
-            className={`block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-cyan-600 dark:hover:text-secondary-light  sm:mx-4 sm:py-2 ${
-              router.pathname.includes("/research") ? "text-cyan-600" : ""
-            }`}
-            aria-label="research"
+            Donate
+          </Link>
+          <Link
+            href="/blog-news"
+            className={`text-lg font-medium ${router.pathname.includes("/blog-news")
+              ? "text-[#8CC63E]"
+              : "text-primary-dark hover:text-[#8CC63E]"
+              }`}
           >
-            <Link href="/research" className=" fontsize-custom">
-              Explore
-            </Link>
-          </div>
-
-          <div
-            className={`block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-cyan-600 dark:hover:text-secondary-light  sm:mx-4 sm:py-2 ${
-              router.pathname.includes("/contact") ? "text-cyan-600" : ""
-            }`}
-            aria-label="Contact"
-          >
-            <Link href="/contact" className=" fontsize-custom">
-              Contact
-            </Link>
-          </div>
+            Blog & News
+          </Link>
         </div>
 
         {/* Header right section buttons */}
-        <div className="hidden lg:flex justify-between items-center flex-col md:flex-row flex-shrink-0">
-          <div
-            className="mr-8 text-[#8CC63E] text-base font-semibold cursor-pointer"
-            onClick={() => router.push("/join")}
-          >
-            Login
-          </div>
-          <div className="flex gap-4 text-white bg-[#8CC63E] text-base font-semibold rounded-sm px-4 py-2">
-            <div>Join Now </div>
-            <FiArrowRight color="white" size={20} />
-            {/* <CustomButton
-              title={"Donate"}
-              bgColor={"#269938"}
-              click={() => router.push("/donate")}
-            /> */}
-          </div>
+        <div className="hidden lg:flex gap-4 items-center">
+          {/* Join Now Button */}
+          <button class="bg-[#1D4D7B] text-white px-6 py-2 rounded-full border-none cursor-pointer">
+            Join Now
+          </button>
 
-          {/* </div> */}
+          {/* Login Button */}
+          <button class="bg-[#8CC63E] text-white px-6 py-2 rounded-full border-none cursor-pointer">
+            Login
+          </button>
+
+
+          {/* Lock Icon */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            fill="currentColor"
+            aria-label="Lock Icon"
+          >
+            <path d="M17 8h-1V6c0-2.76-2.24-5-5-5S6 3.24 6 6v2H5c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-9c0-1.1-.9-2-2-2zm-6 8c-.83 0-1.5-.67-1.5-1.5S10.17 13 11 13s1.5.67 1.5 1.5S11.83 16 11 16zm3-8H8V6c0-1.65 1.35-3 3-3s3 1.35 3 3v2z" />
+          </svg>
         </div>
+
       </div>
+
+      {/* Mobile Menu */}
+      {showMenu && (
+        <div className="lg:hidden flex flex-col items-start space-y-4 px-4 py-4 bg-white/30 backdrop-blur-md shadow-md">
+          <Link
+            href="/"
+            className={`text-lg font-medium ${router.pathname === "/"
+              ? "text-[#8CC63E]"
+              : "text-primary-dark hover:text-[#8CC63E]"
+              }`}
+            onClick={() => setShowMenu(false)}
+          >
+            Home
+          </Link>
+          <Link
+            href="/countries"
+            className={`text-lg font-medium ${router.pathname.includes("/countries")
+              ? "text-[#8CC63E]"
+              : "text-primary-dark hover:text-[#8CC63E]"
+              }`}
+            onClick={() => setShowMenu(false)}
+          >
+            Countries
+          </Link>
+          <Link
+            href="/aboutus"
+            className={`text-lg font-medium ${router.pathname.includes("/aboutus")
+              ? "text-[#8CC63E]"
+              : "text-primary-dark hover:text-[#8CC63E]"
+              }`}
+            onClick={() => setShowMenu(false)}
+          >
+            About
+          </Link>
+          <Link
+            href="/donate"
+            className={`text-lg font-medium ${router.pathname.includes("/donate")
+              ? "text-[#8CC63E]"
+              : "text-primary-dark hover:text-[#8CC63E]"
+              }`}
+            onClick={() => setShowMenu(false)}
+          >
+            Donate
+          </Link>
+          <Link
+            href="/blog-news"
+            className={`text-lg font-medium ${router.pathname.includes("/blog-news")
+              ? "text-[#8CC63E]"
+              : "text-primary-dark hover:text-[#8CC63E]"
+              }`}
+            onClick={() => setShowMenu(false)}
+          >
+            Blog & News
+          </Link>
+          <button className="bg-[#1D4D7B] text-white px-6 py-2 rounded-full">
+            Join Now
+          </button>
+          {/* Login Button */}
+          <button className="bg-[#8CC63E] text-white px-6 py-2 rounded-full">
+            Login
+          </button>
+        </div>
+      )}
     </motion.nav>
   );
 }

@@ -46,7 +46,7 @@ export const InspireConnection = ({ }) => {
       {/* Inspire Connections */}
       <div className="flex flex-col lg:flex-row justify-center gap-8 lg:gap-16 w-full">
         {inspireConnection.map((item, index) => (
-          <div className="flex justify-center">
+          <div key={index} className="flex justify-center">
             <div
               key={item.id}
               className={`relative flex flex-col text-center bg-white shadow-lg rounded-[20px] overflow-hidden w-[300px] lg:w-[350px] border-[1px] border-[#BABABA]`}

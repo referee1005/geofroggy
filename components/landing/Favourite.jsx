@@ -132,7 +132,7 @@ function Favourite({ }) {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 lg:gap-8 2xl:gap-16 relative min-h-64 sm:min-h-64">
           {data[selectedIndex] !== undefined
             ? data[selectedIndex].slice(0, 4).map((item, index) => (
-              <div>
+              <div key={index}>
                 <div
                   key={index}
                   className="relative bg-white shadow-md rounded-3xl overflow-hidden"
