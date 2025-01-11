@@ -1,175 +1,162 @@
-import facebook from "../../public/images/facebook.svg";
-import twitter from "../../public/images/twitter.svg";
-import instagram from "../../public/images/instagram.svg";
-import youtube from "../../public/images/youtube.svg";
-import logoLight from "../../public/images/logo-light.svg";
+import Link from "next/link";
 import Image from "next/image";
+import logoLight from "../../public/images/logo1.png";
+import facebook from "../../public/images/facebook.png";
+import twitter from "../../public/images/twitter.png";
+import instagram from "../../public/images/instagram.png";
+import youtube from "../../public/images/youtube.png";
+import linkedin from "../../public/images/linkedin.png";
+import googleplay from "../../public/images/google-play.png";
+import appstore from "../../public/images/app-store.svg";
 import { useRouter } from "next/router";
 
 const socialLinks = [
   {
     id: 1,
+    icon: instagram,
+    url: "https://twitter.com",
+  },
+  {
+    id: 2,
     icon: facebook,
     url: "https://www.stoman.me/",
   },
   {
-    id: 2,
-    icon: twitter,
-    url: "https://github.com/realstoman",
-  },
-  {
     id: 3,
-    icon: instagram,
-    url: "https://twitter.com/realstoman",
+    icon: youtube,
+    url: "https://www.linkedin.com/in",
   },
   {
     id: 4,
-    icon: youtube,
-    url: "https://www.linkedin.com/in/realstoman",
+    icon: twitter,
+    url: "https://github.com",
+  },
+  {
+    id: 5,
+    icon: facebook,
+    url: "https://www.stoman.me/",
   },
 ];
 
 function AppFooter() {
-  const router = useRouter();
   return (
-    <div style={{ backgroundColor: "#FAFAFA" }}>
-      <div className="container-custom fontsize-custom text-gray-800 py-16 sm:py-32">
-        <div className="mx-auto gap-6 lg:flex">
-          {/* Logo and Description */}
-          <div className="mb-8 lg:w-1/4 ">
-            <Image
-              src={logoLight}
-              className="cursor-pointer mb-8"
-              alt="Light Logo"
-              width={240}
-            />
-            <div className="text-gray-600">
-              Donec rutrum congue leo eget malesuada. Mauris blandit aliquet
-              elit, eget tincidunt nibh pulvinar a. Donec rutrum.
-            </div>
+    <footer className="text-white">
+      <div className="bg-[#195883] mx-auto px-6 lg:px-20 flex flex-col lg:flex-row items-stretch pb-4 pt-[120px]">
+        {/* Left Section */}
+        <div className="w-full lg:w-[25%] flex flex-col">
+          <Image
+            src={logoLight}
+            className="cursor-pointer"
+            alt="Light Logo"
+            width={240}
+          />
+          <div className="font-extrabold">
+            Cultured Media vs. The Cultured Media
           </div>
-          <div className=" grid grid-cols-1  grid-cols-2  col-span-2 lg:col-span-1 lg:grid-cols-4 flex-1">
-            <div className="mb-8">
-              <div className="text-base lg:text-lg 2xl:text-2xl font-semibold mb-8">
+          <div className="font-extrabold text-2xl mt-6">
+            (+800) 1234 5678 90
+          </div>
+          <div className="font-normal mt-2">support@geofroggy.com</div>
+          <div className="font-normal mt-4">Copyright 2024 ©Geofroggy</div>
+        </div>
+
+        {/* Right Section */}
+        <div className="w-full lg:w-[75%] flex flex-col mt-12 lg:mt-20">
+          {/* Navigation Columns */}
+          <div className="flex flex-col md:flex-row">
+            <div className="w-full md:w-[1/3] mt-8 md:mt-0 flex-grow">
+              <div className="font-bold text-lg border-l border-[#D9D9D9] pl-16">
                 Company
               </div>
-              <ul className="space-y-2">
-                <li
-                  className="hover:text-gray-600 cursor-pointer"
-                  onClick={() => router.push("/news")}
-                >
-                  News
-                </li>
-                <li
-                  className="hover:text-gray-600 cursor-pointer"
-                  onClick={() => router.push("/media")}
-                >
-                  Media Page
-                </li>
-                <li
-                  className="hover:text-gray-600 cursor-pointer"
-                  onClick={() => router.push("/advertise")}
-                >
-                  Advertise with Geofroggy
-                </li>
-                <li
-                  className="hover:text-gray-600 cursor-pointer"
-                  onClick={() => router.push("/contact")}
-                >
-                  Contact Us
-                </li>
-              </ul>
+              <div className="mt-4 pl-16 font-montserrat">
+                <div>News</div>
+                <div>Media Page</div>
+                <div>Advertise with Geofroggy</div>
+                <div>Contact Us</div>
+              </div>
             </div>
-
-            {/* Legal Section */}
-            <div className="mb-8">
-              <div className="text-base lg:text-lg 2xl:text-2xl font-semibold mb-8">
+            <div className="w-full md:w-[1/3] mt-8 md:mt-0 flex-grow">
+              <div className="font-bold text-lg border-l border-[#D9D9D9] pl-16">
                 Legal
               </div>
-              <ul className="space-y-2">
-                <li className="hover:text-gray-600 cursor-pointer">
-                  Community Guidelines
-                </li>
-                <li className="hover:text-gray-600 cursor-pointer">
-                  Terms of Use
-                </li>
-                <li
-                  className="hover:text-gray-600 cursor-pointer"
-                  onClick={() => router.push("/privacy-policy")}
-                >
-                  Privacy Policy
-                </li>
-                <li
-                  className="hover:text-gray-600 cursor-pointer"
-                  onClick={() => router.push("/faq")}
-                >
-                  FAQs
-                </li>
-              </ul>
-            </div>
-
-            {/* Resources Section */}
-            <div className="mb-8">
-              <div className="text-base lg:text-lg 2xl:text-2xl font-semibold mb-8">
-                Get Involved
+              <div className="mt-4 pl-16">
+                <div>Community Guidelines</div>
+                <div>Terms of Use</div>
+                <div>Privacy Policy</div>
+                <div>FAQs</div>
               </div>
-              <ul className="space-y-2">
-                <li
-                  className="hover:text-gray-600 cursor-pointer"
-                  onClick={() => router.push("/job")}
-                >
-                  Careers
-                </li>
-                <li className="hover:text-gray-600 cursor-pointer">
-                  Ambassadors
-                </li>
-                <li
-                  className="hover:text-gray-600 cursor-pointer"
-                  onClick={() => router.push("/sponsor")}
-                >
-                  Sponsor Geofroggy
-                </li>
-                <li
-                  className="hover:text-gray-600 cursor-pointer"
-                  onClick={() => router.push("/donate")}
-                >
-                  Donate
-                </li>
-                <li className="hover:text-gray-600 cursor-pointer">
-                  Subscribe
-                </li>
-              </ul>
             </div>
-
-            {/* Contact Section */}
-            <div>
-              <div className="text-base lg:text-lg 2xl:text-2xl font-semibold mb-8">
-                Follow Us
+            <div className="w-full md:w-[1/3] mt-8 md:mt-0 flex-grow">
+              <div className="font-bold text-lg border-l border-[#D9D9D9] pl-16">
+                Get Involve
               </div>
-              <ul className="space-y-2">
-                {/* <li className='hover:text-gray-600 cursor-pointer'>
-                  mail@geofroggy.com
-                </li> */}
-                <li className=" cursor-pointer flex">
-                  {socialLinks.map((link) => (
-                    <a
-                      href={link.url}
-                      target="__blank"
-                      key={link.id}
-                      className="cursor-pointer mr-2 mb-2"
-                    >
-                      <Image src={link.icon} alt={`Icon ${link.id}`} />
-                    </a>
-                  ))}
-                </li>
-              </ul>
+              <div className="mt-4 pl-16">
+                <div>Careers</div>
+                <div>Ambassadors</div>
+                <div>Sponsor Geofroggy</div>
+                <div>Donate</div>
+                <div>Subscribe</div>
+              </div>
             </div>
           </div>
+
+          {/* Follow and Download Section */}
+          <div className="flex flex-col md:flex-row items-center justify-between w-full mt-8">
+            {/* Follow us Section */}
+            <div className="w-full md:w-[50%] flex flex-col items-center gap-4 mt-4">
+              <div className="text-lg font-extrabold text-center">Follow us</div>
+              <ul className="flex space-x-4">
+                {socialLinks.map((link) => (
+                  <a
+                    href={link.url}
+                    target="__blank"
+                    key={link.id}
+                    className="cursor-pointer"
+                  >
+                    <Image
+                      src={link.icon}
+                      alt={`Social Icon ${link.id}`}
+                      className="w-6 h-6"
+                    />
+                  </a>
+                ))}
+              </ul>
+            </div>
+
+            {/* Download App Section */}
+            <div className="w-full md:w-[50%] flex flex-col items-center gap-4 mt-8">
+              <div className="text-lg font-extrabold text-center">Download App</div>
+              <div className="flex flex-col gap-2">
+                <a
+                  href="#"
+                  className="hover:opacity-80 flex items-center justify-center w-[150px] h-auto"
+                >
+                  <Image
+                    src={googleplay}
+                    alt="Get it on Google Play"
+                    className="w-full h-auto object-contain"
+                  />
+                </a>
+                <a
+                  href="#"
+                  className="hover:opacity-80 flex items-center justify-center w-[150px] h-auto"
+                >
+                  <img
+                    src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg"
+                    alt="Download on the App Store"
+                    className="w-full h-auto object-contain"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
-        {/* Product Section */}
       </div>
-    </div>
-  );
+      <div className="bg-[#8CC63E] h-8" content=""></div>
+    </footer>
+
+  )
 }
 
 export default AppFooter;
