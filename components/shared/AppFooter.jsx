@@ -124,7 +124,7 @@ function AppFooter() {
             </div>
 
             {/* Download App Section */}
-            <div className="w-full md:w-[50%] flex flex-col items-center gap-4 mt-8">
+            <div className="w-full md:w-[50%] flex flex-col md:flex-row items-center gap-4 mt-8">
               <div className="text-lg font-extrabold text-center">Download App</div>
               <div className="flex flex-col gap-2">
                 <a
