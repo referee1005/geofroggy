@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { FiX, FiMenu } from "react-icons/fi";
 import logoLight from "../../public/images/logo-light.png";
+import logoLight1 from "../../public/images/logo1.png";
+
 import logoDark from "../../public/images/logo-dark.svg";
 import useThemeSwitcher from "../../hooks/useThemeSwitcher";
 
@@ -29,21 +31,41 @@ function AppHeader() {
         <div>
           <Link href="/">
             {activeTheme === "dark" ? (
-              <Image
-                src={logoDark}
-                className="cursor-pointer bg-transparent"
-                alt="Dark Logo"
-                width={180}
-                height={50}
-              />
+              <span>
+                <Image
+                  src={logoDark}
+                  className="cursor-pointer bg-transparent"
+                  alt="Dark Logo"
+                  width={180}
+                  height={50}
+                />
+                <Image
+                  id="logo1"
+                  src={logoLight1}
+                  className="cursor-pointer bg-transparent"
+                  alt="Light Logo"
+                  width={180}
+                  height={50}
+                /></span>
+
             ) : (
-              <Image
-                src={logoLight}
-                className="cursor-pointer bg-transparent"
-                alt="Light Logo"
-                width={180}
-                height={50}
-              />
+              <span>
+                <Image
+                  id="logo"
+                  src={logoLight}
+                  className="cursor-pointer bg-transparent"
+                  alt="Light Logo"
+                  width={180}
+                  height={50}
+                />
+                <Image
+                  id="logo1"
+                  src={logoLight1}
+                  className="cursor-pointer bg-transparent"
+                  alt="Light Logo"
+                  width={180}
+                  height={50}
+                /></span>
             )}
           </Link>
         </div>
