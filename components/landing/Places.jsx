@@ -11,6 +11,7 @@ import share_icon from "../../public/images/landing/share_icon.png";
 import like_icon from "../../public/images/landing/like_icon.png";
 import Image from "next/image";
 import Modal from "../reusable/Modal";
+import { motion } from "framer-motion";
 
 const MapComponent = dynamic(() => import("../reusable/map"), {
   ssr: false,
@@ -190,13 +191,13 @@ function Places() {
   const openModal = () => setLargeMap(true);
   const closeModal = () => setLargeMap(false);
 
-  if (!places.length) {
-    return <div>Loading...</div>; // Or return a fallback image/div
-  }
+  // if (!places.length) {
+  //   return <div>Loading...</div>; // Or return a fallback image/div
+  // }
 
   return (
     <>
-      <div className="relative w-full lg:h-screen flex items-center justify-center overflow-hidden">
+      <motion.div className="relative w-full h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden">
         {/* Main Image */}
         <div className="relative w-full h-screen">
           <Image
@@ -213,13 +214,13 @@ function Places() {
         </div>
 
         {/* Custom Info */}
-        <div className="w-full h-full absolute text-white mb-8 lg:mb-24">
-          <div className="absolute container-custom w-full top-8 lg:top-2/3">
-            <div className="font-semibold text-4xl lg:text-6xl mb-4">
+        <div className="w-full h-full absolute text-white">
+          <div className="absolute container-custom w-full bottom-8">
+            <div className="font-semibold text-4xl lg:text-6xl mb-4 flex justify-center lg:justify-start">
               {places[currentIndex] && places[currentIndex].title}
             </div>
             <div className="flex items-center justify-between flex-col lg:flex-row">
-              <div className="flex gap-4 items-center mt-4 scale-75 md:scale-100">
+              <div className="flex gap-4 items-center mt-4 scale-75 lg:scale-100 w-full lg:w-[35%] justify-center lg:justify-start">
                 {" "}
                 <div
                   className={`backdrop-blur-md flex items-center gap-2 bg-[#195883] px-6 py-2 rounded-full cursor-pointer`}
@@ -288,89 +289,96 @@ function Places() {
                   </div>
                 </div>
               </div>
-
-              <div className="flex items-center gap-4 mt-4 scale-75 md:scale-100">
-                {places.slice(0, 5).map((item, index) => {
-                  return (
-                    <div
-                      key={index}
-                      className={`rounded-full border-2 border-radius p-1 items-center ${index === 2
-                        ? "border-[#195883]"
-                        : "drop-shadow-md opacity-50 border-[#8CC63E]"
-                        }`}
+              <div className="flex items-center justify-center flex-row w-full lg:w-[65%] h-16 lg:h-full gap-16 lg:pl-4">
+                <div className="hidden lg:flex items-center gap-4 mt-4">
+                  {places.slice(0, 5).map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className={`${index === 2
+                          ? "p-0"
+                          : "p-1"
+                          }`}
+                      >
+                        <div
+                          className={`rounded-full border-2 border-radius p-1 items-center ${index === 2
+                            ? "border-[#195883]"
+                            : "drop-shadow-md opacity-50 border-[#8CC63E]"
+                            }`}
+                        >
+                          <Image
+                            src={
+                              item.featured_image && item.featured_image.thumbnail
+                            }
+                            className={`${index === 2 ? "w-24 h-24 xl:w-28 xl:h-28" : "drop-shadow-lg w-16 h-16 xl:w-20 xl:h-20"
+                              } cursor-pointer rounded-full`}
+                            draggable="false"
+                            width={300}
+                            height={300}
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="relative mt-0 md:mt-4 scale-50 lg:scale-75 xl:scale-90">
+                  <div className="flex items-center justify-center bg-[#DBDBDB] text-black text-6xl w-24 h-24 font-semibold rounded-full">
+                    {currentIndex + 1}
+                  </div>
+                  <div
+                    className="absolute inset-0 flex justify-center items-center my-auto rounded-full bg-[#8CC63E] w-[50%] -translate-x-[50%] aspect-square cursor-pointer"
+                    onClick={() => {
+                      // setCurrentIndex(
+                      //   (currentIndex - 1 + places.length) % places.length
+                      // );
+                      setPlaces(
+                        places.map(
+                          (item, index) =>
+                            places[(index + places.length - 1) % places.length]
+                        )
+                      );
+                    }}
+                  >
+                    <svg
+                      width="15"
+                      height="12"
+                      viewBox="0 0 15 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <Image
-                        src={
-                          item.featured_image && item.featured_image.thumbnail
-                        }
-                        className={`${index === 2 ? "w-28 h-28 md:w-36 md:h-36" : "drop-shadow-md w-24 h-24 md:w-28 md:h-28"
-                          } cursor-pointer rounded-full`}
-                        draggable="false"
-                        width={1000}
-                        height={1000}
+                      <path
+                        d="M0.313912 6.70597C-0.104638 6.3155 -0.104638 5.68137 0.313912 5.2909L5.67135 0.292854C6.0899 -0.0976181 6.76963 -0.0976181 7.18818 0.292854C7.60673 0.683327 7.60673 1.31745 7.18818 1.70793L3.65562 5.00039H13.9285C14.5212 5.00039 15 5.44709 15 6C15 6.55291 14.5212 6.99961 13.9285 6.99961H3.65897L7.18483 10.2921C7.60338 10.6825 7.60338 11.3167 7.18483 11.7071C6.76628 12.0976 6.08656 12.0976 5.66801 11.7071L0.310564 6.7091L0.313912 6.70597Z"
+                        fill="white"
                       />
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="relative mt-0 md:mt-4 scale-50 md:scale-100">
-                <div className="flex items-center justify-center bg-[#DBDBDB] text-black text-6xl w-24 h-24 font-semibold rounded-full">
-                  {currentIndex + 1}
-                </div>
-                <div
-                  className="absolute inset-0 flex justify-center items-center my-auto rounded-full bg-[#8CC63E] w-[50%] -translate-x-[50%] aspect-square cursor-pointer"
-                  onClick={() => {
-                    // setCurrentIndex(
-                    //   (currentIndex - 1 + places.length) % places.length
-                    // );
-                    setPlaces(
-                      places.map(
-                        (item, index) =>
-                          places[(index + places.length - 1) % places.length]
-                      )
-                    );
-                  }}
-                >
-                  <svg
-                    width="15"
-                    height="12"
-                    viewBox="0 0 15 12"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                    </svg>
+                  </div>
+                  <div
+                    className="absolute top-0 right-0 rounded-full flex justify-center items-center bg-[#195883] w-[50%] translate-x-[50%] translate-y-[50%] aspect-square cursor-pointer"
+                    onClick={() => {
+                      // setCurrentIndex(
+                      //   (currentIndex + 1 + places.length) % places.length
+                      // );
+                      setPlaces(
+                        places.map(
+                          (item, index) =>
+                            places[(index + places.length + 1) % places.length]
+                        )
+                      );
+                    }}
                   >
-                    <path
-                      d="M0.313912 6.70597C-0.104638 6.3155 -0.104638 5.68137 0.313912 5.2909L5.67135 0.292854C6.0899 -0.0976181 6.76963 -0.0976181 7.18818 0.292854C7.60673 0.683327 7.60673 1.31745 7.18818 1.70793L3.65562 5.00039H13.9285C14.5212 5.00039 15 5.44709 15 6C15 6.55291 14.5212 6.99961 13.9285 6.99961H3.65897L7.18483 10.2921C7.60338 10.6825 7.60338 11.3167 7.18483 11.7071C6.76628 12.0976 6.08656 12.0976 5.66801 11.7071L0.310564 6.7091L0.313912 6.70597Z"
-                      fill="white"
-                    />
-                  </svg>
-                </div>
-                <div
-                  className="absolute top-0 right-0 rounded-full flex justify-center items-center bg-[#195883] w-[50%] translate-x-[50%] translate-y-[50%] aspect-square cursor-pointer"
-                  onClick={() => {
-                    // setCurrentIndex(
-                    //   (currentIndex + 1 + places.length) % places.length
-                    // );
-                    setPlaces(
-                      places.map(
-                        (item, index) =>
-                          places[(index + places.length + 1) % places.length]
-                      )
-                    );
-                  }}
-                >
-                  <svg
-                    width="14"
-                    height="12"
-                    viewBox="0 0 14 12"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M13.7063 6.70859C14.0969 6.31797 14.0969 5.68359 13.7063 5.29297L8.70625 0.292969C8.31563 -0.0976562 7.68125 -0.0976562 7.29063 0.292969C6.9 0.683594 6.9 1.31797 7.29063 1.70859L10.5875 5.00234H1C0.446875 5.00234 0 5.44922 0 6.00234C0 6.55547 0.446875 7.00234 1 7.00234H10.5844L7.29375 10.2961C6.90312 10.6867 6.90312 11.3211 7.29375 11.7117C7.68437 12.1023 8.31875 12.1023 8.70938 11.7117L13.7094 6.71172L13.7063 6.70859Z"
-                      fill="#8CC63E"
-                    />
-                  </svg>
+                    <svg
+                      width="14"
+                      height="12"
+                      viewBox="0 0 14 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M13.7063 6.70859C14.0969 6.31797 14.0969 5.68359 13.7063 5.29297L8.70625 0.292969C8.31563 -0.0976562 7.68125 -0.0976562 7.29063 0.292969C6.9 0.683594 6.9 1.31797 7.29063 1.70859L10.5875 5.00234H1C0.446875 5.00234 0 5.44922 0 6.00234C0 6.55547 0.446875 7.00234 1 7.00234H10.5844L7.29375 10.2961C6.90312 10.6867 6.90312 11.3211 7.29375 11.7117C7.68437 12.1023 8.31875 12.1023 8.70938 11.7117L13.7094 6.71172L13.7063 6.70859Z"
+                        fill="#8CC63E"
+                      />
+                    </svg>
+                  </div>
                 </div>
               </div>
             </div>
@@ -390,7 +398,7 @@ function Places() {
             </div>
           </Modal>
         )}
-      </div>
+      </motion.div>
     </>
   );
 }

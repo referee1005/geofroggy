@@ -52,7 +52,7 @@ export const InspireConnection = ({ }) => {
               className={`relative flex flex-col text-center bg-white shadow-lg rounded-[20px] overflow-hidden w-[300px] lg:w-[350px] border-[1px] border-[#BABABA]`}
             >
               {/* Image Section */}
-              <div className="absolute left-[25px] top-[15px] flex justify-center items-center h-[200px] w-[250px] lg:w-[300px] overflow-hidden bg-gray-100 rounded-[18px]">
+              <div className="absolute left-[25px] top-[20px] flex justify-center items-center h-[200px] w-[250px] lg:w-[300px] overflow-hidden bg-gray-100 rounded-[18px]">
                 <img
                   src={item.featured_image.thumbnail}
                   alt={item.title}
@@ -64,7 +64,7 @@ export const InspireConnection = ({ }) => {
 
               {/* Content Section */}
               <div
-                className={`flex flex-col items-start justify-center w-full px-8 pt-16 py-8 mt-40 ${index === 1 ? "bg-[#195883]" : "bg-[#8CC63E]"
+                className={`flex flex-col items-start justify-center w-full px-8 pt-16 py-8 mt-44 ${index === 1 ? "bg-[#195883]" : "bg-[#8CC63E]"
                   }`}
               >
                 <h3 className="text-white mb-2 text-center w-full">{item.title}</h3>

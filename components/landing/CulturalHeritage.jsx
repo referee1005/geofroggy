@@ -23,9 +23,9 @@ export const CulturalHeritage = ({ }) => {
   }, [data]);
 
   return (
-    <div className="container-custom relative flex flex-col my-[60px] py-10 lg:py-20 bg-[#8CC63E] lg:bg-white mx-[50px] lg:mx-0 rounded-[50px]">
-      <div className="relative flex flex-col md:flex-row gap-8 bg-[#8CC63E] rounded-[39px] px-[10px] lg:px-[50px] py-[30px] lg:py-[49px]">
-        <div className="max-w-[50%]">
+    <div className="container-custom relative flex flex-col my-[60px] py-10 lg:py-20 bg-[#8CC63E] lg:bg-white rounded-[50px] mx-5 md:mx-10 lg:mx-0">
+      <div className="relative flex flex-col md:flex-row gap-8 bg-[#8CC63E] rounded-[39px] px-[10px] lg:px-[50px] xl:px-[65px] py-[30px] lg:py-[49px] justify-center lg:justify-start">
+        <div className="max-w-[100%] md:max-w-[50%]">
           <div>
             <Image
               src={culturalHeritageLogo}
@@ -52,8 +52,7 @@ export const CulturalHeritage = ({ }) => {
             </div>
           )}
         </div>
-
-        <div className="absolute bottom-[-25px] left-[50%] sm:left-[200px] md:left-[225px] translate-x-[-50%] flex justify-center">
+        <div className="absolute bottom-[-25px] left-[50%] lg:left-[225px] translate-x-[-50%] flex justify-center">
           <button className="bg-[#195883] text-white text-sm px-6 py-3 rounded-full flex items-center gap-2 shadow-lg">
             View More
             <span>→</span>
@@ -61,7 +60,7 @@ export const CulturalHeritage = ({ }) => {
         </div>
       </div>
 
-      <div className="lg:absolute top-0 right-0 h-full flex flex-col items-center justify-center lg:pr-24 xl:pr-40 z-5 mt-14 lg:mt-0">
+      <div className="lg:absolute top-0 right-0 h-full flex flex-col items-center justify-center lg:pr-24 xl:pr-40 z-5 mt-14 lg:mt-0 scale-80 lg:scale-90 xl:scale-100">
         <div className="relative flex items-center justify-center w-full">
           <div className="rounded-[35px] overflow-hidden">
             <img
@@ -71,7 +70,7 @@ export const CulturalHeritage = ({ }) => {
             />
           </div>
 
-          <div className="absolute top-[30%] lg:left-[-120px] xl:left-[-200px] flex flex-col items-center justify-center left-[30%] -translate-x-[120px] lg:-translate-x-[0px]">
+          <div className="absolute top-[30%] lg:left-[-120px] xl:left-[-180px] flex flex-col items-center justify-center left-[30%] -translate-x-[120px] lg:-translate-x-[0px]">
             <div className="relative z-10">
               <div className="bg-transparent border border-white rounded-[28px] px-6 py-[18px]">
                 <div className="border-8 border-[#8CC63E] rounded-[28px] bg-[#8CC63E]">
@@ -117,6 +116,7 @@ export const CulturalHeritage = ({ }) => {
           </span>
         </div>
       </div>
+
 
     </div>
   )

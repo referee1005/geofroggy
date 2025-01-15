@@ -25,11 +25,11 @@ function Favourite({ }) {
       if (screenWidth > 1580) {
         setVisiblePlacesCount(placekeys.length); // Show all places
       } else if (screenWidth > 1024) {
-        setVisiblePlacesCount(Math.min(placekeys.length, 6)); // Show all places
+        setVisiblePlacesCount(Math.min(placekeys.length, 5)); // Show all places
       } else if (screenWidth > 768) {
-        setVisiblePlacesCount(Math.min(placekeys.length, 4)); // Show up to 4 places
+        setVisiblePlacesCount(Math.min(placekeys.length, 3)); // Show up to 4 places
       } else if (screenWidth > 480) {
-        setVisiblePlacesCount(Math.min(placekeys.length, 2)); // Show up to 2 places
+        setVisiblePlacesCount(Math.min(placekeys.length, 1)); // Show up to 2 places
       } else {
         setVisiblePlacesCount(1); // Show only 1 place
       }
@@ -96,8 +96,9 @@ function Favourite({ }) {
             {placekeys
               .filter((ele) => ele !== "Popular")
               .slice(0, visiblePlacesCount)
-              .map((item) => (
+              .map((item, index) => (
                 <div
+                  key={index}
                   className={`cursor-pointer ${selectedIndex === item ? "font-semibold text-lg" : ""
                     }`}
                   onClick={() => setSelectedIndex(item)}

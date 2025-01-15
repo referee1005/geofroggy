@@ -26,14 +26,14 @@ export const JoinAdventure = ({ }) => {
   return (
     <div className="container-custom flex flex-col my-[60px]">
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col sm:flex-row gap-x-10 justify-between sm: gap-y-3">
-          <div className="first-column">
+        <div className="flex flex-col md:flex-row gap-x-4 justify-between md:gap-y-1">
+          <div className="first-column w-full md:w-[40%]">
             {
               joinAdventure != undefined && (
                 <>
                   <div>
                     <img src={joinAdventure.horizonal_image}
-                      className="rounded-[24px]" />
+                      className="rounded-[24px] w-full" />
                   </div>
 
                   <div className="mt-5 text-[20px] font-medium">
@@ -44,18 +44,18 @@ export const JoinAdventure = ({ }) => {
             }
           </div>
 
-          <div className="second-column">
+          <div className="second-column flex justify-center w-full md:w-[25%]">
             {
               joinAdventure != undefined && (
-                <div>
-                  <img src={joinAdventure.vertical_image}
+                <div className="flex justify-center w-[50%] md:w-full">
+                  <img src={joinAdventure.vertical_image} alt="Join the Adventure"
                     className="rounded-[27px]" />
                 </div>
               )
             }
           </div>
 
-          <div className="third-column">
+          <div className="third-column w-full md:w-[35%]">
             <div>
               <Image
                 src={trustLogo}
@@ -73,7 +73,7 @@ export const JoinAdventure = ({ }) => {
             {
               joinAdventure != undefined && (
                 <>
-                  <div className="text-[#8CC63E] font-semibold xs:text-2xl sm:text-4xl md:text-2xl lg:text-3xl xl:text-4xl 3xl:text-5xl">
+                  <div className="text-[#8CC63E] font-semibold xs:text-2xl md:text-4xl md:text-2xl lg:text-3xl xl:text-4xl 3xl:text-5xl">
                     <div className="flex items-center">
                       <span className="mr-2">{joinAdventure.title}</span>
                     </div>

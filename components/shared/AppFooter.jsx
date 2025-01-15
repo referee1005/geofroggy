@@ -14,27 +14,27 @@ const socialLinks = [
   {
     id: 1,
     icon: instagram,
-    url: "https://twitter.com",
+    url: "https://www.instagram.com",
   },
   {
     id: 2,
     icon: facebook,
-    url: "https://www.stoman.me/",
+    url: "https://www.facebook.com",
   },
   {
     id: 3,
     icon: youtube,
-    url: "https://www.linkedin.com/in",
+    url: "https://www.youtube.com",
   },
   {
     id: 4,
     icon: twitter,
-    url: "https://github.com",
+    url: "https://www.twitter.com",
   },
   {
     id: 5,
-    icon: facebook,
-    url: "https://www.stoman.me/",
+    icon: linkedin,
+    url: "https://www.linkedin.com",
   },
 ];
 
@@ -43,7 +43,7 @@ function AppFooter() {
     <footer className="text-white">
       <div className="bg-[#195883] mx-auto px-6 lg:px-20 flex flex-col lg:flex-row items-stretch pb-4 pt-[120px]">
         {/* Left Section */}
-        <div className="w-full lg:w-[25%] flex flex-col">
+        <div className="w-full lg:w-[25%] flex flex-col pl-16 lg:pl-0">
           <Image
             src={logoLight}
             className="cursor-pointer"
@@ -57,7 +57,9 @@ function AppFooter() {
             (+800) 1234 5678 90
           </div>
           <div className="font-normal mt-2">support@geofroggy.com</div>
-          <div className="font-normal mt-4">Copyright 2024 ©Geofroggy</div>
+          <div className="font-normal mt-4">
+            Copyright {new Date().getFullYear()} ©Geofroggy
+          </div>
         </div>
 
         {/* Right Section */}
@@ -65,7 +67,7 @@ function AppFooter() {
           {/* Navigation Columns */}
           <div className="flex flex-col md:flex-row">
             <div className="w-full md:w-[1/3] mt-8 md:mt-0 flex-grow">
-              <div className="font-bold text-lg border-l border-[#D9D9D9] pl-16">
+              <div className="font-bold text-lg border-l-0 lg:border-l border-[#D9D9D9] pl-16">
                 Company
               </div>
               <div className="mt-4 pl-16 font-montserrat">
@@ -76,7 +78,7 @@ function AppFooter() {
               </div>
             </div>
             <div className="w-full md:w-[1/3] mt-8 md:mt-0 flex-grow">
-              <div className="font-bold text-lg border-l border-[#D9D9D9] pl-16">
+              <div className="font-bold text-lg border-l-0 md:border-l border-[#D9D9D9] pl-16">
                 Legal
               </div>
               <div className="mt-4 pl-16">
@@ -87,7 +89,7 @@ function AppFooter() {
               </div>
             </div>
             <div className="w-full md:w-[1/3] mt-8 md:mt-0 flex-grow">
-              <div className="font-bold text-lg border-l border-[#D9D9D9] pl-16">
+              <div className="font-bold text-lg border-l-0 md:border-l border-[#D9D9D9] pl-16">
                 Get Involve
               </div>
               <div className="mt-4 pl-16">
@@ -153,7 +155,7 @@ function AppFooter() {
 
         </div>
       </div>
-      <div className="bg-[#8CC63E] h-8" content=""></div>
+      <div className="bg-[#8CC63E] h-6" content=""></div>
     </footer>
 
   )

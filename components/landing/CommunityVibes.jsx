@@ -88,7 +88,7 @@ export const CommunityVibes = ({ }) => {
           </div>
         </div>
 
-        <div id="landing-community-bg" className="rounded-[26px] bg-[#195883] grid grid-cols-2 w-full md:w-[50%]">
+        <div id="landing-community-bg" className="rounded-[26px] bg-[#195883] grid grid-cols-2 w-full md:w-[50%] mt-5 md:mt-20">
           {
             stats.map((item, index) => (
               <div key={index} className="grid-item align-center p-5 flex flex-col justify-center border border-white">

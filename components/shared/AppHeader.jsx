@@ -22,7 +22,7 @@ function AppHeader() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       id="nav"
-      className="fixed top-0 left-0 w-full z-10 bg-white/30 backdrop-blur-md shadow-sm"
+      className="fixed top-0 left-0 w-full z-50 bg-white/30 backdrop-blur-md shadow-sm"
     >
       <div className="flex justify-between bg-transparent items-center px-4 py-4 lg:px-8">
         {/* Logo */}
@@ -116,12 +116,12 @@ function AppHeader() {
         {/* Header right section buttons */}
         <div className="hidden lg:flex gap-4 items-center">
           {/* Join Now Button */}
-          <button class="bg-[#1D4D7B] text-white px-6 py-2 rounded-full border-none cursor-pointer">
+          <button className="bg-[#1D4D7B] text-white px-6 py-2 rounded-full border-none cursor-pointer">
             Join Now
           </button>
 
           {/* Login Button */}
-          <button class="bg-[#8CC63E] text-white px-6 py-2 rounded-full border-none cursor-pointer">
+          <button className="bg-[#8CC63E] text-white px-6 py-2 rounded-full border-none cursor-pointer">
             Login
           </button>
 

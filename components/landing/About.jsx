@@ -8,7 +8,7 @@ import world_icon from "../../public/images/landing/World.png";
 import group_icon from "../../public/images/landing/Group.png";
 import LandingReadMoreButton from "../reusable/LandingReadMoreButton";
 
-function AboutUs({}) {
+function AboutUs({ }) {
   const data = useSelector((state) => state.home.aboutus);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -31,6 +31,7 @@ function AboutUs({}) {
               layout="intrinsic"
               width={1000}
               height={1000}
+              alt="Image1"
             />
           </div>
         </div>
@@ -44,6 +45,7 @@ function AboutUs({}) {
               layout="intrinsic"
               width={1000}
               height={1000}
+              alt="Image1"
             />
           </div>
         </div>
