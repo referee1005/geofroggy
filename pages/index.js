@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 const PagesMetaHead = dynamic(() => import('@/components/PagesMetaHead'), { ssr: true });
 const AboutUs = dynamic(() => import('@/components/landing/About'));
 const Favourite = dynamic(() => import('@/components/landing/Favourite'));
-const Places = dynamic(() => import('@/components/landing/Places'));
+const Places = dynamic(() => import('@/components/landing/Places'), { ssr: false });
 const SpotlightStories = dynamic(() => import('@/components/landing/SpotlightStories'));
 const CulturalHeritage = dynamic(() => import('@/components/landing/CulturalHeritage'));
 const JoinAdventure = dynamic(() => import('@/components/landing/JoinAdventure'));

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion } from 'framer-motion'
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTestimonialRequest } from "@/actions/home";
@@ -7,6 +8,7 @@ import TestimonialLogo from "../../public/images/landing/testimonial-logo.png";
 
 const TestimonialCarousel = ({ testimonial }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [tmpTestimonial, setTmpTestmonial] = useState([])
 
   const handlePrev = () => {
     setActiveIndex((prevIndex) =>
@@ -20,11 +22,21 @@ const TestimonialCarousel = ({ testimonial }) => {
     );
   };
 
+  useEffect(() => {
+    if (activeIndex == 0) {
+      setTmpTestmonial([testimonial[length - 1], testimonial[activeIndex], testimonial[activeIndex + 1]])
+    }
+    else if (activeIndex == length - 1) {
+      setTmpTestmonial([testimonial[length - 2], testimonial[activeIndex], testimonial[0]])
+    }
+    else setTmpTestmonial([testimonial[activeIndex - 1], testimonial[activeIndex], testimonial[activeIndex + 1]])
+  }, [activeIndex, testimonial])
+
   return (
     <div>
       {/* Testimonials for MD screens */}
       <div className="flex flex-col items-center lg:hidden">
-        <div className="relative flex flex-col items-center text-center bg-[#d9d9d9] shadow-lg rounded-[28px] px-8 py-14">
+        <motion.div className="relative flex flex-col items-center text-center bg-[#d9d9d9] shadow-lg rounded-[28px] px-8 py-14">
           {/* User Image */}
           <div
             className="absolute -top-20 rounded-full border-[1px] border-black"
@@ -65,7 +77,7 @@ const TestimonialCarousel = ({ testimonial }) => {
           <p className="text-[#195883] text-base">
             {testimonial[activeIndex]?.designation}
           </p>
-        </div>
+        </motion.div>
         {/* Navigation Buttons */}
         <div className="flex justify-center gap-4 mt-24 items-center">
           {/* Left Button */}
@@ -128,7 +140,7 @@ const TestimonialCarousel = ({ testimonial }) => {
       <div className="hidden lg:flex flex-col lg:flex-row justify-center gap-8 lg:gap-24">
         {testimonial.map((item, index) => (
           <div
-            key={item.id}
+            key={item?.id}
             className={`relative flex flex-col items-center text-center bg-[#d9d9d9] shadow-lg rounded-[28px] px-8 py-14 ${index === 1
               ? "lg:scale-110 lg:z-10 text-opacity-100"
               : "lg:opacity-40 text-opacity-40 lg:-translate-y-10"
@@ -147,8 +159,8 @@ const TestimonialCarousel = ({ testimonial }) => {
                   }`}
               >
                 <Image
-                  src={item.featured_image.thumbnail}
-                  alt={item.title}
+                  src={item?.featured_image.thumbnail}
+                  alt={item?.title}
                   width={index === 1 ? 176 : 144}
                   height={index === 1 ? 176 : 144}
                   className="object-cover"
@@ -157,7 +169,7 @@ const TestimonialCarousel = ({ testimonial }) => {
             </div>
             {/* Rating */}
             <div className="flex justify-center gap-1 mt-20">
-              {Array.from({ length: item.rating }).map((_, i) => (
+              {Array.from({ length: item?.rating }).map((_, i) => (
                 <svg
                   key={i}
                   xmlns="http://www.w3.org/2000/svg"
@@ -174,14 +186,14 @@ const TestimonialCarousel = ({ testimonial }) => {
               className={`mt-3 ${index === 1 ? "text-base" : "text-sm"
                 } text-gray-600`}
             >
-              {item.content}
+              {item?.content}
             </p>
             {/* Title and Designation */}
             <h3
               className={`mt-4 ${index === 1 ? "font-bold text-lg" : "font-medium text-sm"
                 }`}
             >
-              {item.title}
+              {item?.title}
             </h3>
             <p
               className={`${index === 1
@@ -189,7 +201,7 @@ const TestimonialCarousel = ({ testimonial }) => {
                 : "text-[#8CC63E] text-xs"
                 }`}
             >
-              {item.designation}
+              {item?.designation}
             </p>
           </div>
         ))}

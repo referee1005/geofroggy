@@ -26,7 +26,7 @@ export const JoinAdventure = ({ }) => {
   return (
     <div className="container-custom flex flex-col my-[60px]">
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col md:flex-row gap-x-4 justify-between md:gap-y-1">
+        <div className="flex flex-col md:flex-row gap-x-4 justify-between md:gap-y-1 lg:max-h-[500px]">
           <div className="first-column w-full md:w-[40%]">
             {
               joinAdventure != undefined && (
@@ -73,7 +73,7 @@ export const JoinAdventure = ({ }) => {
             {
               joinAdventure != undefined && (
                 <>
-                  <div className="text-[#8CC63E] font-semibold xs:text-2xl md:text-4xl md:text-2xl lg:text-3xl xl:text-4xl 3xl:text-5xl">
+                  <div className="text-[#8CC63E] font-semibold xs:text-2xl md:text-4xl lg:text-3xl xl:text-4xl 3xl:text-5xl">
                     <div className="flex items-center">
                       <span className="mr-2">{joinAdventure.title}</span>
                     </div>

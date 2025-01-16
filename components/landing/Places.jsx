@@ -191,9 +191,9 @@ function Places() {
   const openModal = () => setLargeMap(true);
   const closeModal = () => setLargeMap(false);
 
-  // if (!places.length) {
-  //   return <div>Loading...</div>; // Or return a fallback image/div
-  // }
+  if (!places || places.length === 0) {
+    return <div>Loading...</div>; // Placeholder for initial load
+  }
 
   return (
     <>
