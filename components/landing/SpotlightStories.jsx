@@ -115,7 +115,6 @@ export const SpotlightStories = ({ }) => {
               pagination={{ clickable: true }} // Enable pagination
               autoplay={{ delay: 3000, disableOnInteraction: false }} // Add autoplay configuration
               loop={true}
-              loopFillGroupWithBlank={true}
               speed={1500}
               modules={[Pagination, Autoplay]} // Required modules
               className="h-full"
