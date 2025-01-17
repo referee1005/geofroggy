@@ -123,7 +123,7 @@ export const SpotlightStories = ({ }) => {
                 spotlightStories.length > 0 && (
                   spotlightStories.map((item, index) => (
                     <SwiperSlide key={index}>
-                      <div className="flex gap-x-[20px]" pr-2>
+                      <div className="flex gap-x-[20px] pr-2">
                         <div className="flex items-center justify-center" onClick={() => setSelectedIndex(index)}>
                           <img src={item.featured_image.thumbnail} className="rounded-[28px] max-w-none" />
                         </div>
