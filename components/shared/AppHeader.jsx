@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { FiX, FiMenu } from "react-icons/fi";
-import logoLight from "../../public/images/logo-light.png";
+import logoLight from "../../public/images/imgpsh_fullsize_anim.png";
 import logoDark from "../../public/images/logo-dark.svg";
 import useThemeSwitcher from "../../hooks/useThemeSwitcher";
 
@@ -30,7 +30,7 @@ function AppHeader() {
           <Link href="/">
             {activeTheme === "dark" ? (
               <Image
-                src={logoDark}
+                src={logoLight}
                 className="cursor-pointer bg-transparent"
                 alt="Dark Logo"
                 width={180}
