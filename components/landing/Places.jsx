@@ -12,6 +12,7 @@ import like_icon from "../../public/images/landing/like_icon.png";
 import Image from "next/image";
 import Modal from "../reusable/Modal";
 import { motion } from "framer-motion";
+import Loading from "@/components/Loading";
 
 const MapComponent = dynamic(() => import("../reusable/map"), {
   ssr: false,
@@ -33,6 +34,7 @@ function Places() {
 
   const intervalRef = useRef(null);
   const data = useSelector((state) => state.home.places);
+  const homeLoaded = useSelector((state) => state.home.homeLoaded);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -191,8 +193,8 @@ function Places() {
   const openModal = () => setLargeMap(true);
   const closeModal = () => setLargeMap(false);
 
-  if (!places || places.length === 0) {
-    return <div>Loading...</div>; // Placeholder for initial load
+  if (!homeLoaded) {
+    return <Loading />; // Placeholder for initial load
   }
 
   return (

@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 import dynamic from 'next/dynamic';
 const PagesMetaHead = dynamic(() => import('@/components/PagesMetaHead'), { ssr: true });
 const AboutUs = dynamic(() => import('@/components/landing/About'));
@@ -12,19 +14,25 @@ const InspireConnection = dynamic(() => import('@/components/landing/InspireConn
 const Subscription = dynamic(() => import('@/components/landing/Subscription'));
 
 export const Home = () => {
+  const homeLoaded = useSelector((state) => state.home.homeLoaded);
+
   return (
     <div className="mx-auto pt-20" >
       <PagesMetaHead title="Home" />
       <Places />
-      <AboutUs />
-      <Favourite />
-      <SpotlightStories />
-      <CulturalHeritage />
-      <JoinAdventure />
-      <CommunityVibes />
-      <Testimonial />
-      <InspireConnection />
-      <Subscription />
+      {homeLoaded && (
+        <>
+          <AboutUs />
+          <Favourite />
+          <SpotlightStories />
+          <CulturalHeritage />
+          <JoinAdventure />
+          <CommunityVibes />
+          <Testimonial />
+          <InspireConnection />
+          <Subscription />
+        </>
+      )}
     </div >
   );
 }

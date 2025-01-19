@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 import logoLight from "../../public/images/logo1.png";
 import facebook from "../../public/images/facebook.png";
@@ -39,8 +40,11 @@ const socialLinks = [
 ];
 
 function AppFooter() {
+  const homeLoaded = useSelector((state) => state.home.homeLoaded);
+  const flag = !homeLoaded
+
   return (
-    <footer className="text-white">
+    <footer className={`${flag ? "hidden" : "text-white mb-[-8px]"}`}>
       <div className="bg-[#195883] mx-auto px-6 lg:px-20 flex flex-col lg:flex-row items-stretch pb-4 pt-[120px]">
         {/* Left Section */}
         <div className="w-full lg:w-[25%] flex flex-col pl-16 lg:pl-0">
@@ -155,9 +159,8 @@ function AppFooter() {
 
         </div>
       </div>
-      <div className="bg-[#8CC63E] h-6" content=""></div>
+      <div className="bg-[#8CC63E] h-8" content=""></div>
     </footer>
-
   )
 }
 

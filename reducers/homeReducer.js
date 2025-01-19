@@ -35,6 +35,7 @@ import {
 } from "../actions/types";
 
 const initialState = {
+  homeLoaded: false,
   loading: false,
   aboutus: {},
   popular_countries: [],
@@ -110,12 +111,14 @@ const dataReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+        homeLoaded: true,
         places: action.payload,
       };
     case FETCH_PLACES_FAILURE:
       return {
         ...state,
         loading: false,
+        homeLoaded: true,
         error: action.payload,
       };
     case FETCH_FAVOURITE_PLACES_REQUEST:
