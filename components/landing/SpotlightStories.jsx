@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSpotlightStoriesRequest } from "@/actions/home";
@@ -16,6 +16,7 @@ export const SpotlightStories = ({ }) => {
   const data = useSelector((state) => state.home.sportlight_stories);
   const dispatch = useDispatch();
   const router = useRouter();
+  const swiperRef = useRef(null);
 
   useEffect(() => {
     dispatch(fetchSpotlightStoriesRequest());
@@ -25,6 +26,10 @@ export const SpotlightStories = ({ }) => {
     console.log("spotlight stories: ", data);
     if (data) {
       setSpotlightStories(data);
+    }
+    if (swiperRef.current && data) {
+      swiperRef.current.update();
+      swiperRef.current.autoplay.start();
     }
   }, [data]);
 
@@ -97,7 +102,7 @@ export const SpotlightStories = ({ }) => {
                   </div>
                 </div>
                 <div className="items-center flex cursor-pointer mt-5">
-                  <div className="flex items-center border rounded-[22px] p-[14px_24px_14px_31px] w-[192px] h-[44px] text-[13px]">
+                  <div className="flex items-center border rounded-[22px] p-[14px_24px_14px_31px] w-[140px] h-[44px] text-[13px] bg-[#E9E9E9]">
                     Read More
                   </div>
                 </div>
@@ -109,11 +114,11 @@ export const SpotlightStories = ({ }) => {
             <Swiper
               slidesPerView={3}
               onSlideChange={() => console.log('slide change')}
-              onSwiper={(swiper) => console.log(swiper)}
+              onSwiper={(swiper) => (swiperRef.current = swiper)} // Set the Swiper instance
               direction="vertical" // Enable vertical sliding
               spaceBetween={10} // Space between slides
               pagination={{ clickable: true }} // Enable pagination
-              autoplay={{ delay: 3000, disableOnInteraction: false }} // Add autoplay configuration
+              autoplay={{ delay: 3000 }} // Add autoplay configuration
               loop={true}
               speed={1500}
               modules={[Pagination, Autoplay]} // Required modules
