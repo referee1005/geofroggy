@@ -7,7 +7,7 @@ import creditSVG from '../../public/images/donate/credit-card.svg'
 import calenderSVG from '../../public/images/donate/calendar.svg'
 import Cardtype from '../../public/images/donate/card_type.png'
 
-function JoinForm ({}) {
+function JoinForm({ }) {
   const [elementHeight, setElementHeight] = useState(12)
   useEffect(() => {
     const handleResize = () => {
@@ -52,7 +52,7 @@ function JoinForm ({}) {
               inputHeight={elementHeight}
             />
           </div>
-          <div className=''>
+          <div className='mb-8'>
             <Input
               label={'Password'}
               textColor='white'

@@ -171,7 +171,7 @@ function JobDetail({ data }) {
           </div>
         </div>
       </div>
-      <div>
+      <div className="mb-[-8px]">
         <div>
           <Image
             src={desktop}

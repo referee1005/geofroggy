@@ -1,8 +1,8 @@
-import Join from "@/components/join";
+import Login from "@/components/login";
 export default function Home() {
   return (
     <div className="mx-auto mb-[-8px]">
-      <Join />
+      <Login />
     </div>
   );
 }

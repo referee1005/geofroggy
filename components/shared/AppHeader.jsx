@@ -105,8 +105,8 @@ function AppHeader() {
               Donate
             </Link>
             <Link
-              href="/blog-news"
-              className={`text-lg font-medium ${router.pathname.includes("/blog-news")
+              href="/news"
+              className={`text-lg font-medium ${router.pathname.includes("/news")
                 ? "text-[#8CC63E]"
                 : "text-primary-dark hover:text-[#8CC63E]"
                 }`}
@@ -118,12 +118,18 @@ function AppHeader() {
           {/* Header right section buttons */}
           <div className="hidden lg:flex gap-4 items-center">
             {/* Join Now Button */}
-            <button className="bg-[#1D4D7B] text-white px-6 py-2 rounded-full border-none cursor-pointer">
+            <button
+              className="bg-[#1D4D7B] text-white px-6 py-2 rounded-full border-none cursor-pointer"
+              onClick={() => router.push('/join')}
+            >
               Join Now
             </button>
 
             {/* Login Button */}
-            <button className="bg-[#8CC63E] text-white px-6 py-2 rounded-full border-none cursor-pointer">
+            <button
+              className="bg-[#8CC63E] text-white px-6 py-2 rounded-full border-none cursor-pointer"
+              onClick={() => router.push('/login')}
+            >
               Login
             </button>
 
@@ -187,8 +193,8 @@ function AppHeader() {
               Donate
             </Link>
             <Link
-              href="/blog-news"
-              className={`text-lg font-medium ${router.pathname.includes("/blog-news")
+              href="/news"
+              className={`text-lg font-medium ${router.pathname.includes("/news")
                 ? "text-[#8CC63E]"
                 : "text-primary-dark hover:text-[#8CC63E]"
                 }`}
@@ -196,11 +202,16 @@ function AppHeader() {
             >
               Blog & News
             </Link>
-            <button className="bg-[#1D4D7B] text-white px-6 py-2 rounded-full">
+            <button
+              className="bg-[#1D4D7B] text-white px-6 py-2 rounded-full" onClick={() => router.push('/join')}
+            >
               Join Now
             </button>
             {/* Login Button */}
-            <button className="bg-[#8CC63E] text-white px-6 py-2 rounded-full">
+            <button
+              className="bg-[#8CC63E] text-white px-6 py-2 rounded-full"
+              onClick={() => router.push('/login')}
+            >
               Login
             </button>
           </div>
