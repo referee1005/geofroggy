@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { formatDate1 } from "@/helpers";
 import { useDispatch, useSelector } from "react-redux";
 import { postJobApplyorContactRequest } from "@/actions/job";
+import backIcon from "../../../public/images/job/back.png";
 
 function JobDetail({ data }) {
   const dispatch = useDispatch();
@@ -17,37 +18,12 @@ function JobDetail({ data }) {
     dispatch(postJobApplyorContactRequest({ type: type, slug: data.slug }));
   };
   return (
-    <div className="relative w-full mb-8">
-      <div className="relative flex bg-white">
-        <div className="container-custom justify-center flex-1 flex flex-col gap-8">
-          <div className="text-[90px] font-semibold text-[#183B56] leading-[1.1]">
-            Represent Geofroggy to the{" "}
-            <span className="text-[#8CC63E]">World.</span>
-          </div>
-          <div className="text-[#5A7184] text-xl">
-            Enthusiastically extend extensive customer service before
-            best-of-breed convergence completely.
-          </div>
-          <div className="text-white bg-[#8CC63E] text-lg font-semibold rounded-md px-8 py-4 text-center w-fit">
-            Apply Now!
-          </div>
-        </div>
-        <div className="w-[60%]">
-          <Image
-            src={header}
-            alt={"back"}
-            className="cursor-pointer rounded-lg min-h-[150px] h-screen"
-            layout="responsive"
-            width={1000}
-            height={500}
-          />
-        </div>
-      </div>
-      {/* <div className="flex justify-between w-full container-custom">
+    <div className="relative w-full">
+      <div className="flex justify-between w-full container-custom pt-16 pb-8 border-b border-[#DDD] relative">
         <div className="flex items-center gap-4">
-          <div className="">
+          <div>
             <Image
-              src={back}
+              src={backIcon}
               alt={"back"}
               className="w-[46px] h-[46px] cursor-pointer min-w-[35px] min-h-[35px]"
               layout="responsive"
@@ -57,13 +33,13 @@ function JobDetail({ data }) {
             />
           </div>
           <div className="flex flex-col gap-2">
-            <div className="text-xs sm:text-sm lg:text-base text-custom-font-content">
+            <div className="font-inter text-xs sm:text-sm lg:text-base text-custom-font-third-content">
               {data.job_posted_by}
             </div>
             <div className="text-xl sm:text-2xl lg:text-3xl">
               {data.job_title}
             </div>
-            <div className="text-xs sm:text-sm lg:text-base text-custom-font-content">
+            <div className="text-xs sm:text-sm lg:text-base text-custom-font-third-content">
               {data.job_location} · {data.job_type}
             </div>
           </div>
@@ -84,9 +60,13 @@ function JobDetail({ data }) {
             Apply Now!
           </Button>
         </div>
-      </div> */}
+
+        {/* Green line within the bottom border */}
+        <div className="absolute bottom-0 left-16 sm:left-20 md:left-24 lg:left-24 xl:left-32 2xl:left-36 w-32 h-[2px] bg-green-500"></div>
+      </div>
+
       {/* <div className="h-[2px] w-full bg-[#DDDDDD] my-8"></div> */}
-      <div className="container-custom flex lg:flex-row flex-col gap-4 2xl:gap-8 py-16">
+      <div className="container-custom flex lg:flex-row flex-col gap-4 2xl:gap-8 py-12">
         <div className="p-4 sm:p-8 lg:w-2/3 2xl:w-3/4 bg-white rounded-lg flex flex-col gap-12">
           <Image
             src={data.banner}
