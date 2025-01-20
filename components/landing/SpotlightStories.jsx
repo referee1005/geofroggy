@@ -113,7 +113,9 @@ export const SpotlightStories = ({ }) => {
           <div className="right-side md:w-[45%] h-[500px]">
             <Swiper
               slidesPerView={3}
-              onSlideChange={() => console.log('slide change')}
+              onSlideChange={(swiper) => {
+                setSelectedIndex(swiper.realIndex)
+              }}
               onSwiper={(swiper) => (swiperRef.current = swiper)} // Set the Swiper instance
               direction="vertical" // Enable vertical sliding
               spaceBetween={10} // Space between slides

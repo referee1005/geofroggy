@@ -17,7 +17,7 @@ export const Home = () => {
   const homeLoaded = useSelector((state) => state.home.homeLoaded);
 
   return (
-    <div className="mx-auto pt-20" >
+    <div className="mx-auto" >
       <PagesMetaHead title="Home" />
       <Places />
       {homeLoaded && (
