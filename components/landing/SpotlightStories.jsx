@@ -9,6 +9,7 @@ import { Pagination, Autoplay } from 'swiper/modules';
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import LandingReadMoreButton from "../reusable/LandingReadMoreButton";
 
 export const SpotlightStories = ({ }) => {
   const [spotlightStories, setSpotlightStories] = useState([]);
@@ -60,9 +61,12 @@ export const SpotlightStories = ({ }) => {
           </div>
 
           <div className="items-center flex cursor-pointer">
-            <div className="flex items-center border rounded-[22px] p-[14px_24px_14px_31px] w-[192px] h-[44px] text-[13px]">
-              Explore More Places
-            </div>
+            <LandingReadMoreButton
+              title={"Explore More Places"}
+              backgroundColor={"white"}
+              color1="black"
+              icon={false}
+            />
           </div>
         </div>
 
@@ -102,9 +106,11 @@ export const SpotlightStories = ({ }) => {
                   </div>
                 </div>
                 <div className="items-center flex cursor-pointer mt-5">
-                  <div className="flex items-center border rounded-[22px] p-[14px_24px_14px_31px] w-[140px] h-[44px] text-[13px] bg-[#E9E9E9]">
-                    Read More
-                  </div>
+                  <LandingReadMoreButton
+                    title={"Read More"}
+                    backgroundColor={"#E9E9E9"}
+                    color1="black"
+                  />
                 </div>
               </>
             )}

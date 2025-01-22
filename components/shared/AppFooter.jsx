@@ -45,7 +45,7 @@ function AppFooter() {
 
   return (
     <footer className={`${flag ? "hidden" : "text-white mb-[-8px]"}`}>
-      <div className="bg-[#195883] mx-auto px-6 lg:px-20 flex flex-col lg:flex-row items-stretch pb-4 pt-[120px]">
+      <div className="bg-[#195883] mx-auto px-6 lg:px-20 flex flex-col lg:flex-row items-stretch pb-4 pt-[120px] font-montserrat">
         {/* Left Section */}
         <div className="w-full lg:w-[25%] flex flex-col pl-16 lg:pl-0">
           <Image

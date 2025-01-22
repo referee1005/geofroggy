@@ -78,7 +78,7 @@ function AppHeader() {
               Home
             </Link>
             <Link
-              href="/countries"
+              href="https://geofroggy.com/data/countries"
               className={`text-lg font-medium ${router.pathname.includes("/countries")
                 ? "text-[#8CC63E]"
                 : "text-primary-dark hover:text-[#8CC63E]"

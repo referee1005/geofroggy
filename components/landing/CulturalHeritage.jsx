@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCulturalHeritageRequest } from "@/actions/home";
 import { useRouter } from "next/router";
 import culturalHeritageLogo from "../../public/images/landing/cultural-heritage-logo.png";
+import LandingReadMoreButton from "../reusable/LandingReadMoreButton";
 
 export const CulturalHeritage = ({ }) => {
   const [culturalHeritage, setCulturalHeritage] = useState();
@@ -24,8 +25,8 @@ export const CulturalHeritage = ({ }) => {
 
   return (
     <div className="container-custom relative flex flex-col my-[60px] py-10 lg:py-20 bg-[#8CC63E] lg:bg-white rounded-[50px] mx-5 md:mx-10 lg:mx-0">
-      <div className="relative flex flex-col md:flex-row gap-8 bg-[#8CC63E] rounded-[39px] px-[10px] lg:px-[50px] xl:px-[65px] py-[30px] lg:py-[49px] justify-center lg:justify-start">
-        <div className="max-w-[100%] md:max-w-[50%]">
+      <div className="relative flex flex-col md:flex-row gap-8 bg-[#8CC63E] rounded-[39px] px-[10px] lg:px-[50px] xl:px-[80px] py-[30px] lg:py-[49px] xl:py-[64px] justify-center lg:justify-start">
+        <div className="max-w-[100%] md:max-w-[50%] pb-4">
           <div>
             <Image
               src={culturalHeritageLogo}
@@ -53,14 +54,16 @@ export const CulturalHeritage = ({ }) => {
           )}
         </div>
         <div className="absolute bottom-[-25px] left-[50%] lg:left-[225px] translate-x-[-50%] flex justify-center">
-          <button className="bg-[#195883] text-white text-sm px-6 py-3 rounded-full flex items-center gap-2 shadow-lg">
-            View More
-            <span>→</span>
-          </button>
+          <LandingReadMoreButton
+            title={"View More"}
+            backgroundColor={"#195883"}
+            borderColor={"#195883"}
+            color1="white"
+          />
         </div>
       </div>
 
-      <div className="lg:absolute top-0 right-0 h-full flex flex-col items-center justify-center lg:pr-24 xl:pr-40 z-5 mt-14 lg:mt-0 scale-80 lg:scale-90 xl:scale-100">
+      <div className="lg:absolute top-0 right-0 h-full flex flex-col items-center justify-center lg:pr-24 xl:pr-52 2xl:pr-64 z-5 mt-14 lg:mt-0 scale-80 lg:scale-90 xl:scale-100 2xl:scale-110">
         <div className="relative flex items-center justify-center w-full">
           <div className="rounded-[35px] overflow-hidden">
             <img

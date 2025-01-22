@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchTestimonialRequest } from "@/actions/home";
 import { useRouter } from "next/router";
 import TestimonialLogo from "../../public/images/landing/testimonial-logo.png";
+import LandingReadMoreButton from "../reusable/LandingReadMoreButton";
 
 const TestimonialCarousel = ({ testimonial }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -113,26 +114,11 @@ const TestimonialCarousel = ({ testimonial }) => {
           </button>
 
           {/* View All Button */}
-          <button
-            onClick={() => router.push("/testimonials")}
-            className="bg-gray-200 text-black px-6 py-2 rounded-full flex items-center gap-2 shadow-lg transition-all duration-300 hover:bg-gray-300"
-          >
-            View All
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-8 h-8"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 12h8m0 0l-4-4m4 4l-4 4"
-              />
-            </svg>
-          </button>
+          <LandingReadMoreButton
+            title={"View All"}
+            backgroundColor={"#E9E9E9"}
+            color1="black"
+          />
         </div>
       </div>
 
