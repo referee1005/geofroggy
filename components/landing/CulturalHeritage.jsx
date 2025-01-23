@@ -25,7 +25,7 @@ export const CulturalHeritage = ({ }) => {
 
   return (
     <div className="container-custom relative flex flex-col my-[60px] py-10 lg:py-20 bg-[#8CC63E] lg:bg-white rounded-[50px] mx-5 md:mx-10 lg:mx-0">
-      <div className="relative flex flex-col md:flex-row gap-8 bg-[#8CC63E] rounded-[39px] px-[10px] lg:px-[50px] xl:px-[80px] py-[30px] lg:py-[49px] xl:py-[64px] justify-center lg:justify-start">
+      <div className="relative flex flex-col md:flex-row gap-8 bg-[#8CC63E] rounded-[39px] px-[10px] lg:px-[50px] xl:px-[80px] 2xl:px-[100px] py-[30px] lg:py-[49px] xl:py-[64px] justify-center lg:justify-start">
         <div className="max-w-[100%] md:max-w-[50%] pb-4">
           <div>
             <Image
@@ -47,7 +47,7 @@ export const CulturalHeritage = ({ }) => {
               <h1 className="font-extrabold text-2xl sm:text-4xl">
                 {culturalHeritage?.title}
               </h1>
-              <p className="font-normal text-xs mt-2">
+              <p className="font-normal text-xs mt-2 xl:text-sm 2xl:text-base">
                 {culturalHeritage?.description}
               </p>
             </div>
@@ -63,7 +63,7 @@ export const CulturalHeritage = ({ }) => {
         </div>
       </div>
 
-      <div className="lg:absolute top-0 right-0 h-full flex flex-col items-center justify-center lg:pr-24 xl:pr-52 2xl:pr-64 z-5 mt-14 lg:mt-0 scale-80 lg:scale-90 xl:scale-100 2xl:scale-110">
+      <div className="lg:absolute top-0 right-0 h-full flex flex-col items-center justify-center lg:pr-24 xl:pr-52 2xl:pr-64 z-5 mt-14 lg:mt-0 scale-80 lg:scale-90 xl:scale-100">
         <div className="relative flex items-center justify-center w-full">
           <div className="rounded-[35px] overflow-hidden">
             <img
