@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 import { formatDate1 } from "@/helpers";
 import { useDispatch, useSelector } from "react-redux";
 import { postJobApplyorContactRequest } from "@/actions/job";
-import backIcon from "../../../public/images/job/back.png";
 
 function JobDetail({ data }) {
   const dispatch = useDispatch();
@@ -19,55 +18,34 @@ function JobDetail({ data }) {
   };
   return (
     <div className="relative w-full">
-      <div className="flex justify-between w-full container-custom pt-16 pb-8 border-b border-[#DDD] relative">
-        <div className="flex items-center gap-4">
-          <div>
-            <Image
-              src={backIcon}
-              alt={"back"}
-              className="w-[46px] h-[46px] cursor-pointer min-w-[35px] min-h-[35px]"
-              layout="responsive"
-              onClick={() => {
-                router.back();
-              }}
-            />
+      <div className="relative flex bg-white">
+        <div className="container-custom justify-center flex-1 flex flex-col gap-8">
+          <div className="text-[90px] font-semibold text-[#183B56] leading-[1.1]">
+            Represent Geofroggy to the{" "}
+            <span className="text-[#8CC63E]">World.</span>
           </div>
-          <div className="flex flex-col gap-2">
-            <div className="font-inter text-xs sm:text-sm lg:text-base text-custom-font-third-content">
-              {data.job_posted_by}
-            </div>
-            <div className="text-xl sm:text-2xl lg:text-3xl">
-              {data.job_title}
-            </div>
-            <div className="text-xs sm:text-sm lg:text-base text-custom-font-third-content">
-              {data.job_location} · {data.job_type}
-            </div>
+          <div className="text-[#5A7184] text-xl">
+            Enthusiastically extend extensive customer service before
+            best-of-breed convergence completely.
           </div>
-        </div>
-        <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-end">
-          <Button
-            variant="outlined"
-            className="text-xs sm:text-base border-black text-custom-primary mb-2 sm:mb-0 sm:mr-4 py-2 px-2"
-            onClick={() => postJob("contact")}
-          >
-            Contact
-          </Button>
-          <Button
-            variant="contained"
-            className="text-xs sm:text-base bg-custom-primary py-2 px-2"
-            onClick={() => postJob("apply")}
-          >
+          <div className="text-white bg-[#8CC63E] text-lg font-semibold rounded-md px-8 py-4 text-center w-fit">
             Apply Now!
-          </Button>
+          </div>
         </div>
-
-        {/* Green line within the bottom border */}
-        <div className="absolute bottom-0 left-16 sm:left-20 md:left-24 lg:left-24 xl:left-32 2xl:left-36 w-32 h-[2px] bg-green-500"></div>
+        <div className="w-[60%]">
+          <Image
+            src={header}
+            alt={"back"}
+            className="cursor-pointer rounded-lg min-h-[150px] h-screen"
+            layout="responsive"
+            width={1000}
+            height={500}
+          />
+        </div>
       </div>
-
       {/* <div className="h-[2px] w-full bg-[#DDDDDD] my-8"></div> */}
-      <div className="container-custom flex lg:flex-row flex-col gap-4 2xl:gap-8 py-12">
-        <div className="p-4 sm:p-8 lg:w-2/3 2xl:w-3/4 bg-white rounded-lg flex flex-col gap-12">
+      <div className="container-custom flex lg:flex-row flex-col gap-4 2xl:gap-8 py-32">
+        <div className="p-4 sm:p-8 lg:w-2/3 2xl:w-3/4 bg-white  flex flex-col gap-12">
           <Image
             src={data.banner}
             alt={"back"}
@@ -91,8 +69,8 @@ function JobDetail({ data }) {
           <div>
             <div className="font-semibold mb-4">Responsibilities</div>
             {data.job_responsibilities !== undefined &&
-              data.job_responsibilities.map((item, index) => (
-                <div className="mb-6 flex gap-2 text-custom-font-content" key={index}>
+              data.job_responsibilities.map((item) => (
+                <div className="mb-6 flex gap-2 text-custom-font-content">
                   <div className="">
                     <RadioButtonUncheckedOutlinedIcon sx={{ fontSize: 10 }} />
                   </div>
@@ -167,6 +145,30 @@ function JobDetail({ data }) {
               <div className="font-semibold text-custom-font-secondary-content">
                 {data.job_hiring_manager}
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <div className="relative">
+            {/* Background Image */}
+            <Image
+              src={desktop}
+              alt="Background"
+              className="w-full h-auto"
+              layout="responsive"
+              width={1000}
+              height={500}
+            />
+
+            {/* Overlay Content */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center space-y-4 bg-transparent">
+              <p className="text-xl text-gray-700">For more details</p>
+              <h1 className="text-4xl font-bold text-gray-900 tracking-widest">Let’s Talk</h1>
+              <button className="px-6 py-3 text-white bg-[#245073] rounded-md tracking-widest">
+                Contact us
+              </button>
             </div>
           </div>
         </div>
