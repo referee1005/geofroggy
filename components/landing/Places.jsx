@@ -20,7 +20,7 @@ const MapComponent = dynamic(() => import("../reusable/map"), {
 function Places() {
   const [places, setPlaces] = useState([]);
   const [clickIcon, setClickIcon] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(2);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [dragging, setDragging] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -52,8 +52,8 @@ function Places() {
         clearInterval(intervalRef.current);
       }
     } else {
-      // if (!clickIcon && !mouseOver && places.length) {
-      //   console.log(currentIndex, places.length);
+      // if (!clickIcon && !mouseOver && data.length) {
+      //   console.log(currentIndex, data.length);
       //   intervalRef.current = setInterval(() => {
       //     setClassNames((prevClasses) => {
       //       const newClasses = [...prevClasses];
@@ -61,7 +61,7 @@ function Places() {
       //       return newClasses;
       //     });
       //     setCurrentIndex(
-      //       (prevIndex) => (prevIndex - 1 + places.length) % places.length
+      //       (prevIndex) => (prevIndex - 1 + data.length) % data.length
       //     );
       //   }, 5000); // 3 seconds
       // }
@@ -72,14 +72,14 @@ function Places() {
         clearInterval(intervalRef.current);
       }
     };
-  }, [isTransitioning, places.length, clickIcon, mouseOver]);
+  }, [isTransitioning, data.length, clickIcon, mouseOver]);
 
   useEffect(() => {
     if (data.length) {
-      console.log([...data, ...data]);
-      if (data.length <= 5) setPlaces([...data, ...data]);
+      console.log(data, currentIndex, [data[(currentIndex - 2 + data.length) % data.length], data[(currentIndex - 1 + data.length) % data.length], data[currentIndex], data[(currentIndex + 1) % data.length], data[(currentIndex + 2) % data.length]])
+      setPlaces([data[(currentIndex - 2 + data.length) % data.length], data[(currentIndex - 1 + data.length) % data.length], data[currentIndex], data[(currentIndex + 1) % data.length], data[(currentIndex + 2) % data.length]])
     }
-  }, [data]);
+  }, [data, currentIndex]);
 
   useEffect(() => {
     const calculateStyles = () => {
@@ -109,7 +109,7 @@ function Places() {
     });
     // setMoveCount(-1)
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + places.length) % places.length
+      (prevIndex) => (prevIndex - 1 + data.length) % data.length
     );
     setTimeout(() => setIsTransitioning(false), 5000);
   };
@@ -125,7 +125,7 @@ function Places() {
     });
     // setMoveCount(1)
     setCurrentIndex(
-      (prevIndex) => (prevIndex + 1 + places.length) % places.length
+      (prevIndex) => (prevIndex + 1 + data.length) % data.length
     );
 
     setTimeout(() => setIsTransitioning(false), 5000);
@@ -204,7 +204,7 @@ function Places() {
         <div className="relative w-full h-screen">
           <Image
             src={
-              places[currentIndex] && places[currentIndex].featured_image.large
+              data[currentIndex] && data[currentIndex].featured_image.large
             }
             className="object-cover w-full h-screen"
             width={1920}
@@ -219,7 +219,7 @@ function Places() {
         <div className="w-full h-full absolute text-white">
           <div className="absolute container-custom w-full bottom-8">
             <div className="font-semibold text-4xl lg:text-6xl mb-4 flex justify-center lg:justify-start">
-              {places[currentIndex] && places[currentIndex].title}
+              {data[currentIndex] && data[currentIndex].title}
             </div>
             <div className="flex items-center justify-between flex-col lg:flex-row">
               <div className="flex gap-4 items-center mt-4 scale-75 lg:scale-100 w-full lg:w-[35%] justify-center lg:justify-start">
@@ -231,7 +231,7 @@ function Places() {
                   }}
                 >
                   <div>
-                    {places[currentIndex] && places[currentIndex].location_name}
+                    {data[currentIndex] && data[currentIndex].location_name}
                   </div>
                   <Image
                     src={location_icon}
@@ -247,7 +247,7 @@ function Places() {
                   onClick={() => setClickIcon("author")}
                 >
                   <div>
-                    {places[currentIndex] && places[currentIndex].artist_name}
+                    {data[currentIndex] && data[currentIndex].artist_name}
                   </div>
                   <Image
                     src={author_icon}
@@ -293,7 +293,7 @@ function Places() {
               </div>
               <div className="flex items-center justify-center flex-row w-full lg:w-[65%] h-16 lg:h-full gap-16 lg:pl-4">
                 <div className="hidden lg:flex items-center gap-4 mt-4">
-                  {places.slice(0, 5).map((item, index) => {
+                  {data.length && places.slice(0, 5).map((item, index) => {
                     return (
                       <div
                         key={index}
@@ -330,15 +330,15 @@ function Places() {
                   <div
                     className="absolute inset-0 flex justify-center items-center my-auto rounded-full bg-[#8CC63E] w-[50%] -translate-x-[50%] aspect-square cursor-pointer"
                     onClick={() => {
-                      // setCurrentIndex(
-                      //   (currentIndex - 1 + places.length) % places.length
-                      // );
-                      setPlaces(
-                        places.map(
-                          (item, index) =>
-                            places[(index + places.length - 1) % places.length]
-                        )
+                      setCurrentIndex(
+                        (currentIndex - 1 + data.length) % data.length
                       );
+                      // setPlaces(
+                      //   places.map(
+                      //     (item, index) =>
+                      //       places[(index + data.length - 1) % data.length]
+                      //   )
+                      // );
                     }}
                   >
                     <svg
@@ -357,15 +357,15 @@ function Places() {
                   <div
                     className="absolute top-0 right-0 rounded-full flex justify-center items-center bg-[#195883] w-[50%] translate-x-[50%] translate-y-[50%] aspect-square cursor-pointer"
                     onClick={() => {
-                      // setCurrentIndex(
-                      //   (currentIndex + 1 + places.length) % places.length
-                      // );
-                      setPlaces(
-                        places.map(
-                          (item, index) =>
-                            places[(index + places.length + 1) % places.length]
-                        )
+                      setCurrentIndex(
+                        (currentIndex + 1 + data.length) % data.length
                       );
+                      // setPlaces(
+                      //   places.map(
+                      //     (item, index) =>
+                      //       places[(index + data.length + 1) % data.length]
+                      //   )
+                      // );
                     }}
                   >
                     <svg
@@ -392,8 +392,8 @@ function Places() {
             <div className="w-full h-full">
               {" "}
               <MapComponent
-                lat={places[currentIndex].latitude}
-                lang={places[currentIndex].longitude}
+                lat={data[currentIndex].latitude}
+                lang={data[currentIndex].longitude}
                 mini={true}
                 scale={true}
               />
