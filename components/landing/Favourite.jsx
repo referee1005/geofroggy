@@ -62,7 +62,6 @@ function Favourite({ }) {
     <div className="container-custom flex flex-col">
       <div className="flex flex-col gap-8">
         <div>
-          {" "}
           <div>
             <Image
               src={Location}
@@ -74,10 +73,10 @@ function Favourite({ }) {
               alt={"Home Image"}
             />
           </div>
-          <div className="text-[#195883] text-xl 2xl:text-2xl">
+          <div className="text-[#195883] text-xl font-medium">
             Top Destinations
           </div>
-          <div className="text-[#8CC63E] font-semibold xs:text-2xl sm:text-4xl md:text-2xl lg:text-3xl xl:text-4xl 3xl:text-5xl">
+          <div className="text-[#8CC63E] font-extrabold text-4xl">
             <div className="flex items-center">
               <span className="mr-2">Froggy Favorites</span>
             </div>
@@ -87,7 +86,7 @@ function Favourite({ }) {
         <div className="w-full flex justify-between">
           <div className="w-full flex justify-between items-center">
             <div
-              className={`cursor-pointer  ${selectedIndex === "Popular" ? "font-semibold text-lg" : ""
+              className={`cursor-pointer  ${selectedIndex === "Popular" ? "font-bold text-lg" : ""
                 }`}
               onClick={() => setSelectedIndex("Popular")}
             >
@@ -99,7 +98,7 @@ function Favourite({ }) {
               .map((item, index) => (
                 <div
                   key={index}
-                  className={`cursor-pointer ${selectedIndex === item ? "font-semibold text-lg" : ""
+                  className={`cursor-pointer ${selectedIndex === item ? "font-bold text-lg" : ""
                     }`}
                   onClick={() => setSelectedIndex(item)}
                 >
@@ -125,9 +124,13 @@ function Favourite({ }) {
                   ))}
               </select>
             </div>
-            <div className="rounded-full px-4 py-2 border-2 border-radius border-black cursor-pointer">
-              Explore More Destination
-            </div>
+            <LandingReadMoreButton
+              title={"Explore More Destination"}
+              backgroundColor={"white"}
+              borderColor='black'
+              color1="black"
+              icon={false}
+            />
           </div>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 lg:gap-8 2xl:gap-16 relative min-h-64 sm:min-h-64">
@@ -150,9 +153,9 @@ function Favourite({ }) {
                     />
                   </div>
                 </div>
-                <div className="font-semibold">{item.title}</div>
-                <div className="flex items-center">
-                  <div>{item.location} </div>
+                <div className="font-bold text-sm mt-2">{item.title}</div>
+                <div className="flex items-center mt-2">
+                  <div className="text-[13px] pr-1">{item.location} </div>
                   <div className="relative">
                     <Image
                       src={Location1}

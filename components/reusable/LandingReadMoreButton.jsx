@@ -20,7 +20,7 @@ function MediaViewButton({
         borderWidth: 2,
       }}
     >
-      <div className="text-sm ms:text-base sm:text-lg lg:text-sm xl:text-base 2xl:text-lg">
+      <div className="font-medium text-sm">
         {title}
       </div>
       {icon && <div

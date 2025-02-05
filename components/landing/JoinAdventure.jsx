@@ -36,7 +36,7 @@ export const JoinAdventure = ({ }) => {
                       className="rounded-[24px] w-full" />
                   </div>
 
-                  <div className="mt-5 text-[20px] font-medium">
+                  <div className="mt-5 text-xl font-medium">
                     {joinAdventure.horizonal_caption}
                   </div>
                 </>
@@ -66,13 +66,13 @@ export const JoinAdventure = ({ }) => {
                 alt={"Trust Image"}
               />
             </div>
-            <div className="text-[#195883] text-xl 2xl:text-2xl capitalize">
-              fun Interaction
+            <div className="text-[#195883] text-xl capitalize">
+              Fun Interaction
             </div>
             {
               joinAdventure != undefined && (
                 <>
-                  <div className="text-[#8CC63E] font-semibold xs:text-2xl md:text-4xl lg:text-3xl xl:text-4xl 3xl:text-5xl">
+                  <div className="text-[#8CC63E] font-extrabold text-4xl">
                     <div className="flex items-center">
                       <span className="mr-2">{joinAdventure.title}</span>
                     </div>
@@ -88,7 +88,7 @@ export const JoinAdventure = ({ }) => {
             }
 
             <div className="items-center flex mt-5">
-              <div className="flex items-center cursor-pointer bg-[#195883] border rounded-[22px] p-[14px_24px_14px_31px] h-[44px] text-[13px] text-white gap-x-2">
+              <div className="flex items-center cursor-pointer bg-[#195883] border rounded-[22px] p-[14px_24px_14px_31px] h-[44px] text-xs text-white gap-x-2">
                 <div>
                   Create Account
                 </div>

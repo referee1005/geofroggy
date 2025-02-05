@@ -39,12 +39,12 @@ export const CulturalHeritage = ({ }) => {
             />
           </div>
           {/* Title */}
-          <div className="text-white text-[20px] 2xl:text-2xl font-medium mt-2">
+          <div className="text-white text-xl font-medium mt-2">
             Discover Cultural Heritage
           </div>
           {culturalHeritage && (
             <div className="text-white mt-4">
-              <h1 className="font-extrabold text-2xl sm:text-4xl">
+              <h1 className="font-extrabold text-4xl">
                 {culturalHeritage?.title}
               </h1>
               <p className="font-normal text-xs mt-2 xl:text-sm 2xl:text-base">

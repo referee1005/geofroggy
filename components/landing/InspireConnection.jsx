@@ -37,8 +37,8 @@ export const InspireConnection = ({ }) => {
             alt="Cultural Heritage Icon"
           />
         </div>
-        <h2 className="text-[#195883] text-lg lg:text-xl font-medium">Recently Added</h2>
-        <h1 className="text-[#8CC63E] text-2xl lg:text-4xl font-extrabold mb-16">
+        <h2 className="text-[#195883] text-xl font-medium">Recently Added</h2>
+        <h1 className="text-[#8CC63E] text-4xl font-extrabold mb-16">
           Inspire Connection
         </h1>
       </div>
@@ -65,7 +65,7 @@ export const InspireConnection = ({ }) => {
                 className={`flex flex-col items-start justify-center w-full px-8 pt-16 py-8 mt-44 ${index === 1 ? "bg-[#195883]" : "bg-[#8CC63E]"
                   }`}
               >
-                <h3 className="text-white mb-2 text-center w-full">{item.title}</h3>
+                <h3 className="text-white mb-2 text-center w-full text-[13px]">{item.title}</h3>
                 <div className="flex items-center text-white mb-2 w-full justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -21,12 +21,12 @@ export const Subscription = ({ }) => {
           </div>
           <div className="bg-white bg-opacity-60 rounded-lg shadow-xl w-[90%] max-w-[600px] p-8 text-center">
             {/* Title */}
-            <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4 text-[36px]">
+            <h2 className="text-4xl font-bold text-gray-800 mt-8 mb-4">
               Subscribe To Our Newsletter
             </h2>
 
             {/* Email Form */}
-            <form className="flex flex-col sm:flex-row justify-center gap-4">
+            <form className="flex flex-col sm:flex-row justify-center gap-4 text-[13px]">
               <input
                 type="email"
                 placeholder="Your Email"

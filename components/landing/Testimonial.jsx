@@ -70,14 +70,14 @@ const TestimonialCarousel = ({ testimonial }) => {
             )}
           </div>
           {/* Content */}
-          <p className="mt-3 text-base text-gray-600">
+          <p className="mt-3 text-xs">
             {testimonial[activeIndex]?.content}
           </p>
           {/* Title and Designation */}
-          <h3 className="mt-4 font-bold text-lg">
+          <h3 className="mt-4 font-bold">
             {testimonial[activeIndex]?.title}
           </h3>
-          <p className="text-[#195883] text-base">
+          <p className="text-[#195883] text-[13px]">
             {testimonial[activeIndex]?.designation}
           </p>
         </motion.div>
@@ -171,22 +171,22 @@ const TestimonialCarousel = ({ testimonial }) => {
             </div>
             {/* Content */}
             <p
-              className={`mt-3 ${index === 1 ? "text-base" : "text-sm"
-                } text-gray-600`}
+              className={`mt-3 ${index === 1 ? "text-xs" : "text-[10px]"
+                }`}
             >
               {item?.content}
             </p>
             {/* Title and Designation */}
             <h3
-              className={`mt-4 ${index === 1 ? "font-bold text-lg" : "font-medium text-sm"
+              className={`mt-4 ${index === 1 ? "font-bold text-lg" : "font-bold text-[13px]"
                 }`}
             >
               {item?.title}
             </h3>
             <p
               className={`${index === 1
-                ? "text-[#195883] text-base"
-                : "text-[#8CC63E] text-xs"
+                ? "text-[#195883] text-[13px]"
+                : "text-[#8CC63E] text-[11px]"
                 }`}
             >
               {item?.designation}
@@ -230,26 +230,11 @@ const TestimonialCarousel = ({ testimonial }) => {
         </button>
 
         {/* View All Button */}
-        <button
-          onClick={() => router.push("/testimonials")}
-          className="bg-gray-200 text-black px-6 py-2 rounded-full flex items-center gap-2 shadow-lg transition-all duration-300 hover:bg-gray-300"
-        >
-          View All
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-8 h-8"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 12h8m0 0l-4-4m4 4l-4 4"
-            />
-          </svg>
-        </button>
+        <LandingReadMoreButton
+          title={"View All"}
+          backgroundColor={"#E9E9E9"}
+          color1="black"
+        />
       </div>
 
     </div>
@@ -288,8 +273,8 @@ export const Testimonial = ({ }) => {
             alt="Cultural Heritage Icon"
           />
         </div>
-        <h2 className="text-[#195883] text-lg lg:text-xl font-medium">Testimonial</h2>
-        <h1 className="text-[#8CC63E] text-2xl lg:text-4xl font-extrabold mb-48">
+        <h2 className="text-[#195883] text-xl font-medium">Testimonial</h2>
+        <h1 className="text-[#8CC63E] text-4xl font-extrabold mb-48">
           What They Say About Geofroggy
         </h1>
       </div>
@@ -340,20 +325,20 @@ export const Testimonial = ({ }) => {
             </div>
             {/* Content */}
             <p
-              className={`mt-3 ${index === 1 ? "text-base" : "text-sm"
-                } text-gray-600`}
+              className={`mt-3 ${index === 1 ? "text-xs" : "text-[10px]"
+                }`}
             >
               {item.content}
             </p>
             {/* Title and Designation */}
             <h3
-              className={`mt-4 ${index === 1 ? "font-bold text-lg" : "font-medium text-sm"
+              className={`mt-4 ${index === 1 ? "font-bold" : "font-bold text-[13px]"
                 }`}
             >
               {item.title}
             </h3>
             <p
-              className={`${index === 1 ? "text-[#195883] text-base" : "text-[#8CC63E] text-xs"
+              className={`${index === 1 ? "text-[#195883] text-[13px]" : "text-[#8CC63E] text-[11px]"
                 }`}
             >
               {item.designation}

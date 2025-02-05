@@ -218,14 +218,14 @@ function Places() {
         {/* Custom Info */}
         <div className="w-full h-full absolute text-white">
           <div className="absolute container-custom w-full bottom-8">
-            <div className="font-semibold text-4xl lg:text-6xl mb-4 flex justify-center lg:justify-start">
+            <div className="font-bold text-4xl lg:text-6xl mb-4 flex justify-center lg:justify-start">
               {data[currentIndex] && data[currentIndex].title}
             </div>
             <div className="flex items-center justify-between flex-col lg:flex-row">
               <div className="flex gap-4 items-center mt-4 scale-75 lg:scale-100 w-full lg:w-[35%] justify-center lg:justify-start">
                 {" "}
                 <div
-                  className={`backdrop-blur-md flex items-center gap-2 bg-[#195883] px-6 py-2 rounded-full cursor-pointer`}
+                  className={`backdrop-blur-md flex items-center gap-2 bg-[#195883] px-6 py-2 rounded-full cursor-pointer font-medium text-sm`}
                   onClick={() => {
                     setClickIcon("place");
                   }}
@@ -243,7 +243,7 @@ function Places() {
                   />
                 </div>
                 <div
-                  className={`backdrop-blur-md flex items-center bg-[#8CC63E] gap-2 px-6 py-2 rounded-full cursor-pointer font-semibold`}
+                  className={`flex items-center bg-[#8CC63E] gap-2 px-6 py-2 rounded-full cursor-pointer font-medium text-sm`}
                   onClick={() => setClickIcon("author")}
                 >
                   <div>
@@ -324,7 +324,7 @@ function Places() {
                   })}
                 </div>
                 <div className="relative mt-0 md:mt-4 scale-50 lg:scale-75 xl:scale-90">
-                  <div className="flex items-center justify-center bg-[#DBDBDB] text-black text-6xl w-24 h-24 font-semibold rounded-full">
+                  <div className="flex items-center justify-center bg-[#DBDBDB] text-black text-4xl w-24 h-24 font-semibold rounded-full">
                     {currentIndex + 1}
                   </div>
                   <div

@@ -59,19 +59,19 @@ export const CommunityVibes = ({ }) => {
                 alt={"Trust Image"}
               />
             </div>
-            <div className="text-[#195883] text-[20px] capitalize mt-2">
+            <div className="text-[#195883] text-xl font-medium capitalize mt-2">
               Share with your community
             </div>
             {
               communityVibes != undefined && (
                 <>
-                  <div className="text-[#8CC63E] font-semibold text-[36px] mt-1">
+                  <div className="text-[#8CC63E] font-extrabold text-4xl mt-1">
                     <div className="flex items-center">
                       <span className="mr-2">{communityVibes.title}</span>
                     </div>
                   </div>
 
-                  <div className="text-xs">
+                  <div>
                     <div className="flex items-center">
                       <span className="mr-2 text-[13px]">{communityVibes.description}</span>
                     </div>
@@ -92,8 +92,8 @@ export const CommunityVibes = ({ }) => {
           {
             stats.map((item, index) => (
               <div key={index} className="grid-item align-center p-5 flex flex-col justify-center border border-white">
-                <h2 className="text-[#8CC63E] text-[48px] font-semibold">{item.counter}</h2>
-                <p className="text-[20px] font-medium text-white">{item.title}</p>
+                <h2 className="text-[#8CC63E] text-5xl font-black">{item.counter}</h2>
+                <p className="text-xl font-medium text-white">{item.title}</p>
               </div>
             ))
           }

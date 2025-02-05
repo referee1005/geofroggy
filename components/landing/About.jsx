@@ -62,8 +62,8 @@ function AboutUs({ }) {
             alt={"Home Image"}
           />
         </div>
-        <div className="text-[#195883] text-xl 2xl:text-2xl">About Us</div>
-        <div className="text-[#8CC63E] font-semibold xs:text-2xl sm:text-4xl md:text-2xl lg:text-3xl xl:text-4xl 3xl:text-5xl">
+        <div className="text-[#195883] text-xl font-medium">About Us</div>
+        <div className="text-[#8CC63E] font-extrabold text-4xl">
           <div className="flex items-center">
             <span className="mr-2">Discover The World</span>
             <div className="relative">
@@ -80,7 +80,7 @@ function AboutUs({ }) {
           </div>
           <div>Around You On Finger Tips</div>
         </div>
-        <div className="text-sm lg:text-base">{data.text}</div>
+        <div className="text-sm">{data.text}</div>
         <div>
           {" "}
           <LandingReadMoreButton

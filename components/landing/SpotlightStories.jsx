@@ -50,10 +50,10 @@ export const SpotlightStories = ({ }) => {
                 alt={"Script Image"}
               />
             </div>
-            <div className="text-[#195883] text-xl 2xl:text-2xl">
+            <div className="text-[#195883] text-xl">
               Cultural stories
             </div>
-            <div className="text-[#8CC63E] font-semibold xs:text-2xl sm:text-4xl md:text-2xl lg:text-3xl xl:text-4xl 3xl:text-5xl">
+            <div className="text-[#8CC63E] font-extrabold text-4xl">
               <div className="flex items-center">
                 <span className="mr-2">Spotlight Stories</span>
               </div>
