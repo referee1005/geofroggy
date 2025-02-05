@@ -10,16 +10,17 @@ import LandingReadMoreButton from "../reusable/LandingReadMoreButton";
 const TestimonialCarousel = ({ testimonial }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [tmpTestimonial, setTmpTestmonial] = useState([])
-
-  const handlePrev = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex === 0 ? testimonial.length - 1 : prevIndex - 1
-    );
-  };
+  const length = testimonial.length
 
   const handleNext = () => {
     setActiveIndex((prevIndex) =>
-      prevIndex === testimonial.length - 1 ? 0 : prevIndex + 1
+      prevIndex === 0 ? length - 1 : prevIndex - 1
+    );
+  };
+
+  const handlePrev = () => {
+    setActiveIndex((prevIndex) =>
+      prevIndex === length - 1 ? 0 : prevIndex + 1
     );
   };
 
@@ -28,6 +29,7 @@ const TestimonialCarousel = ({ testimonial }) => {
       setTmpTestmonial([testimonial[length - 1], testimonial[activeIndex], testimonial[activeIndex + 1]])
     }
     else if (activeIndex == length - 1) {
+      console.log(activeIndex, [testimonial[length - 2], testimonial[activeIndex], testimonial[0]])
       setTmpTestmonial([testimonial[length - 2], testimonial[activeIndex], testimonial[0]])
     }
     else setTmpTestmonial([testimonial[activeIndex - 1], testimonial[activeIndex], testimonial[activeIndex + 1]])
@@ -124,7 +126,7 @@ const TestimonialCarousel = ({ testimonial }) => {
 
       {/* Testimonials for LG screens */}
       <div className="hidden lg:flex flex-col lg:flex-row justify-center gap-8 lg:gap-24">
-        {testimonial.map((item, index) => (
+        {tmpTestimonial.map((item, index) => (
           <div
             key={item?.id}
             className={`relative flex flex-col items-center text-center bg-[#d9d9d9] shadow-lg rounded-[28px] px-8 py-14 ${index === 1

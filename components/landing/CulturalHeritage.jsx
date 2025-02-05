@@ -26,7 +26,7 @@ export const CulturalHeritage = ({ }) => {
   return (
     <div className="container-custom relative flex flex-col my-[60px] py-10 lg:py-20 bg-[#8CC63E] lg:bg-white rounded-[50px] mx-5 md:mx-10 lg:mx-0">
       <div className="relative flex flex-col md:flex-row gap-8 bg-[#8CC63E] rounded-[39px] px-[10px] lg:px-[50px] xl:px-[80px] 2xl:px-[100px] py-[30px] lg:py-[49px] xl:py-[64px] justify-center lg:justify-start">
-        <div className="max-w-[100%] md:max-w-[50%] pb-4">
+        <div className="max-w-[100%] md:max-w-[40%] pb-4">
           <div>
             <Image
               src={culturalHeritageLogo}
@@ -53,7 +53,7 @@ export const CulturalHeritage = ({ }) => {
             </div>
           )}
         </div>
-        <div className="absolute bottom-[-25px] left-[50%] lg:left-[225px] translate-x-[-50%] flex justify-center">
+        <div className="absolute bottom-[-25px] left-[50%] lg:left-[200px] translate-x-[-50%] flex justify-center">
           <LandingReadMoreButton
             title={"View More"}
             backgroundColor={"#195883"}
@@ -63,23 +63,23 @@ export const CulturalHeritage = ({ }) => {
         </div>
       </div>
 
-      <div className="lg:absolute top-0 right-0 h-full flex flex-col items-center justify-center lg:pr-24 xl:pr-52 2xl:pr-64 z-5 mt-14 lg:mt-0 scale-80 lg:scale-90 xl:scale-100">
-        <div className="relative flex items-center justify-center w-full">
-          <div className="rounded-[35px] overflow-hidden">
+      <div className="lg:absolute top-0 right-0 h-full flex flex-col items-center justify-center lg:pr-36 xl:pr-52 2xl:pr-64 z-5 mt-14 lg:mt-0 scale-80 lg:scale-90 xl:scale-100">
+        <div className="relative flex items-center justify-center w-full h-full">
+          <div className="rounded-[35px] overflow-hidden h-full">
             <img
               src={culturalHeritage?.background_image}
-              className="w-[250px] md:w-[300px] h-auto rounded-[28px]"
+              className="w-[300px] md:w-[360px] h-full rounded-[28px]"
               alt="Background Cultural Image"
             />
           </div>
 
-          <div className="absolute top-[30%] lg:left-[-120px] xl:left-[-180px] flex flex-col items-center justify-center left-[30%] -translate-x-[120px] lg:-translate-x-[0px]">
+          <div className="absolute top-[25%] lg:left-[-120px] xl:left-[-200px] 2xl:left-[-320px] flex flex-col items-center justify-center left-[30%] -translate-x-[160px] lg:-translate-x-[0px]">
             <div className="relative z-10">
               <div className="bg-transparent border border-white rounded-[28px] px-6 py-[18px]">
                 <div className="border-8 border-[#8CC63E] rounded-[28px] bg-[#8CC63E]">
                   <img
                     src={culturalHeritage?.front_image}
-                    className="rounded-[28px] w-[181px] h-[136px]"
+                    className="rounded-[28px] w-[300px] h-[150px] md:w-[357px] md:h-[181px]"
                     alt="Front Cultural Image"
                   />
                 </div>

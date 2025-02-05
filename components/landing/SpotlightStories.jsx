@@ -125,7 +125,6 @@ export const SpotlightStories = ({ }) => {
               onSwiper={(swiper) => (swiperRef.current = swiper)} // Set the Swiper instance
               direction="vertical" // Enable vertical sliding
               spaceBetween={10} // Space between slides
-              pagination={{ clickable: true }} // Enable pagination
               autoplay={{ delay: 3000 }} // Add autoplay configuration
               loop={true}
               speed={1500}

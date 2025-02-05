@@ -26,8 +26,8 @@ export const JoinAdventure = ({ }) => {
   return (
     <div className="container-custom flex flex-col my-[60px]">
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col md:flex-row gap-x-4 justify-between md:gap-y-1 lg:max-h-[500px]">
-          <div className="first-column w-full md:w-[40%]">
+        <div className="flex flex-col md:flex-row gap-x-8 justify-between md:gap-y-1">
+          <div className="first-column w-full md:w-[30%]">
             {
               joinAdventure != undefined && (
                 <>
@@ -43,19 +43,18 @@ export const JoinAdventure = ({ }) => {
               )
             }
           </div>
-
-          <div className="second-column flex justify-center w-full md:w-[25%]">
-            {
-              joinAdventure != undefined && (
-                <div className="flex justify-center w-[50%] md:w-full">
-                  <img src={joinAdventure.vertical_image} alt="Join the Adventure"
-                    className="rounded-[27px]" />
-                </div>
-              )
-            }
+          <div className="second-column flex justify-center w-full md:w-[30%]">
+            {joinAdventure !== undefined && (
+              <div className="flex justify-center items-center w-[50%] md:w-full md:aspect-[1581/289] bg-cover overflow-hidden">
+                <img
+                  src={joinAdventure.vertical_image}
+                  alt="Join the Adventure"
+                  className="rounded-[27px] object-cover h-full w-full"
+                />
+              </div>
+            )}
           </div>
-
-          <div className="third-column w-full md:w-[35%]">
+          <div className="third-column w-full md:w-[40%]">
             <div>
               <Image
                 src={trustLogo}
@@ -89,7 +88,7 @@ export const JoinAdventure = ({ }) => {
             }
 
             <div className="items-center flex mt-5">
-              <div className="flex items-center cursor-pointer bg-[#195883] border rounded-[22px] p-[14px_24px_14px_31px] w-[175px] h-[44px] text-[13px] text-white gap-x-2">
+              <div className="flex items-center cursor-pointer bg-[#195883] border rounded-[22px] p-[14px_24px_14px_31px] h-[44px] text-[13px] text-white gap-x-2">
                 <div>
                   Create Account
                 </div>
