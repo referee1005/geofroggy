@@ -44,8 +44,8 @@ function AppFooter() {
   const flag = !homeLoaded
 
   return (
-    <footer className={`${"text-white mb-[-8px]"}`}>
-      <div className="bg-[#195883] mx-auto px-6 lg:px-20 flex flex-col lg:flex-row items-stretch pb-4 pt-[120px] font-montserrat">
+    <footer className={`${"text-white mb-[-8px]"} font-montserrat`}>
+      <div className="bg-[#195883] mx-auto px-6 lg:px-20 flex flex-col lg:flex-row items-stretch pb-4 pt-[120px]">
         {/* Left Section */}
         <div className="w-full lg:w-[25%] flex flex-col pl-16 lg:pl-0">
           <Image
@@ -54,14 +54,14 @@ function AppFooter() {
             alt="Light Logo"
             width={240}
           />
-          <div className="font-extrabold">
+          <div className="font-extrabold text-xs">
             Cultured Media vs. The Cultured Media
           </div>
-          <div className="font-extrabold text-2xl mt-6">
+          <div className="font-bold text-xl mt-6">
             (+800) 1234 5678 90
           </div>
-          <div className="font-normal mt-2">support@geofroggy.com</div>
-          <div className="font-normal mt-4">
+          <div className="font-normal mt-2 text-[15px]">support@geofroggy.com</div>
+          <div className="font-normal mt-4 text-[13px]">
             Copyright {new Date().getFullYear()} ©Geofroggy
           </div>
         </div>
@@ -71,36 +71,36 @@ function AppFooter() {
           {/* Navigation Columns */}
           <div className="flex flex-col md:flex-row">
             <div className="w-full md:w-[1/3] mt-8 md:mt-0 flex-grow">
-              <div className="font-bold text-lg border-l-0 lg:border-l border-[#D9D9D9] pl-16">
+              <div className="font-bold text-xl border-l-0 lg:border-l border-[#D9D9D9] pl-16">
                 Company
               </div>
-              <div className="mt-4 pl-16 font-montserrat">
-                <div>News</div>
-                <div>Media Page</div>
-                <div>Advertise with Geofroggy</div>
-                <div>Contact Us</div>
+              <div className="mt-4 pl-16">
+                <div><Link href='/news'>News</Link></div>
+                <div><Link href='/media'>Media Page</Link></div>
+                <div><Link href='/advertise'>Advertise with Geofroggy</Link></div>
+                <div><Link href='/contact'>Contact Us</Link></div>
               </div>
             </div>
             <div className="w-full md:w-[1/3] mt-8 md:mt-0 flex-grow">
-              <div className="font-bold text-lg border-l-0 md:border-l border-[#D9D9D9] pl-16">
+              <div className="font-bold text-xl border-l-0 md:border-l border-[#D9D9D9] pl-16">
                 Legal
               </div>
               <div className="mt-4 pl-16">
                 <div>Community Guidelines</div>
                 <div>Terms of Use</div>
-                <div>Privacy Policy</div>
-                <div>FAQs</div>
+                <div><Link href='/privacy-policy'>Privacy Policy</Link></div>
+                <div><Link href='/faq'>FAQs</Link></div>
               </div>
             </div>
             <div className="w-full md:w-[1/3] mt-8 md:mt-0 flex-grow">
-              <div className="font-bold text-lg border-l-0 md:border-l border-[#D9D9D9] pl-16">
+              <div className="font-bold text-xl border-l-0 md:border-l border-[#D9D9D9] pl-16">
                 Get Involve
               </div>
               <div className="mt-4 pl-16">
-                <div>Careers</div>
+                <div><Link href='/job'>Careers</Link></div>
                 <div>Ambassadors</div>
-                <div>Sponsor Geofroggy</div>
-                <div>Donate</div>
+                <div><Link href='/sponsor'>Sponsor Geofroggy</Link></div>
+                <div><Link href='/donate'>Donate</Link></div>
                 <div>Subscribe</div>
               </div>
             </div>
@@ -110,7 +110,7 @@ function AppFooter() {
           <div className="flex flex-col md:flex-row items-center justify-between w-full mt-8">
             {/* Follow us Section */}
             <div className="w-full md:w-[50%] flex flex-col items-center gap-4 mt-4">
-              <div className="text-lg font-extrabold text-center">Follow us</div>
+              <div className="text-xl font-bold text-center">Follow us</div>
               <ul className="flex space-x-4">
                 {socialLinks.map((link) => (
                   <a
@@ -131,7 +131,7 @@ function AppFooter() {
 
             {/* Download App Section */}
             <div className="w-full md:w-[50%] flex flex-col md:flex-row items-center gap-4 mt-8">
-              <div className="text-lg font-extrabold text-center">Download App</div>
+              <div className="text-xl font-bold text-center">Download App</div>
               <div className="flex flex-col gap-2">
                 <a
                   href="#"
