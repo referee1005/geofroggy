@@ -10,7 +10,7 @@ function Info() {
     <div className="w-full flex justify-center bg-gradient-to-br from-[#F9F8FF] via-[#EAF4FF] to-[#F9F8FF] pt-12">
       <div className='flex justify-between max-h-[1440px]'>
         {/* Left Section with Gradient Background */}
-        <div className="relative w-full lg:w-[40%] flex flex-col justify-center items-start">
+        <div className="relative w-full lg:w-[40%] flex flex-col justify-center items-start lg:pl-8">
 
           {/* Top-left Logo */}
           <div className="mb-4">
@@ -31,7 +31,7 @@ function Info() {
               backgroundSize: '24px 24px', // Increased spacing to match the design
             }}
           />
-          <div className='flex bg-white flex-col justify-center px-12 py-6 z-10 rounded-2xl'>
+          <div className='flex bg-white flex-col justify-center px-12 py-10 z-10 rounded-2xl'>
 
             {/* Image Container */}
             <div className="w-full relative aspect-[2/1] max-w-3xl">
