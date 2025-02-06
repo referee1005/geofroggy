@@ -1,72 +1,86 @@
-import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
-import Background from '../../public/images/join/background.png'
-import Background_Mobile from '../../public/images/join/background_mobile.png'
-import froggy from '../../public/images/join/geofroggy.png'
-import compass from '../../public/images/join/compass.png'
-import moon from '../../public/images/join/moon.png'
-import JoinForm from './Form'
-function Info ({}) {
+import React from 'react';
+import Image from 'next/image';
+import { Globe, Home } from 'lucide-react';
+import froggy from '../../public/images/froggy.png';
+import joinImage from '../../public/images/join.jpg';
+import JoinForm from './Form';
+
+function Info() {
   return (
-    <div className='relative text-white'>
-      <div
-        className='relative'
-        style={{ minHeight: 800 }}
-        // key={index}
-      >
-        <Image
-          src={Background}
-          className='h-screen sm:block hidden'
-          style={{ minHeight: 800 }}
-        />
-        <Image
-          src={Background_Mobile}
-          className='h-screen sm:hidden block'
-          style={{ minHeight: 800 }}
-        />
-        <div className='absolute top-0 h-full w-full flex flex-col lg:flex-row'>
-          <div className='absolute w-full h-1/2 lg:relative bottom-0 lg:w-[45%] lg:h-full lg:top-0'>
-            <JoinForm />
+    <div className="w-full flex justify-center bg-gradient-to-br from-[#F9F8FF] via-[#EAF4FF] to-[#F9F8FF] pt-12">
+      <div className='flex justify-between max-h-[1440px]'>
+        {/* Left Section with Gradient Background */}
+        <div className="relative w-full lg:w-[40%] flex flex-col justify-center items-start">
+
+          {/* Top-left Logo */}
+          <div className="mb-4">
+            <Image src={froggy} alt="Froggy Icon" width={50} height={50} />
           </div>
-          <div className='absolute top-0 h-1/2 w-full lg:h-full lg:relative lg:flex-1 flex flex-col justify-center items-center'>
-            <div className='absolute lg:bottom-[10%] mx-8 lg:mx-4 xl:mx-8 2xl:mx-16'>
-              <div className='text-3xl sm:text-5xl mb-4 pr-16 lg:mr-0 text-center lg:text-left'>
+
+          {/* JoinForm Component */}
+          <JoinForm />
+        </div>
+
+        {/* Right Section with White Background */}
+        <div className="relative hidden lg:flex w-[60%] px-16 pt-20 pb-12">
+          {/* Decorative Dots Pattern */}
+          <div
+            className="absolute top-8 left-0 w-56 h-28 opacity-30"
+            style={{
+              backgroundImage: 'radial-gradient(circle, #D8B4FE 5px, transparent 5px)', // Larger dots
+              backgroundSize: '24px 24px', // Increased spacing to match the design
+            }}
+          />
+          <div className='flex bg-white flex-col justify-center px-12 py-6 z-10 rounded-2xl'>
+
+            {/* Image Container */}
+            <div className="w-full relative aspect-[2/1] max-w-3xl">
+              <div className="absolute inset-0 bg-white rounded-[32px] shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
+                <Image
+                  src={joinImage}
+                  alt="Join Us Visual"
+                  fill
+                  priority
+                  className="rounded-[32px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+            </div>
+
+            {/* Content Below Image */}
+            <div className="text-center space-y-4 max-w-xl mt-8 px-6">
+              <h2 className="text-[44px] font-bold text-gray-800">
                 Our Winder, Your World
-              </div>
-              <div className='mb-6'>
-                A diverse community of groups coming together to express the
-                geography and diversity of the world{' '}
-              </div>
-              <div className='flex sm:flex-row flex-col items-center justify-center'>
-                <div className='flex w-[100%] ms:w-[70%] mb-4 sm:mb-0 sm:w-56 md:w-72 lg:w-[70%] 2xl:w-[35%] sm:mr-4 lg:mr-1 xl:mr-4 2xl:mr-8 justify-center items-center lg:p-1 xl:p-2 border-4 rounded-md'>
-                  <div className='w-1/5 flex justify-center'>
-                    <Image src={compass} className='' width={38} height={38} />
-                  </div>
-                  <div className='flex-1 lg:text-sm 2xl:text-base 3xl:text-lg lg:break-words lg:hyphens-auto  2xl:hyphens-none'>
-                    100% remote and online community worldwide
-                  </div>
+              </h2>
+              <p className="text-gray-600 text-lg">
+                A diverse community of groups coming together to express the geography and diversity of the world
+              </p>
+
+              {/* Feature Points */}
+              <div className="flex flex-col space-y-4 mt-6">
+                <div className="flex items-center justify-center space-x-3 bg-[#1B4E7C] text-white py-3 px-6 rounded-full">
+                  <Globe className="w-5 h-5" />
+                  <span>100% remote and online community worldwide</span>
                 </div>
-                <div className='flex w-[100%] ms:w-[70%] sm:w-56 md:w-72 lg:w-[70%]  2xl:w-[35%] sm:mr-4 md:mr-8 lg:mr-2 xl:mr-4 2xl:mr-12 justify-center items-center lg:p-1 xl:p-2 border-4 rounded-md'>
-                  <div className='w-1/5 flex justify-center'>
-                    <Image src={moon} className='' width={38} height={38} />
-                  </div>
-                  <div className='flex-1 lg:text-sm 2xl:text-base 3xl:text-lg lg:break-words lg:hyphens-auto  2xl:hyphens-none'>
-                    Discover new places and possbilities from home
-                  </div>
-                </div>
-                <div className='mt-2 lg:text-md sm:text-center xl:text-xl sm:w-28 lg:w-36 xl:w-48 2xl:w-32 lg:my-auto'>
-                  Learn More About Us
+                <div className="flex items-center justify-center space-x-3 bg-[#1B4E7C] text-white py-3 px-6 rounded-full">
+                  <Home className="w-5 h-5" />
+                  <span>Discover new places and possibilities from home</span>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className='absolute top-8 right-8'>
-          <Image src={froggy} className='' />
+
+          <div
+            className="absolute bottom-8 right-4 w-56 h-28 opacity-30"
+            style={{
+              backgroundImage: 'radial-gradient(circle, #D8B4FE 5px, transparent 5px)', // Larger dots
+              backgroundSize: '24px 24px', // Increased spacing to match the design
+            }}
+          />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Info
+export default Info;
