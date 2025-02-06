@@ -11,8 +11,9 @@ module.exports = {
         200: "2", // 60% scale
       },
       fontFamily: {
-        inter: ["Inter", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
+        lexend: ['Lexend', 'sans-serif'],
       },
       inset: {
         "1/5": "20%", // Equivalent to top: 20%;

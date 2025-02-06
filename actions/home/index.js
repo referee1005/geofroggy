@@ -11,9 +11,27 @@ import {
   FETCH_FAVOURITE_PLACES_REQUEST,
   FETCH_FAVOURITE_PLACES_SUCCESS,
   FETCH_FAVOURITE_PLACES_FAILURE,
+  FETCH_SPOTLIGHT_STORIES_REQUEST,
+  FETCH_SPOTLIGHT_STORIES_SUCCESS,
+  FETCH_SPOTLIGHT_STORIES_FAILURE,
   FETCH_PLACES_REQUEST,
   FETCH_PLACES_SUCCESS,
   FETCH_PLACES_FAILURE,
+  FETCH_CULTURAL_HERITAGE_REQUEST,
+  FETCH_CULTURAL_HERITAGE_SUCCESS,
+  FETCH_CULTURAL_HERITAGE_FAILURE,
+  FETCH_JOIN_ADVENTURE_REQUEST,
+  FETCH_JOIN_ADVENTURE_SUCCESS,
+  FETCH_JOIN_ADVENTURE_FAILURE,
+  FETCH_COMMUNITY_VIBES_REQUEST,
+  FETCH_COMMUNITY_VIBES_SUCCESS,
+  FETCH_COMMUNITY_VIBES_FAILURE,
+  FETCH_TESTIMONIAL_REQUEST,
+  FETCH_TESTIMONIAL_SUCCESS,
+  FETCH_TESTIMONIAL_FAILURE,
+  FETCH_INSPIRE_CONNECTION_REQUEST,
+  FETCH_INSPIRE_CONNECTION_SUCCESS,
+  FETCH_INSPIRE_CONNECTION_FAILURE,
 } from "../types";
 
 export const fetchLandingAboutusRequest = () => ({
@@ -68,16 +86,87 @@ export const fetchPlacesFailure = (error) => ({
   type: FETCH_PLACES_FAILURE,
   payload: error,
 });
+
 export const fetchFavouritePlacesRequest = () => ({
   type: FETCH_FAVOURITE_PLACES_REQUEST,
 });
-
 export const fetchFavouritePlacesSuccess = (data) => ({
   type: FETCH_FAVOURITE_PLACES_SUCCESS,
   payload: data,
 });
-
 export const fetchFavouritePlacesFailure = (error) => ({
   type: FETCH_FAVOURITE_PLACES_FAILURE,
+  payload: error,
+});
+
+export const fetchSpotlightStoriesRequest = () => ({
+  type: FETCH_SPOTLIGHT_STORIES_REQUEST,
+});
+export const fetchSpotlightStoriesSuccess = (data) => ({
+  type: FETCH_SPOTLIGHT_STORIES_SUCCESS,
+  payload: data,
+});
+export const fetchSpotlightStoriesFailure = (error) => ({
+  type: FETCH_SPOTLIGHT_STORIES_FAILURE,
+  payload: error,
+});
+
+export const fetchCulturalHeritageRequest = () => ({
+  type: FETCH_CULTURAL_HERITAGE_REQUEST,
+});
+export const fetchCulturalHeritageSuccess = (data) => ({
+  type: FETCH_CULTURAL_HERITAGE_SUCCESS,
+  payload: data,
+});
+export const fetchCulturalHeritageFailure = (error) => ({
+  type: FETCH_CULTURAL_HERITAGE_FAILURE,
+  payload: error,
+});
+
+export const fetchJoinAdventureRequest = () => ({
+  type: FETCH_JOIN_ADVENTURE_REQUEST,
+});
+export const fetchJoinAdventureSuccess = (data) => ({
+  type: FETCH_JOIN_ADVENTURE_SUCCESS,
+  payload: data,
+});
+export const fetchJoinAdventureFailure = (error) => ({
+  type: FETCH_JOIN_ADVENTURE_FAILURE,
+  payload: error,
+});
+
+export const fetchCommunityVibesRequest = () => ({
+  type: FETCH_COMMUNITY_VIBES_REQUEST,
+});
+export const fetchCommunityVibesSuccess = (data) => ({
+  type: FETCH_COMMUNITY_VIBES_SUCCESS,
+  payload: data,
+});
+export const fetchCommunityVibesFailure = (error) => ({
+  type: FETCH_COMMUNITY_VIBES_FAILURE,
+  payload: error,
+});
+
+export const fetchTestimonialRequest = () => ({
+  type: FETCH_TESTIMONIAL_REQUEST,
+});
+export const fetchTestimonialSuccess = (data) => ({
+  type: FETCH_TESTIMONIAL_SUCCESS,
+  payload: data,
+});
+export const fetchTestimonialFailure = (error) => ({
+  type: FETCH_TESTIMONIAL_FAILURE,
+  payload: error,
+});
+
+export const fetchInspireConnectionRequest = () => ({
+  type: FETCH_INSPIRE_CONNECTION_REQUEST,
+});
+export const fetchInspireConnectionSuccess = (data) => ({
+  type: FETCH_INSPIRE_CONNECTION_SUCCESS,
+  payload: data,
+});
+export const fetchInspireConnectionFailure = (error) => ({
+  type: FETCH_INSPIRE_CONNECTION_FAILURE,
   payload: error,
 });

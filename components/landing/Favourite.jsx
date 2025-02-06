@@ -8,7 +8,7 @@ import Location from "../../public/images/landing/Location.png";
 import Location1 from "../../public/images/landing/Location1.png";
 import LandingReadMoreButton from "../reusable/LandingReadMoreButton";
 
-function Favourite({}) {
+function Favourite({ }) {
   const [placekeys, setPlacekeys] = useState([]);
   const [places, setPlaces] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState("Popular");
@@ -25,11 +25,11 @@ function Favourite({}) {
       if (screenWidth > 1580) {
         setVisiblePlacesCount(placekeys.length); // Show all places
       } else if (screenWidth > 1024) {
-        setVisiblePlacesCount(Math.min(placekeys.length, 6)); // Show all places
+        setVisiblePlacesCount(Math.min(placekeys.length, 5)); // Show all places
       } else if (screenWidth > 768) {
-        setVisiblePlacesCount(Math.min(placekeys.length, 4)); // Show up to 4 places
+        setVisiblePlacesCount(Math.min(placekeys.length, 3)); // Show up to 4 places
       } else if (screenWidth > 480) {
-        setVisiblePlacesCount(Math.min(placekeys.length, 2)); // Show up to 2 places
+        setVisiblePlacesCount(Math.min(placekeys.length, 1)); // Show up to 2 places
       } else {
         setVisiblePlacesCount(1); // Show only 1 place
       }
@@ -52,14 +52,16 @@ function Favourite({}) {
   }, [selectedIndex]);
 
   useEffect(() => {
+    console.log("favorite places: ", data);
+
     setPlacekeys(Object.keys(data));
     if (data["Popular"]) setPlaces(data["Popular"]);
   }, [data]);
+
   return (
     <div className="container-custom flex flex-col">
       <div className="flex flex-col gap-8">
         <div>
-          {" "}
           <div>
             <Image
               src={Location}
@@ -71,10 +73,10 @@ function Favourite({}) {
               alt={"Home Image"}
             />
           </div>
-          <div className="text-[#195883] text-xl 2xl:text-2xl">
+          <div className="text-[#195883] text-xl font-medium">
             Top Destinations
           </div>
-          <div className="text-[#8CC63E] font-semibold xs:text-2xl sm:text-4xl md:text-2xl lg:text-3xl xl:text-4xl 3xl:text-5xl">
+          <div className="text-[#8CC63E] font-extrabold text-4xl">
             <div className="flex items-center">
               <span className="mr-2">Froggy Favorites</span>
             </div>
@@ -84,9 +86,8 @@ function Favourite({}) {
         <div className="w-full flex justify-between">
           <div className="w-full flex justify-between items-center">
             <div
-              className={`cursor-pointer  ${
-                selectedIndex === "Popular" ? "font-semibold text-lg" : ""
-              }`}
+              className={`cursor-pointer  ${selectedIndex === "Popular" ? "font-bold text-lg" : ""
+                }`}
               onClick={() => setSelectedIndex("Popular")}
             >
               Popular
@@ -94,11 +95,11 @@ function Favourite({}) {
             {placekeys
               .filter((ele) => ele !== "Popular")
               .slice(0, visiblePlacesCount)
-              .map((item) => (
+              .map((item, index) => (
                 <div
-                  className={`cursor-pointer ${
-                    selectedIndex === item ? "font-semibold text-lg" : ""
-                  }`}
+                  key={index}
+                  className={`cursor-pointer ${selectedIndex === item ? "font-bold text-lg" : ""
+                    }`}
                   onClick={() => setSelectedIndex(item)}
                 >
                   {item}
@@ -123,48 +124,52 @@ function Favourite({}) {
                   ))}
               </select>
             </div>
-            <div className="rounded-full px-4 py-2 border-2 border-radius border-black cursor-pointer">
-              Explore More Destination
-            </div>
+            <LandingReadMoreButton
+              title={"Explore More Destination"}
+              backgroundColor={"white"}
+              borderColor='black'
+              color1="black"
+              icon={false}
+            />
           </div>
         </div>
-        <div className="grid grid-cols-4 gap-4 lg:gap-8 2xl:gap-16 relative flex min-h-64 sm:min-h-64">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 lg:gap-8 2xl:gap-16 relative min-h-64 sm:min-h-64">
           {data[selectedIndex] !== undefined
             ? data[selectedIndex].slice(0, 4).map((item, index) => (
-                <div>
-                  <div
-                    key={index}
-                    className="relative bg-white shadow-md rounded-3xl overflow-hidden"
-                  >
-                    <div className="aspect-[2/3]">
-                      <Image
-                        src={item.image}
-                        alt={item.image}
-                        className="rounded-3xl object-cover"
-                        layout="fill"
-                        objectFit="cover"
-                        // width={1000}
-                        // height={1000}
-                      />
-                    </div>
-                  </div>
-                  <div className="font-semibold">{item.title}</div>
-                  <div className="flex items-center">
-                    <div>{item.location} </div>
-                    <div className="relative">
-                      <Image
-                        src={Location1}
-                        className="object-contain"
-                        layout="responsive"
-                        width={50}
-                        height={50}
-                        priority={true}
-                        alt={"Home Image"}
-                      />
-                    </div>
+              <div key={index}>
+                <div
+                  key={index}
+                  className="relative bg-white shadow-md rounded-3xl overflow-hidden"
+                >
+                  <div className="aspect-[2/3]">
+                    <Image
+                      src={item.image}
+                      alt={item.image}
+                      className="rounded-3xl object-cover"
+                      layout="fill"
+                      objectFit="cover"
+                    // width={1000}
+                    // height={1000}
+                    />
                   </div>
                 </div>
-              ))
+                <div className="font-bold text-sm mt-2">{item.title}</div>
+                <div className="flex items-center mt-2">
+                  <div className="text-[13px] pr-1">{item.location} </div>
+                  <div className="relative">
+                    <Image
+                      src={Location1}
+                      className="object-contain"
+                      layout="responsive"
+                      width={50}
+                      height={50}
+                      priority={true}
+                      alt={"Home Image"}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))
             : []}
         </div>
         <div className="flex justify-end items-center gap-4">

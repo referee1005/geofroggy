@@ -14,15 +14,39 @@ import {
   FETCH_FAVOURITE_PLACES_REQUEST,
   FETCH_FAVOURITE_PLACES_SUCCESS,
   FETCH_FAVOURITE_PLACES_FAILURE,
+  FETCH_SPOTLIGHT_STORIES_REQUEST,
+  FETCH_SPOTLIGHT_STORIES_SUCCESS,
+  FETCH_SPOTLIGHT_STORIES_FAILURE,
+  FETCH_CULTURAL_HERITAGE_REQUEST,
+  FETCH_CULTURAL_HERITAGE_SUCCESS,
+  FETCH_CULTURAL_HERITAGE_FAILURE,
+  FETCH_JOIN_ADVENTURE_REQUEST,
+  FETCH_JOIN_ADVENTURE_SUCCESS,
+  FETCH_JOIN_ADVENTURE_FAILURE,
+  FETCH_COMMUNITY_VIBES_REQUEST,
+  FETCH_COMMUNITY_VIBES_SUCCESS,
+  FETCH_COMMUNITY_VIBES_FAILURE,
+  FETCH_TESTIMONIAL_REQUEST,
+  FETCH_TESTIMONIAL_SUCCESS,
+  FETCH_TESTIMONIAL_FAILURE,
+  FETCH_INSPIRE_CONNECTION_REQUEST,
+  FETCH_INSPIRE_CONNECTION_SUCCESS,
+  FETCH_INSPIRE_CONNECTION_FAILURE,
 } from "../actions/types";
 
 const initialState = {
+  homeLoaded: false,
   loading: false,
   aboutus: {},
   popular_countries: [],
   recent_additions: [],
   places: [],
   favourite_places: [],
+  sportlight_stories: [],
+  cultural_heritage: [],
+  join_adventure: [],
+  community_vibes: [],
+  testimonial: [],
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -87,12 +111,14 @@ const dataReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+        homeLoaded: true,
         places: action.payload,
       };
     case FETCH_PLACES_FAILURE:
       return {
         ...state,
         loading: false,
+        homeLoaded: true,
         error: action.payload,
       };
     case FETCH_FAVOURITE_PLACES_REQUEST:
@@ -107,6 +133,108 @@ const dataReducer = (state = initialState, action) => {
         favourite_places: action.payload,
       };
     case FETCH_FAVOURITE_PLACES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case FETCH_SPOTLIGHT_STORIES_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case FETCH_SPOTLIGHT_STORIES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        sportlight_stories: action.payload,
+      };
+    case FETCH_SPOTLIGHT_STORIES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case FETCH_CULTURAL_HERITAGE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case FETCH_CULTURAL_HERITAGE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        cultural_heritage: action.payload,
+      };
+    case FETCH_CULTURAL_HERITAGE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case FETCH_JOIN_ADVENTURE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case FETCH_JOIN_ADVENTURE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        join_adventure: action.payload,
+      };
+    case FETCH_JOIN_ADVENTURE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case FETCH_COMMUNITY_VIBES_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case FETCH_COMMUNITY_VIBES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        community_vibes: action.payload,
+      };
+    case FETCH_COMMUNITY_VIBES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case FETCH_TESTIMONIAL_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case FETCH_TESTIMONIAL_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        testimonial: action.payload,
+      };
+    case FETCH_TESTIMONIAL_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case FETCH_INSPIRE_CONNECTION_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case FETCH_INSPIRE_CONNECTION_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        inspireConnection: action.payload,
+      };
+    case FETCH_INSPIRE_CONNECTION_FAILURE:
       return {
         ...state,
         loading: false,

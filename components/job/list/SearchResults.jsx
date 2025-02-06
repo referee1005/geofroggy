@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { fetchJobResultsRequest } from '@/actions/job'
 import querystring from 'querystring'
 
-function SearchResults ({ initialQuery }) {
+function SearchResults({ initialQuery }) {
   const router = useRouter()
   const [query, setQuery] = useState(initialQuery)
   const dispatch = useDispatch()

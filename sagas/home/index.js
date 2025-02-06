@@ -10,6 +10,18 @@ import {
   fetchPlacesFailure,
   fetchFavouritePlacesSuccess,
   fetchFavouritePlacesFailure,
+  fetchSpotlightStoriesSuccess,
+  fetchSpotlightStoriesFailure,
+  fetchCulturalHeritageSuccess,
+  fetchCulturalHeritageFailure,
+  fetchJoinAdventureSuccess,
+  fetchJoinAdventureFailure,
+  fetchCommunityVibesSuccess,
+  fetchCommunityVibesFailure,
+  fetchTestimonialSuccess,
+  fetchTestimonialFailure,
+  fetchInspireConnectionSuccess,
+  fetchInspireConnectionFailure,
 } from "../../actions/home";
 import {
   FETCH_LANDING_ABOUTUS_REQUEST,
@@ -17,6 +29,12 @@ import {
   FETCH_RECENT_ADDITIONS_REQUEST,
   FETCH_PLACES_REQUEST,
   FETCH_FAVOURITE_PLACES_REQUEST,
+  FETCH_SPOTLIGHT_STORIES_REQUEST,
+  FETCH_CULTURAL_HERITAGE_REQUEST,
+  FETCH_JOIN_ADVENTURE_REQUEST,
+  FETCH_COMMUNITY_VIBES_REQUEST,
+  FETCH_TESTIMONIAL_REQUEST,
+  FETCH_INSPIRE_CONNECTION_REQUEST,
 } from "../../actions/types";
 import {
   fetchLandingAboutusData,
@@ -24,6 +42,12 @@ import {
   fetchRecentData,
   fetchPlaceData,
   fetchFavouritePlaceData,
+  fetchSpotlightStoriesData,
+  fetchCulturalHeritageData,
+  fetchJoinAdventureData,
+  fetchCommunityVibesData,
+  fetchTestimonialData,
+  fetchInspireConnectionData
 } from "../../api"; // Assuming you have an API module to handle your requests
 
 function* fetchAboutus() {
@@ -71,10 +95,71 @@ function* fetchFavouritePlaces() {
   }
 }
 
+function* fetchSpotlightStories() {
+  try {
+    const response = yield call(fetchSpotlightStoriesData);
+    yield put(fetchSpotlightStoriesSuccess(response));
+  } catch (error) {
+    yield put(fetchSpotlightStoriesFailure(error.message));
+  }
+}
+
+function* fetchCulturalHeritage() {
+  try {
+    const response = yield call(fetchCulturalHeritageData);
+    yield put(fetchCulturalHeritageSuccess(response));
+  } catch (error) {
+    yield put(fetchCulturalHeritageFailure(error.message));
+  }
+}
+
+function* fetchJoinAdventure() {
+  try {
+    const response = yield call(fetchJoinAdventureData);
+    yield put(fetchJoinAdventureSuccess(response));
+  } catch (error) {
+    yield put(fetchJoinAdventureFailure(error.message));
+  }
+}
+
+function* fetchCommunityVibes() {
+  try {
+    const response = yield call(fetchCommunityVibesData);
+    yield put(fetchCommunityVibesSuccess(response));
+  } catch (error) {
+    yield put(fetchCommunityVibesFailure(error.message));
+  }
+}
+
+function* fetchTestimonial() {
+  try {
+    const response = yield call(fetchTestimonialData);
+    yield put(fetchTestimonialSuccess(response));
+  } catch (error) {
+    yield put(fetchTestimonialFailure(error.message));
+  }
+}
+
+function* fetchInspireConnection() {
+  try {
+    const response = yield call(fetchInspireConnectionData);
+    console.log('fetchInspireConnectionData => ', response)
+    yield put(fetchInspireConnectionSuccess(response));
+  } catch (error) {
+    yield put(fetchInspireConnectionFailure(error.message));
+  }
+}
+
 export function* homeSaga() {
   yield takeLatest(FETCH_LANDING_ABOUTUS_REQUEST, fetchAboutus);
   yield takeLatest(FETCH_POPULAR_COUNTRIES_REQUEST, fetchPopularCountries);
   yield takeLatest(FETCH_RECENT_ADDITIONS_REQUEST, fetchRecentAdditions);
   yield takeLatest(FETCH_PLACES_REQUEST, fetchPlaces);
   yield takeLatest(FETCH_FAVOURITE_PLACES_REQUEST, fetchFavouritePlaces);
+  yield takeLatest(FETCH_SPOTLIGHT_STORIES_REQUEST, fetchSpotlightStories);
+  yield takeLatest(FETCH_CULTURAL_HERITAGE_REQUEST, fetchCulturalHeritage);
+  yield takeLatest(FETCH_JOIN_ADVENTURE_REQUEST, fetchJoinAdventure);
+  yield takeLatest(FETCH_COMMUNITY_VIBES_REQUEST, fetchCommunityVibes);
+  yield takeLatest(FETCH_TESTIMONIAL_REQUEST, fetchTestimonial);
+  yield takeLatest(FETCH_INSPIRE_CONNECTION_REQUEST, fetchInspireConnection);
 }

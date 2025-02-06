@@ -8,6 +8,7 @@ function MediaViewButton({
   color2,
   onClick,
   width = "w-full",
+  icon = true
 }) {
   return (
     <div
@@ -19,17 +20,17 @@ function MediaViewButton({
         borderWidth: 2,
       }}
     >
-      <div className="text-sm ms:text-base sm:text-lg lg:text-sm xl:text-base 2xl:text-lg">
+      <div className="font-medium text-sm">
         {title}
       </div>
-      <div
+      {icon && <div
         className=""
         // style={{ color: backgroundColor2 }}
         onClick={onClick}
       >
         <FiArrowRight color={color2} size={20} />
         {/* <Image src={Arrow} width={20} height={20} /> */}
-      </div>
+      </div>}
     </div>
   );
 }

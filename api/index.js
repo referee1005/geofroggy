@@ -37,6 +37,42 @@ export const fetchFavouritePlaceData = async () => {
   );
   return res.data;
 };
+export const fetchSpotlightStoriesData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/home/spotlight-stories`
+  );
+  return res.data;
+};
+export const fetchCulturalHeritageData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/home/celebrate-culture`
+  );
+  return res.data;
+};
+export const fetchJoinAdventureData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/home/join-adventure`
+  );
+  return res.data;
+};
+export const fetchCommunityVibesData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/home/community-vibes`
+  );
+  return res.data;
+};
+export const fetchTestimonialData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/home/testimonial`
+  );
+  return res.data;
+};
+export const fetchInspireConnectionData = async () => {
+  const res = await axios.get(
+    `https://geofroggy.com/wp-json/gfrog/v1/home/inspire-connection`
+  );
+  return res.data;
+};
 export const fetchSiteInfoData = async () => {
   const res = await axios.get(
     `https://geofroggy.com/wp-json/gfrog/v1/about/content`

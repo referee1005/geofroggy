@@ -8,6 +8,9 @@ import { useRouter } from "next/router";
 import Loading from "@/components/Loading";
 import store from "../store";
 import "@/styles/globals.css";
+import '@fontsource/inter'; // Defaults to 400 weight
+import '@fontsource/montserrat'; // Defaults to 400 weight
+import '@fontsource/lexend'; // Defaults to 400 weight
 
 // Create a MUI theme instance
 const theme = createTheme({
