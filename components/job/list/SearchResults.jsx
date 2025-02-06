@@ -123,7 +123,7 @@ function SearchResults({ initialQuery }) {
                     className='bg-black'
                     onClick={() => {
                       router.push({
-                        pathname: '/ambassador/' + item.slug
+                        pathname: '/job/' + item.slug
                       })
                     }}
                   >
