@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import AdvertImage from '../../public/images/donate/image.png'
 
-function Advert ({ data }) {
+function Advert({ data }) {
   return (
     <>
       {data !== undefined && (

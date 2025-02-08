@@ -8,7 +8,7 @@ const nextConfig = {
       "i0.wp.com"
     ]
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
   eslint: {
     ignoreDuringBuilds: true
   }

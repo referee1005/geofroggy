@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import CustomButton from '../reusable/CustomButton'
 import DonateForm from './Form'
 
-function Donate ({ data }) {
+function Donate({ data }) {
   const [amounts, setAmount] = useState([])
   const [selectedAmount, setSelectedAmount] = useState('')
   const [payment, setPayment] = useState('Debit/Credit Card')
@@ -30,7 +30,7 @@ function Donate ({ data }) {
           return (
             <div className='mr-2 sm:mr-4' key={item}>
               <CustomButton
-                click={() => setAmount(item)}
+                click={() => setSelectedAmount(item)}
                 title={'$' + item}
                 blur={true}
                 bgColor={item === selectedAmount ? '#84BF3F' : '#E8E8E8'}
