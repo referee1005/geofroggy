@@ -11,7 +11,7 @@ import "@/styles/globals.css";
 import '@fontsource/inter'; // Defaults to 400 weight
 import '@fontsource/montserrat'; // Defaults to 400 weight
 import '@fontsource/lexend'; // Defaults to 400 weight
-
+import '@fontsource/montserrat-alternates';
 // Create a MUI theme instance
 const theme = createTheme({
   palette: {

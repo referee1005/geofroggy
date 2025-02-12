@@ -98,7 +98,7 @@ function AppFooter() {
               </div>
               <div className="mt-4 pl-16">
                 <div><Link href='/job'>Careers</Link></div>
-                <div>Ambassadors</div>
+                <div><Link href='/ambassador'>Ambassadors</Link></div>
                 <div><Link href='/sponsor'>Sponsor Geofroggy</Link></div>
                 <div><Link href='/donate'>Donate</Link></div>
                 <div>Subscribe</div>

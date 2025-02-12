@@ -12,6 +12,7 @@ module.exports = {
       },
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
+        montserrat_alternates: ["Montserrat Alternates", "sans-serif"],
         inter: ["Inter", "sans-serif"],
         lexend: ['Lexend', 'sans-serif'],
       },
