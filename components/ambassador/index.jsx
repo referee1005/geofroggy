@@ -81,132 +81,30 @@ function JobDetail({ data }) {
       </div>
       {/* <div className="h-[2px] w-full bg-[#DDDDDD] my-8"></div> */}
       <div className="container-custom py-8 sm:py-12 lg:py-16">
-        {/* <div className="p-4 sm:p-8 lg:w-2/3 2xl:w-3/4 bg-white  flex flex-col gap-12">
-          <Image
-            src={data.banner}
-            alt={"back"}
-            className="w-[46px] h-[46px] cursor-pointer rounded-lg  min-h-[150px]"
-            layout="responsive"
-            width={200}
-            height={500}
-          />
-          <div>
-            <div className="font-semibold mb-4">Job Title</div>
-            <div className="text-2xl text-custom-font-content">
-              {data.job_title}
-            </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+          {/* Header Section */}
+          <div className="bg-white shadow-lg rounded-lg p-6 md:p-8">
+            <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-center leading-tight">
+              Join the Geofroggy Ambassador Triad – Be A Voice of Your Country!
+            </h1>
+            <p className="mb-6 text-lg text-gray-700 text-center">
+              Are you passionate about sharing your culture with the world? Do you
+              want to make a global impact while building connections and gaining
+              valuable experience? If so, we need YOU to become a Geofroggy
+              Ambassador!
+            </p>
+            <p className="text-gray-700 text-center">
+              As an Ambassador Triad Member, you'll take on an influential role in
+              representing your country, fostering connections, and making meaningful
+              contributions to our vibrant global community.
+            </p>
           </div>
-          <div>
-            <div className="font-semibold mb-4">Job Description</div>
-            <div className="text-custom-font-content">
-              {data.job_description}
-            </div>
-          </div>
-          <div>
-            <div className="font-semibold mb-4">Responsibilities</div>
-            {data.job_responsibilities !== undefined &&
-              data.job_responsibilities.map((item) => (
-                <div className="mb-6 flex gap-2 text-custom-font-content">
-                  <div className="">
-                    <RadioButtonUncheckedOutlinedIcon sx={{ fontSize: 10 }} />
-                  </div>
-                  <div>{item}</div>
-                </div>
-              ))}
-          </div>
-        </div>
-        <div className="p-4 sm:p-8 flex-1 bg-white rounded-lg flex flex-col gap-8 h-fit">
-          <div className="font-semibold">Job Details</div>
-          <div className="flex flex-col gap-6">
-            <div>
-              <div className="text-custom-font-third-content text-sm">
-                Job Creation Date
-              </div>
-              <div className="font-semibold text-custom-font-secondary-content">
-                {formatDate1(data.job_creation_date)}
-              </div>
-            </div>
-            <div>
-              <div className="text-custom-font-third-content text-sm">
-                Recruitment Period
-              </div>
-              <div className="font-semibold text-custom-font-secondary-content">
-                {data.job_recruitment_period}
-              </div>
-            </div>
-            <div>
-              <div className="text-custom-font-third-content text-sm">
-                Recruitment Quota
-              </div>
-              <div className="font-semibold text-custom-font-secondary-content">
-                {data.job_quota}
-              </div>
-            </div>
-            <div>
-              <div className="text-custom-font-third-content text-sm">
-                Job Type
-              </div>
-              <div className="font-semibold text-custom-font-secondary-content">
-                {data.job_type}
-              </div>
-            </div>
-            <div>
-              <div className="text-custom-font-third-content text-sm">
-                Experiences
-              </div>
-              <div className="font-semibold text-custom-font-secondary-content">
-                {data.job_experiences}
-              </div>
-            </div>
-            <div>
-              <div className="text-custom-font-third-content text-sm">
-                Location
-              </div>
-              <div className="font-semibold text-custom-font-secondary-content">
-                {data.job_location}
-              </div>
-            </div>
-            <div>
-              <div className="text-custom-font-third-content text-sm">
-                Salary
-              </div>
-              <div className="font-semibold text-custom-font-secondary-content">
-                {`$${data.job_salary} USD`}
-              </div>
-            </div>
-            <div>
-              <div className="text-custom-font-third-content text-sm">
-                Hiring Manager
-              </div>
-              <div className="font-semibold text-custom-font-secondary-content">
-                {data.job_hiring_manager}
-              </div>
-            </div>
-          </div>
-        </div> */}
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-center leading-tight">
-            Join the Geofroggy Ambassador Triad – Be the Voice of Your Country!
-          </h1>
 
-          <p className="mb-6 text-lg text-gray-700 text-center">
-            Are you passionate about sharing your culture with the world? Do you
-            want to make a global impact while building connections and gaining
-            valuable experience? If so, we need YOU to become a Geofroggy
-            Ambassador!
-          </p>
-
-          <p className="mb-8 text-gray-700 text-center">
-            As an Ambassador Triad Member, you'll take on an influential role in
-            representing your country, fostering connections, and making meaningful
-            contributions to our vibrant global community.
-          </p>
-
-          <div className="bg-gray-100 rounded-lg p-6 md:p-8">
-            <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-center">
+          {/* Why Become an Ambassador */}
+          <div className="bg-gray-100 shadow-lg rounded-lg p-6 md:p-8">
+            <h2 className="text-2xl sm:text-3xl font-semibold mb-6 text-center">
               Why Become a Geofroggy Ambassador?
             </h2>
-
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 {
@@ -243,78 +141,92 @@ function JobDetail({ data }) {
             </div>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-semibold mt-12 mb-6 text-center">
-            Your Role as a Geofroggy Ambassador:
-          </h2>
-
-          <ul className="max-w-3xl mx-auto space-y-3 text-gray-700 text-lg">
-            <li className="bg-gray-100 p-4 rounded-md">
-              <strong>Content Creation:</strong> Share stories, images, and insights
-              about your country.
-            </li>
-            <li className="bg-gray-100 p-4 rounded-md">
-              <strong>Community Growth:</strong> Engage with users and foster an
-              interactive space.
-            </li>
-            <li className="bg-gray-100 p-4 rounded-md">
-              <strong>Monitoring & Moderation:</strong> Ensure content aligns with
-              our values of respect and inclusivity.
-            </li>
-            <li className="bg-gray-100 p-4 rounded-md">
-              <strong>Sponsorship Outreach:</strong> Identify potential sponsors
-              aligned with our mission.
-            </li>
-            <li className="bg-gray-100 p-4 rounded-md">
-              <strong>Collaboration:</strong> Partner with fellow ambassadors to
-              create engaging content.
-            </li>
-          </ul>
-
-          <h2 className="text-2xl sm:text-3xl font-semibold mt-12 mb-6 text-center">
-            Who We're Looking For:
-          </h2>
-
-          <div className="max-w-3xl mx-auto grid gap-4 sm:grid-cols-2">
-            {[
-              "Passionate individuals who love sharing their culture.",
-              "Active community members and social media users.",
-              "Strong communication and organizational skills.",
-              "Excited to contribute to the Geofroggy community.",
-            ].map((text, index) => (
-              <div
-                key={index}
-                className="bg-gray-100 p-4 rounded-md text-gray-700 text-lg"
-              >
-                {text}
-              </div>
-            ))}
+          {/* Role of an Ambassador */}
+          <div className="bg-white shadow-lg rounded-lg p-6 md:p-8">
+            <h2 className="text-2xl sm:text-3xl font-semibold mb-6 text-center">
+              Your Role as a Geofroggy Ambassador
+            </h2>
+            <ul className="max-w-3xl mx-auto space-y-3 text-gray-700 text-lg">
+              {[
+                {
+                  title: "Content Creation",
+                  description:
+                    "Share stories, images, and insights about your country.",
+                },
+                {
+                  title: "Community Growth",
+                  description:
+                    "Engage with users and foster an interactive space.",
+                },
+                {
+                  title: "Monitoring & Moderation",
+                  description:
+                    "Ensure content aligns with our values of respect and inclusivity.",
+                },
+                {
+                  title: "Sponsorship Outreach",
+                  description:
+                    "Identify potential sponsors aligned with our mission.",
+                },
+                {
+                  title: "Collaboration",
+                  description:
+                    "Partner with fellow ambassadors to create engaging content.",
+                },
+              ].map((item, index) => (
+                <li key={index} className="bg-gray-100 p-4 rounded-md">
+                  <strong>{item.title}:</strong> {item.description}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-semibold mt-12 mb-6 text-center">
-            Ready to Represent Your Country? Apply Today!
-          </h2>
+          {/* Who We're Looking For */}
+          <div className="bg-gray-100 shadow-lg rounded-lg p-6 md:p-8">
+            <h2 className="text-2xl sm:text-3xl font-semibold mb-6 text-center">
+              Who We're Looking For:
+            </h2>
+            <div className="max-w-3xl mx-auto grid gap-4 sm:grid-cols-2">
+              {[
+                "Passionate individuals who love sharing their culture.",
+                "Active community members and social media users.",
+                "Strong communication and organizational skills.",
+                "Excited to contribute to the Geofroggy community.",
+              ].map((text, index) => (
+                <div
+                  key={index}
+                  className="bg-white p-4 rounded-md shadow text-gray-700 text-lg"
+                >
+                  {text}
+                </div>
+              ))}
+            </div>
+          </div>
 
-          <p className="max-w-3xl mx-auto text-center text-lg text-gray-700">
-            Be part of a movement that connects people through geography and
-            culture. Apply now and take your place as an official Geofroggy
-            Ambassador!
-          </p>
-
-          <p className="mt-8 text-center text-lg text-gray-900 font-semibold">
-            If you're interested, send an email to{" "}
-            <a
-              href="mailto:gap@geofroggy.com"
-              className="text-blue-600 hover:underline"
-            >
-              gap@geofroggy.com
-            </a>
-          </p>
+          {/* Call to Action */}
+          <div className="bg-white shadow-lg rounded-lg p-6 md:p-8 text-center">
+            <h2 className="text-2xl sm:text-3xl font-semibold mb-6">
+              Ready to Represent Your Country? Apply Today!
+            </h2>
+            <p className="max-w-3xl mx-auto text-lg text-gray-700">
+              Be part of a movement that connects people through geography and
+              culture. Apply now and take your place as an official Geofroggy
+              Ambassador!
+            </p>
+            <p className="mt-8 text-lg text-gray-900 font-semibold">
+              If you're interested, send an email to{" "}
+              <a href="mailto:gap@geofroggy.com" className="text-blue-600 hover:underline">
+                gap@geofroggy.com
+              </a>
+            </p>
+          </div>
         </div>
+
+
       </div>
       <div>
-        <div>
+        {/* <div>
           <div className="relative">
-            {/* Background Image */}
             <Image
               src={desktop}
               alt="Background"
@@ -324,7 +236,6 @@ function JobDetail({ data }) {
               height={500}
             />
 
-            {/* Overlay Content */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center space-y-4 bg-transparent">
               <p className="text-base lg:text-lg font-bold text-gray-700">For more details</p>
               <h1 className="text-4xl 2xl:text-6xl font-bold text-gray-900 tracking-widest">Let’s Talk</h1>
@@ -333,7 +244,7 @@ function JobDetail({ data }) {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div >
   );
